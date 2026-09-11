@@ -104,7 +104,7 @@ section[id], .gang { scroll-margin-top: 7rem; }
   display: flex; align-items: center; gap: var(--r-4);
   padding: var(--r-3) var(--rand);
   color: var(--leinen);
-  text-shadow: var(--tschatten);
+  text-shadow: 0 1px 3px rgba(10, 6, 4, .9);   /* eine Lage, eng, siehe unten */
   hyphens: none;
 }
 .kopf::before {
@@ -115,7 +115,7 @@ section[id], .gang { scroll-margin-top: 7rem; }
   transition: opacity var(--t-ruhig) var(--ease-aus);
 }
 body.kopf-hell .kopf::before { opacity: .94; }
-body.kopf-hell .kopf { text-shadow: none; }
+body.kopf-hell .kopf { text-shadow: none; }   /* eigener Grund, kein Schatten noetig */
 
 .kopf__marke { display: flex; align-items: baseline; gap: .6em; text-decoration: none; white-space: nowrap; }
 .kopf__name { font-family: var(--display); font-size: var(--s-1); letter-spacing: -.01em; }
@@ -123,8 +123,10 @@ body.kopf-hell .kopf { text-shadow: none; }
 
 .kopf__liste {
   display: flex; gap: var(--r-4); margin: 0 0 0 auto; padding: 0;
-  list-style: none; font-size: var(--s--1);
-  font-family: var(--label); letter-spacing: .06em; text-transform: uppercase;
+  list-style: none;
+  font-family: var(--body);
+  font-size: 0.82rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
 }
 .kopf__liste a { text-decoration: none; position: relative; padding-block: .35em; white-space: nowrap; }
 .kopf__liste a::after {
@@ -134,7 +136,10 @@ body.kopf-hell .kopf { text-shadow: none; }
 }
 .kopf__liste a:hover::after { transform: scaleX(1); }
 
-.kopf__tel { white-space: nowrap; color: var(--kognak-hell); }
+.kopf__tel {
+  white-space: nowrap; color: var(--kognak-hell);
+  font-size: 0.86rem; letter-spacing: .06em;
+}
 
 /* Die Auskunft, die hier am meisten gesucht wird: ob heute offen ist.
    Gesetzt aus main.js, aus demselben Wochentag, der die Tabelle markiert. */
@@ -142,7 +147,9 @@ body.kopf-hell .kopf { text-shadow: none; }
   color: var(--leinen-weich);
   margin: 0 0 0 var(--r-3);
   white-space: nowrap;
-  font-size: 0.72rem;
+  font-family: var(--body);
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: .08em;
   padding-left: var(--r-3);
   border-left: 1px solid var(--kerbe-fein);
 }
@@ -664,13 +671,13 @@ body.kopf-hell .kopf { text-shadow: none; }
    ========================================================================== */
 
 .karte { padding: 0 var(--rand) var(--r-7); }
-.karte__kopf { max-width: var(--breite); margin: 0 auto var(--r-6); }
+.karte__kopf { max-width: var(--breite); margin: 0 auto var(--r-5); }
 .karte__lead { color: var(--tinte-weich); max-width: 46ch; }
 
 /* Das Verzeichnis. Neunzehn Gaenge ohne Einstieg sind keine Karte,
    sondern eine Wand. Reine Anker, also auch ohne JavaScript brauchbar. */
 .karte__index {
-  max-width: var(--breite); margin: 0 auto var(--r-6);
+  max-width: var(--breite); margin: 0 auto var(--r-5);
   padding-bottom: var(--r-4);
   border-bottom: 1px solid var(--kerbe);
 }

@@ -222,39 +222,46 @@ Läuft direkt aus Band 5 heraus, auf dem Endframe.
 
 ### 8.2 Woher der Name kommt
 Kopf: **„Das Odeon des Herodes Atticus."**
-Text: „Am Fuß des Akropolis-Felsens in Athen steht ein antikes Theater, gestiftet von
-Herodes Atticus, mit Platz für fünftausend Zuschauer. Seit den dreißiger Jahren wird
-dort wieder gespielt, es ist der Hauptschauplatz des Athener Festivals. Auf Griechisch
-heißt es Ηρώδειο. Daher der Name über der Tür."
+Text: „Am Fuß der Akropolis steht ein antikes Theater, fünftausend Plätze, gestiftet
+von Herodes Atticus. Auf Griechisch heißt es Ηρώδειο, und gespielt wird dort bis heute.
+Wir haben unser Haus danach benannt, weil sich an diesem Ort seit zweitausend Jahren
+Leute treffen, um einen Abend miteinander zu verbringen. Mehr wollten wir am
+Roggenmarkt eigentlich auch nie."
 Ein Bild, hochformatig, warmes Abendlicht auf Steinrängen. Ausdrücklich als Stimmungsbild
 gekennzeichnet, nicht als Aufnahme des Denkmals ausgegeben.
 
 ### 8.3 Seit 1983 am Roggenmarkt
 Kopf: **„Ein Haus, eine Familie, vier Umbauten."**
-Text: „1983 hat die Familie Tzes hier aufgemacht, im Fachwerkhaus am Roggenmarkt.
-Seitdem hat sich die Adresse nicht geändert, nur das Haus ist mitgewachsen. Christos
-Tzes führt es bis heute, und wer öfter kommt, wird beim Namen begrüßt."
+Text: „1983 haben wir hier aufgemacht, im Fachwerkhaus am Roggenmarkt. Die Adresse hat
+sich seitdem nicht geändert, nur das Haus ist mitgewachsen. Viermal haben wir angefasst,
+was nötig war, und die Nischen stehen immer noch da, wo sie immer standen. Wer öfter
+kommt, den begrüßen wir beim Namen."
 Eine Zeitleiste als Mäander-Knoten, vier Stationen mit je einer Zeile:
 `1983` eröffnet · `1990` umgebaut · `2009` modernisiert · `2017` erweitert
 Das ist der Vektorplan-Moment dieser Sektion, kein Icon-Set.
 
 ### 8.4 Sagen Sie einfach die Nummer
 Kopf: **„Die Stammgäste bestellen mit einer Zahl."**
-Text: „Die Karte ist durchnummeriert, von der 1 bis zur 1005. Wer öfter hier ist, sagt
-nicht Rhodos Teller, sondern die 47. Tippen Sie eine Nummer ein, dann zeigen wir Ihnen,
-was dahintersteckt."
+Text: „Unsere Karte ist durchnummeriert, von der 1 bis zur 1005. Wer öfter bei uns
+sitzt, bestellt keinen Rhodos Teller, sondern die 47, und wir wissen Bescheid. Tippen
+Sie eine Nummer ein, dann zeigen wir Ihnen, was dahintersteckt."
 Darunter das Nummernfeld aus Abschnitt 5.
 
 ### 8.5 Die Karte
 Kopf: **„Die ganze Karte. Kein Download."**
-Zeile darunter: „Vollständig, mit Nummern, so wie sie auf dem Tisch liegt."
+**Ohne Unterzeile.** Die kleinen grauen Zeilen unter den Überschriften häuften sich,
+und diese sagte nichts, was die Überschrift nicht schon sagt. Die Preisauskunft steht
+dafür in den Anmerkungen unter der Karte.
 Alle Kategorien, gesetzt als ein einziges, identisch wiederholtes Bauteil, mit
 Nummer, Name und Beschreibung. **Ohne Preise, so entschieden.** Die Preise stehen auf
 der Karte im Haus, und solange sie nicht vom Betrieb bestätigt sind, steht lieber
-nichts da als eine Zahl, die nicht mehr stimmt. Dafür steht die Zeile „Die Preise stehen auf der Karte im Haus. Rufen Sie an, wenn Sie
-vorher etwas wissen wollen." **über** der Karte und nicht darunter: Eine unerklärte
-Lücke liest sich als Verheimlichung, und dieses Urteil fällt in den ersten Sekunden,
-nicht nach sechzehntausend Pixeln.
+nichts da als eine Zahl, die nicht mehr stimmt. Dafür steht in den Anmerkungen unter der Karte: „Die Preise stehen auf der Karte im
+Haus. Rufen Sie uns an, wenn Sie vorher etwas wissen wollen."
+
+**Offener Punkt dazu:** Der Prüfer hatte empfohlen, diese Zeile über die Karte zu
+stellen, weil eine unerklärte Lücke sich als Verheimlichung liest und dieses Urteil in
+den ersten Sekunden fällt. Der Kunde wollte die Unterzeile weg, also steht sie jetzt
+unten. Wenn sich zeigt, dass Gäste nach den Preisen fragen, gehört sie nach oben.
 
 **Über den Gängen steht ein Verzeichnis**, neunzehn Anker in einer Zeile. Neunzehn
 Gänge ohne Einstieg sind keine Karte, sondern eine Wand. Die Gangköpfe bleiben beim
@@ -280,15 +287,16 @@ Nummern in Martian Mono, tabellarische Ziffern. Der Aufbau der Karte ist so gese
 dass eine Preisspalte später ohne Umbau dazukommen kann.
 
 ### 8.6 Wenn Sie mehr werden
-Kopf: **„2017 haben wir dafür angebaut."**
-Text: „Für Gesellschaften und Feiern lässt sich der Raum aufteilen, in kleine Runden
-oder in eine lange Tafel. Sagen Sie am Telefon, wie viele Sie sind und was der Anlass
-ist, dann stellen wir es so."
+Kopf: **„Wenn Sie mehr werden, haben wir Platz."**
+Text: „2017 haben wir dafür angebaut. Seitdem teilen wir den Raum so, wie Sie ihn
+brauchen: mehrere kleine Runden oder eine lange Tafel. Sagen Sie uns am Telefon, wie
+viele Sie sind und was gefeiert wird, den Rest stellen wir."
 
 ### 8.7 Draußen in der Altstadt
-Kopf: **„Bei gutem Wetter sitzt man auf dem Pflaster."**
-Text: „Vor dem Haus stehen die Schirme auf dem Kopfsteinpflaster am Roggenmarkt, zwischen
-den Fachwerkgiebeln. Wer mitnehmen will, ruft vorher an, dann steht es fertig bereit."
+Kopf: **„Bei gutem Wetter sitzen Sie draußen."**
+Text: „Dann stellen wir die Schirme raus, auf das Kopfsteinpflaster am Roggenmarkt,
+zwischen die Fachwerkgiebel. Und wer lieber zu Hause isst: Rufen Sie vorher an, dann
+steht es fertig da, wenn Sie kommen."
 Das ist die Stelle, an der die Mitnahme genannt wird, und sie heißt Mitnahme.
 
 ### 8.8 Wann die Küche an ist
@@ -296,7 +304,7 @@ Kopf: **„Mittwoch ist Ruhetag."**
 Wochentabelle, der heutige Tag ist markiert, der Mittwoch deutlich als Ruhetag gesetzt.
 Montag, Dienstag, Donnerstag, Freitag, Samstag, Sonntag: 11:30 bis 14:30 Uhr und 17:00
 bis 22:30 Uhr. Warme Küche mittags bis 14:00 Uhr, abends bis 22:00 Uhr.
-Zeile darunter: **„An allen Feiertagen haben wir geöffnet, auch mittwochs."**
+Zeile darunter: **„An Feiertagen haben wir offen, auch mittwochs."**
 Das beantwortet den Schmerz, ohne ihn zu wiederholen.
 
 ### 8.9 Ihr Platz
@@ -371,6 +379,24 @@ gegen den Hochglanz: dokumentarisches Licht, echte Gebrauchsspuren, leichte Asym
 Und die verbindlichen Detailangaben: deutsches Fachwerk, Kopfsteinpflaster, deutsche
 Gastronomie-Bestuhlung, keine amerikanische Bauweise, keine Amphoren, keine Säulen,
 keine griechische Flagge.
+
+---
+
+## 10a. Die Tonlage
+
+**Die Seite spricht in der Wir-Form, aus dem Haus heraus.** Nicht „die Familie Tzes hat
+1983 aufgemacht", sondern „1983 haben wir hier aufgemacht". Nicht „wer öfter kommt, wird
+beim Namen begrüßt", sondern „wer öfter kommt, den begrüßen wir beim Namen".
+
+Der Unterschied ist nicht Kosmetik. Die dritte Person beschreibt einen Betrieb von
+außen, so wie ein Branchenverzeichnis. Die erste Person ist jemand, der einem
+gegenübersteht, und genau das ist dieses Haus seit 1983.
+
+**Die Grenze ist die Wahrheit.** Warm heißt nicht ausgeschmückt. Es steht nichts auf
+dieser Seite, was der Betrieb nicht bestätigen kann: keine erfundenen Stammgäste, keine
+Behauptungen über Portionsgrößen, keine Gefühle, die dem Gast vorgeschrieben werden.
+Verboten bleibt das ganze Gastronomie-Vokabular, das jede zweite Seite trägt: Genuss,
+kulinarisch, Gaumen, Ambiente, Wohlfühlatmosphäre, herzlich willkommen.
 
 ---
 

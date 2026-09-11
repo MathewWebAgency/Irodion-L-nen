@@ -120,6 +120,10 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   hyphens: auto;              /* deutsche Komposita, mit lang="de"      */
+  /* Ohne Grenze trennt der Browser auch "im-mer" und zerlegt den
+     Roggenmarkt. Ein Wort muss mindestens acht Zeichen haben und vier
+     davon auf jeder Seite behalten, sonst bleibt es ganz.            */
+  hyphenate-limit-chars: 8 4 4;
 }
 
 h1, h2, h3 {
