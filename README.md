@@ -86,8 +86,11 @@ bevor ihre Zahlen wieder etwas bedeuten.
 
 ## Was beim Livegang zu tun ist
 
-1. **Den eigenen Hero-Film erzeugen und einsetzen.** Solange der Platzhalter aus dem
-   Xenios-Projekt in `assets/video/` liegt, geht die Seite nicht öffentlich online.
+1. **Den eigenen Hero-Film erzeugen und einsetzen.** In `assets/video/` liegt derzeit
+   der Platzhalter aus dem Xenios-Projekt. Er ist bewusst mit im Repo, damit sich die
+   Seite dem Kunden als vollständiges Muster vorführen lässt, siehe
+   `assets/video/PLATZHALTER.md`. **Ein Muster ist kein Livegang:** Solange dort
+   Fremdmaterial liegt, geht die Seite nicht öffentlich online.
 2. Das fehlende Bild der Steinränge erzeugen, einsetzen und die Klasse `name--ohnebild`
    sowie ihre Regel in `style.css` entfernen. Näheres in `BILDER.md`.
 3. `og:url` und `og:image` an der als `<!-- DEPLOY STEP -->` markierten Stelle in

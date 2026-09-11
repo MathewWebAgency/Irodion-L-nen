@@ -17,8 +17,7 @@ node_modules/
 .Spotlight-V100
 .Trashes
 
-# Der Hero-Film ist derzeit ein Platzhalter aus dem Xenios-Projekt, also
-# Material eines anderen Kunden. Dieses Repo ist oeffentlich, deshalb geht
-# es hier nicht mit hinein. Sobald der eigene Film fuer Irodion da ist,
-# faellt dieser Block weg und assets/video/ wird mit versioniert.
-assets/video/
+# assets/video/ ist bewusst mit im Repo, damit sich die Seite dem Kunden
+# als vollstaendiges Muster zeigen laesst. Was dort liegt, ist NICHT der
+# Film fuer Irodion, sondern der Platzhalter aus dem Xenios-Projekt.
+# Naeheres in assets/video/PLATZHALTER.md.

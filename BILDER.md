@@ -92,8 +92,12 @@ Die geplante Reise steht in `KONZEPT.md`, Abschnitt 6: Roggenmarkt am frühen Ab
 unter den Schirmen hindurch, durch die Tür, an den Mäanderwänden vorbei bis an eine
 freie Nische.
 
-**Solange der Platzhalter drin ist, geht die Seite nicht öffentlich online.** Sie steht
-auf `noindex`, und `robots.txt` steht auf `Disallow`.
+Die Dateien liegen bewusst mit im Repo, damit sich die Seite dem Kunden als
+vollständiges Muster vorführen lässt. Was sie sind und was sie nicht sind, steht in
+`assets/video/PLATZHALTER.md`.
+
+**Ein Muster ist kein Livegang.** Solange der Platzhalter drin ist, geht die Seite nicht
+öffentlich online. Sie steht auf `noindex`, und `robots.txt` steht auf `Disallow`.
 
 ## Der Fototermin, wenn er kommt
 
