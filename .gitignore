@@ -1,0 +1,24 @@
+# Rohmaterial und Review-Kopien gehoeren nie auf den Server
+roh/
+*.zip
+
+# Schluessel
+.env
+.env.*
+
+# Werkzeuge und lokale Einstellungen
+.impeccable/
+node_modules/
+.claude/
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Der Hero-Film ist derzeit ein Platzhalter aus dem Xenios-Projekt, also
+# Material eines anderen Kunden. Dieses Repo ist oeffentlich, deshalb geht
+# es hier nicht mit hinein. Sobald der eigene Film fuer Irodion da ist,
+# faellt dieser Block weg und assets/video/ wird mit versioniert.
+assets/video/

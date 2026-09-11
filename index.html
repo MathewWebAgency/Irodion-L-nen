@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Irodion · Griechisches Restaurant am Roggenmarkt, Lünen</title>
+<meta name="description" content="Griechische Küche in der Lünener Altstadt, seit 1983 dieselbe Familie am Roggenmarkt. Die ganze Karte auf der Seite, ohne Download. Tisch reservieren unter 02306 12864.">
+<meta name="theme-color" content="#1B1411">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- DEPLOY STEP: og:url und og:image brauchen die echte Adresse, erst beim Livegang setzen -->
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Irodion · Griechisches Restaurant am Roggenmarkt, Lünen">
+<meta property="og:description" content="Benannt nach einem Theater in Athen. Gebaut in ein Fachwerkhaus in Lünen. Seit 1983 dieselbe Familie.">
+<meta property="og:url" content="PLATZHALTER_URL">
+<meta property="og:image" content="PLATZHALTER_URL/assets/bilder/irodion-og.jpg">
+
+<!-- Das Zeichen ist der Maeander aus den geschnitzten Trennwaenden im Haus. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231B1411'/%3E%3Cpath d='M5 24V11h13v9h-7v-4h4' fill='none' stroke='%23D08A4E' stroke-width='2.4' stroke-linecap='square'/%3E%3Cpath d='M22 8v16' stroke='%23D08A4E' stroke-width='2.4' stroke-linecap='square'/%3E%3C/svg%3E">
+
+<link rel="preload" href="assets/fonts/alegreya-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/commissioner-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/style.css">
+
+<script src="js/vor-anstrich.js"></script>
+</head>
+<body>
+
+<a class="sprungmarke" href="#main">Zum Inhalt springen</a>
+
+<!-- Der Grund. Eine feste Ebene hinter allem, damit die Seite ein Ort ist
+     und keine gestapelten Kaesten. -->
+<div class="grund" aria-hidden="true"></div>
+
+<!-- Der Maeander. In die hoelzernen Trennwaende zwischen den Nischen ist
+     einer geschnitzt, das ist im Haus vorhanden und keine Borduere. Er
+     zeichnet sich beim Scrollen selbst und macht an jeder Sektion einen
+     rechten Winkel, so wie das Band im Holz an jeder Kante umspringt. -->
+<svg class="weg" id="weg" viewBox="0 0 24 1000" preserveAspectRatio="none" aria-hidden="true">
+  <path id="weg-linie" fill="none" stroke="currentColor" stroke-width="1.4"
+        stroke-linejoin="miter" stroke-linecap="square"
+        d="M12 0 V96 H4 V150 H20 V232 H12 V300 H4 V354 H20 V436 H12 V504 H4 V558 H20 V640 H12 V708 H4 V762 H20 V844 H12 V1000"/>
+  <g id="weg-knoten" fill="currentColor">
+    <circle cx="12" cy="96" r="2.4"/><circle cx="12" cy="232" r="2.4"/>
+    <circle cx="12" cy="300" r="2.4"/><circle cx="12" cy="436" r="2.4"/>
+    <circle cx="12" cy="504" r="2.4"/><circle cx="12" cy="640" r="2.4"/>
+    <circle cx="12" cy="708" r="2.4"/><circle cx="12" cy="844" r="2.4"/>
+  </g>
+</svg>
+
+<nav class="kopf" aria-label="Hauptnavigation">
+  <a class="kopf__marke" href="#main">
+    <span class="kopf__name">Irodion</span>
+    <span class="kopf__gr label" lang="el">Ηρώδειο</span>
+  </a>
+  <ul class="kopf__liste">
+    <li><a href="#haus">Das Haus</a></li>
+    <li><a href="#nummer">Karte</a></li>
+    <li><a href="#feiern">Feiern</a></li>
+    <li><a href="#zeiten">Zeiten</a></li>
+  </ul>
+  <a class="kopf__tel tel label" href="tel:+49230612864">02306 12864</a>
+</nav>
+
+<main id="main" tabindex="-1">
+
+<!-- ======================================================================
+     DER HERO. Eine hohe angeheftete Strecke mit einer klebenden Buehne.
+     Der Scrollfortschritt 0 bis 1 treibt die Zeit im Film.
+
+     ACHTUNG, PLATZHALTER: Der Film ist derzeit das Material aus dem
+     Xenios-Projekt. Die Mechanik, der Bandtakt und die Lesbarkeit werden
+     damit bereits gemessen. Der eigene Film fuer Irodion wird spaeter
+     erzeugt und getauscht, die Bandtexte aendern sich dabei nicht.
+     Solange der Platzhalter drin ist, steht die Seite auf noindex.
+     ====================================================================== -->
+<section class="hero" id="hero" aria-labelledby="hero-titel">
+  <h1 id="hero-titel" class="nur-fuer-screenreader">
+    Irodion, griechisches Spezialitäten-Restaurant am Roggenmarkt 19 in Lünen.
+    Benannt nach dem Odeon des Herodes Atticus in Athen. Seit 1983 führt die
+    Familie Tzes dasselbe Haus in der Lünener Altstadt.
+  </h1>
+
+  <div class="buehne" id="buehne">
+
+    <!-- Das Standbild gewinnt das Rennen um die Bandbreite mit Absicht.
+         Gesetzt wird es aus JavaScript, im selben Pfad, der auch ueber das
+         Video entscheidet, damit Handys keine der beiden Dateien holen. -->
+    <div class="poster" id="poster" aria-hidden="true"></div>
+
+    <video id="film" preload="none" muted playsinline aria-hidden="true" tabindex="-1"></video>
+
+    <div class="scrim" aria-hidden="true"></div>
+
+    <!-- Die Scrims der Baender liegen als eigene Ebenen auf der Buehne und
+         laufen vom Bildrand nach innen aus. Was am Rand beginnt, hat keine
+         sichtbare Kante im Bild. -->
+    <div class="bandscrim bandscrim--links" id="scrim-links" aria-hidden="true"></div>
+    <div class="bandscrim bandscrim--rechts" id="scrim-rechts" aria-hidden="true"></div>
+    <div class="bandscrim bandscrim--settle" id="scrim-settle" aria-hidden="true"></div>
+
+    <svg class="ring" id="ring" viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="24" r="20" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-dasharray="126" style="stroke-dashoffset:var(--ld,126)"/>
+    </svg>
+
+    <!-- Die Baender. Jedes besitzt einen Abschnitt des Scrollfortschritts.
+         Die Mittelbahn bleibt frei, dort geht die Kamera durch. -->
+    <div class="baender" id="baender" aria-hidden="true">
+
+      <div class="band band--links" data-a="0.00" data-b="0.14" data-auftritt="tiefe" data-ramp="0.030">
+        <p class="band__eyebrow label" lang="el">Ηρώδειο</p>
+        <p class="band__zeile">Benannt nach einem Theater in Athen.</p>
+      </div>
+
+      <div class="band band--rechts" data-a="0.17" data-b="0.34" data-auftritt="schaerfe">
+        <p class="band__zeile">Gebaut in ein Fachwerkhaus in Lünen.</p>
+      </div>
+
+      <div class="band band--links" data-a="0.38" data-b="0.56" data-auftritt="raster" data-spread="0.42">
+        <p class="band__zeile">Seit 1983. Dieselbe Familie, dieselbe Adresse.</p>
+      </div>
+
+      <div class="band band--rechts" data-a="0.60" data-b="0.78" data-auftritt="schlag">
+        <p class="band__zeile">Zweihundert Gerichte. Die Stammgäste sagen eine <span class="em">Zahl.</span></p>
+        <p class="band__klein">Man sagt nicht Rhodos Teller. Man sagt die 47.</p>
+      </div>
+
+      <div class="band band--settle" data-a="0.82" data-b="1.00" data-auftritt="ankunft">
+        <p class="band__zeile band__zeile--gross">Ihre Nische ist frei.</p>
+        <p class="band__sub">Roggenmarkt 19, Lünener Altstadt. Küche bis 22:00 Uhr.</p>
+        <p class="band__cta">
+          <a class="rufcta" href="tel:+49230612864">
+            <span class="rufcta__label label">Tisch reservieren</span>
+            <span class="rufcta__nummer">02306 12864</span>
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Der Standbild-Hero. Ein entworfenes Layout fuer Handys und fuer
+         reduzierte Bewegung, keine Entschuldigung. -->
+    <div class="ruhehero" id="ruhehero">
+      <p class="ruhehero__eyebrow label" lang="el">Ηρώδειο</p>
+      <p class="ruhehero__titel">Benannt nach einem Theater in Athen.<br>Gebaut in ein Fachwerkhaus in Lünen.</p>
+      <p class="ruhehero__sub">Griechische Küche am Roggenmarkt, seit 1983 dieselbe Familie.</p>
+      <p class="ruhehero__cta">
+        <a class="rufcta" href="tel:+49230612864">
+          <span class="rufcta__label label">Tisch reservieren</span>
+          <span class="rufcta__nummer">02306 12864</span>
+        </a>
+      </p>
+    </div>
+
+    <div class="wink" id="wink" aria-hidden="true"><span></span></div>
+  </div>
+</section>
+
+
+<!-- ======================================================================
+     WOHER DER NAME KOMMT
+     ====================================================================== -->
+<section class="name name--ohnebild" id="name" aria-labelledby="name-titel">
+  <div class="name__text">
+    <p class="eyebrow label" lang="el">Ηρώδειο</p>
+    <h2 id="name-titel" class="gross">Das Odeon des Herodes Atticus.</h2>
+    <p>Am Fuß des Akropolis-Felsens in Athen steht ein antikes Theater, gestiftet von
+    Herodes Atticus, mit Platz für fünftausend Zuschauer. Seit den dreißiger Jahren
+    wird dort wieder gespielt, es ist der Hauptschauplatz des Athener Festivals. Auf
+    Griechisch heißt es <span lang="el">Ηρώδειο</span>. Daher der Name über der Tür.</p>
+    <ul class="marken label" role="list">
+      <li lang="el">Ηρώδειο</li>
+      <li>Athen</li>
+      <li>5000 Plätze</li>
+    </ul>
+  </div>
+  <!-- OFFEN: Das Bild der Steinraenge fehlt noch, die Kie.ai-Credits waren
+       aufgebraucht, bevor es an der Reihe war. Solange es fehlt, laeuft die
+       Sektion einspaltig, damit kein kaputtes Bild auf der Seite steht.
+       Zum Einsetzen: die Klasse name--ohnebild entfernen und den folgenden
+       Block wieder einkommentieren.
+  <figure class="name__bild">
+    <img src="assets/bilder/odeon.webp" width="1000" height="1333" loading="lazy" decoding="async"
+         alt="Steinränge eines antiken Theaters im warmen Abendlicht, die Sitzreihen laufen im Halbrund nach unten.">
+    <figcaption class="label">Stimmungsbild, keine Aufnahme des Denkmals</figcaption>
+  </figure>
+  -->
+</section>
+
+
+<!-- ======================================================================
+     SEIT 1983 AM ROGGENMARKT. Die Zeitleiste liegt auf demselben
+     Maeanderband wie die Linie am Seitenrand.
+     ====================================================================== -->
+<section class="haus" id="haus" aria-labelledby="haus-titel">
+  <div class="haus__innen">
+    <p class="eyebrow label">Roggenmarkt 19</p>
+    <h2 id="haus-titel" class="gross">Ein Haus, eine Familie, vier Umbauten.</h2>
+    <div class="haus__text">
+      <p>1983 hat die Familie Tzes hier aufgemacht, im Fachwerkhaus am Roggenmarkt.
+      Seitdem hat sich die Adresse nicht geändert, nur das Haus ist mitgewachsen.
+      Christos Tzes führt es bis heute, und wer öfter kommt, wird beim Namen begrüßt.</p>
+    </div>
+
+    <ol class="leiste" role="list">
+      <li class="leiste__halt"><span class="leiste__jahr label">1983</span><span class="leiste__was">eröffnet</span></li>
+      <li class="leiste__halt"><span class="leiste__jahr label">1990</span><span class="leiste__was">umgebaut</span></li>
+      <li class="leiste__halt"><span class="leiste__jahr label">2009</span><span class="leiste__was">modernisiert</span></li>
+      <li class="leiste__halt"><span class="leiste__jahr label">2017</span><span class="leiste__was">erweitert</span></li>
+    </ol>
+  </div>
+  <figure class="haus__bild">
+    <img src="assets/bilder/maeander.webp" width="1400" height="940" loading="lazy" decoding="async"
+         alt="Nahaufnahme einer hölzernen Trennwand im Gastraum, in das helle Holz ist ein umlaufendes Mäanderband geschnitzt.">
+    <figcaption><span class="label">Im Haus</span> Das Band in den Trennwänden zwischen den Nischen. Es läuft auch am Rand dieser Seite mit.</figcaption>
+  </figure>
+</section>
+
+
+<!-- ======================================================================
+     SAGEN SIE EINFACH DIE NUMMER. Der Mitmach-Moment.
+     Ohne JavaScript bleibt das Feld weg und die Karte darunter steht
+     vollstaendig da, also faellt nichts aus.
+     ====================================================================== -->
+<section class="nummer auf-sandstein" id="nummer" aria-labelledby="nummer-titel">
+  <div class="nummer__innen">
+    <p class="eyebrow label">1 bis 1005</p>
+    <h2 id="nummer-titel" class="gross">Die Stammgäste bestellen mit einer Zahl.</h2>
+    <p class="nummer__lead">Die Karte ist durchnummeriert, von der 1 bis zur 1005. Wer
+    öfter hier ist, sagt nicht Rhodos Teller, sondern die 47. Tippen Sie eine Nummer
+    ein, dann zeigen wir Ihnen, was dahintersteckt.</p>
+
+    <form class="feldnr" id="feldnr" hidden>
+      <label class="feldnr__label label" for="nr-eingabe">Nummer</label>
+      <div class="feldnr__zeile">
+        <input class="feldnr__eingabe" id="nr-eingabe" name="nr" type="text"
+               inputmode="numeric" autocomplete="off" maxlength="5"
+               placeholder="47" aria-describedby="nr-status">
+        <button class="knopf" type="submit">Zeigen</button>
+      </div>
+      <p class="feldnr__status" id="nr-status" role="status" aria-live="polite"></p>
+      <p class="feldnr__tipps">
+        Beliebt: <button type="button" class="tipp label" data-nr="31">31 Gyros</button>
+        <button type="button" class="tipp label" data-nr="47">47 Rhodos</button>
+        <button type="button" class="tipp label" data-nr="68">68 Irodion</button>
+        <button type="button" class="tipp label" data-nr="11">11 Tzatziki</button>
+      </p>
+    </form>
+  </div>
+</section>
+
+
+<!-- ======================================================================
+     DIE KARTE. Ein einziges, identisch wiederholtes Bauteil.
+     Erzeugt von scripts/karte-bauen.py aus roh/karte.json. Nicht von Hand
+     bearbeiten, sonst ist die naechste Erzeugung weg.
+     ====================================================================== -->
+<section class="karte auf-sandstein" id="karte" aria-labelledby="karte-titel">
+  <div class="karte__kopf">
+    <h2 id="karte-titel" class="gross">Die ganze Karte. Kein Download.</h2>
+    <p class="karte__lead">Vollständig, mit Nummern, so wie sie auf dem Tisch liegt.</p>
+  </div>
+
+  <div class="karte__spalten">
+<!-- KARTE ANFANG -->
+<section class="gang" id="gang-warme-vorspeisen" aria-labelledby="gt-warme-vorspeisen">
+  <h3 class="gang__titel" id="gt-warme-vorspeisen">Warme Vorspeisen</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-1" data-nr="1">
+      <span class="gericht__nr label" aria-hidden="true">1</span>
+      <span class="gericht__name">Dolmades</span>
+      <span class="gericht__text">hausgemachte, gefüllte Weinblätter mit Hackfleisch</span>
+    </li>
+    <li class="gericht" id="nr-2" data-nr="2">
+      <span class="gericht__nr label" aria-hidden="true">2</span>
+      <span class="gericht__name">Aubergine</span>
+      <span class="gericht__text">hausgemacht, gefüllt mit Hackfleisch und Schafskäse</span>
+    </li>
+    <li class="gericht" id="nr-3" data-nr="3">
+      <span class="gericht__nr label" aria-hidden="true">3</span>
+      <span class="gericht__name">Auberginen</span>
+      <span class="gericht__text">in Tomatensauce und Zwiebeln</span>
+    </li>
+    <li class="gericht" id="nr-4" data-nr="4">
+      <span class="gericht__nr label" aria-hidden="true">4</span>
+      <span class="gericht__name">Saganaki</span>
+      <span class="gericht__text">panierter Käse</span>
+    </li>
+    <li class="gericht" id="nr-4a" data-nr="4a">
+      <span class="gericht__nr label" aria-hidden="true">4a</span>
+      <span class="gericht__name">Feta Furnu</span>
+      <span class="gericht__text">Schafskäse aus dem Backofen mit Knoblauch, Tomaten, Paprika, Zwiebeln, Olivenöl und Oregano</span>
+    </li>
+    <li class="gericht" id="nr-6" data-nr="6">
+      <span class="gericht__nr label" aria-hidden="true">6</span>
+      <span class="gericht__name">Muscheln</span>
+      <span class="gericht__text">gebacken</span>
+    </li>
+    <li class="gericht" id="nr-6a" data-nr="6a">
+      <span class="gericht__nr label" aria-hidden="true">6a</span>
+      <span class="gericht__name">Muscheln Saganaki</span>
+      <span class="gericht__text">Muscheln in Tomatensauce mit Zwiebeln, Paprika und Käse</span>
+    </li>
+    <li class="gericht" id="nr-24" data-nr="24">
+      <span class="gericht__nr label" aria-hidden="true">24</span>
+      <span class="gericht__name">Keftedakia</span>
+      <span class="gericht__text">Hackfleischbällchen in Tomatensauce</span>
+    </li>
+    <li class="gericht" id="nr-27" data-nr="27">
+      <span class="gericht__nr label" aria-hidden="true">27</span>
+      <span class="gericht__name">Melitzanes</span>
+      <span class="gericht__text">gebackene Auberginenscheiben mit Tzatziki</span>
+    </li>
+    <li class="gericht" id="nr-28" data-nr="28">
+      <span class="gericht__nr label" aria-hidden="true">28</span>
+      <span class="gericht__name">Kolokithaki</span>
+      <span class="gericht__text">gebackene Zucchinischeiben mit Tzatziki</span>
+    </li>
+    <li class="gericht" id="nr-28a" data-nr="28a">
+      <span class="gericht__nr label" aria-hidden="true">28a</span>
+      <span class="gericht__name">Paprika</span>
+      <span class="gericht__text">gebacken, mit Tzatziki</span>
+    </li>
+    <li class="gericht" id="nr-28c" data-nr="28c">
+      <span class="gericht__nr label" aria-hidden="true">28c</span>
+      <span class="gericht__name">Peperoni</span>
+      <span class="gericht__text">vom Grill, mit Knoblauch</span>
+    </li>
+    <li class="gericht" id="nr-289" data-nr="289">
+      <span class="gericht__nr label" aria-hidden="true">289</span>
+      <span class="gericht__name">Pita Brot</span>
+      <span class="gericht__text">mit Öl und Oregano</span>
+    </li>
+    <li class="gericht" id="nr-290" data-nr="290">
+      <span class="gericht__nr label" aria-hidden="true">290</span>
+      <span class="gericht__name">Warme Vorspeisenplatte</span>
+      <span class="gericht__text">vier kleine Saganaki, Tzatziki, Paprika, Melitzanes, Zucchini</span>
+    </li>
+  </ol>
+</section>
+
+<section class="gang" id="gang-kalte-vorspeisen" aria-labelledby="gt-kalte-vorspeisen">
+  <h3 class="gang__titel" id="gt-kalte-vorspeisen">Kalte Vorspeisen</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-10" data-nr="10">
+      <span class="gericht__nr label" aria-hidden="true">10</span>
+      <span class="gericht__name">Peperoni</span>
+    </li>
+    <li class="gericht" id="nr-10a" data-nr="10a">
+      <span class="gericht__nr label" aria-hidden="true">10a</span>
+      <span class="gericht__name">Oliven</span>
+    </li>
+    <li class="gericht" id="nr-10b" data-nr="10b">
+      <span class="gericht__nr label" aria-hidden="true">10b</span>
+      <span class="gericht__name">Dolmadakia</span>
+      <span class="gericht__text">gefüllte Weinblätter mit Reis</span>
+    </li>
+    <li class="gericht" id="nr-11" data-nr="11">
+      <span class="gericht__nr label" aria-hidden="true">11</span>
+      <span class="gericht__name">Tzatziki</span>
+      <span class="gericht__text">Joghurtquark mit Knoblauch und Gurken</span>
+    </li>
+    <li class="gericht" id="nr-12" data-nr="12">
+      <span class="gericht__nr label" aria-hidden="true">12</span>
+      <span class="gericht__name">Tzatziki mit Shrimps</span>
+    </li>
+    <li class="gericht" id="nr-13" data-nr="13">
+      <span class="gericht__nr label" aria-hidden="true">13</span>
+      <span class="gericht__name">Calamarisalat</span>
+      <span class="gericht__text">mit Zwiebeln und Öl, Essig</span>
+    </li>
+    <li class="gericht" id="nr-14" data-nr="14">
+      <span class="gericht__nr label" aria-hidden="true">14</span>
+      <span class="gericht__name">Octapussalat</span>
+      <span class="gericht__text">mit Zwiebeln, Öl und Essig</span>
+    </li>
+    <li class="gericht" id="nr-17" data-nr="17">
+      <span class="gericht__nr label" aria-hidden="true">17</span>
+      <span class="gericht__name">Schafskäse</span>
+    </li>
+    <li class="gericht" id="nr-19" data-nr="19">
+      <span class="gericht__nr label" aria-hidden="true">19</span>
+      <span class="gericht__name">Taramas</span>
+      <span class="gericht__text">Fischrogen Paste</span>
+    </li>
+    <li class="gericht" id="nr-25" data-nr="25">
+      <span class="gericht__nr label" aria-hidden="true">25</span>
+      <span class="gericht__name">Turokafteri</span>
+      <span class="gericht__text">Schafskäse Paste mit Knoblauch</span>
+    </li>
+  </ol>
+</section>
+
+<section class="gang" id="gang-suppen" aria-labelledby="gt-suppen">
+  <h3 class="gang__titel" id="gt-suppen">Suppen</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-7" data-nr="7">
+      <span class="gericht__nr label" aria-hidden="true">7</span>
+      <span class="gericht__name">Griechische Bohnensuppe</span>
+    </li>
+    <li class="gericht" id="nr-8" data-nr="8">
+      <span class="gericht__nr label" aria-hidden="true">8</span>
+      <span class="gericht__name">Gulaschsuppe</span>
+    </li>
+    <li class="gericht" id="nr-9" data-nr="9">
+      <span class="gericht__nr label" aria-hidden="true">9</span>
+      <span class="gericht__name">Tomatencremesuppe</span>
+    </li>
+    <li class="gericht" id="nr-9a" data-nr="9a">
+      <span class="gericht__nr label" aria-hidden="true">9a</span>
+      <span class="gericht__name">Hühnersuppe</span>
+    </li>
+    <li class="gericht" id="nr-9b" data-nr="9b">
+      <span class="gericht__nr label" aria-hidden="true">9b</span>
+      <span class="gericht__name">Zwiebelsuppe</span>
+    </li>
+  </ol>
+</section>
+
+<section class="gang" id="gang-salate" aria-labelledby="gt-salate">
+  <h3 class="gang__titel" id="gt-salate">Salate</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-15" data-nr="15">
+      <span class="gericht__nr label" aria-hidden="true">15</span>
+      <span class="gericht__name">Großer gemischter Salat</span>
+      <span class="gericht__text">Krautsalat, grüner Salat, Möhren, Tomaten, Gurken, Peperoni, Käse, Oliven in Cocktailsauce</span>
+    </li>
+    <li class="gericht" id="nr-16" data-nr="16">
+      <span class="gericht__nr label" aria-hidden="true">16</span>
+      <span class="gericht__name">Krautsalat mit Möhren</span>
+    </li>
+    <li class="gericht" id="nr-18" data-nr="18">
+      <span class="gericht__nr label" aria-hidden="true">18</span>
+      <span class="gericht__name">Choriatiki, Bauernsalat</span>
+      <span class="gericht__text">Tomaten, Gurken, Paprika, Zwiebeln, Peperoni, Schafskäse, mit Öl und Essig</span>
+    </li>
+    <li class="gericht" id="nr-20" data-nr="20">
+      <span class="gericht__nr label" aria-hidden="true">20</span>
+      <span class="gericht__name">Kalte Salatplatte</span>
+      <span class="gericht__text">Tzatziki, Schafskäse, Dolmadakia, Oktapus, Peperoni, Calamarisalat, Oliven, Taramas, Turokafteri, Shrimps</span>
+    </li>
+    <li class="gericht" id="nr-21" data-nr="21">
+      <span class="gericht__nr label" aria-hidden="true">21</span>
+      <span class="gericht__name">Kleiner gemischter Salat</span>
+      <span class="gericht__text">Krautsalat, grüner Salat, Tomaten, Möhren und Cocktailsauce</span>
+    </li>
+    <li class="gericht" id="nr-22" data-nr="22">
+      <span class="gericht__nr label" aria-hidden="true">22</span>
+      <span class="gericht__name">Thunfischsalat</span>
+      <span class="gericht__text">Thunfisch, Tomaten, Gurken, grüner Salat, Zwiebeln, Ei, Oliven</span>
+    </li>
+    <li class="gericht" id="nr-23" data-nr="23">
+      <span class="gericht__nr label" aria-hidden="true">23</span>
+      <span class="gericht__name">Christos-Salat</span>
+      <span class="gericht__text">Hähnchenbrustfilet oder Gyros, Kopfsalat, Tomaten, Croutons, Gurken, Krautsalat, Parmesan, Mais, Balsamico</span>
+    </li>
+  </ol>
+</section>
+
+<section class="gang" id="gang-vegetarisch" aria-labelledby="gt-vegetarisch">
+  <h3 class="gang__titel" id="gt-vegetarisch">Vegetarische Gerichte</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-290-vegetarisch" data-nr="290">
+      <span class="gericht__nr label" aria-hidden="true">290</span>
+      <span class="gericht__name">Warme Vorspeisenplatte</span>
+      <span class="gericht__text">vier kleine Saganaki, Tzatziki, Paprika, Melitzanes und Zucchini</span>
+    </li>
+    <li class="gericht" id="nr-291" data-nr="291">
+      <span class="gericht__nr label" aria-hidden="true">291</span>
+      <span class="gericht__name">Mussakas</span>
+      <span class="gericht__text">griechischer Auflauf bestehend aus Auberginen, Kartoffeln und Bechamelcreme, dazu gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-292" data-nr="292">
+      <span class="gericht__nr label" aria-hidden="true">292</span>
+      <span class="gericht__name">Gemüse</span>
+      <span class="gericht__text">mit Gouda-Käse überbacken</span>
+    </li>
+    <li class="gericht" id="nr-293" data-nr="293">
+      <span class="gericht__nr label" aria-hidden="true">293</span>
+      <span class="gericht__name">Gemista</span>
+      <span class="gericht__text">mit Reis gefülltes Gemüse, Tomate und Paprikaschoten</span>
+    </li>
+  </ol>
+  <p class="gang__fuss">Weitere vegetarische Gerichte auf Wunsch möglich.</p>
+</section>
+
+<section class="gang" id="gang-vom-grill" aria-labelledby="gt-vom-grill">
+  <h3 class="gang__titel" id="gt-vom-grill">Vom Grill</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-29" data-nr="29">
+      <span class="gericht__nr label" aria-hidden="true">29</span>
+      <span class="gericht__name">Gyros mit Baby Calamari</span>
+      <span class="gericht__text">mit Panade, fünf Stück, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-30" data-nr="30">
+      <span class="gericht__nr label" aria-hidden="true">30</span>
+      <span class="gericht__name">Gyros mit Metaxasauce</span>
+      <span class="gericht__text">dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-30a" data-nr="30a">
+      <span class="gericht__nr label" aria-hidden="true">30a</span>
+      <span class="gericht__name">Gyros überbacken</span>
+      <span class="gericht__text">mit Käse und Metaxasauce, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-31" data-nr="31">
+      <span class="gericht__nr label" aria-hidden="true">31</span>
+      <span class="gericht__name">Gyros</span>
+      <span class="gericht__text">Schweinefleisch vom Drehspieß, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-32" data-nr="32">
+      <span class="gericht__nr label" aria-hidden="true">32</span>
+      <span class="gericht__name">Gyros mit Tzatziki</span>
+      <span class="gericht__text">dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-33" data-nr="33">
+      <span class="gericht__nr label" aria-hidden="true">33</span>
+      <span class="gericht__name">Suvlaki</span>
+      <span class="gericht__text">zwei Schweinespieße, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-34" data-nr="34">
+      <span class="gericht__nr label" aria-hidden="true">34</span>
+      <span class="gericht__name">Bifteki</span>
+      <span class="gericht__text">drei Hackfleischfrikadellen, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-35" data-nr="35">
+      <span class="gericht__nr label" aria-hidden="true">35</span>
+      <span class="gericht__name">Bifteki gefüllt</span>
+      <span class="gericht__text">Hackfleisch gefüllt mit Schafskäse, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-35a" data-nr="35a">
+      <span class="gericht__nr label" aria-hidden="true">35a</span>
+      <span class="gericht__name">Bifteki und Gyros</span>
+      <span class="gericht__text">Hackfleisch gefüllt mit Schafskäse, Gyros, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-36" data-nr="36">
+      <span class="gericht__nr label" aria-hidden="true">36</span>
+      <span class="gericht__name">Schweineleber</span>
+      <span class="gericht__text">dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-36a" data-nr="36a">
+      <span class="gericht__nr label" aria-hidden="true">36a</span>
+      <span class="gericht__name">Gyros mit Schweineleber</span>
+      <span class="gericht__text">dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-38" data-nr="38">
+      <span class="gericht__nr label" aria-hidden="true">38</span>
+      <span class="gericht__name">Elenplatte</span>
+      <span class="gericht__text">zwei Schweinefiletspieße, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-39" data-nr="39">
+      <span class="gericht__nr label" aria-hidden="true">39</span>
+      <span class="gericht__name">Pita Gyros</span>
+      <span class="gericht__text">Gyros auf einem Teigfladen mit Tomaten, Zwiebeln, Tzatziki, dazu Pommes und Krautsalat</span>
+    </li>
+    <li class="gericht" id="nr-41" data-nr="41">
+      <span class="gericht__nr label" aria-hidden="true">41</span>
+      <span class="gericht__name">Schweineschnitzel Natur</span>
+      <span class="gericht__text">dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-41a" data-nr="41a">
+      <span class="gericht__nr label" aria-hidden="true">41a</span>
+      <span class="gericht__name">Schweineschnitzel Wiener Art</span>
+      <span class="gericht__text">paniertes Schweineschnitzel mit Paprika- oder Champignonsauce, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-43" data-nr="43">
+      <span class="gericht__nr label" aria-hidden="true">43</span>
+      <span class="gericht__name">Schweinefilet</span>
+      <span class="gericht__text">dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-43a" data-nr="43a">
+      <span class="gericht__nr label" aria-hidden="true">43a</span>
+      <span class="gericht__name">Schweinefilet gefüllt</span>
+      <span class="gericht__text">mit Käse und Tomaten, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+  </ol>
+  <p class="gang__fuss">Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage. Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro.</p>
+</section>
+
+<section class="gang" id="gang-gemischtes" aria-labelledby="gt-gemischtes">
+  <h3 class="gang__titel" id="gt-gemischtes">Gemischtes vom Grill</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-44" data-nr="44">
+      <span class="gericht__nr label" aria-hidden="true">44</span>
+      <span class="gericht__name">Ouzo Teller</span>
+      <span class="gericht__text">zwei Bifteki, ein Suvlaki, Gyros, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-45" data-nr="45">
+      <span class="gericht__nr label" aria-hidden="true">45</span>
+      <span class="gericht__name">Christos Teller</span>
+      <span class="gericht__text">drei verschiedene Fleischsorten, Schweinefilet, Hähnchenbrustfilet und Rumpsteak mit drei verschiedenen Saucen, Metaxasauce, Champignonsauce, Pfeffersauce, dazu Pommes und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-46" data-nr="46">
+      <span class="gericht__nr label" aria-hidden="true">46</span>
+      <span class="gericht__name">Spezial Teller</span>
+      <span class="gericht__text">Vorspeise ein Dolmas mit Tzatziki, Hauptgang ein Lammkotelett, ein Bifteki, ein Suvlaki, Gyros, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-47" data-nr="47">
+      <span class="gericht__nr label" aria-hidden="true">47</span>
+      <span class="gericht__name">Rhodos Teller</span>
+      <span class="gericht__text">ein Suvlaki, ein Schweineschnitzel, Gyros, ein Lammkotelett, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-48" data-nr="48">
+      <span class="gericht__nr label" aria-hidden="true">48</span>
+      <span class="gericht__name">Meteora Teller</span>
+      <span class="gericht__text">Gyros und ein Suvlaki, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-49" data-nr="49">
+      <span class="gericht__nr label" aria-hidden="true">49</span>
+      <span class="gericht__name">Akropolis Teller</span>
+      <span class="gericht__text">ein Lammkotelett, ein Schweinefiletstreifen, ein Suvlaki, Gyros, ein Bifteki, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-51" data-nr="51">
+      <span class="gericht__nr label" aria-hidden="true">51</span>
+      <span class="gericht__name">Artemis Teller mit Leber</span>
+      <span class="gericht__text">zwei Suvlaki und Schweineleber, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-52" data-nr="52">
+      <span class="gericht__nr label" aria-hidden="true">52</span>
+      <span class="gericht__name">Apollon Teller</span>
+      <span class="gericht__text">Suvlaki, ein Schweineleberstreifen, ein Bifteki, Gyros, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-53" data-nr="53">
+      <span class="gericht__nr label" aria-hidden="true">53</span>
+      <span class="gericht__name">Filet Teller</span>
+      <span class="gericht__text">ein kleines Schweinefilet und Gyros mit Metaxasauce, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-54" data-nr="54">
+      <span class="gericht__nr label" aria-hidden="true">54</span>
+      <span class="gericht__name">Korfu Teller</span>
+      <span class="gericht__text">ein Souvlaki, zwei Lammkoteletts und Gyros, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-55" data-nr="55">
+      <span class="gericht__nr label" aria-hidden="true">55</span>
+      <span class="gericht__name">Kreta Teller</span>
+      <span class="gericht__text">ein Lammkotelett, ein Schweineschnitzel, Leber, Gyros und ein Bifteki, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-56" data-nr="56">
+      <span class="gericht__nr label" aria-hidden="true">56</span>
+      <span class="gericht__name">Marathon Teller</span>
+      <span class="gericht__text">ein Suvlaki, ein Schweinesteak, Gyros, ein Schweineleberstreifen, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-57" data-nr="57">
+      <span class="gericht__nr label" aria-hidden="true">57</span>
+      <span class="gericht__name">Grill Teller</span>
+      <span class="gericht__text">ein Bifteki, ein Schweinesteak, ein Suvlaki, Gyros, mit Metaxasauce, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-59" data-nr="59">
+      <span class="gericht__nr label" aria-hidden="true">59</span>
+      <span class="gericht__name">Trikala Teller</span>
+      <span class="gericht__text">Gyros, ein Schweinesteak, mit Metaxasauce, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-60" data-nr="60">
+      <span class="gericht__nr label" aria-hidden="true">60</span>
+      <span class="gericht__name">Platon Teller</span>
+      <span class="gericht__text">Gyros, ein Schweinesteak, zwei Schweineschnitzel, mit Metaxasauce, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-61" data-nr="61">
+      <span class="gericht__nr label" aria-hidden="true">61</span>
+      <span class="gericht__name">Odysseus Teller</span>
+      <span class="gericht__text">Gyros, zwei Suvlaki, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-64" data-nr="64">
+      <span class="gericht__nr label" aria-hidden="true">64</span>
+      <span class="gericht__name">Saloniki Teller</span>
+      <span class="gericht__text">zwei Bifteki, ein Filetspieß, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-65" data-nr="65">
+      <span class="gericht__nr label" aria-hidden="true">65</span>
+      <span class="gericht__name">Kostas Teller</span>
+      <span class="gericht__text">ein Filetspieß, Gyros, ein Bifteki, ein Lammkotelett, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+  </ol>
+  <p class="gang__fuss">Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage. Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro.</p>
+</section>
+
+<section class="gang" id="gang-lamm-rind" aria-labelledby="gt-lamm-rind">
+  <h3 class="gang__titel" id="gt-lamm-rind">Lamm und Rind vom Grill</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-37" data-nr="37">
+      <span class="gericht__nr label" aria-hidden="true">37</span>
+      <span class="gericht__name">Fünf Lammkoteletts</span>
+      <span class="gericht__text">dazu Pommes und Tzatziki und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-40" data-nr="40">
+      <span class="gericht__nr label" aria-hidden="true">40</span>
+      <span class="gericht__name">Lammfilet mit grünen Bohnen</span>
+      <span class="gericht__text">dazu Pommes und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-40a" data-nr="40a">
+      <span class="gericht__nr label" aria-hidden="true">40a</span>
+      <span class="gericht__name">Lammfilet mit grünen Bohnen</span>
+      <span class="gericht__text">mit Pfeffersauce, dazu Pommes und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-62" data-nr="62">
+      <span class="gericht__nr label" aria-hidden="true">62</span>
+      <span class="gericht__name">Argentinisches Rumpsteak</span>
+      <span class="gericht__text">etwa 250 Gramm, dazu Pommes, Kräuterbutter oder Pfeffersauce und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-81" data-nr="81">
+      <span class="gericht__nr label" aria-hidden="true">81</span>
+      <span class="gericht__name">Lammkeule ohne Knochen</span>
+      <span class="gericht__text">dazu grüne Bohnen, Pommes und gemischter Salat</span>
+    </li>
+  </ol>
+  <p class="gang__fuss">Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage. Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro.</p>
+</section>
+
+<section class="gang" id="gang-platten" aria-labelledby="gt-platten">
+  <h3 class="gang__titel" id="gt-platten">Platten für zwei oder vier Personen</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-67" data-nr="67">
+      <span class="gericht__nr label" aria-hidden="true">67</span>
+      <span class="gericht__name">Spiros Platte</span>
+      <span class="gericht__text">Gyros, zwei Bifteki, zwei Souvlaki, zwei Schweineschnitzel und zwei Scheiben Leber, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-68" data-nr="68">
+      <span class="gericht__nr label" aria-hidden="true">68</span>
+      <span class="gericht__name">Irodion Platte</span>
+      <span class="gericht__text">zwei Suvlaki, zwei Lammkoteletts, zwei Bifteki, Gyros, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-69" data-nr="69">
+      <span class="gericht__nr label" aria-hidden="true">69</span>
+      <span class="gericht__name">Olympia Platte</span>
+      <span class="gericht__text">vier Lammkoteletts, vier Suvlaki, vier Schweineleberstreifen, vier Bifteki, Gyros, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+  </ol>
+  <p class="gang__fuss">Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage. Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro.</p>
+</section>
+
+<section class="gang" id="gang-pfanne" aria-labelledby="gt-pfanne">
+  <h3 class="gang__titel" id="gt-pfanne">Pfannengerichte</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-60a" data-nr="60a">
+      <span class="gericht__nr label" aria-hidden="true">60a</span>
+      <span class="gericht__name">Pelargos, Schweinefiletspitzen</span>
+      <span class="gericht__text">in Champignonsauce, dazu Butterreis und gemischter Salat</span>
+    </li>
+  </ol>
+</section>
+
+<section class="gang" id="gang-haehnchen" aria-labelledby="gt-haehnchen">
+  <h3 class="gang__titel" id="gt-haehnchen">Hähnchen</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-56a" data-nr="56a">
+      <span class="gericht__nr label" aria-hidden="true">56a</span>
+      <span class="gericht__name">Diogenes</span>
+      <span class="gericht__text">Hähnchenbrustfilet, dazu Metaxasauce oder Champignonsauce, dazu Pommes oder Reis und gemischter Salat</span>
+    </li>
+  </ol>
+  <p class="gang__fuss">Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage. Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro.</p>
+</section>
+
+<section class="gang" id="gang-lamm-ofen" aria-labelledby="gt-lamm-ofen">
+  <h3 class="gang__titel" id="gt-lamm-ofen">Lamm aus dem Ofen</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-88" data-nr="88">
+      <span class="gericht__nr label" aria-hidden="true">88</span>
+      <span class="gericht__name">Gemista</span>
+      <span class="gericht__text">Lammfleisch aus dem Backofen, mit Reis gefülltes Gemüse, Tomate und Paprikaschoten, und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-89" data-nr="89">
+      <span class="gericht__nr label" aria-hidden="true">89</span>
+      <span class="gericht__name">Lammfleisch mit Spaghetti</span>
+      <span class="gericht__text">mit Schafskäse überbacken, dazu gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-90" data-nr="90">
+      <span class="gericht__nr label" aria-hidden="true">90</span>
+      <span class="gericht__name">Lammfleisch mit Nudeln</span>
+      <span class="gericht__text">und Schafskäse überbacken, dazu gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-91" data-nr="91">
+      <span class="gericht__nr label" aria-hidden="true">91</span>
+      <span class="gericht__name">Lammfleisch mit Auberginen</span>
+      <span class="gericht__text">und Schafskäse überbacken, dazu gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-92" data-nr="92">
+      <span class="gericht__nr label" aria-hidden="true">92</span>
+      <span class="gericht__name">Lammfleisch mit Okra</span>
+      <span class="gericht__text">und Schafskäse überbacken, dazu gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-93" data-nr="93">
+      <span class="gericht__nr label" aria-hidden="true">93</span>
+      <span class="gericht__name">Lammfleisch mit Fassolakia</span>
+      <span class="gericht__text">und Schafskäse überbacken, Lammfleisch mit Bohnenschoten in Tomatensauce, dazu gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-94" data-nr="94">
+      <span class="gericht__nr label" aria-hidden="true">94</span>
+      <span class="gericht__name">Lammfleisch mit Dicken Bohnen</span>
+      <span class="gericht__text">und Schafskäse überbacken, dazu gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-95" data-nr="95">
+      <span class="gericht__nr label" aria-hidden="true">95</span>
+      <span class="gericht__name">Stifado</span>
+      <span class="gericht__text">ein Eintopf aus Lammfleisch mit Zwiebeln, dazu gemischter Salat</span>
+    </li>
+  </ol>
+  <p class="gang__fuss">Diese Gerichte werden ohne weitere Beilagen zubereitet.</p>
+</section>
+
+<section class="gang" id="gang-fisch" aria-labelledby="gt-fisch">
+  <h3 class="gang__titel" id="gt-fisch">Fischgerichte</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-73" data-nr="73">
+      <span class="gericht__nr label" aria-hidden="true">73</span>
+      <span class="gericht__name">Calamaria</span>
+      <span class="gericht__text">Tintenfischringe, dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-73b" data-nr="73b">
+      <span class="gericht__nr label" aria-hidden="true">73b</span>
+      <span class="gericht__name">Baby Calamari</span>
+      <span class="gericht__text">mit oder ohne Panade, dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-74" data-nr="74">
+      <span class="gericht__nr label" aria-hidden="true">74</span>
+      <span class="gericht__name">Garides</span>
+      <span class="gericht__text">fünf Scampi vom Grill, dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-75" data-nr="75">
+      <span class="gericht__nr label" aria-hidden="true">75</span>
+      <span class="gericht__name">Pestrofa</span>
+      <span class="gericht__text">eine Forelle, mit frischem Gemüse und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-77" data-nr="77">
+      <span class="gericht__nr label" aria-hidden="true">77</span>
+      <span class="gericht__name">Seezungenfilet</span>
+      <span class="gericht__text">dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-79" data-nr="79">
+      <span class="gericht__nr label" aria-hidden="true">79</span>
+      <span class="gericht__name">Fischplatte</span>
+      <span class="gericht__text">sechs Tintenfischringe, vier Scampi, Sardinen, dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-80" data-nr="80">
+      <span class="gericht__nr label" aria-hidden="true">80</span>
+      <span class="gericht__name">Gavros</span>
+      <span class="gericht__text">gebratene Sardinen, dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-80a" data-nr="80a">
+      <span class="gericht__nr label" aria-hidden="true">80a</span>
+      <span class="gericht__name">Lachsfilet</span>
+      <span class="gericht__text">dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat</span>
+    </li>
+  </ol>
+</section>
+
+<section class="gang" id="gang-typisch" aria-labelledby="gt-typisch">
+  <h3 class="gang__titel" id="gt-typisch">Typisch griechisch</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-82" data-nr="82">
+      <span class="gericht__nr label" aria-hidden="true">82</span>
+      <span class="gericht__name">Pastitsio</span>
+      <span class="gericht__text">griechischer Auflauf aus Spaghetti, Hackfleisch, Bechamelcreme, mit Käse überbacken, dazu gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-84" data-nr="84">
+      <span class="gericht__nr label" aria-hidden="true">84</span>
+      <span class="gericht__name">Spaghetti</span>
+      <span class="gericht__text">mit Hackfleisch, Gouda und Sauce, ohne Salat</span>
+    </li>
+    <li class="gericht" id="nr-85" data-nr="85">
+      <span class="gericht__nr label" aria-hidden="true">85</span>
+      <span class="gericht__name">Kritharaki</span>
+      <span class="gericht__text">Reisnudeln mit Hackfleisch und Gouda überbacken, in Tomatensauce, ohne Salat</span>
+    </li>
+    <li class="gericht" id="nr-86" data-nr="86">
+      <span class="gericht__nr label" aria-hidden="true">86</span>
+      <span class="gericht__name">Paputsaki</span>
+      <span class="gericht__text">zwei gefüllte Auberginen mit Hackfleisch und Schafskäse überbacken, ohne Salat</span>
+    </li>
+    <li class="gericht" id="nr-87" data-nr="87">
+      <span class="gericht__nr label" aria-hidden="true">87</span>
+      <span class="gericht__name">Mussakas</span>
+      <span class="gericht__text">griechischer Auflauf aus Auberginen, Hackfleisch, Kartoffeln und Bechamelcreme, dazu gemischter Salat</span>
+    </li>
+  </ol>
+</section>
+
+<section class="gang" id="gang-kleine-gaeste" aria-labelledby="gt-kleine-gaeste">
+  <h3 class="gang__titel" id="gt-kleine-gaeste">Für unsere kleinen Gäste bis 12 Jahre</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-70" data-nr="70">
+      <span class="gericht__nr label" aria-hidden="true">70</span>
+      <span class="gericht__name">Suvlaki</span>
+      <span class="gericht__text">ein Suvlaki, dazu Pommes und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-71a" data-nr="71a">
+      <span class="gericht__nr label" aria-hidden="true">71a</span>
+      <span class="gericht__name">Schnitzel Wiener Art</span>
+      <span class="gericht__text">kleines paniertes Schweineschnitzel, dazu Pommes und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-72" data-nr="72">
+      <span class="gericht__nr label" aria-hidden="true">72</span>
+      <span class="gericht__name">Gyros</span>
+      <span class="gericht__text">dazu Pommes und gemischter Salat</span>
+    </li>
+    <li class="gericht" id="nr-72a" data-nr="72a">
+      <span class="gericht__nr label" aria-hidden="true">72a</span>
+      <span class="gericht__name">Chicken Nuggets</span>
+      <span class="gericht__text">mit Pommes und gemischtem Salat</span>
+    </li>
+  </ol>
+</section>
+
+<section class="gang" id="gang-beilagen" aria-labelledby="gt-beilagen">
+  <h3 class="gang__titel" id="gt-beilagen">Beilagen</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-96" data-nr="96">
+      <span class="gericht__nr label" aria-hidden="true">96</span>
+      <span class="gericht__name">Gemüse der Saison</span>
+    </li>
+    <li class="gericht" id="nr-97" data-nr="97">
+      <span class="gericht__nr label" aria-hidden="true">97</span>
+      <span class="gericht__name">Reis</span>
+    </li>
+    <li class="gericht" id="nr-97a" data-nr="97a">
+      <span class="gericht__nr label" aria-hidden="true">97a</span>
+      <span class="gericht__name">Butterreis</span>
+    </li>
+    <li class="gericht" id="nr-98" data-nr="98">
+      <span class="gericht__nr label" aria-hidden="true">98</span>
+      <span class="gericht__name">Pommes</span>
+    </li>
+    <li class="gericht" id="nr-98a" data-nr="98a">
+      <span class="gericht__nr label" aria-hidden="true">98a</span>
+      <span class="gericht__name">Kroketten</span>
+    </li>
+    <li class="gericht" id="nr-99" data-nr="99">
+      <span class="gericht__nr label" aria-hidden="true">99</span>
+      <span class="gericht__name">Dicke Bohnen</span>
+      <span class="gericht__text">mit Schafskäse</span>
+    </li>
+    <li class="gericht" id="nr-100" data-nr="100">
+      <span class="gericht__nr label" aria-hidden="true">100</span>
+      <span class="gericht__name">Grüne Bohnen</span>
+    </li>
+    <li class="gericht" id="nr-100a" data-nr="100a">
+      <span class="gericht__nr label" aria-hidden="true">100a</span>
+      <span class="gericht__name">Scheibenkartoffeln</span>
+    </li>
+  </ol>
+</section>
+
+<section class="gang" id="gang-saucen" aria-labelledby="gt-saucen">
+  <h3 class="gang__titel" id="gt-saucen">Saucen</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-1001" data-nr="1001">
+      <span class="gericht__nr label" aria-hidden="true">1001</span>
+      <span class="gericht__name">Metaxasauce</span>
+    </li>
+    <li class="gericht" id="nr-1002" data-nr="1002">
+      <span class="gericht__nr label" aria-hidden="true">1002</span>
+      <span class="gericht__name">Champignonsauce</span>
+    </li>
+    <li class="gericht" id="nr-1003" data-nr="1003">
+      <span class="gericht__nr label" aria-hidden="true">1003</span>
+      <span class="gericht__name">Sauce Bearnaise</span>
+    </li>
+    <li class="gericht" id="nr-1004" data-nr="1004">
+      <span class="gericht__nr label" aria-hidden="true">1004</span>
+      <span class="gericht__name">Pfefferrahmsauce</span>
+    </li>
+    <li class="gericht" id="nr-1005" data-nr="1005">
+      <span class="gericht__nr label" aria-hidden="true">1005</span>
+      <span class="gericht__name">Sauce Hollandaise</span>
+    </li>
+  </ol>
+</section>
+
+<section class="gang" id="gang-nachtisch" aria-labelledby="gt-nachtisch">
+  <h3 class="gang__titel" id="gt-nachtisch">Nachtisch</h3>
+  <ol class="gang__liste" role="list">
+    <li class="gericht" id="nr-101" data-nr="101">
+      <span class="gericht__nr label" aria-hidden="true">101</span>
+      <span class="gericht__name">Joghurt mit Honig und Walnüssen</span>
+    </li>
+    <li class="gericht" id="nr-102" data-nr="102">
+      <span class="gericht__nr label" aria-hidden="true">102</span>
+      <span class="gericht__name">Halvas</span>
+      <span class="gericht__text">Süßwarenspezialität aus Sesammasse mit Metaxa und Zimt</span>
+    </li>
+    <li class="gericht" id="nr-103" data-nr="103">
+      <span class="gericht__nr label" aria-hidden="true">103</span>
+      <span class="gericht__name">Vanilleeis mit Schokosauce</span>
+    </li>
+    <li class="gericht" id="nr-104" data-nr="104">
+      <span class="gericht__nr label" aria-hidden="true">104</span>
+      <span class="gericht__name">Vanilleeis mit heißen Himbeeren</span>
+    </li>
+    <li class="gericht" id="nr-105" data-nr="105">
+      <span class="gericht__nr label" aria-hidden="true">105</span>
+      <span class="gericht__name">Vanilleeis mit heißen Kirschen</span>
+      <span class="gericht__text">oder Amarena</span>
+    </li>
+    <li class="gericht" id="nr-106" data-nr="106">
+      <span class="gericht__nr label" aria-hidden="true">106</span>
+      <span class="gericht__name">Gemischtes Eis</span>
+    </li>
+    <li class="gericht" id="nr-107" data-nr="107">
+      <span class="gericht__nr label" aria-hidden="true">107</span>
+      <span class="gericht__name">Gemischtes Eis mit Sahne</span>
+    </li>
+    <li class="gericht" id="nr-108" data-nr="108">
+      <span class="gericht__nr label" aria-hidden="true">108</span>
+      <span class="gericht__name">Schokosoufflee</span>
+    </li>
+    <li class="gericht" id="nr-109" data-nr="109">
+      <span class="gericht__nr label" aria-hidden="true">109</span>
+      <span class="gericht__name">Galaktobureko</span>
+      <span class="gericht__text">Blätterteig mit Grießpudding, einer Kugel Eis und Sahne</span>
+    </li>
+  </ol>
+</section>
+
+<section class="gang gang--getraenke" id="gang-getraenke" aria-labelledby="gt-getraenke">
+  <h3 class="gang__titel" id="gt-getraenke">Getränke</h3>
+  <div class="getraenke">
+    <div class="getraenke__block">
+      <h4 class="getraenke__titel label">Warme Getränke</h4>
+      <ul role="list">
+        <li>Kaffee</li>
+        <li>Espresso</li>
+        <li>Espresso Doppio</li>
+        <li>Griechischer Kaffee, Mokka</li>
+        <li>Latte Macchiato</li>
+        <li>Cappuccino</li>
+        <li>Milchkaffee</li>
+        <li>Tee</li>
+      </ul>
+    </div>
+    <div class="getraenke__block">
+      <h4 class="getraenke__titel label">Alkoholfreie Getränke</h4>
+      <ul role="list">
+        <li>Cola</li>
+        <li>Cola light</li>
+        <li>Cola zero</li>
+        <li>Spezi</li>
+        <li>Orangenlimonade</li>
+        <li>Zitronenlimonade</li>
+        <li>Apfelschorle</li>
+        <li>Traubensaftschorle</li>
+        <li>Malztrunk</li>
+        <li>Bitter Lemon</li>
+        <li>Ginger Ale</li>
+        <li>Apfelsaft, Orangensaft, Traubensaft</li>
+        <li>Mineralwasser</li>
+        <li>Fassbrause, Zitrone oder Holunder</li>
+      </ul>
+    </div>
+    <div class="getraenke__block">
+      <h4 class="getraenke__titel label">Biere</h4>
+      <ul role="list">
+        <li>Krombacher Pils</li>
+        <li>Hövels</li>
+        <li>Schlösser Alt</li>
+        <li>Alsterwasser, Radler</li>
+        <li>Krombacher Alkoholfrei</li>
+        <li>Krombacher Radler Alkoholfrei</li>
+        <li>Paulaner Weizenbier</li>
+        <li>Erdinger Alkoholfrei</li>
+      </ul>
+    </div>
+    <div class="getraenke__block">
+      <h4 class="getraenke__titel label">Spirituosen</h4>
+      <ul role="list">
+        <li>Ouzo</li>
+        <li>Sambuca</li>
+        <li>Wodka</li>
+        <li>Ramazzotti</li>
+        <li>Fernet</li>
+        <li>Jägermeister</li>
+        <li>Baileys</li>
+        <li>Bacardi Cola</li>
+        <li>Wodka Lemon</li>
+        <li>Metaxa fünf Sterne</li>
+        <li>Metaxa sieben Sterne</li>
+        <li>Metaxa flambiert</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- KARTE ENDE -->
+  </div>
+
+  <p class="karte__preise">Die Preise stehen auf der Karte im Haus. Rufen Sie an, wenn
+  Sie vorher etwas wissen wollen.</p>
+  <p class="karte__allergie">Sollten Sie von Allergien betroffen sein, melden Sie sich
+  bitte. Unsere separate Allergiekarte gibt Ihnen Auskunft über die in den Speisen
+  enthaltenen Zutaten.</p>
+</section>
+
+
+<!-- ======================================================================
+     WENN SIE MEHR WERDEN
+     ====================================================================== -->
+<section class="feiern" id="feiern" aria-labelledby="feiern-titel">
+  <div class="feiern__innen">
+    <p class="eyebrow label">Der Anbau von 2017</p>
+    <h2 id="feiern-titel" class="gross">2017 haben wir dafür angebaut.</h2>
+    <p class="feiern__text">Für Gesellschaften und Feiern lässt sich der Raum aufteilen,
+    in kleine Runden oder in eine lange Tafel. Sagen Sie am Telefon, wie viele Sie sind
+    und was der Anlass ist, dann stellen wir es so.</p>
+    <ul class="marken label" role="list">
+      <li>Gesellschaften</li>
+      <li>Feiern</li>
+      <li>Aufteilbar</li>
+    </ul>
+  </div>
+  <figure class="feiern__bild">
+    <img src="assets/bilder/tafel.webp" width="1400" height="940" loading="lazy" decoding="async"
+         alt="Eine lange gedeckte Tafel im hinteren Gastraum unter dunklen Holzbalken, die Stühle stehen bereit.">
+  </figure>
+</section>
+
+
+<!-- ======================================================================
+     DRAUSSEN IN DER ALTSTADT
+     ====================================================================== -->
+<section class="draussen auf-sandstein" id="draussen" aria-labelledby="draussen-titel">
+  <figure class="draussen__bild">
+    <img src="assets/bilder/schirme.webp" width="1600" height="894" loading="lazy" decoding="async"
+         alt="Eingedeckte Tische unter cremefarbenen Schirmen auf Kopfsteinpflaster, dahinter die Fachwerkgiebel am Roggenmarkt.">
+  </figure>
+  <div class="draussen__text">
+    <p class="eyebrow label">Bei gutem Wetter</p>
+    <h2 id="draussen-titel" class="gross">Bei gutem Wetter sitzt man auf dem Pflaster.</h2>
+    <p>Vor dem Haus stehen die Schirme auf dem Kopfsteinpflaster am Roggenmarkt, zwischen
+    den Fachwerkgiebeln. Wer mitnehmen will, ruft vorher an, dann steht es fertig bereit.</p>
+  </div>
+</section>
+
+
+<!-- ======================================================================
+     DIE ZEITEN. Der heutige Tag ist markiert, der Mittwoch ist gekerbt.
+     ====================================================================== -->
+<section class="zeiten" id="zeiten" aria-labelledby="zeiten-titel">
+  <div class="zeiten__innen">
+    <p class="eyebrow label">Küchenzeiten</p>
+    <h2 id="zeiten-titel" class="gross">Mittwoch ist Ruhetag.</h2>
+    <table class="woche">
+      <caption class="nur-fuer-screenreader">Öffnungszeiten von Montag bis Sonntag</caption>
+      <tbody>
+        <tr data-tag="1"><th scope="row">Montag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
+        <tr data-tag="2"><th scope="row">Dienstag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
+        <tr data-tag="3" class="woche__ruhe"><th scope="row">Mittwoch</th><td class="label">Ruhetag</td></tr>
+        <tr data-tag="4"><th scope="row">Donnerstag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
+        <tr data-tag="5"><th scope="row">Freitag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
+        <tr data-tag="6"><th scope="row">Samstag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
+        <tr data-tag="0"><th scope="row">Sonntag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
+      </tbody>
+    </table>
+    <p class="zeiten__kueche">Warme Küche mittags bis 14:00 Uhr, abends bis 22:00 Uhr.</p>
+    <p class="zeiten__hinweis">An allen Feiertagen haben wir geöffnet, auch mittwochs.</p>
+  </div>
+</section>
+
+
+<!-- ======================================================================
+     IHRE NISCHE. Der eine Call to Action.
+     ====================================================================== -->
+<section class="platz auf-sandstein" id="platz" aria-labelledby="platz-titel">
+  <div class="platz__innen">
+
+    <div class="platz__links">
+      <p class="eyebrow label">Ihre Nische</p>
+      <h2 id="platz-titel" class="gross">Rufen Sie an, dann steht der Tisch.</h2>
+      <p class="platz__text">Zwei Sätze am Telefon reichen: wie viele Sie sind und wann
+      Sie kommen wollen. Den Rest machen wir.</p>
+
+      <div class="ruf">
+        <p class="ruf__vor label">Reservierung</p>
+        <a class="ruf__nummer tel" href="tel:+49230612864">02306 12864</a>
+        <p class="ruf__nach">Montag bis Sonntag zu den Küchenzeiten, mittwochs nur an
+        Feiertagen.</p>
+      </div>
+    </div>
+
+    <div class="platz__rechts" id="reservieren">
+      <form class="formular" id="formular" novalidate>
+        <p class="formular__vor">Lieber schreiben? Dann so.</p>
+        <div class="feld">
+          <label for="f-name">Ihr Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="feld feld--halb">
+          <div>
+            <label for="f-personen">Personen</label>
+            <input id="f-personen" name="personen" type="number" min="1" max="60" inputmode="numeric" required>
+          </div>
+          <div>
+            <label for="f-zeit">Wunschzeit</label>
+            <input id="f-zeit" name="zeit" type="text" placeholder="z. B. Samstag, 19 Uhr" required>
+          </div>
+        </div>
+        <div class="feld">
+          <label for="f-text">Noch etwas dazu</label>
+          <textarea id="f-text" name="text" rows="3"></textarea>
+        </div>
+        <button class="knopf knopf--hell" type="submit">Anfrage schicken</button>
+        <p class="formular__status" id="formular-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="fuss">
+  <div class="fuss__innen">
+    <div class="fuss__block">
+      <p class="fuss__marke">Irodion <span lang="el">Ηρώδειο</span></p>
+      <address>
+        Roggenmarkt 19<br>
+        44532 Lünen<br>
+        <a href="tel:+49230612864">02306 12864</a><br>
+        <a href="mailto:info@irodion-luenen.de">info@irodion-luenen.de</a>
+      </address>
+    </div>
+    <div class="fuss__block">
+      <p class="label">Küche</p>
+      <p>Montag, Dienstag, Donnerstag bis Sonntag<br>
+      11:30 bis 14:30 Uhr und 17:00 bis 22:30 Uhr<br>
+      Mittwoch Ruhetag, außer an Feiertagen</p>
+    </div>
+    <div class="fuss__block">
+      <p class="label">Finden</p>
+      <ul role="list" class="fuss__liste">
+        <li><a href="https://www.facebook.com/RestaurantIrodionLuenen/" rel="noopener">Facebook</a></li>
+        <li><a href="https://maps.apple.com/?daddr=Roggenmarkt+19%2C+L%C3%BCnen%2C+44532" rel="noopener">Anfahrt</a></li>
+      </ul>
+    </div>
+    <div class="fuss__block">
+      <p class="label">Rechtliches</p>
+      <ul role="list" class="fuss__liste">
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="kolophon">Das Bildmaterial dieser Seite ist erzeugt und steht bis zum
+  Fototermin. Näheres im Impressum unter Bildnachweis.</p>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Irodion",
+  "alternateName": "Griechisches Spezialitäten-Restaurant Irodion",
+  "servesCuisine": "Griechisch",
+  "telephone": "+49 2306 12864",
+  "email": "info@irodion-luenen.de",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Roggenmarkt 19",
+    "postalCode": "44532",
+    "addressLocality": "Lünen",
+    "addressRegion": "Nordrhein-Westfalen",
+    "addressCountry": "DE"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "11:30", "closes": "14:30" },
+    { "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "17:00", "closes": "22:30" }
+  ],
+  "acceptsReservations": "True",
+  "sameAs": [
+    "https://www.facebook.com/RestaurantIrodionLuenen/"
+  ]
+}
+</script>
+
+<script src="js/hero.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

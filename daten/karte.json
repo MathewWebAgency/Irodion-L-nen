@@ -1,0 +1,191 @@
+{
+  "stand": "Von der Karte des Hauses, Fassung aus dem PDF der alten Seite, abgeschrieben am 11.09.2026. Preise liegen hier fuer spaeter bereit, stehen aber nach Entscheidung des Kunden nicht auf der Seite.",
+  "gruppen": [
+    {"titel": "Warme Vorspeisen", "id": "warme-vorspeisen", "gerichte": [
+      ["1","Dolmades","hausgemachte, gefüllte Weinblätter mit Hackfleisch","8,00"],
+      ["2","Aubergine","hausgemacht, gefüllt mit Hackfleisch und Schafskäse","8,50"],
+      ["3","Auberginen","in Tomatensauce und Zwiebeln","7,50"],
+      ["4","Saganaki","panierter Käse","8,00"],
+      ["4a","Feta Furnu","Schafskäse aus dem Backofen mit Knoblauch, Tomaten, Paprika, Zwiebeln, Olivenöl und Oregano","9,00"],
+      ["6","Muscheln","gebacken","9,00"],
+      ["6a","Muscheln Saganaki","Muscheln in Tomatensauce mit Zwiebeln, Paprika und Käse","10,00"],
+      ["24","Keftedakia","Hackfleischbällchen in Tomatensauce","8,00"],
+      ["27","Melitzanes","gebackene Auberginenscheiben mit Tzatziki","8,50"],
+      ["28","Kolokithaki","gebackene Zucchinischeiben mit Tzatziki","8,50"],
+      ["28a","Paprika","gebacken, mit Tzatziki","8,50"],
+      ["28c","Peperoni","vom Grill, mit Knoblauch","7,50"],
+      ["289","Pita Brot","mit Öl und Oregano","3,50"],
+      ["290","Warme Vorspeisenplatte","vier kleine Saganaki, Tzatziki, Paprika, Melitzanes, Zucchini","17,00"]
+    ]},
+    {"titel": "Kalte Vorspeisen", "id": "kalte-vorspeisen", "gerichte": [
+      ["10","Peperoni","","5,00"],
+      ["10a","Oliven","","5,00"],
+      ["10b","Dolmadakia","gefüllte Weinblätter mit Reis","6,50"],
+      ["11","Tzatziki","Joghurtquark mit Knoblauch und Gurken","5,00"],
+      ["12","Tzatziki mit Shrimps","","7,50"],
+      ["13","Calamarisalat","mit Zwiebeln und Öl, Essig","9,00"],
+      ["14","Octapussalat","mit Zwiebeln, Öl und Essig","12,00"],
+      ["17","Schafskäse","","8,00"],
+      ["19","Taramas","Fischrogen Paste","7,00"],
+      ["25","Turokafteri","Schafskäse Paste mit Knoblauch","8,00"]
+    ]},
+    {"titel": "Suppen", "id": "suppen", "gerichte": [
+      ["7","Griechische Bohnensuppe","","5,50"],
+      ["8","Gulaschsuppe","","5,50"],
+      ["9","Tomatencremesuppe","","5,50"],
+      ["9a","Hühnersuppe","","5,50"],
+      ["9b","Zwiebelsuppe","","5,50"]
+    ]},
+    {"titel": "Salate", "id": "salate", "gerichte": [
+      ["15","Großer gemischter Salat","Krautsalat, grüner Salat, Möhren, Tomaten, Gurken, Peperoni, Käse, Oliven in Cocktailsauce","10,00"],
+      ["16","Krautsalat mit Möhren","","4,50"],
+      ["18","Choriatiki, Bauernsalat","Tomaten, Gurken, Paprika, Zwiebeln, Peperoni, Schafskäse, mit Öl und Essig","11,00"],
+      ["20","Kalte Salatplatte","Tzatziki, Schafskäse, Dolmadakia, Oktapus, Peperoni, Calamarisalat, Oliven, Taramas, Turokafteri, Shrimps","16,00"],
+      ["21","Kleiner gemischter Salat","Krautsalat, grüner Salat, Tomaten, Möhren und Cocktailsauce","6,00"],
+      ["22","Thunfischsalat","Thunfisch, Tomaten, Gurken, grüner Salat, Zwiebeln, Ei, Oliven","12,00"],
+      ["23","Christos-Salat","Hähnchenbrustfilet oder Gyros, Kopfsalat, Tomaten, Croutons, Gurken, Krautsalat, Parmesan, Mais, Balsamico","14,00"]
+    ]},
+    {"titel": "Vegetarische Gerichte", "id": "vegetarisch", "gerichte": [
+      ["290","Warme Vorspeisenplatte","vier kleine Saganaki, Tzatziki, Paprika, Melitzanes und Zucchini","17,00"],
+      ["291","Mussakas","griechischer Auflauf bestehend aus Auberginen, Kartoffeln und Bechamelcreme, dazu gemischter Salat","15,50"],
+      ["292","Gemüse","mit Gouda-Käse überbacken","13,00"],
+      ["293","Gemista","mit Reis gefülltes Gemüse, Tomate und Paprikaschoten","9,00"]
+    ], "fuss": "Weitere vegetarische Gerichte auf Wunsch möglich."},
+    {"titel": "Vom Grill", "id": "vom-grill", "gerichte": [
+      ["29","Gyros mit Baby Calamari","mit Panade, fünf Stück, dazu Pommes oder Reis und gemischter Salat","18,50"],
+      ["30","Gyros mit Metaxasauce","dazu Pommes oder Reis und gemischter Salat","16,00"],
+      ["30a","Gyros überbacken","mit Käse und Metaxasauce, dazu Pommes oder Reis und gemischter Salat","17,50"],
+      ["31","Gyros","Schweinefleisch vom Drehspieß, dazu Pommes oder Reis und gemischter Salat","14,00"],
+      ["32","Gyros mit Tzatziki","dazu Pommes oder Reis und gemischter Salat","16,00"],
+      ["33","Suvlaki","zwei Schweinespieße, dazu Pommes oder Reis und gemischter Salat","15,00"],
+      ["34","Bifteki","drei Hackfleischfrikadellen, dazu Pommes oder Reis und gemischter Salat","15,00"],
+      ["35","Bifteki gefüllt","Hackfleisch gefüllt mit Schafskäse, dazu Pommes oder Reis und gemischter Salat","17,50"],
+      ["35a","Bifteki und Gyros","Hackfleisch gefüllt mit Schafskäse, Gyros, dazu Pommes oder Reis und gemischter Salat","20,00"],
+      ["36","Schweineleber","dazu Pommes oder Reis und gemischter Salat","15,00"],
+      ["36a","Gyros mit Schweineleber","dazu Pommes oder Reis und gemischter Salat","16,00"],
+      ["38","Elenplatte","zwei Schweinefiletspieße, dazu Pommes oder Reis und gemischter Salat","20,50"],
+      ["39","Pita Gyros","Gyros auf einem Teigfladen mit Tomaten, Zwiebeln, Tzatziki, dazu Pommes und Krautsalat","12,50"],
+      ["41","Schweineschnitzel Natur","dazu Pommes oder Reis und gemischter Salat","14,00"],
+      ["41a","Schweineschnitzel Wiener Art","paniertes Schweineschnitzel mit Paprika- oder Champignonsauce, dazu Pommes oder Reis und gemischter Salat","14,00"],
+      ["43","Schweinefilet","dazu Pommes oder Reis und gemischter Salat","20,00"],
+      ["43a","Schweinefilet gefüllt","mit Käse und Tomaten, dazu Pommes oder Reis und gemischter Salat","22,00"]
+    ], "fuss": "grill"},
+    {"titel": "Gemischtes vom Grill", "id": "gemischtes", "gerichte": [
+      ["44","Ouzo Teller","zwei Bifteki, ein Suvlaki, Gyros, dazu Pommes oder Reis und gemischter Salat","16,00"],
+      ["45","Christos Teller","drei verschiedene Fleischsorten, Schweinefilet, Hähnchenbrustfilet und Rumpsteak mit drei verschiedenen Saucen, Metaxasauce, Champignonsauce, Pfeffersauce, dazu Pommes und gemischter Salat","22,50"],
+      ["46","Spezial Teller","Vorspeise ein Dolmas mit Tzatziki, Hauptgang ein Lammkotelett, ein Bifteki, ein Suvlaki, Gyros, dazu Pommes oder Reis und gemischter Salat","19,00"],
+      ["47","Rhodos Teller","ein Suvlaki, ein Schweineschnitzel, Gyros, ein Lammkotelett, dazu Pommes oder Reis und gemischter Salat","16,50"],
+      ["48","Meteora Teller","Gyros und ein Suvlaki, dazu Pommes oder Reis und gemischter Salat","15,00"],
+      ["49","Akropolis Teller","ein Lammkotelett, ein Schweinefiletstreifen, ein Suvlaki, Gyros, ein Bifteki, dazu Pommes oder Reis und gemischter Salat","19,50"],
+      ["51","Artemis Teller mit Leber","zwei Suvlaki und Schweineleber, dazu Pommes oder Reis und gemischter Salat","16,50"],
+      ["52","Apollon Teller","Suvlaki, ein Schweineleberstreifen, ein Bifteki, Gyros, dazu Pommes oder Reis und gemischter Salat","16,00"],
+      ["53","Filet Teller","ein kleines Schweinefilet und Gyros mit Metaxasauce, dazu Pommes oder Reis und gemischter Salat","19,50"],
+      ["54","Korfu Teller","ein Souvlaki, zwei Lammkoteletts und Gyros, dazu Pommes oder Reis und gemischter Salat","19,00"],
+      ["55","Kreta Teller","ein Lammkotelett, ein Schweineschnitzel, Leber, Gyros und ein Bifteki, dazu Pommes oder Reis und gemischter Salat","19,00"],
+      ["56","Marathon Teller","ein Suvlaki, ein Schweinesteak, Gyros, ein Schweineleberstreifen, dazu Pommes oder Reis und gemischter Salat","16,50"],
+      ["57","Grill Teller","ein Bifteki, ein Schweinesteak, ein Suvlaki, Gyros, mit Metaxasauce, dazu Pommes oder Reis und gemischter Salat","20,00"],
+      ["59","Trikala Teller","Gyros, ein Schweinesteak, mit Metaxasauce, dazu Pommes oder Reis und gemischter Salat","16,50"],
+      ["60","Platon Teller","Gyros, ein Schweinesteak, zwei Schweineschnitzel, mit Metaxasauce, dazu Pommes oder Reis und gemischter Salat","18,00"],
+      ["61","Odysseus Teller","Gyros, zwei Suvlaki, dazu Pommes oder Reis und gemischter Salat","18,50"],
+      ["64","Saloniki Teller","zwei Bifteki, ein Filetspieß, dazu Pommes oder Reis und gemischter Salat","17,00"],
+      ["65","Kostas Teller","ein Filetspieß, Gyros, ein Bifteki, ein Lammkotelett, dazu Pommes oder Reis und gemischter Salat","19,00"]
+    ], "fuss": "grill"},
+    {"titel": "Lamm und Rind vom Grill", "id": "lamm-rind", "gerichte": [
+      ["37","Fünf Lammkoteletts","dazu Pommes und Tzatziki und gemischter Salat","23,00"],
+      ["40","Lammfilet mit grünen Bohnen","dazu Pommes und gemischter Salat","26,00"],
+      ["40a","Lammfilet mit grünen Bohnen","mit Pfeffersauce, dazu Pommes und gemischter Salat","27,00"],
+      ["62","Argentinisches Rumpsteak","etwa 250 Gramm, dazu Pommes, Kräuterbutter oder Pfeffersauce und gemischter Salat","28,00"],
+      ["81","Lammkeule ohne Knochen","dazu grüne Bohnen, Pommes und gemischter Salat","22,00"]
+    ], "fuss": "grill"},
+    {"titel": "Platten für zwei oder vier Personen", "id": "platten", "gerichte": [
+      ["67","Spiros Platte","Gyros, zwei Bifteki, zwei Souvlaki, zwei Schweineschnitzel und zwei Scheiben Leber, dazu Pommes oder Reis und gemischter Salat","46,00"],
+      ["68","Irodion Platte","zwei Suvlaki, zwei Lammkoteletts, zwei Bifteki, Gyros, dazu Pommes oder Reis und gemischter Salat","46,00"],
+      ["69","Olympia Platte","vier Lammkoteletts, vier Suvlaki, vier Schweineleberstreifen, vier Bifteki, Gyros, dazu Pommes oder Reis und gemischter Salat","90,00"]
+    ], "fuss": "grill"},
+    {"titel": "Pfannengerichte", "id": "pfanne", "gerichte": [
+      ["60a","Pelargos, Schweinefiletspitzen","in Champignonsauce, dazu Butterreis und gemischter Salat","20,00"]
+    ]},
+    {"titel": "Hähnchen", "id": "haehnchen", "gerichte": [
+      ["56a","Diogenes","Hähnchenbrustfilet, dazu Metaxasauce oder Champignonsauce, dazu Pommes oder Reis und gemischter Salat","17,00"]
+    ], "fuss": "grill"},
+    {"titel": "Lamm aus dem Ofen", "id": "lamm-ofen", "gerichte": [
+      ["88","Gemista","Lammfleisch aus dem Backofen, mit Reis gefülltes Gemüse, Tomate und Paprikaschoten, und gemischter Salat","20,00"],
+      ["89","Lammfleisch mit Spaghetti","mit Schafskäse überbacken, dazu gemischter Salat","20,00"],
+      ["90","Lammfleisch mit Nudeln","und Schafskäse überbacken, dazu gemischter Salat","20,00"],
+      ["91","Lammfleisch mit Auberginen","und Schafskäse überbacken, dazu gemischter Salat","20,00"],
+      ["92","Lammfleisch mit Okra","und Schafskäse überbacken, dazu gemischter Salat","20,00"],
+      ["93","Lammfleisch mit Fassolakia","und Schafskäse überbacken, Lammfleisch mit Bohnenschoten in Tomatensauce, dazu gemischter Salat","20,00"],
+      ["94","Lammfleisch mit Dicken Bohnen","und Schafskäse überbacken, dazu gemischter Salat","20,00"],
+      ["95","Stifado","ein Eintopf aus Lammfleisch mit Zwiebeln, dazu gemischter Salat","20,00"]
+    ], "fuss": "Diese Gerichte werden ohne weitere Beilagen zubereitet."},
+    {"titel": "Fischgerichte", "id": "fisch", "gerichte": [
+      ["73","Calamaria","Tintenfischringe, dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat","17,50"],
+      ["73b","Baby Calamari","mit oder ohne Panade, dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat","19,00"],
+      ["74","Garides","fünf Scampi vom Grill, dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat","27,00"],
+      ["75","Pestrofa","eine Forelle, mit frischem Gemüse und gemischter Salat","18,00"],
+      ["77","Seezungenfilet","dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat","20,00"],
+      ["79","Fischplatte","sechs Tintenfischringe, vier Scampi, Sardinen, dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat","24,00"],
+      ["80","Gavros","gebratene Sardinen, dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat","16,00"],
+      ["80a","Lachsfilet","dazu frisches Gemüse, hausgemachte Fischsauce und gemischter Salat","22,00"]
+    ]},
+    {"titel": "Typisch griechisch", "id": "typisch", "gerichte": [
+      ["82","Pastitsio","griechischer Auflauf aus Spaghetti, Hackfleisch, Bechamelcreme, mit Käse überbacken, dazu gemischter Salat","16,00"],
+      ["84","Spaghetti","mit Hackfleisch, Gouda und Sauce, ohne Salat","12,50"],
+      ["85","Kritharaki","Reisnudeln mit Hackfleisch und Gouda überbacken, in Tomatensauce, ohne Salat","12,50"],
+      ["86","Paputsaki","zwei gefüllte Auberginen mit Hackfleisch und Schafskäse überbacken, ohne Salat","17,00"],
+      ["87","Mussakas","griechischer Auflauf aus Auberginen, Hackfleisch, Kartoffeln und Bechamelcreme, dazu gemischter Salat","16,50"]
+    ]},
+    {"titel": "Für unsere kleinen Gäste bis 12 Jahre", "id": "kleine-gaeste", "gerichte": [
+      ["70","Suvlaki","ein Suvlaki, dazu Pommes und gemischter Salat","10,50"],
+      ["71a","Schnitzel Wiener Art","kleines paniertes Schweineschnitzel, dazu Pommes und gemischter Salat","10,50"],
+      ["72","Gyros","dazu Pommes und gemischter Salat","10,50"],
+      ["72a","Chicken Nuggets","mit Pommes und gemischtem Salat","10,50"]
+    ]},
+    {"titel": "Beilagen", "id": "beilagen", "gerichte": [
+      ["96","Gemüse der Saison","","6,00"],
+      ["97","Reis","","3,50"],
+      ["97a","Butterreis","","4,50"],
+      ["98","Pommes","","4,00"],
+      ["98a","Kroketten","","4,50"],
+      ["99","Dicke Bohnen","mit Schafskäse","8,00"],
+      ["100","Grüne Bohnen","","5,00"],
+      ["100a","Scheibenkartoffeln","","4,50"]
+    ]},
+    {"titel": "Saucen", "id": "saucen", "gerichte": [
+      ["1001","Metaxasauce","","3,00"],
+      ["1002","Champignonsauce","","3,00"],
+      ["1003","Sauce Bearnaise","","3,00"],
+      ["1004","Pfefferrahmsauce","","3,00"],
+      ["1005","Sauce Hollandaise","","3,00"]
+    ]},
+    {"titel": "Nachtisch", "id": "nachtisch", "gerichte": [
+      ["101","Joghurt mit Honig und Walnüssen","","6,00"],
+      ["102","Halvas","Süßwarenspezialität aus Sesammasse mit Metaxa und Zimt","6,00"],
+      ["103","Vanilleeis mit Schokosauce","","7,00"],
+      ["104","Vanilleeis mit heißen Himbeeren","","7,00"],
+      ["105","Vanilleeis mit heißen Kirschen","oder Amarena","7,00"],
+      ["106","Gemischtes Eis","","7,00"],
+      ["107","Gemischtes Eis mit Sahne","","7,00"],
+      ["108","Schokosoufflee","","8,00"],
+      ["109","Galaktobureko","Blätterteig mit Grießpudding, einer Kugel Eis und Sahne","8,00"]
+    ]}
+  ],
+  "getraenke": [
+    {"titel": "Warme Getränke", "id": "warme-getraenke",
+     "zeilen": ["Kaffee","Espresso","Espresso Doppio","Griechischer Kaffee, Mokka","Latte Macchiato","Cappuccino","Milchkaffee","Tee"]},
+    {"titel": "Alkoholfreie Getränke", "id": "afg",
+     "zeilen": ["Cola","Cola light","Cola zero","Spezi","Orangenlimonade","Zitronenlimonade","Apfelschorle","Traubensaftschorle","Malztrunk","Bitter Lemon","Ginger Ale","Apfelsaft, Orangensaft, Traubensaft","Mineralwasser","Fassbrause, Zitrone oder Holunder"]},
+    {"titel": "Biere", "id": "biere",
+     "zeilen": ["Krombacher Pils","Hövels","Schlösser Alt","Alsterwasser, Radler","Krombacher Alkoholfrei","Krombacher Radler Alkoholfrei","Paulaner Weizenbier","Erdinger Alkoholfrei"]},
+    {"titel": "Spirituosen", "id": "spirituosen",
+     "zeilen": ["Ouzo","Sambuca","Wodka","Ramazzotti","Fernet","Jägermeister","Baileys","Bacardi Cola","Wodka Lemon","Metaxa fünf Sterne","Metaxa sieben Sterne","Metaxa flambiert"]}
+  ],
+  "hinweise": {
+    "grill": [
+      "Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage.",
+      "Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat.",
+      "Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro."
+    ],
+    "allergie": "Sollten Sie von Allergien betroffen sein, melden Sie sich bitte. Unsere separate Allergiekarte gibt Ihnen Auskunft über die in den Speisen enthaltenen Zutaten."
+  }
+}

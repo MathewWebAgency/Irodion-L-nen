@@ -1,0 +1,1025 @@
+/* ==========================================================================
+   Irodion, Luenen. Die Gestaltung.
+   Token liegen in tokens.css, Schriften in fonts.css.
+
+   Die Seite steht auf Eiche, so wie der Raum. Der helle Sandstein ist die
+   Unterbrechung und traegt die Klasse .auf-sandstein. Das ist genau
+   andersherum als bei einer hellen Seite mit dunklen Einschueben, und es
+   ist der Grund, warum die Karte spaeter wie ein Blatt Papier im Raum
+   liegt statt wie ein Kasten auf einer Flaeche.
+   ========================================================================== */
+
+/* --- Der Grund -----------------------------------------------------------
+   Eine feste Ebene hinter allem. Sehr feines Korn und ein sehr langsamer
+   Waermeverlauf, damit Scrollen sich anfuehlt wie eine Bewegung durch einen
+   Ort und nicht wie Vorbeiziehen an gestapelten Kaesten.               */
+
+.grund {
+  position: fixed; inset: 0; z-index: -1;
+  background: var(--eiche);
+  pointer-events: none;
+}
+.grund::after {
+  content: ""; position: absolute; inset: -10%;
+  background:
+    radial-gradient(60% 45% at 22% 18%, rgba(208,138,78,.10), transparent 70%),
+    radial-gradient(55% 40% at 82% 76%, rgba(168,88,58,.10), transparent 70%);
+  animation: grund-drift 96s var(--ease-beid) -24s infinite alternate;
+}
+@keyframes grund-drift {
+  from { transform: translate3d(-1.5%, -1%, 0) scale(1.02); }
+  to   { transform: translate3d(1.5%, 1.4%, 0) scale(1.06); }
+}
+
+/* --- Die hellen Sektionen ------------------------------------------------
+   Sie sitzen als Blatt im dunklen Raum. Kein Schatten, keine runde Ecke:
+   das Blatt ist durch seine Flaeche da, nicht durch einen Rahmen.      */
+
+.auf-sandstein {
+  background: var(--sandstein);
+  color: var(--tinte);
+}
+
+/* --- Wiederkehrende Bauteile --------------------------------------------- */
+
+.gross { font-size: var(--s-4); }
+
+.eyebrow {
+  color: var(--kognak-hell);
+  margin: 0 0 var(--r-2);
+}
+.auf-sandstein .eyebrow { color: var(--kognak); }
+
+.marken {
+  display: flex; flex-wrap: wrap; gap: var(--r-2) var(--r-4);
+  list-style: none; margin: var(--r-4) 0 0; padding: 0;
+  color: var(--leinen-weich);
+}
+.auf-sandstein .marken { color: var(--tinte-weich); }
+.marken li { position: relative; padding-left: 1.1em; }
+.marken li::before {
+  content: ""; position: absolute; left: 0; top: .52em;
+  width: .6em; height: 1px; background: var(--kerbe-hell);
+}
+.auf-sandstein .marken li::before { background: var(--kerbe); }
+
+.knopf {
+  display: inline-block;
+  font-family: var(--label);
+  font-weight: 600; font-size: var(--s--1);
+  letter-spacing: var(--tr-label); text-transform: uppercase;
+  padding: .85em 1.6em;
+  border: 1px solid var(--kerbe-hell);
+  background: transparent; color: var(--leinen);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--t-ui) var(--ease-aus),
+              color var(--t-ui) var(--ease-aus),
+              border-color var(--t-ui) var(--ease-aus);
+}
+.knopf:hover { background: var(--leinen); color: var(--eiche-tief); border-color: var(--leinen); }
+
+.auf-sandstein .knopf { border-color: var(--kerbe); color: var(--tinte); }
+.auf-sandstein .knopf:hover { background: var(--tinte); color: var(--sandstein-hell); border-color: var(--tinte); }
+
+.knopf--hell {
+  background: var(--kognak-hell); color: var(--eiche-tief);
+  border-color: var(--kognak-hell);
+  text-shadow: none;             /* auf Knoepfen liest ein Schatten als Schmutz */
+}
+.knopf--hell:hover { background: var(--leinen); border-color: var(--leinen); color: var(--eiche-tief); }
+.auf-sandstein .knopf--hell { background: var(--kognak); color: var(--sandstein-hell); border-color: var(--kognak); }
+.auf-sandstein .knopf--hell:hover { background: var(--tinte); border-color: var(--tinte); color: var(--sandstein-hell); }
+
+.tel { text-decoration: none; }
+
+/* ==========================================================================
+   Der Kopf
+   Liegt oben auf und bekommt seinen Grund erst, wenn der Hero durch ist.
+   ========================================================================== */
+
+.kopf {
+  position: fixed; inset: 0 0 auto; z-index: 20;
+  display: flex; align-items: center; gap: var(--r-4);
+  padding: var(--r-3) var(--rand);
+  color: var(--leinen);
+  text-shadow: var(--tschatten);
+}
+.kopf::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--eiche-tief);
+  border-bottom: 1px solid var(--kerbe-fein);
+  opacity: 0;
+  transition: opacity var(--t-ruhig) var(--ease-aus);
+}
+body.kopf-hell .kopf::before { opacity: .94; }
+body.kopf-hell .kopf { text-shadow: none; }
+
+.kopf__marke { display: flex; align-items: baseline; gap: .6em; text-decoration: none; }
+.kopf__name { font-family: var(--display); font-size: var(--s-1); letter-spacing: -.01em; }
+.kopf__gr { opacity: .78; font-size: 0.75rem; }   /* nie unter 11px, auch nicht als Beiwerk */
+
+.kopf__liste {
+  display: flex; gap: var(--r-4); margin: 0 0 0 auto; padding: 0;
+  list-style: none; font-size: var(--s--1);
+  font-family: var(--label); letter-spacing: .06em; text-transform: uppercase;
+}
+.kopf__liste a { text-decoration: none; position: relative; padding-block: .35em; }
+.kopf__liste a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--kognak-hell); transform: scaleX(0); transform-origin: left;
+  transition: transform var(--t-ui) var(--ease-aus);
+}
+.kopf__liste a:hover::after { transform: scaleX(1); }
+
+.kopf__tel { white-space: nowrap; color: var(--kognak-hell); }
+
+@media (max-width: 860px) {
+  .kopf__liste { display: none; }
+  .kopf__tel { margin-left: auto; }
+}
+
+/* ==========================================================================
+   DER HERO
+   Eine hohe angeheftete Strecke, darin eine klebende Buehne.
+   Hoehe in Scrollstrecke gedacht, nicht in Sekunden: rund 400vh je
+   6 Sekunden Material, bei drei Segmenten also etwa 1000vh.
+   ========================================================================== */
+
+.hero { position: relative; height: 1000vh; }
+
+.buehne {
+  position: sticky; top: 0;
+  height: 100svh; min-height: 100vh;
+  overflow: hidden;
+  background: var(--eiche-tief);
+  color: var(--leinen);
+  isolation: isolate;
+}
+
+.poster, #film {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.poster {
+  background-size: cover; background-position: center;
+  z-index: 0;
+}
+#film {
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 520ms var(--ease-aus);
+  /* eigene Compositor-Ebene, damit das Neuzeichnen des Films nicht die
+     restliche Seite mitzieht */
+  will-change: transform;
+  transform: translateZ(0);
+}
+.buehne.film-bereit #film { opacity: 1; }
+.buehne.film-aus #film { display: none; }
+
+/* 1. Der globale Scrim. Immer an, damit kein Frame je roh dasteht. */
+.scrim {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(ellipse 120% 92% at 50% 46%,
+              rgba(10,14,22,0) 34%, rgba(10,14,22,.60) 100%);
+}
+
+/* Der Ladering. Ehrlich, und er bleibt nie haengen: der Wachhund in
+   hero.js tauscht ihn nach 20 Sekunden ohne Fortschritt gegen den Wink. */
+.ring {
+  position: absolute; z-index: 6;
+  left: 50%; bottom: var(--r-5); transform: translateX(-50%) rotate(-90deg);
+  width: 30px; height: 30px; color: var(--leinen-weich);
+  transition: opacity var(--t-ruhig) var(--ease-aus);
+}
+.ring circle { transition: stroke-dashoffset 120ms linear; }
+.buehne.film-bereit .ring, .buehne.film-aus .ring { opacity: 0; }
+
+.wink {
+  position: absolute; z-index: 6; left: 50%; bottom: var(--r-5);
+  transform: translateX(-50%);
+  opacity: 0; transition: opacity var(--t-ruhig) var(--ease-aus);
+}
+.wink span {
+  display: block; width: 11px; height: 11px;
+  border-right: 1.4px solid var(--leinen-weich);
+  border-bottom: 1.4px solid var(--leinen-weich);
+  transform: rotate(45deg);
+  animation: wink-tupf 2.6s var(--ease-beid) -.6s infinite;
+}
+.buehne.film-aus .wink { opacity: 1; }
+@keyframes wink-tupf {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: .5; }
+  50%      { transform: rotate(45deg) translate(3px, 3px); opacity: 1; }
+}
+
+/* --- Die Baender ---------------------------------------------------------
+   Jedes Band besitzt einen Abschnitt des Scrollfortschritts. Die Deckkraft
+   und die Variable --k schreibt hero.js, und zwar nur bei Aenderung.     */
+
+.baender { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+
+.band {
+  position: absolute;
+  opacity: 0;
+  text-shadow: var(--tschatten);
+  max-width: min(30rem, 34vw);
+}
+.band .knopf { text-shadow: none; }
+
+/* 2. Der Band-Scrim, zweiseitig.
+   Die Mittelbahn gehoert dem Weg zum Tisch und bleibt hell. Deshalb sitzt
+   die Ellipse auf der jeweiligen Spalte, nicht quer ueber die Mitte. */
+/* Die Scrims der Baender liegen als eigene Ebenen auf der Buehne und
+   laufen vom Bildrand nach innen aus.
+
+   Vorher hingen sie als Ellipse am Textkasten. Eine begrenzte Ellipse hat
+   aber immer eine Kante, und die las sich als dunkler Kasten hinter der
+   Schrift. Ein Verlauf, der am Bildrand anfaengt, kann keine Kante zeigen,
+   weil sein dunkles Ende ausserhalb liegt. Die Mittelbahn bleibt hell,
+   weil die seitlichen Verlaeufe vorher auslaufen. */
+.bandscrim {
+  position: absolute; inset: 0; z-index: 3;
+  pointer-events: none; opacity: 0;
+}
+.bandscrim--links {
+  background: linear-gradient(to right,
+    rgba(6,9,15,.88) 0%, rgba(6,9,15,.85) 24%, rgba(6,9,15,.68) 38%,
+    rgba(6,9,15,.30) 52%, rgba(6,9,15,0) 66%);
+}
+.bandscrim--rechts {
+  background: linear-gradient(to left,
+    rgba(6,9,15,.88) 0%, rgba(6,9,15,.85) 24%, rgba(6,9,15,.68) 38%,
+    rgba(6,9,15,.30) 52%, rgba(6,9,15,0) 66%);
+}
+.bandscrim--settle {
+  background: linear-gradient(to bottom,
+    rgba(6,9,15,.90) 0%, rgba(6,9,15,.85) 24%, rgba(6,9,15,.62) 42%,
+    rgba(6,9,15,.24) 58%, rgba(6,9,15,0) 72%);
+}
+
+.band--links  { left: var(--rand); top: 50%; transform: translateY(-50%); }
+.band--rechts { right: var(--rand); top: 50%; transform: translateY(-50%); text-align: right; }
+/* Der Schlusstext steht OBEN, nicht unten.
+   Das Schlussbild liefert den gedeckten Tisch mittig-tief, und der Tisch ist
+   das Beweisstueck. Text darunter wuerde ihn verdecken. Oben auf der
+   Steinwand misst der schlechteste Pixel ausserdem 5.78:1 statt 4.99:1.
+   Das Bild hat hier das Layout korrigiert, nicht umgekehrt. */
+.band--settle {
+  left: 50%; top: 17vh; transform: translateX(-50%);
+  text-align: center; max-width: min(46rem, 82vw);
+}
+
+.band__eyebrow { color: var(--kognak-hell); margin: 0 0 var(--r-2); }
+.band__zeile {
+  font-family: var(--display); font-weight: 500;
+  font-size: var(--s-4); line-height: var(--lh-eng);
+  letter-spacing: var(--tr-display);
+  margin: 0; max-width: none;
+}
+.band__zeile--gross { font-size: var(--s-5); }
+.band__klein, .band__sub {
+  margin: var(--r-3) 0 0; color: var(--leinen-weich);
+  font-size: var(--s-0); max-width: 42ch;
+}
+.band--rechts .band__klein { margin-left: auto; }
+.band--settle .band__sub { margin-left: auto; margin-right: auto; }
+.band__cta { margin: var(--r-4) 0 0; }
+.band__cta .knopf { pointer-events: auto; }
+
+/* --- Die Auftritte -------------------------------------------------------
+   Ein eigener Auftritt pro Beat, und jeder echot, was der Film in dem
+   Moment tut. Alles laeuft nur ueber transform und opacity und haengt an
+   der Variable --k, die das Band beim Scrollen bekommt. Alles umkehrbar.
+   Die Zeichen- und Wortspans setzt hero.js beim Laden.                  */
+
+.w { display: inline-block; white-space: pre; }
+.c { display: inline-block; will-change: transform, opacity; }
+
+/* (a) tiefe: die Zeile waechst leicht auf die Kamera zu.
+       Echot den Vorwaertsschub auf die Tuer. */
+[data-auftritt="tiefe"] .band__zeile {
+  transform: scale(calc(.86 + .14 * var(--k, 0)));
+  transform-origin: left center;
+  opacity: var(--k, 0);
+}
+.band--rechts[data-auftritt="tiefe"] .band__zeile { transform-origin: right center; }
+
+/* (b) schaerfe: zwei Kopien, die weiche blendet aus, die scharfe kommt.
+       Echot das Scharfwerden nach der Schwelle.
+       Der Weichzeichner ist statisch, animiert wird nur die Deckkraft. */
+[data-auftritt="schaerfe"] .band__zeile { position: relative; opacity: var(--k, 0); }
+[data-auftritt="schaerfe"] .band__zeile::after {
+  content: attr(data-echo);
+  position: absolute; inset: 0;
+  filter: blur(9px);
+  opacity: calc(1 - var(--k, 0));
+  pointer-events: none;
+}
+
+/* (c) raster: Zeichen fahren in Leserichtung seitlich ein.
+       Echot die Steinwand, die seitlich durchs Bild zieht. */
+[data-auftritt="raster"] .c {
+  --kc: clamp(0, (var(--k, 0) - var(--th, 0)) * 2.6, 1);
+  opacity: var(--kc);
+  transform: translateX(calc((1 - var(--kc)) * var(--jx, 0px)));
+}
+
+/* (d) schlag: Wortsprung mit Ueberschwingen.
+       Echot den Aufschlag von Brot auf Holz. */
+[data-auftritt="schlag"] .w {
+  --kc: clamp(0, (var(--k, 0) - var(--th, 0)) * 3, 1);
+  --ks: clamp(0, (var(--k, 0) - var(--th, 0) - var(--sd, .1)) * var(--ss, 3.2), 1);
+  opacity: var(--kc);
+  transform: scale(calc(.62 + (.38 + var(--ov, .12)) * var(--kc) - var(--ov, .12) * var(--ks)));
+}
+[data-auftritt="schlag"] .em .w,
+[data-auftritt="schlag"] .w.em { --ov: .24; --sd: .16; --ss: 2.6; }
+
+/* (e) ankunft: Woerter steigen in Leserichtung auf, dann die Subline,
+       dann der Knopf. Drei Ankuenfte in einem Band, passend dazu, dass
+       die Fahrt zur Ruhe kommt. */
+[data-auftritt="ankunft"] .band__zeile .w {
+  --kc: clamp(0, (var(--k, 0) - var(--th, 0)) * 2.8, 1);
+  opacity: var(--kc);
+  transform: translateY(calc((1 - var(--kc)) * 22px));
+}
+[data-auftritt="ankunft"] .band__sub {
+  --ks: clamp(0, (var(--k, 0) - .66) * 4, 1);
+  opacity: var(--ks);
+  transform: translateY(calc((1 - var(--ks)) * 12px));
+}
+[data-auftritt="ankunft"] .band__cta {
+  --kb: clamp(0, (var(--k, 0) - .78) * 5, 1);
+  opacity: var(--kb);
+  transform: translateY(calc((1 - var(--kb)) * 12px));
+}
+
+/* --- Der Static-Hero -----------------------------------------------------
+   Ein entworfenes Layout, kein Notbehelf. Sichtbar unter genau den fuenf
+   Bedingungen, die auch hero.js prueft, zeichengenau gleich.            */
+
+/* Der Textblock steht auf ALLEN Schirmen unten, denn unten liegt im Bild
+   das nasse Pflaster und damit die ruhige Zone, waehrend die warme Tuer
+   darueber sichtbar bleibt. Stand er oben, sass er auf einem Tablet
+   mitten im Tuerlicht und war mit 1.22:1 unlesbar. */
+.ruhehero {
+  position: absolute; inset: auto var(--rand) 10vh; z-index: 5;
+  display: none; text-align: left;
+  max-width: 34rem;
+  text-shadow: var(--tschatten);
+}
+/* Der Scrim haengt am Textkasten und wandert mit ihm. Ein Verlauf ueber
+   die ganze Bildhoehe sitzt je nach Schirmhoehe woanders, und auf einem
+   kurzen Handy landet die Schrift dann auf einer hellen Stelle. */
+.ruhehero::before {
+  content: ""; position: absolute; inset: -16% -12% -26% -14%;
+  z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 64% 58% at 42% 52%,
+              rgba(5,8,14,.82) 0%, rgba(5,8,14,.78) 48%,
+              rgba(5,8,14,.46) 72%, rgba(5,8,14,0) 100%);
+}
+.ruhehero__titel {
+  font-family: var(--display); font-weight: 500;
+  font-size: var(--s-3); line-height: var(--lh-kopf);
+  letter-spacing: var(--tr-display); margin: 0;
+  hyphens: none;          /* nie mitten im Wort brechen */
+  text-wrap: balance;
+}
+/* Auf schmalen Schirmen sitzt der Block unten, ueber dem nassen Pflaster,
+   nicht mittig ueber der hellen Tuer. */
+@media (max-width: 560px) {
+  .ruhehero__titel { font-size: var(--s-2); }
+}
+.ruhehero__sub { margin: var(--r-3) 0 var(--r-4); color: var(--leinen-weich); }
+.ruhehero .knopf { text-shadow: none; }
+
+/* ==========================================================================
+   Hochformat MIT Fahrt.
+   Handys bekommen die Kamerafahrt jetzt auch, nur als eigene, schmalere
+   und leichtere Datei. Der Text steht dabei unten, weil dort im Bild die
+   ruhige Zone liegt, und er steht ueber die ganze Breite statt seitlich.
+   ========================================================================== */
+
+@media (orientation: portrait) and (max-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  /* Die Strecke ist kuerzer als quer, weil im Hochformat weniger Text je
+     Bildschirm steht. Bei 640vh blieb Band 1 aber nur vier normale Flicks
+     lesbar, gefordert sind fuenf bis sechs. Also mehr Strecke statt
+     kuerzerer Rampen: das Stauchen der Rampen loest so etwas nie. */
+  .hero { height: 830vh; }
+
+  .band--links, .band--rechts, .band--settle {
+    left: var(--rand); right: var(--rand);
+    top: auto; bottom: 13vh;
+    transform: none;
+    max-width: none;
+    text-align: left;
+  }
+  .band--rechts .band__klein { margin-left: 0; }
+  .band--settle .band__sub { margin-left: 0; margin-right: 0; }
+  .band__zeile { font-size: var(--s-2); }
+  .band__zeile--gross { font-size: var(--s-3); }
+  .band__klein, .band__sub { font-size: var(--s--1); }
+
+  /* Ein Verlauf von unten fuer alle drei Ebenen: im Hochformat steht der
+     Text immer unten, also kommt die Abdunklung immer von dort. */
+  .bandscrim--links, .bandscrim--rechts, .bandscrim--settle {
+    background: linear-gradient(to top,
+      rgba(6,9,15,.92) 0%, rgba(6,9,15,.88) 18%, rgba(6,9,15,.64) 36%,
+      rgba(6,9,15,.24) 54%, rgba(6,9,15,0) 70%);
+  }
+}
+
+/* ==========================================================================
+   Der Static-Hero.
+   Nur noch dort, wo Bewegung nicht gewuenscht ist oder wirklich kein Platz
+   dafuer bleibt. Frueher fiel jedes Handy hierunter, und dann war auf dem
+   Handy ueberhaupt keine Bewegung zu sehen.
+   Diese Abfragen stehen zeichengenau genauso in hero.js.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce),
+       (orientation: landscape) and (pointer: coarse) and (max-height: 560px) {
+  .hero    { height: 100svh; }
+  .baender, .bandscrim { display: none; }
+  .ring, .wink { display: none; }
+  .ruhehero { display: block; }
+  #film { display: none; }
+
+  .buehne {
+    background:
+      linear-gradient(to bottom,
+        rgba(13,20,28,.26) 0%, rgba(13,20,28,.08) 34%,
+        rgba(13,20,28,.48) 72%, rgba(13,20,28,.70) 100%),
+      url('../assets/video/hero-hoch.jpg') center 38% / cover no-repeat,
+      var(--eiche-tief);
+  }
+  .scrim { display: none; }
+}
+
+/* Flache Fenster ohne Handy: Scrub bleibt, aber die kleinen Einblendungen
+   haben keinen Platz. */
+@media (max-height: 560px) and (pointer: fine) {
+  .ring, .wink { display: none; }
+}
+/* ==========================================================================
+   WOHER DER NAME KOMMT
+   Zwei ungleiche Spalten, das Bild hochformatig. Dieses Skelett kommt auf
+   der Seite nur einmal vor.
+   ========================================================================== */
+
+.name {
+  padding: var(--r-7) var(--rand);
+  display: grid; gap: var(--r-6);
+  align-items: center;
+  max-width: var(--breite); margin: 0 auto;
+}
+@media (min-width: 900px) {
+  .name { grid-template-columns: 1.25fr 0.75fr; gap: var(--r-7); }
+}
+.name__text p { font-size: var(--s-1); max-width: 44ch; margin-top: var(--r-4); }
+.name__bild { margin: 0; }
+.name__bild img {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--kerbe-hell);
+}
+.name__bild figcaption {
+  margin-top: var(--r-2); color: var(--leinen-weich);
+  font-size: var(--s--1); letter-spacing: .06em;
+}
+
+/* ==========================================================================
+   SEIT 1983. Text links, Bild rechts, dazwischen die Zeitleiste, die auf
+   demselben Maeanderband sitzt wie die Linie am Seitenrand.
+   ========================================================================== */
+
+.haus {
+  padding: var(--r-7) var(--rand);
+  max-width: var(--breite); margin: 0 auto;
+  display: grid; gap: var(--r-6);
+}
+@media (min-width: 900px) {
+  .haus { grid-template-columns: 1fr 1fr; align-items: end; gap: var(--r-7); }
+}
+.haus__text p { font-size: var(--s-1); max-width: 42ch; margin-top: var(--r-4); }
+
+/* Die Zeitleiste. Vier Halte auf einer Linie, die an jedem Halt eine Kerbe
+   nach oben macht. Kein Icon-Set, von Hand gesetzt.                     */
+.leiste {
+  list-style: none; margin: var(--r-6) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+.leiste::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0;
+  height: 1px; background: var(--kerbe-hell);
+}
+.leiste__halt {
+  position: relative; padding-top: var(--r-3);
+  padding-right: var(--r-2);
+}
+.leiste__halt::before {
+  content: ""; position: absolute; left: 0; top: 0;
+  width: 1px; height: .75rem; background: var(--kognak-hell);
+}
+.leiste__jahr {
+  display: block; color: var(--kognak-hell);
+  font-size: var(--s-0); letter-spacing: .04em;
+}
+.leiste__was {
+  display: block; margin-top: .3em;
+  color: var(--leinen-weich); font-size: var(--s--1);
+}
+@media (max-width: 560px) {
+  .leiste { grid-template-columns: 1fr 1fr; row-gap: var(--r-4); }
+}
+
+.haus__bild { margin: 0; }
+.haus__bild img {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--kerbe-hell);
+}
+.haus__bild figcaption {
+  margin-top: var(--r-2); color: var(--leinen-weich); max-width: 40ch;
+}
+.haus__bild figcaption .label { display: block; color: var(--kognak-hell); margin-bottom: .3em; }
+
+/* ==========================================================================
+   SAGEN SIE EINFACH DIE NUMMER
+   Der Mitmach-Moment. Die Eingabe traegt die Ziffernschrift der echten
+   Karte und ist bewusst gross: hier soll jemand hineintippen.
+   ========================================================================== */
+
+.nummer { padding: var(--r-7) var(--rand) var(--r-6); }
+.nummer__innen { max-width: var(--breite-eng); margin: 0 auto; text-align: center; }
+.nummer__lead { color: var(--tinte-weich); margin-top: var(--r-4); margin-inline: auto; }
+
+.feldnr { margin-top: var(--r-5); }
+.feldnr__label {
+  display: block; color: var(--kognak); margin-bottom: var(--r-2);
+}
+.feldnr__zeile {
+  display: flex; gap: var(--r-2); justify-content: center; align-items: stretch;
+}
+.feldnr__eingabe {
+  font-family: var(--label);
+  font-size: var(--s-3);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .06em;
+  text-align: center;
+  width: 5.2em;
+  padding: .3em .2em;
+  background: var(--sandstein-hell);
+  color: var(--tinte);
+  border: 1px solid var(--kerbe);
+  border-radius: 0;
+  transition: border-color var(--t-ui) var(--ease-aus);
+}
+/* Vorher --tinte-weich mit opacity .45, das komponiert zu rund 2.1 zu 1.
+   Ein Platzhalter darf leiser sein als der Eingabewert, aber lesbar. */
+.feldnr__eingabe::placeholder { color: var(--tinte-weich); opacity: 1; }
+.feldnr__eingabe:focus { border-color: var(--kognak); }
+.feldnr .knopf { align-self: stretch; }
+
+.feldnr__status {
+  margin: var(--r-3) 0 0; min-height: 1.7em;
+  color: var(--kognak);
+}
+.feldnr__status[data-art="leer"] { color: var(--tinte-weich); }
+
+.feldnr__tipps {
+  margin: var(--r-4) 0 0; color: var(--tinte-weich);
+  font-size: var(--s--1);
+  display: flex; flex-wrap: wrap; gap: var(--r-2); justify-content: center;
+  align-items: baseline;
+}
+.tipp {
+  background: transparent; border: 1px solid var(--kerbe);
+  color: var(--tinte); cursor: pointer;
+  padding: .45em .8em; font-size: inherit;
+  transition: background var(--t-ui) var(--ease-aus), color var(--t-ui) var(--ease-aus);
+}
+.tipp:hover { background: var(--tinte); color: var(--sandstein-hell); }
+
+/* ==========================================================================
+   DIE KARTE. Ein einziges, identisch wiederholtes Bauteil.
+   Sie liegt als helles Blatt im dunklen Raum und laeuft in Spalten, damit
+   132 Gerichte nicht als eine Kolonne von zwei Metern Hoehe erscheinen.
+   ========================================================================== */
+
+.karte { padding: 0 var(--rand) var(--r-7); }
+.karte__kopf { max-width: var(--breite); margin: 0 auto var(--r-6); }
+.karte__lead { color: var(--tinte-weich); max-width: 46ch; }
+
+.karte__spalten {
+  max-width: var(--breite); margin: 0 auto;
+  columns: 1; column-gap: var(--r-6);
+}
+@media (min-width: 760px)  { .karte__spalten { columns: 2; } }
+@media (min-width: 1180px) { .karte__spalten { columns: 3; } }
+
+.gang { break-inside: avoid; margin: 0 0 var(--r-5); }
+.gang__titel {
+  font-size: var(--s-1);
+  color: var(--kognak);
+  margin: 0 0 var(--r-3);
+  padding-bottom: var(--r-1);
+  border-bottom: 1px solid var(--kerbe);
+}
+.gang__liste { list-style: none; margin: 0; padding: 0; }
+
+/* Ein Gericht. Nummer links in der Monospace, Name darueber gesetzt,
+   Beschreibung darunter. Die Preisspalte kommt spaeter rechts dazu, das
+   Raster laesst dafuer bereits Platz.                                  */
+.gericht {
+  display: grid;
+  grid-template-columns: 3.2em 1fr;
+  gap: 0 var(--r-2);
+  padding: var(--r-2) 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--kerbe) 28%, transparent);
+  scroll-margin-top: 6rem;
+}
+.gang__liste .gericht:last-child { border-bottom: 0; }
+.gericht__nr {
+  grid-row: 1 / span 2;
+  color: var(--tinte-weich);
+  font-size: var(--s--1);
+  letter-spacing: .02em;
+  padding-top: .25em;
+}
+.gericht__name { font-family: var(--display); font-size: var(--s-1); line-height: 1.28; }
+.gericht__text {
+  color: var(--tinte-weich); font-size: var(--s--1); line-height: 1.5;
+  margin-top: .25em;
+}
+
+/* Der Treffer aus dem Nummernfeld. Eine Kerbe am Rand und ein kurzer
+   warmer Anstrich, der von selbst wieder abklingt.                     */
+.gericht.getroffen {
+  position: relative;
+  animation: treffer 2600ms var(--ease-aus) forwards;
+}
+.gericht.getroffen::before {
+  content: ""; position: absolute; left: -.9rem; top: .35em; bottom: .35em;
+  width: 2px; background: var(--kognak);
+}
+@keyframes treffer {
+  0%   { background: color-mix(in srgb, var(--kognak) 20%, transparent); }
+  55%  { background: color-mix(in srgb, var(--kognak) 20%, transparent); }
+  100% { background: transparent; }
+}
+
+.gang__fuss {
+  margin: var(--r-3) 0 0; color: var(--tinte-weich);
+  font-size: var(--s--1); line-height: 1.55; max-width: 46ch;
+}
+
+.gang--getraenke .getraenke { display: grid; gap: var(--r-4); }
+.getraenke__titel { color: var(--kognak); margin: 0 0 var(--r-2); }
+.getraenke ul { list-style: none; margin: 0; padding: 0; color: var(--tinte-weich); }
+.getraenke li { padding: .2em 0; }
+
+.karte__preise {
+  max-width: var(--breite); margin: var(--r-6) auto 0;
+  font-family: var(--display); font-size: var(--s-1);
+  max-width: 44ch;
+}
+.karte__allergie {
+  max-width: 60ch; margin: var(--r-3) auto 0;
+  color: var(--tinte-weich); font-size: var(--s--1);
+}
+
+/* ==========================================================================
+   WENN SIE MEHR WERDEN. Bild rechts, aber anders geschnitten als bei
+   .haus: hier laeuft es bis an den Rand.
+   ========================================================================== */
+
+.feiern {
+  padding: var(--r-7) 0 var(--r-7) var(--rand);
+  display: grid; gap: var(--r-5);
+}
+@media (min-width: 900px) {
+  .feiern { grid-template-columns: minmax(0, 34rem) 1fr; align-items: center; gap: var(--r-6); }
+}
+.feiern__innen { max-width: 34rem; padding-right: var(--rand); }
+.feiern__text { color: var(--leinen-weich); margin-top: var(--r-4); }
+.feiern__bild { margin: 0; padding-right: var(--rand); }
+@media (min-width: 900px) { .feiern__bild { padding-right: 0; } }
+.feiern__bild img { width: 100%; height: auto; display: block; }
+
+/* ==========================================================================
+   DRAUSSEN IN DER ALTSTADT. Bild links, Text rechts, volle Breite.
+   ========================================================================== */
+
+.draussen {
+  padding: var(--r-7) var(--rand);
+  display: grid; gap: var(--r-5);
+  max-width: var(--breite); margin: 0 auto;
+}
+@media (min-width: 900px) {
+  .draussen { grid-template-columns: 1.1fr .9fr; align-items: center; gap: var(--r-6); }
+}
+.draussen__bild { margin: 0; }
+.draussen__bild img { width: 100%; height: auto; display: block; }
+.draussen__text p { color: var(--tinte-weich); margin-top: var(--r-4); }
+
+/* ==========================================================================
+   DIE ZEITEN. Schmal und mittig, damit die Woche als Block gelesen wird.
+   ========================================================================== */
+
+.zeiten { padding: var(--r-7) var(--rand); }
+.zeiten__innen { max-width: 42rem; margin: 0 auto; }
+.woche { width: 100%; border-collapse: collapse; margin-top: var(--r-5); }
+.woche th, .woche td {
+  text-align: left; font-weight: 400;
+  padding: var(--r-2) 0;
+  border-bottom: 1px solid var(--kerbe-fein);
+}
+.woche th { font-family: var(--display); font-size: var(--s-1); }
+.woche td {
+  text-align: right; color: var(--leinen-weich); font-size: var(--s--1);
+  text-transform: none;   /* Zeiten sind kein Label, sie werden gelesen */
+  letter-spacing: .02em;
+}
+
+/* Der Ruhetag ist die Auskunft, die hier am meisten gesucht wird, also
+   wird er gekerbt und nicht nur anders eingefaerbt.                    */
+.woche__ruhe th, .woche__ruhe td { color: var(--kognak-hell); }
+.woche__ruhe th { position: relative; }
+.woche__ruhe td { letter-spacing: var(--tr-label); text-transform: uppercase; }  /* ein Wort, das darf */
+
+.woche tr[data-heute] th, .woche tr[data-heute] td { color: var(--leinen); }
+.woche tr[data-heute] th { position: relative; padding-left: 1.4em; }
+.woche tr[data-heute] th::before {
+  content: ""; position: absolute; left: 0; top: 50%;
+  width: .85em; height: 2px; margin-top: -1px;
+  background: var(--kognak-hell);
+}
+.woche tr[data-heute].woche__ruhe th::before { background: var(--kognak-hell); }
+
+.zeiten__kueche { margin-top: var(--r-4); color: var(--leinen-weich); }
+.zeiten__hinweis {
+  margin-top: var(--r-2);
+  font-family: var(--display); font-size: var(--s-1);
+  color: var(--leinen);
+}
+
+/* ==========================================================================
+   IHRE NISCHE. Der Ruf und das Formular.
+   ========================================================================== */
+
+.platz { padding: var(--r-7) var(--rand); }
+.platz__innen {
+  max-width: var(--breite); margin: 0 auto;
+  display: grid; gap: var(--r-6);
+}
+@media (min-width: 900px) {
+  .platz__innen { grid-template-columns: 1fr 1fr; gap: var(--r-7); align-items: start; }
+}
+.platz__text { color: var(--tinte-weich); margin-top: var(--r-4); max-width: 38ch; }
+
+/* Der Ruf ist kein Knopf. Ein gefuelltes Rechteck mit Versalien steht auf
+   jeder beliebigen Seite, und genau daran erkennt man Baukasten. Hier
+   wird die Nummer gesetzt: eine kleine Zeile darueber, die Nummer in der
+   Display-Schrift, ein Haarstrich darunter, der beim Zeigen waechst.   */
+.ruf { margin-top: var(--r-5); }
+.ruf__vor { color: var(--kognak); margin: 0 0 var(--r-2); }
+.ruf__nummer {
+  display: inline-block;
+  font-family: var(--display); font-size: var(--s-4);
+  line-height: 1.1; letter-spacing: -.02em;
+  position: relative; padding-bottom: .12em;
+}
+.ruf__nummer::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 2px; right: 0;
+  background: var(--kognak);
+  transform: scaleX(.26); transform-origin: left;
+  transition: transform var(--t-ruhig) var(--ease-aus);
+}
+.ruf__nummer:hover::after, .ruf__nummer:focus-visible::after { transform: scaleX(1); }
+.ruf__nach { margin: var(--r-3) 0 0; color: var(--tinte-weich); max-width: 34ch; }
+
+.formular { border-top: 1px solid var(--kerbe); padding-top: var(--r-4); }
+.formular__vor { color: var(--tinte-weich); margin-bottom: var(--r-3); }
+.feld { margin-bottom: var(--r-3); }
+.feld--halb { display: grid; gap: var(--r-3); grid-template-columns: 1fr 1fr; }
+.feld label {
+  display: block; margin-bottom: var(--r-1);
+  font-family: var(--label); font-size: var(--s--1);
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--tinte-weich);
+}
+.feld input, .feld textarea {
+  width: 100%; font: inherit; color: var(--tinte);
+  background: var(--sandstein-hell);
+  border: 1px solid var(--kerbe);
+  border-radius: 0;
+  padding: .7em .8em;
+  transition: border-color var(--t-ui) var(--ease-aus);
+}
+.feld input:focus, .feld textarea:focus { border-color: var(--kognak); }
+.formular__status { margin: var(--r-3) 0 0; color: var(--kognak); min-height: 1.6em; }
+
+/* ==========================================================================
+   Der Fuss
+   ========================================================================== */
+
+.fuss { background: var(--eiche-tief); color: var(--leinen); padding: var(--r-6) var(--rand) var(--r-4); }
+.fuss__innen {
+  max-width: var(--breite); margin: 0 auto;
+  display: grid; gap: var(--r-5);
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+}
+.fuss__marke { font-family: var(--display); font-size: var(--s-2); margin: 0 0 var(--r-2); }
+.fuss__marke span { font-size: 0.95rem; color: var(--leinen-weich); margin-left: .5em; }
+.fuss address { font-style: normal; color: var(--leinen-weich); line-height: 1.8; }
+.fuss__block .label { color: var(--kognak-hell); margin: 0 0 var(--r-2); }
+.fuss__block p { color: var(--leinen-weich); }
+.fuss__liste { list-style: none; margin: 0; padding: 0; line-height: 1.9; color: var(--leinen-weich); }
+.fuss a { text-decoration-color: var(--kerbe-hell); text-underline-offset: .25em; }
+.fuss a:hover { text-decoration-color: var(--kognak-hell); }
+.kolophon {
+  max-width: var(--breite); margin: var(--r-5) auto 0;
+  padding-top: var(--r-3); border-top: 1px solid var(--kerbe-fein);
+  color: var(--leinen-weich); font-size: var(--s--1);
+}
+
+/* ==========================================================================
+   Auftritte der Sektionen
+   Start- und Endzustand tragen beide die Containerklasse, sonst kann eine
+   spaetere Regel den Auftritt still abwuergen.
+   ========================================================================== */
+
+.auftritt > * {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity var(--t-ruhig) var(--ease-aus),
+              transform var(--t-ruhig) var(--ease-aus);
+}
+.auftritt.in > *          { opacity: 1; transform: none; }
+.auftritt.in > *:nth-child(2) { transition-delay: 90ms; }
+.auftritt.in > *:nth-child(3) { transition-delay: 180ms; }
+.auftritt.in > *:nth-child(4) { transition-delay: 270ms; }
+
+/* Nach dem Auftritt werden die Verzoegerungen zurueckgenommen, sonst
+   haengt jeder spaetere Hover um genau diese Staffelung hinterher.
+   Der Selektor muss die nth-child-Regeln in der Spezifitaet schlagen. */
+.auftritt.fertig > *:nth-child(n) { transition-delay: 0s !important; }
+
+/* ==========================================================================
+   Reduzierte Bewegung. Vollstaendig, auch auf Pseudoelementen.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  .auftritt > * { opacity: 1; transform: none; }
+  .grund::after { animation: none; }
+}
+
+/* ==========================================================================
+   Der Maeander
+   Das Band, das im Haus in die Trennwaende zwischen den Nischen
+   geschnitzt ist, laeuft hier am linken Rand mit und zeichnet sich beim
+   Scrollen selbst. Ein Knoten je Sektion. Eine Borduere wird daraus
+   ausdruecklich nicht: es ist eine einzige Linie, kein Muster.
+   ========================================================================== */
+
+.weg {
+  position: fixed; left: calc(var(--rand) * .42); top: 12vh;
+  width: 24px; height: 76vh; z-index: 3;
+  color: var(--kognak-hell);
+  opacity: 0;
+  transition: opacity var(--t-ruhig) var(--ease-aus);
+  pointer-events: none;
+  mix-blend-mode: normal;
+}
+body.kopf-hell .weg { opacity: .5; }
+
+#weg-linie {
+  stroke-dasharray: 1128;
+  stroke-dashoffset: calc(1128 - 1128 * var(--wp, 0));
+}
+#weg-knoten circle {
+  opacity: 0;
+  transition: opacity 260ms var(--ease-aus);
+}
+#weg-knoten circle.an { opacity: 1; }
+
+/* Auf schmalen Fenstern hat die Linie keinen Platz und wuerde in den
+   Text laufen. */
+@media (max-width: 1100px) { .weg { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  #weg-linie { stroke-dashoffset: 0; }
+  #weg-knoten circle { opacity: 1; }
+}
+
+/* ==========================================================================
+   Die Nebenseiten. Impressum, Datenschutz, 404.
+   Bewusst ruhig: hier wird gelesen, nicht gestaunt.
+   ========================================================================== */
+
+.blatt { padding: calc(var(--r-7) + 3rem) var(--rand) var(--r-6); }
+.blatt__innen { max-width: 42rem; margin: 0 auto; }
+.blatt h1 { font-size: var(--s-3); margin-bottom: var(--r-5); }
+.blatt h2 {
+  font-size: var(--s-1); margin: var(--r-5) 0 var(--r-2);
+  padding-bottom: var(--r-1); border-bottom: 1px solid var(--kerbe);
+}
+/* Diese Seiten stehen auf Eiche wie der Rest, also brauchen sie die
+   Textfarben fuer dunklen Grund. Hier stand zuerst --tinte-weich, der
+   Sekundaerton fuer Sandstein, und das ergab 1.75 zu 1: der Fliesstext
+   von Impressum und Datenschutz war praktisch unsichtbar. Ein Token aus
+   der falschen Haelfte der Palette, gemessen und korrigiert. */
+.blatt p, .blatt li { color: var(--leinen-weich); }     /* 8.35:1 auf Eiche */
+.blatt address { font-style: normal; line-height: 1.9; color: var(--leinen-weich); }
+.blatt a { text-underline-offset: .25em; text-decoration-color: var(--kerbe-hell); }
+.blatt a:hover { text-decoration-color: var(--kognak-hell); }
+.blatt ul { padding-left: 1.2em; }
+
+/* Der einzige helle Kasten auf diesen Seiten. Er braucht die Sandstein
+   Toene zurueck, sonst kippt es in die andere Richtung. */
+.platzhalter {
+  background: var(--sandstein-hell);
+  border-left: 2px solid var(--kognak);
+  padding: var(--r-3);
+  margin: var(--r-4) 0;
+  color: var(--tinte);
+}
+.platzhalter p, .platzhalter li { color: var(--tinte-weich); }   /* 8.48:1 auf Sandstein hell */
+.platzhalter .label { color: var(--kognak); display: block; margin-bottom: var(--r-1); }
+.zurueck { display: inline-block; margin-top: var(--r-5); }
+
+.fehler { min-height: 70svh; display: grid; place-items: center; text-align: center; padding: var(--rand); }
+.fehler h1 { font-size: var(--s-4); }
+.fehler p { margin-inline: auto; color: var(--leinen-weich); }
+.fehler .eyebrow { display: inline-block; }
+
+/* ==========================================================================
+   Der Ruf. Der Call to Action im Hero.
+
+   Vorher war das ein gefuelltes Rechteck mit Versalien darauf, also genau
+   die Form, die auf jeder beliebigen Seite steht und nach Baukasten
+   aussieht. In einer Welt aus Stein, Messing und einer Garamond gehoert
+   die Nummer gesetzt und nicht in einen Chip: kleine Messingzeile darueber,
+   die Nummer in der Display-Schrift, ein Haarstrich aus Messing darunter.
+   Der Strich waechst beim Zeigen, das ist die ganze Bewegung.
+   ========================================================================== */
+
+.rufcta {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--leinen);
+  padding: .1em 0 .42em;
+  position: relative;
+}
+.rufcta__label {
+  display: block;
+  color: var(--kognak-hell);
+  margin-bottom: .3em;
+}
+.rufcta__nummer {
+  display: block;
+  font-family: var(--display);
+  font-size: var(--s-3);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: .005em;
+  font-variant-numeric: lining-nums tabular-nums;
+  transition: transform var(--t-ui) var(--ease-aus);
+}
+/* Der Strich sitzt auf einem Pseudoelement, damit nur seine Hoehe und
+   nicht das Layout animiert wird. */
+.rufcta::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 1px; background: var(--kognak-hell);
+  transform-origin: left bottom;
+  transition: height var(--t-ui) var(--ease-aus),
+              background-color var(--t-ui) var(--ease-aus);
+}
+.rufcta:hover::after,
+.rufcta:focus-visible::after { height: 3px; background: var(--leinen); }
+.rufcta:hover .rufcta__nummer,
+.rufcta:focus-visible .rufcta__nummer { transform: translateY(-2px); }
+.rufcta:focus-visible { outline-offset: 6px; }
+
+/* Der Schatten der Baender wuerde die Nummer verschmieren. */
+.band .rufcta, .ruhehero .rufcta { text-shadow: var(--tschatten); }
+.band .rufcta__label, .ruhehero .rufcta__label { text-shadow: 0 1px 3px rgba(5,8,14,.9); }
+
+.ruhehero__cta { margin: var(--r-4) 0 0; }
+
+/* Auf groben Zeigern ist die Flaeche schon durch Zeile plus Nummer weit
+   ueber 44px hoch, es braucht keine Mindesthoehe, die das Layout kippt. */
+
+/* Solange das Bild der Steinraenge fehlt, laeuft die Sektion einspaltig.
+   Diese Regel faellt weg, sobald das Bild da ist. */
+@media (min-width: 900px) {
+  .name--ohnebild { grid-template-columns: 1fr; max-width: var(--breite-eng); margin-inline: auto; }
+}
