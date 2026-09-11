@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 """Erzeugt den Karten-Abschnitt aus daten/karte.json und setzt ihn in index.html
    zwischen die beiden Marken ein. Ohne Preise, so entschieden. Die Struktur
-   ist so gebaut, dass eine Preisspalte spaeter ohne Umbau dazukommt."""
+   ist so gebaut, dass eine Preisspalte spaeter ohne Umbau dazukommt.
+
+   Erzeugt wird ausserdem das Verzeichnis ueber der Karte. Neunzehn Gaenge
+   ohne Einstieg sind keine Karte, sondern eine Wand.
+
+   Der Hinweis zu den Beilagen stand frueher unter jedem Grillgang, also
+   fuenfmal derselbe Absatz mit 55 Woertern. Er steht jetzt einmal unter
+   der ganzen Karte. Gangeigene Hinweise bleiben bei ihrem Gang."""
 import json, re, html, sys, pathlib
 
 wurzel = pathlib.Path(__file__).resolve().parent.parent
@@ -26,10 +33,7 @@ def gang(g, art='speise'):
     z.append('  </ol>')
     fuss = g.get('fuss')
     if fuss == 'grill':
-        z.append('  <p class="gang__fuss">Bei Beilagenänderungen berechnen wir zusätzlich den '
-                 'Preis der gewünschten Beilage. Statt gemischtem Salat reichen wir zum Aufpreis '
-                 'von 3,00 Euro einen Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit '
-                 'Metaxasauce und Käse zum Aufpreis von 3,50 Euro.</p>')
+        pass   # steht einmal unter der ganzen Karte, siehe Kopfkommentar
     elif fuss:
         z.append(f'  <p class="gang__fuss">{e(fuss)}</p>')
     z.append('</section>')
@@ -53,7 +57,16 @@ for g in d['getraenke']:
 gt += ['  </div>', '</section>']
 teile.append('\n'.join(gt))
 
-block = '\n\n'.join(teile)
+# Das Verzeichnis. Steht ueber den Spalten und ist der Einstieg in
+# neunzehn Gaenge. Reine Anker, also auch ohne JavaScript brauchbar.
+namen = [(g['id'], g['titel']) for g in d['gruppen']] + [('getraenke', 'Getränke')]
+idx = ['<nav class="karte__index" aria-label="Die Gänge der Karte">',
+       '  <ul role="list">']
+for i, titel in namen:
+    idx.append(f'    <li><a class="label" href="#gang-{i}">{e(titel)}</a></li>')
+idx += ['  </ul>', '</nav>']
+
+block = '\n'.join(idx) + '\n\n' + '\n\n'.join(teile)
 anz = sum(len(g['gerichte']) for g in d['gruppen'])
 
 pfad = wurzel/'index.html'

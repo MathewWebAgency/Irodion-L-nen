@@ -184,7 +184,7 @@ verschoben.
 | 1 | 0.00–0.14 | Roggenmarkt am frühen Abend, Kopfsteinpflaster, Fachwerkgiebel, die cremefarbenen Schirme stehen im warmen Licht | Eyebrow `ΗΡΩΔΕΙΟ`, Zeile **„Benannt nach einem Theater in Athen."** | Annäherung aus der Tiefe, beim Laden einmalig gesetzt |
 | 2 | 0.17–0.34 | Unter die Schirme hindurch, an den eingedeckten Tischen vorbei auf die Tür zu, kalt wird warm | **„Gebaut in ein Fachwerkhaus in Lünen."** | Weich zu scharf, echot die Schwelle |
 | 3 | 0.38–0.56 | Durch die Tür, dunkle Balken, die geschnitzten Mäander der Trennwände ziehen seitlich durch | **„Seit 1983. Dieselbe Familie, dieselbe Adresse."** | Zeichen fahren seitlich ein, im Takt der durchziehenden Wand |
-| 4 | 0.60–0.78 | Tiefer im Raum, an der Theke vorbei, Kognakleder, Terrakotta, Gläser | **„Zweihundert Gerichte. Die Stammgäste sagen eine Zahl."** | Wortsprung mit Überschwingen auf „Zahl" |
+| 4 | 0.60–0.78 | Tiefer im Raum, an der Theke vorbei, Kognakleder, Terrakotta, Gläser | **„Über hundert Gerichte. Die Stammgäste sagen eine Zahl."** | Wortsprung mit Überschwingen auf „Zahl" |
 | 5 | 0.82–1.00 | Ankunft an einer freien Nische, gedeckt, die Fahrt kommt zur Ruhe | Schlagzeile **„Ihre Nische ist frei."** Subline „Roggenmarkt 19, Lünener Altstadt. Küche bis 22:00 Uhr." CTA **„Tisch reservieren: 02306 12864"** | Wörter steigen auf, dann Subline, dann der Ruf |
 
 Band 1 lässt die Einblend-Rampe weg, Band 5 die Ausblend-Rampe, damit die Reise gesetzt
@@ -252,15 +252,25 @@ Zeile darunter: „Vollständig, mit Nummern, so wie sie auf dem Tisch liegt."
 Alle Kategorien, gesetzt als ein einziges, identisch wiederholtes Bauteil, mit
 Nummer, Name und Beschreibung. **Ohne Preise, so entschieden.** Die Preise stehen auf
 der Karte im Haus, und solange sie nicht vom Betrieb bestätigt sind, steht lieber
-nichts da als eine Zahl, die nicht mehr stimmt. Dafür steht unter der Karte eine Zeile:
-„Die Preise stehen auf der Karte im Haus. Rufen Sie an, wenn Sie vorher etwas wissen wollen."
+nichts da als eine Zahl, die nicht mehr stimmt. Dafür steht die Zeile „Die Preise stehen auf der Karte im Haus. Rufen Sie an, wenn Sie
+vorher etwas wissen wollen." **über** der Karte und nicht darunter: Eine unerklärte
+Lücke liest sich als Verheimlichung, und dieses Urteil fällt in den ersten Sekunden,
+nicht nach sechzehntausend Pixeln.
+
+**Über den Gängen steht ein Verzeichnis**, neunzehn Anker in einer Zeile. Neunzehn
+Gänge ohne Einstieg sind keine Karte, sondern eine Wand. Die Gangköpfe bleiben beim
+Scrollen stehen, solange ihr Gang läuft.
+
 Die Kategorien:
 Warme Vorspeisen · Kalte Vorspeisen · Suppen · Salate · Beilagen · Saucen ·
 Vegetarische Gerichte · Vom Grill · Gemischtes vom Grill · Lamm und Rind vom Grill ·
 Platten für zwei oder vier Personen · Pfannengerichte · Hähnchen · Lamm aus dem Ofen ·
 Fischgerichte · Typisch griechisch · Für unsere kleinen Gäste bis 12 Jahre · Nachtisch ·
 Warme Getränke · Spirituosen · Alkoholfreie Getränke · Biere
-Dazu die drei Hinweise, die auf der echten Karte unter den Grillseiten stehen, wörtlich:
+Dazu die drei Hinweise, die auf der echten Karte unter den Grillseiten stehen, wörtlich,
+und zwar **einmal unter der ganzen Karte**, nicht unter jedem Grillgang. Auf dem Papier
+steht der Absatz fünfmal, weil jede Seite für sich lesbar sein muss. Auf einer Seite,
+die man am Stück scrollt, sind das fünfmal dieselben 55 Wörter:
 „Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage.
 Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat.
 Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro."

@@ -137,6 +137,22 @@
   });
 
   // Die drei Scrim-Ebenen. Jede folgt dem staerksten Band ihrer Seite.
+  /* Der Ruf in Band 5 liegt in einem Bereich mit aria-hidden und Deckkraft
+     null. Er stand trotzdem im Tabulatorlauf: Der Fokus sprang dorthin,
+     und auf dem Schirm war nichts zu sehen. Ein fokussierbares Element in
+     einem aria-hidden Teilbaum ist ausserdem ein Fehler nach WCAG 4.1.2.
+     Er wird jetzt erst erreichbar, wenn sein Band wirklich steht, und
+     faellt sofort wieder heraus. */
+  function rufSchalten(bi, sichtbar) {
+    var a = bi.el.querySelector('.rufcta');
+    if (!a) return;
+    var an = sichtbar ? '0' : '-1';
+    if (a.getAttribute('tabindex') === an) return;
+    a.setAttribute('tabindex', an);
+    bi.el.setAttribute('aria-hidden', sichtbar ? 'false' : 'true');
+    if (!sichtbar && document.activeElement === a) a.blur();
+  }
+
   var scrims = {
     links:  document.getElementById('scrim-links'),
     rechts: document.getElementById('scrim-rechts'),
@@ -172,6 +188,7 @@
       if (Math.abs(op - bi.op) > 0.004) {
         bi.op = op;
         bi.el.style.opacity = op.toFixed(3);
+        rufSchalten(bi, op > 0.9);
       }
       if (Math.abs(k - bi.k) > 0.008) {
         bi.k = k;
@@ -202,6 +219,16 @@
   var seekBesetzt = false;
   var seekOffen = null;
 
+  /* Das Seek-Gate muss beim Filmtausch aufgehen. Lief im Moment des
+     Drehens ein Seek, kommt sein seeked nie mehr, denn die Quelle ist
+     weg, und removeAttribute('src') feuert kein error. Ohne diesen
+     Ausgang bliebe das Gate fuer den Rest der Sitzung zu und das
+     Scrubbing stuende still. */
+  function seekGateLoesen() {
+    seekBesetzt = false;
+    seekOffen = null;
+  }
+
   function seekAnfordern(t) {
     if (!film.duration) return;
     if (seekBesetzt) { seekOffen = t; return; }
@@ -215,7 +242,9 @@
   // Der Ausgang aus der Klemme: ohne das bliebe das Gate nach einem
   // Fehler fuer immer besetzt und das Scrubbing stuende still.
   film.addEventListener('error', function () {
-    seekBesetzt = false; seekOffen = null; filmFehlt();
+    // Ein Fehler nach einem Tausch gehoert nicht dem neuen Film.
+    seekGateLoesen();
+    if (film.getAttribute('src')) filmFehlt();
   });
 
   /* ---------------------------------------------------------------------
@@ -274,6 +303,12 @@
      Das Standbild gewinnt das Rennen um die Bandbreite mit Absicht.
      --------------------------------------------------------------------- */
   var gestartet = false;
+  var blobUrl = null;     // muss freigegeben werden, sonst bleibt der Film im Speicher
+  var ladeLauf = 0;       // zaehlt jeden Start, damit eine alte Antwort nicht gewinnt
+
+  function blobFreigeben() {
+    if (blobUrl) { URL.revokeObjectURL(blobUrl); blobUrl = null; }
+  }
 
   function heroEinmalStarten() {
     if (gestartet) return;
@@ -294,8 +329,12 @@
     anstossen();
   }
 
+  var laufendeAbholung = null;
+
   function blobHolen() {
+    var meinLauf = ++ladeLauf;
     var ctrl = new AbortController();
+    laufendeAbholung = ctrl;
     var wachhund = setTimeout(function () { ctrl.abort(); }, 20000);
 
     return fetch(VIDEO_URL, { priority: 'low', signal: ctrl.signal }).then(function (res) {
@@ -316,6 +355,7 @@
           hab += r.value.length;
           var anteil = Math.min(1, hab / gesamt);
           var jetzt = performance.now();
+          if (meinLauf !== ladeLauf) { ctrl.abort(); return; }
           if (jetzt - letzterRing > 100 || anteil === 1) {
             letzterRing = jetzt;
             ring.style.setProperty('--ld', Math.round(126 * (1 - anteil)));
@@ -326,8 +366,16 @@
 
       return weiter().then(function () {
         clearTimeout(wachhund);
+        /* Wer zu spaet kommt, spielt nicht mehr mit. Dreht jemand das
+           Geraet mitten im Laden, laufen beide Abrufe weiter, und ohne
+           diese Sperre wuerde die alte Antwort die neue ueberschreiben:
+           Querformat-Material im Hochformat, hart beschnitten, und die
+           Baender stehen ueber Bildern, fuer die sie nie getaktet sind. */
+        if (meinLauf !== ladeLauf) return;
         ring.style.setProperty('--ld', 0);
-        film.src = URL.createObjectURL(new Blob(teile, { type: 'video/mp4' }));
+        blobFreigeben();
+        blobUrl = URL.createObjectURL(new Blob(teile, { type: 'video/mp4' }));
+        film.src = blobUrl;
         film.load();
         film.addEventListener('canplay', function () {
           seekAnfordern(fortschritt() * film.duration);
@@ -338,6 +386,7 @@
   }
 
   function filmFehlt() {
+    blobFreigeben();
     // Kein steckengebliebener Ring, sondern ein ehrlicher Scrollhinweis.
     // Die Seite bleibt vollstaendig, das Standbild traegt die ganze Reise.
     buehne.classList.add('film-aus');
@@ -391,9 +440,14 @@
     POSTER_URL = istHoch ? 'assets/video/hero-hoch-poster.jpg' : 'assets/video/hero-poster.jpg';
     VIDEO_BYTES = istHoch ? 2373118 : 8563669;
     if (!scrubAn) return;
+    ladeLauf++;                                   // alles Laufende wird ungueltig
+    if (laufendeAbholung) laufendeAbholung.abort();
+    seekGateLoesen();
     gestartet = false;
     buehne.classList.remove('film-bereit', 'film-aus');
     film.removeAttribute('src');
+    film.load();                                  // sonst puffert die alte Quelle weiter
+    blobFreigeben();
     heroEinmalStarten();
   }
   if (hochMQ.addEventListener) hochMQ.addEventListener('change', formatWechsel);

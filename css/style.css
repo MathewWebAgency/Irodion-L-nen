@@ -31,6 +31,10 @@
   to   { transform: translate3d(1.5%, 1.4%, 0) scale(1.06); }
 }
 
+/* Der Kopf steht fest und ist rund 77px hoch. Ohne diesen Rand parkt
+   jeder Ankersprung die Ueberschrift samt Eyebrow darunter. */
+section[id], .gang { scroll-margin-top: 7rem; }
+
 /* --- Die hellen Sektionen ------------------------------------------------
    Sie sitzen als Blatt im dunklen Raum. Kein Schatten, keine runde Ecke:
    das Blatt ist durch seine Flaeche da, nicht durch einen Rahmen.      */
@@ -134,9 +138,58 @@ body.kopf-hell .kopf { text-shadow: none; }
 
 .kopf__tel { white-space: nowrap; color: var(--kognak-hell); }
 
+/* Die Auskunft, die hier am meisten gesucht wird: ob heute offen ist.
+   Gesetzt aus main.js, aus demselben Wochentag, der die Tabelle markiert. */
+.kopf__heute {
+  color: var(--leinen-weich);
+  margin: 0 0 0 var(--r-3);
+  white-space: nowrap;
+  font-size: 0.72rem;
+  padding-left: var(--r-3);
+  border-left: 1px solid var(--kerbe-fein);
+}
+.kopf__heute[data-zu] { color: var(--kognak-hell); }
+
 @media (max-width: 860px) {
-  .kopf__liste { display: none; }
+  /* Die Liste bleibt, sie wandert nur in eine eigene Zeile unter die
+     Marke und darf dort seitlich geschoben werden. Sie zu verstecken
+     hiesse, das Handy ohne Weg zur Karte zu lassen. */
+  .kopf {
+    flex-wrap: wrap;
+    row-gap: var(--r-2);
+    padding-bottom: var(--r-2);
+  }
   .kopf__tel { margin-left: auto; }
+  .kopf__heute { order: 3; flex: 0 0 auto; }
+  .kopf__liste {
+    order: 4;
+    flex: 1 0 100%;
+    margin: 0;
+    gap: var(--r-3);
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .kopf__liste::-webkit-scrollbar { display: none; }
+  .kopf__liste li { flex: 0 0 auto; }
+
+  /* Der Kopf traegt am Handy jetzt eine zweite Zeile. Damit er dafuer
+     nicht ein Siebtel des Schirms frisst, wird oben gespart: weniger
+     Rand, kleinere Marke. Unterm Strich kostet die Navigation so rund
+     vierzig Pixel, und dafuer gibt es ueberhaupt einen Weg zur Karte. */
+  .kopf { padding-block: var(--r-2); }
+  .kopf__name { font-size: var(--s-0); }
+  .kopf__gr { font-size: 0.7rem; }
+}
+@media (max-width: 860px) and (pointer: coarse) {
+  .kopf__liste a { padding-block: 14px; }   /* bringt die Flaeche auf 44px */
+  .kopf__marke { min-height: 44px; align-items: center; padding-block: 0; }
+}
+@media (max-width: 860px) and (pointer: fine) {
+  .kopf__liste a { padding-block: .45em; }
+}
+@media (max-width: 420px) {
+  .kopf__heute { display: none; }   /* neben der Nummer wird es zu eng */
 }
 
 /* ==========================================================================
@@ -578,7 +631,11 @@ body.kopf-hell .kopf { text-shadow: none; }
 }
 /* Vorher --tinte-weich mit opacity .45, das komponiert zu rund 2.1 zu 1.
    Ein Platzhalter darf leiser sein als der Eingabewert, aber lesbar. */
-.feldnr__eingabe::placeholder { color: var(--tinte-weich); opacity: 1; }
+.feldnr__eingabe::placeholder {
+  color: var(--tinte-weich); opacity: 1;
+  font-style: normal; font-weight: 300;
+  letter-spacing: .18em;   /* liest sich als Hinweis, nicht als Eingabe */
+}
 .feldnr__eingabe:focus { border-color: var(--kognak); }
 .feldnr .knopf { align-self: stretch; }
 
@@ -612,21 +669,65 @@ body.kopf-hell .kopf { text-shadow: none; }
 .karte__kopf { max-width: var(--breite); margin: 0 auto var(--r-6); }
 .karte__lead { color: var(--tinte-weich); max-width: 46ch; }
 
+/* Das Verzeichnis. Neunzehn Gaenge ohne Einstieg sind keine Karte,
+   sondern eine Wand. Reine Anker, also auch ohne JavaScript brauchbar. */
+.karte__index {
+  max-width: var(--breite); margin: 0 auto var(--r-6);
+  padding-bottom: var(--r-4);
+  border-bottom: 1px solid var(--kerbe);
+}
+.karte__index ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: var(--r-2);
+}
+.karte__index a {
+  display: inline-block;
+  padding: .5em .8em;
+  text-transform: none;
+  letter-spacing: .02em;
+  font-size: var(--s--1);
+  border: 1px solid var(--kerbe);
+  color: var(--tinte);
+  text-decoration: none;
+  transition: background var(--t-ui) var(--ease-aus), color var(--t-ui) var(--ease-aus);
+}
+.karte__index a:hover { background: var(--tinte); color: var(--sandstein-hell); }
+@media (pointer: coarse) { .karte__index a { min-height: 44px; display: inline-flex; align-items: center; } }
+
+/* Die Karte lief zuerst in CSS-Spalten. Das war der schwerste Fehler in
+   diesem Projekt, und er sah auf dem Bildschirm gut aus: Spalten fuellen
+   sich von oben nach unten, also lief Spalte eins ueber zehn Bildschirme
+   nach unten und Spalte zwei daneben noch einmal ueber zehn. Wer den
+   Fisch, das Kindergericht oder den Nachtisch sehen wollte, musste zehn
+   Bildschirme zurueck nach oben. Niemand tut das. Die Karte gab also vor,
+   vollstaendig zu sein, und war in der Leserichtung halbiert.
+
+   Ein Raster fuellt dagegen zeilenweise: jede Reihe ist fertig, bevor die
+   naechste beginnt, und die Leserichtung laeuft von links nach rechts. */
 .karte__spalten {
   max-width: var(--breite); margin: 0 auto;
-  columns: 1; column-gap: var(--r-6);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
+  gap: var(--r-6) var(--r-6);
+  align-items: start;
 }
-@media (min-width: 760px)  { .karte__spalten { columns: 2; } }
-@media (min-width: 1180px) { .karte__spalten { columns: 3; } }
 
-.gang { break-inside: avoid; margin: 0 0 var(--r-5); }
+.gang { margin: 0; min-width: 0; }
+
+/* Der Gangkopf bleibt stehen, solange sein Gang laeuft. Nach drei
+   Bildschirmen Liste weiss sonst niemand mehr, ob er noch in den
+   Pfannengerichten ist oder schon beim Haehnchen. */
 .gang__titel {
   font-size: var(--s-1);
   color: var(--kognak);
   margin: 0 0 var(--r-3);
-  padding-bottom: var(--r-1);
+  padding: var(--r-2) 0 var(--r-1);
   border-bottom: 1px solid var(--kerbe);
+  position: sticky; top: 4.4rem;
+  background: var(--sandstein);
+  z-index: 1;
 }
+@media (prefers-reduced-motion: reduce) { .gang__titel { position: static; } }
 .gang__liste { list-style: none; margin: 0; padding: 0; }
 
 /* Ein Gericht. Nummer links in der Monospace, Name darueber gesetzt,
@@ -643,6 +744,7 @@ body.kopf-hell .kopf { text-shadow: none; }
 .gang__liste .gericht:last-child { border-bottom: 0; }
 .gericht__nr {
   grid-row: 1 / span 2;
+  text-transform: none;   /* die Karte kennt 28a, nicht 28A */
   color: var(--tinte-weich);
   font-size: var(--s--1);
   letter-spacing: .02em;
@@ -680,14 +782,14 @@ body.kopf-hell .kopf { text-shadow: none; }
 .getraenke ul { list-style: none; margin: 0; padding: 0; color: var(--tinte-weich); }
 .getraenke li { padding: .2em 0; }
 
-.karte__preise {
+.karte__noten {
   max-width: var(--breite); margin: var(--r-6) auto 0;
-  font-family: var(--display); font-size: var(--s-1);
-  max-width: 44ch;
+  padding-top: var(--r-4);
+  border-top: 1px solid var(--kerbe);
 }
-.karte__allergie {
-  max-width: 60ch; margin: var(--r-3) auto 0;
-  color: var(--tinte-weich); font-size: var(--s--1);
+.karte__noten p {
+  max-width: 62ch; color: var(--tinte-weich);
+  font-size: var(--s--1); line-height: 1.55;
 }
 
 /* ==========================================================================
@@ -747,6 +849,11 @@ body.kopf-hell .kopf { text-shadow: none; }
    wird er gekerbt und nicht nur anders eingefaerbt.                    */
 .woche__ruhe th, .woche__ruhe td { color: var(--kognak-hell); }
 .woche__ruhe th { position: relative; }
+.woche__ruhe th::after {
+  content: ""; position: absolute; left: 0; right: -.6em; top: 50%;
+  height: 1px; background: var(--kognak-hell); opacity: .55;
+}
+.woche__ruhe[data-heute] th::after { left: 1.4em; }
 .woche__ruhe td { letter-spacing: var(--tr-label); text-transform: uppercase; }  /* ein Wort, das darf */
 
 .woche tr[data-heute] th, .woche tr[data-heute] td { color: var(--leinen); }
@@ -959,7 +1066,7 @@ body.kopf-hell .weg { opacity: .5; }
 .fehler { min-height: 70svh; display: grid; place-items: center; text-align: center; padding: var(--rand); }
 .fehler h1 { font-size: var(--s-4); }
 .fehler p { margin-inline: auto; color: var(--leinen-weich); }
-.fehler .eyebrow { display: inline-block; }
+.fehler__code { color: var(--kognak-hell); margin-bottom: var(--r-2); }
 
 /* ==========================================================================
    Der Ruf. Der Call to Action im Hero.

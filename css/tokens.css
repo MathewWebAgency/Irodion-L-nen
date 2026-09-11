@@ -101,7 +101,10 @@ html {
   overflow-x: hidden;
   overflow-x: clip;
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
+  /* Kein scroll-behavior: smooth auf html. Das Dokument ist rund
+     20000 Pixel hoch, und eine weiche Fahrt ueber fuenfzehn Bildschirme
+     Karte ist keine Animation mehr, sondern eine Geiselnahme. main.js
+     entscheidet je Sprung nach Distanz: nah weich, weit sofort. */
 }
 
 body {
@@ -117,10 +120,6 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   hyphens: auto;              /* deutsche Komposita, mit lang="de"      */
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
 }
 
 h1, h2, h3 {

@@ -63,6 +63,7 @@
     <li><a href="#zeiten">Zeiten</a></li>
   </ul>
   <a class="kopf__tel tel label" href="tel:+49230612864">02306 12864</a>
+  <p class="kopf__heute label" id="kopf-heute" hidden></p>
 </nav>
 
 <main id="main" tabindex="-1">
@@ -125,7 +126,7 @@
       </div>
 
       <div class="band band--rechts" data-a="0.60" data-b="0.78" data-auftritt="schlag">
-        <p class="band__zeile">Zweihundert Gerichte. Die Stammgäste sagen eine <span class="em">Zahl.</span></p>
+        <p class="band__zeile">Über hundert Gerichte. Die Stammgäste sagen eine <span class="em">Zahl.</span></p>
         <p class="band__klein">Man sagt nicht Rhodos Teller. Man sagt die 47.</p>
       </div>
 
@@ -133,7 +134,7 @@
         <p class="band__zeile band__zeile--gross">Ihre Nische ist frei.</p>
         <p class="band__sub">Roggenmarkt 19, Lünener Altstadt. Küche bis 22:00 Uhr.</p>
         <p class="band__cta">
-          <a class="rufcta" href="tel:+49230612864">
+          <a class="rufcta" href="tel:+49230612864" tabindex="-1">
             <span class="rufcta__label label">Tisch reservieren</span>
             <span class="rufcta__nummer">02306 12864</span>
           </a>
@@ -261,11 +262,37 @@
 <section class="karte auf-sandstein" id="karte" aria-labelledby="karte-titel">
   <div class="karte__kopf">
     <h2 id="karte-titel" class="gross">Die ganze Karte. Kein Download.</h2>
-    <p class="karte__lead">Vollständig, mit Nummern, so wie sie auf dem Tisch liegt.</p>
+    <p class="karte__lead">Vollständig, mit Nummern, so wie sie auf dem Tisch liegt.
+    Die Preise stehen auf der Karte im Haus. Rufen Sie an, wenn Sie vorher etwas
+    wissen wollen.</p>
   </div>
 
   <div class="karte__spalten">
 <!-- KARTE ANFANG -->
+<nav class="karte__index" aria-label="Die Gänge der Karte">
+  <ul role="list">
+    <li><a class="label" href="#gang-warme-vorspeisen">Warme Vorspeisen</a></li>
+    <li><a class="label" href="#gang-kalte-vorspeisen">Kalte Vorspeisen</a></li>
+    <li><a class="label" href="#gang-suppen">Suppen</a></li>
+    <li><a class="label" href="#gang-salate">Salate</a></li>
+    <li><a class="label" href="#gang-vegetarisch">Vegetarische Gerichte</a></li>
+    <li><a class="label" href="#gang-vom-grill">Vom Grill</a></li>
+    <li><a class="label" href="#gang-gemischtes">Gemischtes vom Grill</a></li>
+    <li><a class="label" href="#gang-lamm-rind">Lamm und Rind vom Grill</a></li>
+    <li><a class="label" href="#gang-platten">Platten für zwei oder vier Personen</a></li>
+    <li><a class="label" href="#gang-pfanne">Pfannengerichte</a></li>
+    <li><a class="label" href="#gang-haehnchen">Hähnchen</a></li>
+    <li><a class="label" href="#gang-lamm-ofen">Lamm aus dem Ofen</a></li>
+    <li><a class="label" href="#gang-fisch">Fischgerichte</a></li>
+    <li><a class="label" href="#gang-typisch">Typisch griechisch</a></li>
+    <li><a class="label" href="#gang-kleine-gaeste">Für unsere kleinen Gäste bis 12 Jahre</a></li>
+    <li><a class="label" href="#gang-beilagen">Beilagen</a></li>
+    <li><a class="label" href="#gang-saucen">Saucen</a></li>
+    <li><a class="label" href="#gang-nachtisch">Nachtisch</a></li>
+    <li><a class="label" href="#gang-getraenke">Getränke</a></li>
+  </ul>
+</nav>
+
 <section class="gang" id="gang-warme-vorspeisen" aria-labelledby="gt-warme-vorspeisen">
   <h3 class="gang__titel" id="gt-warme-vorspeisen">Warme Vorspeisen</h3>
   <ol class="gang__liste" role="list">
@@ -576,7 +603,6 @@
       <span class="gericht__text">mit Käse und Tomaten, dazu Pommes oder Reis und gemischter Salat</span>
     </li>
   </ol>
-  <p class="gang__fuss">Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage. Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro.</p>
 </section>
 
 <section class="gang" id="gang-gemischtes" aria-labelledby="gt-gemischtes">
@@ -673,7 +699,6 @@
       <span class="gericht__text">ein Filetspieß, Gyros, ein Bifteki, ein Lammkotelett, dazu Pommes oder Reis und gemischter Salat</span>
     </li>
   </ol>
-  <p class="gang__fuss">Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage. Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro.</p>
 </section>
 
 <section class="gang" id="gang-lamm-rind" aria-labelledby="gt-lamm-rind">
@@ -705,7 +730,6 @@
       <span class="gericht__text">dazu grüne Bohnen, Pommes und gemischter Salat</span>
     </li>
   </ol>
-  <p class="gang__fuss">Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage. Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro.</p>
 </section>
 
 <section class="gang" id="gang-platten" aria-labelledby="gt-platten">
@@ -727,7 +751,6 @@
       <span class="gericht__text">vier Lammkoteletts, vier Suvlaki, vier Schweineleberstreifen, vier Bifteki, Gyros, dazu Pommes oder Reis und gemischter Salat</span>
     </li>
   </ol>
-  <p class="gang__fuss">Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage. Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro.</p>
 </section>
 
 <section class="gang" id="gang-pfanne" aria-labelledby="gt-pfanne">
@@ -750,7 +773,6 @@
       <span class="gericht__text">Hähnchenbrustfilet, dazu Metaxasauce oder Champignonsauce, dazu Pommes oder Reis und gemischter Salat</span>
     </li>
   </ol>
-  <p class="gang__fuss">Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage. Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro.</p>
 </section>
 
 <section class="gang" id="gang-lamm-ofen" aria-labelledby="gt-lamm-ofen">
@@ -1083,11 +1105,14 @@
 <!-- KARTE ENDE -->
   </div>
 
-  <p class="karte__preise">Die Preise stehen auf der Karte im Haus. Rufen Sie an, wenn
-  Sie vorher etwas wissen wollen.</p>
-  <p class="karte__allergie">Sollten Sie von Allergien betroffen sein, melden Sie sich
-  bitte. Unsere separate Allergiekarte gibt Ihnen Auskunft über die in den Speisen
-  enthaltenen Zutaten.</p>
+  <div class="karte__noten">
+    <p>Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten
+    Beilage. Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen
+    Bauernsalat. Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum
+    Aufpreis von 3,50 Euro.</p>
+    <p>Sollten Sie von Allergien betroffen sein, melden Sie sich bitte. Unsere separate
+    Allergiekarte gibt Ihnen Auskunft über die in den Speisen enthaltenen Zutaten.</p>
+  </div>
 </section>
 
 

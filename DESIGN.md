@@ -82,6 +82,58 @@ Display-Grade bewusst abgelehnt.** Bei 54 Pixeln ist 1.12 richtiger Satz und 1.5
 eine auseinanderfallende Schlagzeile. Die Regel zielt auf Fließtext, und der liegt hier
 durchgehend bei 1.62, also mitten in dem Bereich, den dieselbe Regel empfiehlt.
 
+## Die Karte
+
+**Die Karte lief zuerst in CSS-Spalten, und das war der schwerste Fehler in diesem
+Projekt.** Er sah auf dem Bildschirm gut aus. Spalten füllen sich von oben nach unten,
+also lief Spalte eins über zehn Bildschirme nach unten und Spalte zwei daneben noch
+einmal über zehn. Wer den Fisch, das Kindergericht oder den Nachtisch sehen wollte,
+musste zehn Bildschirme zurück nach oben. Niemand tut das. Die Karte versprach
+„Die ganze Karte. Kein Download." und war in der Leserichtung halbiert.
+
+Sie läuft jetzt als Raster, `repeat(auto-fill, minmax(21rem, 1fr))`. Ein Raster füllt
+zeilenweise: Jede Reihe ist fertig, bevor die nächste beginnt, die Leserichtung läuft
+von links nach rechts, und „Vom Grill" steht wieder neben „Lamm und Rind vom Grill".
+
+Dazu drei Dinge, die eine Liste von 132 Positionen erst benutzbar machen:
+
+- **Ein Verzeichnis über den Gängen.** Neunzehn Anker als Zeile, reine `href="#gang-…"`,
+  also auch ohne JavaScript brauchbar.
+- **Stehende Gangköpfe.** `position: sticky` unter dem festen Kopf. Nach drei
+  Bildschirmen Liste weiß sonst niemand mehr, ob er noch in den Pfannengerichten ist.
+  Bei reduzierter Bewegung steht der Kopf still.
+- **Der Beilagenhinweis genau einmal.** Auf dem Papier steht er fünfmal, weil jede
+  Seite für sich lesbar sein muss. Auf einer Seite, die man am Stück scrollt, wären das
+  fünfmal dieselben 55 Wörter.
+
+## Der Kopf
+
+Der Kopf trug am Handy unter 860px **gar keine Navigation**. Damit hatte genau das
+Gerät, auf dem die meisten Gäste die Seite öffnen, keinen Weg zur Karte und keinen zu
+den Zeiten, und beides waren die recherchierten Schmerzen.
+
+Die Liste bleibt jetzt und wandert in eine zweite Zeile unter die Marke. Das kostet
+rund vierzig Pixel, und dafür wird oben gespart: weniger Rand, kleinere Marke. Gemessen
+100px bei 375px Breite, also 12,4 Prozent des Schirms.
+
+Daneben steht **die Auskunft, die auf dieser Seite am meisten gesucht wird**: ob heute
+offen ist. Gerechnet aus demselben Wochentag, der die Wochentabelle markiert. Feiertage
+kennt der Browser nicht, deshalb steht der Vorbehalt im `title` und nicht als Behauptung
+in der Zeile.
+
+## Scrollen und Sprünge
+
+Auf `html` stand `scroll-behavior: smooth`. Über ein Dokument von rund 20000 Pixeln ist
+das keine Animation mehr: Ein Klick auf „Zeiten" fährt durch fünfzehn Bildschirme Karte,
+und jede Radbewegung unterwegs bricht ab und lässt den Leser irgendwo dazwischen stehen.
+
+Die Entscheidung fällt jetzt je Sprung in `main.js`: **bis drei Bildschirme weich,
+darüber sofort**, bei reduzierter Bewegung immer sofort. Der Fokus zieht mit, damit
+Tastatur und Vorlesen nicht oben stehen bleiben.
+
+Dazu `scroll-margin-top: 7rem` auf jedem `section[id]` und jedem `.gang`. Ohne das
+parkt jeder Ankersprung die Überschrift samt Eyebrow unter dem 77px hohen festen Kopf.
+
 ## Der Mäander
 
 In die hölzernen Trennwände zwischen den Nischen ist ein Mäanderband geschnitzt. Es ist
@@ -185,6 +237,7 @@ der Fuß nicht auseinandergeht. Nach der Korrektur: **null Elemente unter 44 Pix
 | Elemente unter 12px Schriftgröße | keine |
 | Tap-Ziele unter 44px bei grobem Zeiger | keine |
 | Konsolenfehler | keine |
+| Kopfhöhe am Handy | 100px, 12,4 Prozent des Schirms |
 | Farbpaarungen gegen WCAG AA | 16 von 16 bestehen |
 
 ## Was ausdrücklich nicht vorkommt

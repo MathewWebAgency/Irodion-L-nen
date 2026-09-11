@@ -65,6 +65,36 @@
   document.body.classList.toggle('pausiert', document.hidden);
 
   /* ---------------------------------------------------------------------
+     Ankersprünge. Auf html stand weiches Scrollen, und über ein Dokument
+     von rund 20000 Pixeln ist das keine Animation mehr: Ein Klick auf
+     "Zeiten" fährt durch fünfzehn Bildschirme Karte, und jede Radbewegung
+     unterwegs bricht ab und lässt den Leser irgendwo dazwischen stehen.
+     Also wird je Sprung entschieden: bis drei Bildschirme weich, darüber
+     sofort. Bei reduzierter Bewegung immer sofort.
+     --------------------------------------------------------------------- */
+  function springen(e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    var ziel = document.getElementById(id);
+    if (!ziel) return;
+    e.preventDefault();
+    var weit = Math.abs(ziel.getBoundingClientRect().top) > window.innerHeight * 3;
+    ziel.scrollIntoView({
+      behavior: (reduziert.matches || weit) ? 'auto' : 'smooth',
+      block: 'start'
+    });
+    // Die Adresse soll den Sprung trotzdem behalten, ohne ein zweites Mal
+    // zu scrollen. Deshalb ersetzen statt setzen.
+    history.replaceState(null, '', '#' + id);
+    // Tastatur und Vorlesen sollen mitkommen, nicht oben stehen bleiben.
+    if (!ziel.hasAttribute('tabindex')) ziel.setAttribute('tabindex', '-1');
+    ziel.focus({ preventScroll: true });
+  }
+  document.addEventListener('click', springen);
+
+  /* ---------------------------------------------------------------------
      Der heutige Tag in der Wochentabelle.
      Die Marke ist ein eigener Strich und nicht nur eine Farbe, damit sie
      auch ohne Farbwahrnehmung ankommt.
@@ -80,6 +110,27 @@
       hinweis.textContent = ' (heute)';
       th.appendChild(hinweis);
     }
+  }
+
+  /* ---------------------------------------------------------------------
+     Die Zeile im Kopf, die sagt, ob heute offen ist.
+     Der Mittwoch ist der meistgesuchte Punkt dieser Seite, und die Antwort
+     lag bisher bei neunundachtzig Prozent der Scrollstrecke. Sie steht
+     jetzt oben, gerechnet aus demselben Wochentag wie die Tabelle.
+     Feiertage kennt der Browser nicht, deshalb steht der Vorbehalt in der
+     Zeile selbst, statt eine Auskunft zu geben, die falsch sein kann.
+     --------------------------------------------------------------------- */
+  var heuteZeile = document.getElementById('kopf-heute');
+  if (heuteZeile) {
+    if (heute === 3) {
+      heuteZeile.textContent = 'Heute Ruhetag';
+      heuteZeile.title = 'Mittwoch ist Ruhetag, außer an Feiertagen';
+      heuteZeile.setAttribute('data-zu', '');
+    } else {
+      heuteZeile.textContent = 'Heute geöffnet';
+      heuteZeile.title = '11:30 bis 14:30 und 17:00 bis 22:30 Uhr';
+    }
+    heuteZeile.hidden = false;
   }
 
   /* ---------------------------------------------------------------------
@@ -154,9 +205,19 @@
         nrText.textContent = 'Die ' + nr + ' ist ' + name(g) + '.';
       }
 
+      // Ein Treffer, der stehen bleibt, während die Meldung schon etwas
+      // anderes sagt, zeigt auf ein Gericht, das niemand gesucht hat.
+      function markeLoeschen() {
+        if (letzterTreffer) {
+          letzterTreffer.classList.remove('getroffen');
+          letzterTreffer = null;
+        }
+      }
+
       function suchen(roh) {
         var wert = (roh || '').replace(/[^0-9a-zA-Z]/g, '').toLowerCase();
         if (!wert) {
+          markeLoeschen();
           nrText.setAttribute('data-art', 'leer');
           nrText.textContent = 'Tippen Sie eine Nummer zwischen 1 und 1005 ein.';
           return;
@@ -167,6 +228,7 @@
            die es wirklich gibt. Bei 42 kommt also die 41 oder die 43. */
         var zahl = parseInt(wert, 10);
         if (isNaN(zahl)) {
+          markeLoeschen();
           nrText.setAttribute('data-art', 'leer');
           nrText.textContent = 'Das ist keine Nummer. Auf der Karte stehen Zahlen von 1 bis 1005.';
           return;
@@ -177,6 +239,20 @@
           if (d < abstand) { abstand = d; beste = zahlen[i]; }
         }
         if (!beste) return;
+
+        /* Die Nachbarschaft braucht eine Grenze. Bei der 42 ist die 41 ein
+           hilfreicher Hinweis. Bei der 500 wäre es die 293, also 207
+           daneben, und die Seite würde fünftausend Pixel weit springen,
+           um etwas zu zeigen, das niemand gemeint hat. Die Zahlenreihe
+           der Karte hat Lücken, das ist die ehrlichere Auskunft. */
+        if (abstand > 20) {
+          markeLoeschen();
+          nrText.setAttribute('data-art', 'leer');
+          nrText.textContent = 'Die ' + wert + ' gibt es nicht. Die Karte geht bis 1005, '
+                             + 'aber nicht lückenlos. Probieren Sie eine kleinere Zahl.';
+          return;
+        }
+
         var g = verzeichnis[beste.nr];
         hinfuehren(g, beste.nr);
         nrText.textContent = 'Die ' + wert + ' gibt es nicht. Am nächsten dran ist die '
