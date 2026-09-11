@@ -235,7 +235,8 @@ Kopf: **„Ein Haus, eine Familie, vier Umbauten."**
 Text: „1983 haben wir hier aufgemacht, im Fachwerkhaus am Roggenmarkt. Die Adresse hat
 sich seitdem nicht geändert, nur das Haus ist mitgewachsen. Viermal haben wir angefasst,
 was nötig war, und die Nischen stehen immer noch da, wo sie immer standen. Wer öfter
-kommt, den begrüßen wir beim Namen."
+kommt, den begrüßen wir beim Namen. Und wer zum ersten Mal kommt, bekommt dieselbe
+Nische und dieselbe Begrüßung wie alle anderen: Kalós ílthate, schön, dass Sie da sind."
 Eine Zeitleiste als Mäander-Knoten, vier Stationen mit je einer Zeile:
 `1983` eröffnet · `1990` umgebaut · `2009` modernisiert · `2017` erweitert
 Das ist der Vektorplan-Moment dieser Sektion, kein Icon-Set.
@@ -243,8 +244,9 @@ Das ist der Vektorplan-Moment dieser Sektion, kein Icon-Set.
 ### 8.4 Sagen Sie einfach die Nummer
 Kopf: **„Die Stammgäste bestellen mit einer Zahl."**
 Text: „Unsere Karte ist durchnummeriert, von der 1 bis zur 1005. Wer öfter bei uns
-sitzt, bestellt keinen Rhodos Teller, sondern die 47, und wir wissen Bescheid. Tippen
-Sie eine Nummer ein, dann zeigen wir Ihnen, was dahintersteckt."
+sitzt, bestellt keinen Rhodos Teller, sondern die 47, und wir wissen Bescheid. Sie müssen das
+natürlich nicht. Tippen Sie einfach eine Nummer ein, dann zeigen wir Ihnen, was
+dahintersteckt."
 Darunter das Nummernfeld aus Abschnitt 5.
 
 ### 8.5 Die Karte
@@ -289,14 +291,15 @@ dass eine Preisspalte später ohne Umbau dazukommen kann.
 ### 8.6 Wenn Sie mehr werden
 Kopf: **„Wenn Sie mehr werden, haben wir Platz."**
 Text: „2017 haben wir dafür angebaut. Seitdem teilen wir den Raum so, wie Sie ihn
-brauchen: mehrere kleine Runden oder eine lange Tafel. Sagen Sie uns am Telefon, wie
-viele Sie sind und was gefeiert wird, den Rest stellen wir."
+brauchen: mehrere kleine Runden oder eine lange Tafel. Ob Geburtstag, Taufe oder
+Firmenessen, sagen Sie uns am Telefon, wie viele Sie sind und was gefeiert wird. Den
+Rest stellen wir, und Sie kommen einfach."
 
 ### 8.7 Draußen in der Altstadt
 Kopf: **„Bei gutem Wetter sitzen Sie draußen."**
 Text: „Dann stellen wir die Schirme raus, auf das Kopfsteinpflaster am Roggenmarkt,
-zwischen die Fachwerkgiebel. Und wer lieber zu Hause isst: Rufen Sie vorher an, dann
-steht es fertig da, wenn Sie kommen."
+zwischen die Fachwerkgiebel. Ein guter Platz für einen langen Sommerabend. Und wer
+lieber zu Hause isst: Rufen Sie vorher an, dann steht alles fertig da, wenn Sie kommen."
 Das ist die Stelle, an der die Mitnahme genannt wird, und sie heißt Mitnahme.
 
 ### 8.8 Wann die Küche an ist
@@ -391,6 +394,17 @@ beim Namen begrüßt", sondern „wer öfter kommt, den begrüßen wir beim Name
 Der Unterschied ist nicht Kosmetik. Die dritte Person beschreibt einen Betrieb von
 außen, so wie ein Branchenverzeichnis. Die erste Person ist jemand, der einem
 gegenübersteht, und genau das ist dieses Haus seit 1983.
+
+**Der Ton ist herzlich, und zwar durch Konkretes.** Wärme entsteht nicht aus
+Adjektiven, sondern aus einem Angebot und aus Sätzen, die jemand wirklich sagen würde.
+Also nicht „Wohlfühlatmosphäre", sondern „dass Sie sich hinsetzen, in Ruhe essen und es
+nicht eilig haben müssen". Nicht „gemütliches Ambiente", sondern „lassen Sie sich Zeit,
+die Küche ist bis 22:00 Uhr an". Nicht „herzlich willkommen", sondern die Begrüßung,
+mit der das Haus auf seiner eigenen Seite unterschreibt: **Kalós ílthate**.
+
+Die Sätze nehmen Druck heraus, statt welchen aufzubauen: „Sie müssen das natürlich
+nicht." „Den Rest stellen wir, und Sie kommen einfach." Das ist die Haltung eines
+Gastgebers, und sie ist etwas anderes als ein Versprechen.
 
 **Die Grenze ist die Wahrheit.** Warm heißt nicht ausgeschmückt. Es steht nichts auf
 dieser Seite, was der Betrieb nicht bestätigen kann: keine erfundenen Stammgäste, keine
