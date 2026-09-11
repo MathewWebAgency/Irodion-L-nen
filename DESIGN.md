@@ -175,6 +175,9 @@ Fünf Bänder, jedes mit einem eigenen Auftritt:
 | 4 | 0.60 bis 0.78 | Wortsprung mit Überschwingen auf „Zahl" |
 | 5 | 0.82 bis 1.00 | Wörter steigen auf, dann Subline, dann der Ruf |
 
+**Band 5 heißt „Ihr Platz steht bereit."** Das ist wörtlich die Zeile aus dem
+Xenios-Projekt und vom Kunden so gewünscht.
+
 Die Mittelbahn gehört dem Weg zum Tisch. Text steht links und rechts davon, im
 Hochformat unten über die ganze Breite. Die Scrims liegen als eigene Ebenen auf der Bühne
 und laufen vom Bildrand nach innen aus: **Ein Verlauf, dessen dunkles Ende außerhalb des
@@ -239,6 +242,25 @@ der Fuß nicht auseinandergeht. Nach der Korrektur: **null Elemente unter 44 Pix
 | Konsolenfehler | keine |
 | Kopfhöhe am Handy | 100px, 12,4 Prozent des Schirms |
 | Farbpaarungen gegen WCAG AA | 16 von 16 bestehen |
+
+## Was gestrichen wurde und warum
+
+Über jeder Sektionsüberschrift stand eine kleine Versalienzeile, unter zwei Sektionen
+eine Schlagwortzeile aus drei Begriffen. Beides ist raus.
+
+Der Grund ist nicht Geschmack. Nebeneinander gelesen stand siebenmal dasselbe zweimal
+untereinander: „Bei gutem Wetter" über „Bei gutem Wetter sitzt man auf dem Pflaster",
+„Der Anbau von 2017" über „2017 haben wir dafür angebaut", das griechische Ηρώδειο über
+„Das Odeon des Herodes Atticus". Und „Gesellschaften · Feiern · Aufteilbar" waren drei
+Schlagworte, die der Absatz darüber schon gesagt hatte.
+
+**Struktur codiert Information.** Eine Auszeichnung, die nichts Wahres über ihren
+Inhalt sagt, ist Dekoration. Der mechanische Prüfer hatte das fünfmal als
+`kicker-above-heading` gemeldet, und ich hatte es als Geschmacksfrage weggeschoben. Das
+war falsch.
+
+Der Eyebrow im Hero bleibt. Dort ist Ηρώδειο die Namensmarke über dem Film und keine
+Wiederholung der Zeile darunter.
 
 ## Was ausdrücklich nicht vorkommt
 

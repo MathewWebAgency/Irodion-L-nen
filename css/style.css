@@ -48,24 +48,21 @@ section[id], .gang { scroll-margin-top: 7rem; }
 
 .gross { font-size: var(--s-4); }
 
-.eyebrow {
-  color: var(--kognak-hell);
-  margin: 0 0 var(--r-2);
-}
-.auf-sandstein .eyebrow { color: var(--kognak); }
+/* Hier standen .eyebrow und .marken, also die kleine Versalienzeile ueber
+   jeder Ueberschrift und die Schlagwortzeile darunter. Beide sind raus.
 
-.marken {
-  display: flex; flex-wrap: wrap; gap: var(--r-2) var(--r-4);
-  list-style: none; margin: var(--r-4) 0 0; padding: 0;
-  color: var(--leinen-weich);
-}
-.auf-sandstein .marken { color: var(--tinte-weich); }
-.marken li { position: relative; padding-left: 1.1em; }
-.marken li::before {
-  content: ""; position: absolute; left: 0; top: .52em;
-  width: .6em; height: 1px; background: var(--kerbe-hell);
-}
-.auf-sandstein .marken li::before { background: var(--kerbe); }
+   Der Grund ist nicht Geschmack, sondern dass sie nichts gesagt haben.
+   Nebeneinander gelesen stand siebenmal dasselbe zweimal untereinander:
+   "Bei gutem Wetter" ueber "Bei gutem Wetter sitzt man auf dem Pflaster",
+   "Der Anbau von 2017" ueber "2017 haben wir dafuer angebaut", das
+   griechische Ηρώδειο ueber "Das Odeon des Herodes Atticus". Und
+   "Gesellschaften · Feiern · Aufteilbar" waren drei Schlagworte, die der
+   Absatz darueber schon gesagt hatte.
+
+   Struktur codiert Information. Eine Auszeichnung, die nichts Wahres
+   ueber ihren Inhalt sagt, ist Dekoration, und genau daran erkennt man
+   eine Seite, die nach Vorlage gebaut wurde. Der Eyebrow im Hero bleibt,
+   dort ist Ηρώδειο die Namensmarke ueber dem Film und keine Wiederholung.
 
 .knopf {
   display: inline-block;
@@ -108,6 +105,7 @@ section[id], .gang { scroll-margin-top: 7rem; }
   padding: var(--r-3) var(--rand);
   color: var(--leinen);
   text-shadow: var(--tschatten);
+  hyphens: none;
 }
 .kopf::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
@@ -119,7 +117,7 @@ section[id], .gang { scroll-margin-top: 7rem; }
 body.kopf-hell .kopf::before { opacity: .94; }
 body.kopf-hell .kopf { text-shadow: none; }
 
-.kopf__marke { display: flex; align-items: baseline; gap: .6em; text-decoration: none; }
+.kopf__marke { display: flex; align-items: baseline; gap: .6em; text-decoration: none; white-space: nowrap; }
 .kopf__name { font-family: var(--display); font-size: var(--s-1); letter-spacing: -.01em; }
 .kopf__gr { opacity: .78; font-size: 0.75rem; }   /* nie unter 11px, auch nicht als Beiwerk */
 
@@ -128,7 +126,7 @@ body.kopf-hell .kopf { text-shadow: none; }
   list-style: none; font-size: var(--s--1);
   font-family: var(--label); letter-spacing: .06em; text-transform: uppercase;
 }
-.kopf__liste a { text-decoration: none; position: relative; padding-block: .35em; }
+.kopf__liste a { text-decoration: none; position: relative; padding-block: .35em; white-space: nowrap; }
 .kopf__liste a::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
   background: var(--kognak-hell); transform: scaleX(0); transform-origin: left;
@@ -150,7 +148,7 @@ body.kopf-hell .kopf { text-shadow: none; }
 }
 .kopf__heute[data-zu] { color: var(--kognak-hell); }
 
-@media (max-width: 860px) {
+@media (max-width: 1000px) {
   /* Die Liste bleibt, sie wandert nur in eine eigene Zeile unter die
      Marke und darf dort seitlich geschoben werden. Sie zu verstecken
      hiesse, das Handy ohne Weg zur Karte zu lassen. */
@@ -181,11 +179,11 @@ body.kopf-hell .kopf { text-shadow: none; }
   .kopf__name { font-size: var(--s-0); }
   .kopf__gr { font-size: 0.7rem; }
 }
-@media (max-width: 860px) and (pointer: coarse) {
+@media (max-width: 1000px) and (pointer: coarse) {
   .kopf__liste a { padding-block: 14px; }   /* bringt die Flaeche auf 44px */
   .kopf__marke { min-height: 44px; align-items: center; padding-block: 0; }
 }
-@media (max-width: 860px) and (pointer: fine) {
+@media (max-width: 1000px) and (pointer: fine) {
   .kopf__liste a { padding-block: .45em; }
 }
 @media (max-width: 420px) {

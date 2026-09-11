@@ -185,7 +185,7 @@ verschoben.
 | 2 | 0.17–0.34 | Unter die Schirme hindurch, an den eingedeckten Tischen vorbei auf die Tür zu, kalt wird warm | **„Gebaut in ein Fachwerkhaus in Lünen."** | Weich zu scharf, echot die Schwelle |
 | 3 | 0.38–0.56 | Durch die Tür, dunkle Balken, die geschnitzten Mäander der Trennwände ziehen seitlich durch | **„Seit 1983. Dieselbe Familie, dieselbe Adresse."** | Zeichen fahren seitlich ein, im Takt der durchziehenden Wand |
 | 4 | 0.60–0.78 | Tiefer im Raum, an der Theke vorbei, Kognakleder, Terrakotta, Gläser | **„Über hundert Gerichte. Die Stammgäste sagen eine Zahl."** | Wortsprung mit Überschwingen auf „Zahl" |
-| 5 | 0.82–1.00 | Ankunft an einer freien Nische, gedeckt, die Fahrt kommt zur Ruhe | Schlagzeile **„Ihre Nische ist frei."** Subline „Roggenmarkt 19, Lünener Altstadt. Küche bis 22:00 Uhr." CTA **„Tisch reservieren: 02306 12864"** | Wörter steigen auf, dann Subline, dann der Ruf |
+| 5 | 0.82–1.00 | Ankunft an einer freien Nische, gedeckt, die Fahrt kommt zur Ruhe | Schlagzeile **„Ihr Platz steht bereit."** Subline „Roggenmarkt 19, Lünener Altstadt. Küche bis 22:00 Uhr." CTA **„Tisch reservieren: 02306 12864"** | Wörter steigen auf, dann Subline, dann der Ruf |
 
 Band 1 lässt die Einblend-Rampe weg, Band 5 die Ausblend-Rampe, damit die Reise gesetzt
 beginnt und gesetzt endet.
@@ -226,7 +226,6 @@ Text: „Am Fuß des Akropolis-Felsens in Athen steht ein antikes Theater, gesti
 Herodes Atticus, mit Platz für fünftausend Zuschauer. Seit den dreißiger Jahren wird
 dort wieder gespielt, es ist der Hauptschauplatz des Athener Festivals. Auf Griechisch
 heißt es Ηρώδειο. Daher der Name über der Tür."
-Zahlenzeile: `ΗΡΩΔΕΙΟ` · `ATHEN` · `5000 PLÄTZE`
 Ein Bild, hochformatig, warmes Abendlicht auf Steinrängen. Ausdrücklich als Stimmungsbild
 gekennzeichnet, nicht als Aufnahme des Denkmals ausgegeben.
 
@@ -285,7 +284,6 @@ Kopf: **„2017 haben wir dafür angebaut."**
 Text: „Für Gesellschaften und Feiern lässt sich der Raum aufteilen, in kleine Runden
 oder in eine lange Tafel. Sagen Sie am Telefon, wie viele Sie sind und was der Anlass
 ist, dann stellen wir es so."
-Zahlenzeile: `GESELLSCHAFTEN` · `FEIERN` · `AUFTEILBAR`
 
 ### 8.7 Draußen in der Altstadt
 Kopf: **„Bei gutem Wetter sitzt man auf dem Pflaster."**
@@ -301,7 +299,7 @@ bis 22:30 Uhr. Warme Küche mittags bis 14:00 Uhr, abends bis 22:00 Uhr.
 Zeile darunter: **„An allen Feiertagen haben wir geöffnet, auch mittwochs."**
 Das beantwortet den Schmerz, ohne ihn zu wiederholen.
 
-### 8.9 Ihre Nische
+### 8.9 Ihr Platz
 Kopf: **„Rufen Sie an, dann steht der Tisch."**
 Der Ruf groß: **„02306 12864"**, darunter „Montag bis Sonntag zu den Küchenzeiten,
 mittwochs nur an Feiertagen."
@@ -384,9 +382,19 @@ maßgeschneidert, Lösungen, zukunftssicher, Mehrwert, Ihr starker Partner, Komp
 einer Hand, passgenau, Rundum-sorglos. Dazu die leiseren Muster und der
 Lieferservice-Durchgang.
 
-Bewusst gesetzt und bleibt: der Dreiklang „Ein Haus, eine Familie, vier Umbauten", der
-Zweischlag „Benannt nach einem Theater in Athen. Gebaut in ein Fachwerkhaus in Lünen.",
-und die Zahlenzeilen in Versalien. Das ist Handwerk für diese Marke, kein Drift.
+Bewusst gesetzt und bleibt: der Dreiklang „Ein Haus, eine Familie, vier Umbauten" und
+der Zweischlag „Benannt nach einem Theater in Athen. Gebaut in ein Fachwerkhaus in
+Lünen." Das ist Handwerk für diese Marke, kein Drift.
+
+**Gestrichen, und der Grund gehört festgehalten:** Über jeder Sektionsüberschrift stand
+eine kleine Versalienzeile, und unter zwei Sektionen eine Schlagwortzeile. Nebeneinander
+gelesen stand siebenmal dasselbe zweimal untereinander, „Bei gutem Wetter" über „Bei
+gutem Wetter sitzt man auf dem Pflaster", „Der Anbau von 2017" über „2017 haben wir
+dafür angebaut". Struktur codiert Information. Eine Auszeichnung, die nichts Wahres über
+ihren Inhalt sagt, ist Dekoration, und genau daran erkennt man eine Seite, die nach
+Vorlage gebaut wurde. Der mechanische Prüfer hatte das fünfmal als
+`kicker-above-heading` gemeldet, und der Kunde hat es unabhängig davon gesehen. Der
+Eyebrow im Hero bleibt, dort ist Ηρώδειο die Namensmarke über dem Film.
 
 ---
 
