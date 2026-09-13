@@ -593,8 +593,8 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
 }
 
 /* ==========================================================================
-   SEIT 1983. Text links, Bild rechts, dazwischen die Zeitleiste mit
-   einem Halt je Umbau.
+   SEIT 1983. Text links, Bild rechts, dazwischen die Zeitleiste, die auf
+   demselben Maeanderband sitzt wie die Linie am Seitenrand.
    ========================================================================== */
 
 .haus {
@@ -1082,6 +1082,48 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
   .grund::after { animation: none; }
 }
 
+/* ==========================================================================
+   Der Maeander
+   Das Band, das im Haus in die Trennwaende zwischen den Nischen
+   geschnitzt ist, laeuft hier am linken Rand mit und zeichnet sich beim
+   Scrollen selbst. Ein Knoten je Sektion. Eine Borduere wird daraus
+   ausdruecklich nicht: es ist eine einzige Linie, kein Muster.
+   ========================================================================== */
+
+.weg {
+  position: fixed; left: calc(var(--rand) * .42); top: 12vh;
+  width: 24px; height: 76vh; z-index: 3;
+  color: var(--kognak-hell);
+  opacity: 0;
+  transition: opacity var(--t-ruhig) var(--ease-aus);
+  pointer-events: none;
+  mix-blend-mode: normal;
+}
+body.kopf-hell .weg { opacity: .5; }
+
+#weg-linie {
+  stroke-dasharray: 1128;
+  stroke-dashoffset: calc(1128 - 1128 * var(--wp, 0));
+}
+#weg-knoten circle {
+  opacity: 0;
+  transition: opacity 260ms var(--ease-aus);
+}
+#weg-knoten circle.an { opacity: 1; }
+
+/* Auf schmalen Fenstern hat die Linie keinen Platz und wuerde in den
+   Text laufen. */
+@media (max-width: 1100px) { .weg { display: none; } }
+
+/* Der Satz in der Bildunterschrift verweist auf genau diese Linie. Das
+   Foto steht schon ab 900px, die Linie erst ab 1101px, dazwischen haette
+   die Unterschrift etwas versprochen, was nicht da ist. Also haengt der
+   Hinweis an derselben Schwelle wie die Linie. */
+@media (max-width: 1100px) { .weg-hinweis { display: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  #weg-linie { stroke-dashoffset: 0; }
+  #weg-knoten circle { opacity: 1; }
 }
 
 /* ==========================================================================
