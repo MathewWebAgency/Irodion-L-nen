@@ -366,6 +366,12 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
   font-size: var(--s-4); line-height: var(--lh-eng);
   letter-spacing: var(--tr-display);
   margin: 0; max-width: none;
+  /* Dieselbe Regel wie fuer h1 bis h3: bei diesen Graden sieht eine
+     getrennte Zeile wie ein Fehler aus, nicht wie Satz. Die Baender sind
+     der Sache nach Ueberschriften, technisch aber Absaetze, also erbten
+     sie die Trennung vom Fliesstext und machten "Lue-nen" daraus. Ein
+     zu langes Wort rutscht jetzt ganz in die naechste Zeile. */
+  hyphens: none;
 }
 .band__zeile--gross { font-size: var(--s-5); }
 .band__klein, .band__sub {
