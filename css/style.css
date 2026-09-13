@@ -97,6 +97,11 @@ section[id], .gang { scroll-margin-top: 7rem; }
   color: var(--leinen);
   text-shadow: 0 1px 2px rgba(10, 6, 4, .95);  /* eine Lage, eng, ueber dem Schleier */
   hyphens: none;
+  /* Der Grund und der Schleier blenden ueber 420ms. Der Schatten und die
+     Farbe der Nummer sprangen bisher mittendrin hart um, und genau das
+     liess den sonst weichen Umschlag unfertig wirken. Jetzt laeuft der
+     ganze Wechsel auf einer Kurve und einer Dauer. */
+  transition: text-shadow var(--t-ruhig) var(--ease-aus);
 }
 .kopf::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
@@ -160,6 +165,7 @@ body.kopf-hell .kopf { text-shadow: none; }   /* eigener Grund, kein Schatten no
 .kopf__tel {
   white-space: nowrap; color: var(--leinen);
   font-size: 0.86rem; letter-spacing: .06em;
+  transition: color var(--t-ruhig) var(--ease-aus);
 }
 body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
 
@@ -928,7 +934,6 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
   max-width: var(--breite-eng); margin: 0 auto;
   display: grid; gap: 0;
 }
-.platz__text { color: var(--tinte-weich); margin-top: var(--r-4); max-width: 38ch; }
 
 /* Der Ruf ist kein Knopf. Ein gefuelltes Rechteck mit Versalien steht auf
    jeder beliebigen Seite, und genau daran erkennt man Baukasten. Hier
