@@ -565,6 +565,14 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
   .name { grid-template-columns: 1.25fr 0.75fr; gap: var(--r-7); }
 }
 .name__text p { font-size: var(--s-1); max-width: 44ch; margin-top: var(--r-4); }
+/* Am Handy stand dieser Absatz mit 22.7px auf 335px Breite, das sind rund
+   24 Zeichen je Zeile. Lesbar ist 60 bis 75, und ein aufgeblasener
+   Fliesstext mit Kurzzeilen ist genau das Muster, an dem man erzeugte
+   Seiten erkennt. Auf der Basisgroesse liest er sich als Text und nicht
+   als Ansage. */
+@media (max-width: 700px) {
+  .name__text p { font-size: var(--s-0); }
+}
 .name__bild { margin: 0; }
 .name__bild img {
   width: 100%; height: auto; display: block;
@@ -576,8 +584,8 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
 }
 
 /* ==========================================================================
-   SEIT 1983. Text links, Bild rechts, dazwischen die Zeitleiste, die auf
-   demselben Maeanderband sitzt wie die Linie am Seitenrand.
+   SEIT 1983. Text links, Bild rechts, dazwischen die Zeitleiste mit
+   einem Halt je Umbau.
    ========================================================================== */
 
 .haus {
@@ -589,6 +597,9 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
   .haus { grid-template-columns: 1fr 1fr; align-items: end; gap: var(--r-7); }
 }
 .haus__text p { font-size: var(--s-1); max-width: 42ch; margin-top: var(--r-4); }
+@media (max-width: 700px) {
+  .haus__text p { font-size: var(--s-0); }
+}
 
 /* Die Zeitleiste. Vier Halte auf einer Linie, die an jedem Halt eine Kerbe
    nach oben macht. Kein Icon-Set, von Hand gesetzt.                     */
@@ -597,13 +608,15 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
   display: grid; grid-template-columns: repeat(4, 1fr);
   position: relative;
 }
-.leiste::before {
-  content: ""; position: absolute; left: 0; right: 0; top: 0;
-  height: 1px; background: var(--kerbe-hell);
-}
+/* Die Linie haengt an jedem Halt, nicht am Raster. Vorher lag sie als
+   ein Strich ueber dem ganzen Gitter, und sobald das Gitter am Handy auf
+   zwei Zeilen umbrach, stand die zweite Zeile ohne Linie da: der
+   Zeitstrahl ging nicht durch. Die Halte stossen ohne Spalten-Abstand
+   aneinander, der Rand laeuft also in jeder Zeile durch. */
 .leiste__halt {
   position: relative; padding-top: var(--r-3);
   padding-right: var(--r-2);
+  border-top: 1px solid var(--kerbe-hell);
 }
 .leiste__halt::before {
   content: ""; position: absolute; left: 0; top: 0;
@@ -1051,42 +1064,6 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
   .grund::after { animation: none; }
 }
 
-/* ==========================================================================
-   Der Maeander
-   Das Band, das im Haus in die Trennwaende zwischen den Nischen
-   geschnitzt ist, laeuft hier am linken Rand mit und zeichnet sich beim
-   Scrollen selbst. Ein Knoten je Sektion. Eine Borduere wird daraus
-   ausdruecklich nicht: es ist eine einzige Linie, kein Muster.
-   ========================================================================== */
-
-.weg {
-  position: fixed; left: calc(var(--rand) * .42); top: 12vh;
-  width: 24px; height: 76vh; z-index: 3;
-  color: var(--kognak-hell);
-  opacity: 0;
-  transition: opacity var(--t-ruhig) var(--ease-aus);
-  pointer-events: none;
-  mix-blend-mode: normal;
-}
-body.kopf-hell .weg { opacity: .5; }
-
-#weg-linie {
-  stroke-dasharray: 1128;
-  stroke-dashoffset: calc(1128 - 1128 * var(--wp, 0));
-}
-#weg-knoten circle {
-  opacity: 0;
-  transition: opacity 260ms var(--ease-aus);
-}
-#weg-knoten circle.an { opacity: 1; }
-
-/* Auf schmalen Fenstern hat die Linie keinen Platz und wuerde in den
-   Text laufen. */
-@media (max-width: 1100px) { .weg { display: none; } }
-
-@media (prefers-reduced-motion: reduce) {
-  #weg-linie { stroke-dashoffset: 0; }
-  #weg-knoten circle { opacity: 1; }
 }
 
 /* ==========================================================================
