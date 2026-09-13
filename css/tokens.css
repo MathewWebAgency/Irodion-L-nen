@@ -59,14 +59,25 @@
   --tr-label:    0.14em;
 
   /* --- Raum --------------------------------------------------------------
-     Eine Leiter, keine zufaelligen Abstaende.                          */
+     Eine Leiter, keine zufaelligen Abstaende.
+
+     Die unteren vier Sprossen sind Textabstaende und stehen fest, die
+     liest man auf jedem Geraet gleich. Die oberen drei tragen die
+     Sektionen und wachsen mit dem Fenster.
+
+     Der Grund: --r-7 stand mit 8.5rem fest, also 136px, quer wie hoch.
+     Am Handy trafen unten und oben aufeinander, das waren 272px Leere
+     zwischen zwei Sektionen, ein Drittel des Schirms, sechsmal auf der
+     Seite. Man scrollte durch Nichts. Quer ist derselbe Wert richtig,
+     dort traegt die Flaeche. Also skalieren sie jetzt: am Handy die
+     Haelfte, ab etwa 1440px die bisherigen Werte, dazwischen weich.  */
   --r-1:  0.375rem;
   --r-2:  0.75rem;
   --r-3:  1.25rem;
   --r-4:  2rem;
-  --r-5:  3.25rem;
-  --r-6:  5.25rem;
-  --r-7:  8.5rem;
+  --r-5:  clamp(2.125rem, 1.73rem + 1.69vw, 3.25rem);
+  --r-6:  clamp(2.75rem,  1.85rem + 3.76vw, 5.25rem);
+  --r-7:  clamp(4rem,     2.40rem + 6.80vw, 8.5rem);
 
   --breite:      72rem;   /* der Satzspiegel            */
   --breite-eng:  40rem;   /* Textspalten                */
