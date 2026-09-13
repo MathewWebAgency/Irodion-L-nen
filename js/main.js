@@ -15,7 +15,7 @@
      --------------------------------------------------------------------- */
   var gruppen = document.querySelectorAll(
     '.name__text, .haus__innen, .nummer__innen, .karte__kopf,' +
-    '.feiern__innen, .draussen__text, .zeiten__innen, .platz__links, .platz__rechts'
+    '.feiern__innen, .draussen__text, .zeiten__innen, .platz__innen'
   );
   Array.prototype.forEach.call(gruppen, function (g) { g.classList.add('auftritt'); });
 
@@ -291,49 +291,6 @@
         });
       });
     }
-  }
-
-  /* ---------------------------------------------------------------------
-     Das Formular. Es gibt kein Backend, also baut es eine mailto-Nachricht
-     und oeffnet das Mailprogramm des Besuchers. Der Erfolgstext sagt genau
-     das, nichts anderes waere die Wahrheit. Der verlaessliche Weg bleibt
-     das Telefon, deshalb steht es groesser.
-     --------------------------------------------------------------------- */
-  var formular = document.getElementById('formular');
-  var status   = document.getElementById('formular-status');
-
-  if (formular && status) {
-    formular.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var d = new FormData(formular);
-      var name2    = (d.get('name') || '').toString().trim();
-      var personen = (d.get('personen') || '').toString().trim();
-      var zeit     = (d.get('zeit') || '').toString().trim();
-      var text     = (d.get('text') || '').toString().trim();
-
-      if (!name2 || !personen || !zeit) {
-        status.textContent = 'Bitte Name, Personen und Wunschzeit ausfüllen.';
-        var fehlt = !name2 ? 'f-name' : (!personen ? 'f-personen' : 'f-zeit');
-        var el = document.getElementById(fehlt);
-        if (el) el.focus();
-        return;
-      }
-
-      var betreff = 'Tischanfrage: ' + personen + ' Personen, ' + zeit;
-      var koerper =
-        'Guten Tag,\n\nich hätte gern einen Tisch.\n\n' +
-        'Name: ' + name2 + '\n' +
-        'Personen: ' + personen + '\n' +
-        'Wunschzeit: ' + zeit + '\n' +
-        (text ? '\n' + text + '\n' : '') +
-        '\nViele Grüße\n' + name2;
-
-      window.location.href = 'mailto:info@irodion-luenen.de'
-        + '?subject=' + encodeURIComponent(betreff)
-        + '&body=' + encodeURIComponent(koerper);
-
-      status.textContent = 'Ihr Mailprogramm ist offen. Schicken Sie die Nachricht ab, wir melden uns.';
-    });
   }
 
 })();

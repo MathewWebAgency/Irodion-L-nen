@@ -127,7 +127,6 @@
 
       <div class="band band--rechts" data-a="0.60" data-b="0.78" data-auftritt="schlag">
         <p class="band__zeile">Über hundert Gerichte. Die Stammgäste sagen eine <span class="em">Zahl.</span></p>
-        <p class="band__klein">Bei uns sagt niemand Rhodos Teller. Man sagt die 47.</p>
       </div>
 
       <div class="band band--settle" data-a="0.82" data-b="1.00" data-auftritt="ankunft">
@@ -214,7 +213,7 @@
   <figure class="haus__bild">
     <img src="assets/bilder/maeander.webp" width="1400" height="940" loading="lazy" decoding="async"
          alt="Nahaufnahme einer hölzernen Trennwand im Gastraum, in das helle Holz ist ein umlaufendes Mäanderband geschnitzt.">
-    <figcaption><span class="label">Im Haus</span> Das Band in den Trennwänden zwischen den Nischen. Es läuft auch am Rand dieser Seite mit.</figcaption>
+    <figcaption>Das Band in den Trennwänden zwischen den Nischen. Es läuft auch am Rand dieser Seite mit.</figcaption>
   </figure>
 </section>
 
@@ -227,10 +226,8 @@
 <section class="nummer auf-sandstein" id="nummer" aria-labelledby="nummer-titel">
   <div class="nummer__innen">
     <h2 id="nummer-titel" class="gross">Die Stammgäste bestellen mit einer Zahl.</h2>
-    <p class="nummer__lead">Unsere Karte ist durchnummeriert, von der 1 bis zur 1005.
-    Wer öfter bei uns sitzt, bestellt keinen Rhodos Teller, sondern die 47, und wir
-    wissen Bescheid. Sie müssen das natürlich nicht. Tippen Sie einfach eine Nummer
-    ein, dann zeigen wir Ihnen, was dahintersteckt.</p>
+    <p class="nummer__lead">Tippen Sie einfach eine Nummer ein, dann zeigen wir Ihnen,
+    was dahintersteckt.</p>
 
     <form class="feldnr" id="feldnr" hidden>
       <label class="feldnr__label label" for="nr-eingabe">Nummer</label>
@@ -1158,13 +1155,13 @@
     <table class="woche">
       <caption class="nur-fuer-screenreader">Öffnungszeiten von Montag bis Sonntag</caption>
       <tbody>
-        <tr data-tag="1"><th scope="row">Montag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
-        <tr data-tag="2"><th scope="row">Dienstag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
+        <tr data-tag="1"><th scope="row">Montag</th><td class="label"><span class="spanne">11:30 bis 14:30</span><span class="woche__punkt" aria-hidden="true"> · </span><span class="spanne">17:00 bis 22:30</span></td></tr>
+        <tr data-tag="2"><th scope="row">Dienstag</th><td class="label"><span class="spanne">11:30 bis 14:30</span><span class="woche__punkt" aria-hidden="true"> · </span><span class="spanne">17:00 bis 22:30</span></td></tr>
         <tr data-tag="3" class="woche__ruhe"><th scope="row">Mittwoch</th><td class="label">Ruhetag</td></tr>
-        <tr data-tag="4"><th scope="row">Donnerstag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
-        <tr data-tag="5"><th scope="row">Freitag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
-        <tr data-tag="6"><th scope="row">Samstag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
-        <tr data-tag="0"><th scope="row">Sonntag</th><td class="label">11:30 bis 14:30 · 17:00 bis 22:30</td></tr>
+        <tr data-tag="4"><th scope="row">Donnerstag</th><td class="label"><span class="spanne">11:30 bis 14:30</span><span class="woche__punkt" aria-hidden="true"> · </span><span class="spanne">17:00 bis 22:30</span></td></tr>
+        <tr data-tag="5"><th scope="row">Freitag</th><td class="label"><span class="spanne">11:30 bis 14:30</span><span class="woche__punkt" aria-hidden="true"> · </span><span class="spanne">17:00 bis 22:30</span></td></tr>
+        <tr data-tag="6"><th scope="row">Samstag</th><td class="label"><span class="spanne">11:30 bis 14:30</span><span class="woche__punkt" aria-hidden="true"> · </span><span class="spanne">17:00 bis 22:30</span></td></tr>
+        <tr data-tag="0"><th scope="row">Sonntag</th><td class="label"><span class="spanne">11:30 bis 14:30</span><span class="woche__punkt" aria-hidden="true"> · </span><span class="spanne">17:00 bis 22:30</span></td></tr>
       </tbody>
     </table>
     <p class="zeiten__kueche">Warme Küche mittags bis 14:00 Uhr, abends bis 22:00 Uhr.</p>
@@ -1179,45 +1176,26 @@
 <section class="platz auf-sandstein" id="platz" aria-labelledby="platz-titel">
   <div class="platz__innen">
 
-    <div class="platz__links">
-      <h2 id="platz-titel" class="gross">Rufen Sie an, dann steht der Tisch.</h2>
-      <p class="platz__text">Zwei Sätze reichen uns: wie viele Sie sind und wann Sie
-      kommen wollen. Um den Tisch kümmern wir uns. Und wenn Sie dann da sind, lassen Sie
-      sich Zeit, die Küche ist bis 22:00 Uhr an.</p>
+    <h2 id="platz-titel" class="gross">Rufen Sie an, dann steht der Tisch.</h2>
+    <p class="platz__text">Zwei Sätze reichen uns: wie viele Sie sind und wann Sie
+    kommen wollen. Um den Tisch kümmern wir uns. Und wenn Sie dann da sind, lassen Sie
+    sich Zeit, die Küche ist bis 22:00 Uhr an.</p>
 
-      <div class="ruf">
-        <p class="ruf__vor label">Reservierung</p>
-        <a class="ruf__nummer tel" href="tel:+49230612864">02306 12864</a>
-        <p class="ruf__nach">Montag bis Sonntag zu den Küchenzeiten, mittwochs nur an
-        Feiertagen.</p>
-      </div>
+    <div class="ruf">
+      <p class="ruf__vor label">Reservierung</p>
+      <a class="ruf__nummer tel" href="tel:+49230612864">02306 12864</a>
+      <p class="ruf__nach">Montag bis Sonntag zu den Küchenzeiten, mittwochs nur an
+      Feiertagen.</p>
     </div>
 
-    <div class="platz__rechts" id="reservieren">
-      <form class="formular" id="formular" novalidate>
-        <p class="formular__vor">Lieber schreiben als anrufen? Geht auch.</p>
-        <div class="feld">
-          <label for="f-name">Ihr Name</label>
-          <input id="f-name" name="name" type="text" autocomplete="name" required>
-        </div>
-        <div class="feld feld--halb">
-          <div>
-            <label for="f-personen">Personen</label>
-            <input id="f-personen" name="personen" type="number" min="1" max="60" inputmode="numeric" required>
-          </div>
-          <div>
-            <label for="f-zeit">Wunschzeit</label>
-            <input id="f-zeit" name="zeit" type="text" placeholder="z. B. Samstag, 19 Uhr" required>
-          </div>
-        </div>
-        <div class="feld">
-          <label for="f-text">Noch etwas dazu</label>
-          <textarea id="f-text" name="text" rows="3"></textarea>
-        </div>
-        <button class="knopf knopf--hell" type="submit">Anfrage schicken</button>
-        <p class="formular__status" id="formular-status" role="status" aria-live="polite"></p>
-      </form>
-    </div>
+    <!-- Der zweite Weg, bewusst leiser gesetzt als die Nummer. Am Telefon
+         steht der Tisch sofort, per Mail dauert es bis zur naechsten
+         ruhigen Minute im Haus. Das sagt die Zeile auch. -->
+    <p class="schreiben">
+      <span class="schreiben__vor">Lieber schreiben?</span>
+      <a class="schreiben__mail" href="mailto:info@irodion-luenen.de">info@irodion-luenen.de</a>
+      <span class="schreiben__nach">Wir antworten, sobald im Haus eine ruhige Minute ist.</span>
+    </p>
 
   </div>
 </section>

@@ -62,7 +62,7 @@ section[id], .gang { scroll-margin-top: 7rem; }
    Struktur codiert Information. Eine Auszeichnung, die nichts Wahres
    ueber ihren Inhalt sagt, ist Dekoration, und genau daran erkennt man
    eine Seite, die nach Vorlage gebaut wurde. Der Eyebrow im Hero bleibt,
-   dort ist Ηρώδειο die Namensmarke ueber dem Film und keine Wiederholung.
+   dort ist Ηρώδειο die Namensmarke ueber dem Film und keine Wiederholung. */
 
 .knopf {
   display: inline-block;
@@ -83,15 +83,6 @@ section[id], .gang { scroll-margin-top: 7rem; }
 .auf-sandstein .knopf { border-color: var(--kerbe); color: var(--tinte); }
 .auf-sandstein .knopf:hover { background: var(--tinte); color: var(--sandstein-hell); border-color: var(--tinte); }
 
-.knopf--hell {
-  background: var(--kognak-hell); color: var(--eiche-tief);
-  border-color: var(--kognak-hell);
-  text-shadow: none;             /* auf Knoepfen liest ein Schatten als Schmutz */
-}
-.knopf--hell:hover { background: var(--leinen); border-color: var(--leinen); color: var(--eiche-tief); }
-.auf-sandstein .knopf--hell { background: var(--kognak); color: var(--sandstein-hell); border-color: var(--kognak); }
-.auf-sandstein .knopf--hell:hover { background: var(--tinte); border-color: var(--tinte); color: var(--sandstein-hell); }
-
 .tel { text-decoration: none; }
 
 /* ==========================================================================
@@ -104,7 +95,7 @@ section[id], .gang { scroll-margin-top: 7rem; }
   display: flex; align-items: center; gap: var(--r-4);
   padding: var(--r-3) var(--rand);
   color: var(--leinen);
-  text-shadow: 0 1px 3px rgba(10, 6, 4, .9);   /* eine Lage, eng, siehe unten */
+  text-shadow: 0 1px 2px rgba(10, 6, 4, .95);  /* eine Lage, eng, ueber dem Schleier */
   hyphens: none;
 }
 .kopf::before {
@@ -114,12 +105,42 @@ section[id], .gang { scroll-margin-top: 7rem; }
   opacity: 0;
   transition: opacity var(--t-ruhig) var(--ease-aus);
 }
+
+/* Der Schleier ueber dem Film.
+   Gemessen, nicht geschaetzt: im Kopfbereich des Hochformat-Standbilds
+   liegt die Helligkeit im Mittel bei 119 von 255 und in der Spitze bei
+   218, das ist die beleuchtete Tuer. Ein Textschatten allein traegt
+   dagegen nicht, die Navigation stand auf dem hellen Feld praktisch
+   ohne Kontrast. Also bekommt der Kopf dieselbe Sprache wie die Baender
+   im Hero: eine Abdunklung, die am Rand beginnt und nach innen auslaeuft,
+   keine Leiste mit sichtbarer Kante. Unter dem Verlauf sinkt auch die
+   hellste Stelle auf rund 70 von 255, damit traegt Leinen dort ueber
+   4.5:1. Sobald der Kopf hinter sich seinen eigenen Grund hat, faellt
+   der Schleier weg. */
+.kopf::after {
+  content: ""; position: absolute; z-index: -1;
+  inset: 0 0 auto; height: calc(100% + 2.5rem);
+  background: linear-gradient(to bottom,
+    rgba(10, 7, 5, .86) 0%,
+    rgba(10, 7, 5, .80) 52%,
+    rgba(10, 7, 5, .58) 80%,
+    rgba(10, 7, 5, 0) 100%);
+  opacity: 1;
+  transition: opacity var(--t-ruhig) var(--ease-aus);
+  pointer-events: none;
+}
+body.kopf-hell .kopf::after { opacity: 0; }
+
+/* Ueber dem Film traegt die Nummer in Kognak nicht: der Akzent ist
+   dunkler als Leinen und faellt auf hellem Bild als Erstes aus. Er
+   kommt zurueck, sobald der Kopf auf eigenem Grund steht. */
+
 body.kopf-hell .kopf::before { opacity: .94; }
 body.kopf-hell .kopf { text-shadow: none; }   /* eigener Grund, kein Schatten noetig */
 
 .kopf__marke { display: flex; align-items: baseline; gap: .6em; text-decoration: none; white-space: nowrap; }
 .kopf__name { font-family: var(--display); font-size: var(--s-1); letter-spacing: -.01em; }
-.kopf__gr { opacity: .78; font-size: 0.75rem; }   /* nie unter 11px, auch nicht als Beiwerk */
+.kopf__gr { opacity: .88; font-size: 0.75rem; }   /* nie unter 11px, auch nicht als Beiwerk */
 
 .kopf__liste {
   display: flex; gap: var(--r-4); margin: 0 0 0 auto; padding: 0;
@@ -137,9 +158,10 @@ body.kopf-hell .kopf { text-shadow: none; }   /* eigener Grund, kein Schatten no
 .kopf__liste a:hover::after { transform: scaleX(1); }
 
 .kopf__tel {
-  white-space: nowrap; color: var(--kognak-hell);
+  white-space: nowrap; color: var(--leinen);
   font-size: 0.86rem; letter-spacing: .06em;
 }
+body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
 
 /* Die Auskunft, die hier am meisten gesucht wird: ob heute offen ist.
    Gesetzt aus main.js, aus demselben Wochentag, der die Tabelle markiert. */
@@ -642,7 +664,14 @@ body.kopf-hell .kopf { text-shadow: none; }   /* eigener Grund, kein Schatten no
   letter-spacing: .18em;   /* liest sich als Hinweis, nicht als Eingabe */
 }
 .feldnr__eingabe:focus { border-color: var(--kognak); }
-.feldnr .knopf { align-self: stretch; }
+.feldnr .knopf { align-self: stretch; flex: 0 0 auto; }
+
+/* Am Handy stand das Feld mit 177px neben einem auf 57px gequetschten
+   Knopf, weil der Knopf als einziger nachgeben konnte. Vier Ziffern
+   brauchen keine 177px. */
+@media (max-width: 560px) {
+  .feldnr__eingabe { width: 4.2em; }
+}
 
 .feldnr__status {
   margin: var(--r-3) 0 0; min-height: 1.7em;
@@ -861,6 +890,19 @@ body.kopf-hell .kopf { text-shadow: none; }   /* eigener Grund, kein Schatten no
 .woche__ruhe[data-heute] th::after { left: 1.4em; }
 .woche__ruhe td { letter-spacing: var(--tr-label); text-transform: uppercase; }  /* ein Wort, das darf */
 
+/* Die beiden Spannen sind je eine Einheit. Vorher brach der Satz am
+   Handy irgendwo mitten in der zweiten Spanne um ("17:00" oben, "bis
+   22:30" darunter), was wie ein Fehler aussah. Jetzt bricht er dort,
+   wo die Auskunft ohnehin zwei Auskuenfte sind: mittags und abends.
+   Die Oeffnungszeit ist am Handy die meistgesuchte Zeile der Seite,
+   also steht sie dort auch eine Spur groesser. */
+.woche .spanne { white-space: nowrap; }
+@media (max-width: 560px) {
+  .woche td { font-size: 0.875rem; line-height: 1.5; }
+  .woche .spanne { display: block; }
+  .woche__punkt { display: none; }
+}
+
 .woche tr[data-heute] th, .woche tr[data-heute] td { color: var(--leinen); }
 .woche tr[data-heute] th { position: relative; padding-left: 1.4em; }
 .woche tr[data-heute] th::before {
@@ -883,11 +925,8 @@ body.kopf-hell .kopf { text-shadow: none; }   /* eigener Grund, kein Schatten no
 
 .platz { padding: var(--r-7) var(--rand); }
 .platz__innen {
-  max-width: var(--breite); margin: 0 auto;
-  display: grid; gap: var(--r-6);
-}
-@media (min-width: 900px) {
-  .platz__innen { grid-template-columns: 1fr 1fr; gap: var(--r-7); align-items: start; }
+  max-width: var(--breite-eng); margin: 0 auto;
+  display: grid; gap: 0;
 }
 .platz__text { color: var(--tinte-weich); margin-top: var(--r-4); max-width: 38ch; }
 
@@ -912,26 +951,39 @@ body.kopf-hell .kopf { text-shadow: none; }   /* eigener Grund, kein Schatten no
 .ruf__nummer:hover::after, .ruf__nummer:focus-visible::after { transform: scaleX(1); }
 .ruf__nach { margin: var(--r-3) 0 0; color: var(--tinte-weich); max-width: 34ch; }
 
-.formular { border-top: 1px solid var(--kerbe); padding-top: var(--r-4); }
-.formular__vor { color: var(--tinte-weich); margin-bottom: var(--r-3); }
-.feld { margin-bottom: var(--r-3); }
-.feld--halb { display: grid; gap: var(--r-3); grid-template-columns: 1fr 1fr; }
-.feld label {
-  display: block; margin-bottom: var(--r-1);
-  font-family: var(--label); font-size: var(--s--1);
-  letter-spacing: .06em; text-transform: uppercase;
-  color: var(--tinte-weich);
+/* Der zweite Kontaktweg. Er bekommt bewusst nicht das Gewicht der Nummer:
+   kleiner gesetzt, ohne Display-Schrift, mit einem Haarstrich, der erst
+   beim Zeigen voll durchlaeuft. Die Nummer bleibt der eine Weg. */
+.schreiben {
+  margin: var(--r-5) 0 0;
+  padding-top: var(--r-4);
+  border-top: 1px solid var(--kerbe);
+  max-width: 44ch;
 }
-.feld input, .feld textarea {
-  width: 100%; font: inherit; color: var(--tinte);
-  background: var(--sandstein-hell);
-  border: 1px solid var(--kerbe);
-  border-radius: 0;
-  padding: .7em .8em;
-  transition: border-color var(--t-ui) var(--ease-aus);
+.schreiben__vor { color: var(--tinte-weich); }
+.schreiben__mail {
+  display: inline-block;
+  position: relative;
+  margin-left: .4em;
+  padding-bottom: .1em;
+  font-weight: 500;
+  overflow-wrap: anywhere;
 }
-.feld input:focus, .feld textarea:focus { border-color: var(--kognak); }
-.formular__status { margin: var(--r-3) 0 0; color: var(--kognak); min-height: 1.6em; }
+.schreiben__mail::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--kognak);
+  transform: scaleX(.26); transform-origin: left;
+  transition: transform var(--t-ruhig) var(--ease-aus);
+}
+.schreiben__mail:hover::after,
+.schreiben__mail:focus-visible::after { transform: scaleX(1); }
+.schreiben__nach {
+  display: block; margin-top: var(--r-2);
+  color: var(--tinte-weich); font-size: var(--s--1);
+}
+@media (pointer: coarse) {
+  .schreiben__mail { min-height: 44px; display: inline-flex; align-items: center; }
+}
 
 /* ==========================================================================
    Der Fuss
