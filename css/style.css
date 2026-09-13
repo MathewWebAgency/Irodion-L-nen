@@ -193,7 +193,13 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
     padding-bottom: var(--r-2);
   }
   .kopf__tel { margin-left: auto; }
-  .kopf__heute { order: 3; flex: 0 0 auto; }
+
+  /* Sobald der Kopf umbricht, faellt die Statuszeile weg. Sie ist fuer
+     den Platz neben der Nummer gebaut, mit Trennstrich und Einzug davor.
+     Auf einer eigenen dritten Zeile zeigte der Strich ins Leere und der
+     Kopf wuchs auf 129px. Die Auskunft geht nicht verloren, die ganze
+     Woche steht unter "Zeiten". */
+  .kopf__heute { display: none; }
   .kopf__liste {
     order: 4;
     flex: 1 0 100%;
@@ -220,9 +226,6 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
 }
 @media (max-width: 1000px) and (pointer: fine) {
   .kopf__liste a { padding-block: .45em; }
-}
-@media (max-width: 420px) {
-  .kopf__heute { display: none; }   /* neben der Nummer wird es zu eng */
 }
 
 /* ==========================================================================
