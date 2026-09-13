@@ -111,6 +111,18 @@ bevor ihre Zahlen wieder etwas bedeuten.
 in der Seite läuft lokal und wird live blockiert. Das fällt erst nach dem Deploy auf,
 und dort nur in der Konsole.
 
+**Die Verweise auf CSS und JS tragen einen Versionsstempel.** Die `.htaccess` lässt
+Browser diese Dateien ein Jahr behalten, und die Dateinamen ändern sich nie. Ohne
+Stempel sieht ein wiederkehrender Besucher eine Änderung ein Jahr lang nicht, auch
+nach einem Deploy nicht. `scripts/stempel.py` hängt deshalb einen Fingerabdruck des
+Dateiinhalts an, aus `css/style.css` wird `css/style.css?v=79bc5d4f`. Das läuft über
+`.git/hooks/pre-commit` bei jedem Commit von selbst mit. **Auf einem neuen Rechner
+einmal `python3 scripts/stempel.py --hook` ausführen**, Hooks werden nicht mitgepusht.
+Ohne eingehängten Hook stimmen die Stempel irgendwann nicht mehr, `python3
+scripts/stempel.py --pruefen` sagt es. Schriften bekommen bewusst keinen Stempel: die
+`preload`-Zeile im Kopf muss zeichengleich mit dem `@font-face` in `fonts.css` sein,
+sonst lädt der Browser dieselbe Schrift zweimal.
+
 **Die Seite steht auf Eiche, nicht auf Sandstein.** Der Grund ist dunkel, wie der Raum.
 Helle Sektionen tragen die Klasse `auf-sandstein` und sind die Ausnahme. Wer diese
 Verteilung umdreht, kippt die ganze Herleitung aus `KONZEPT.md`.
