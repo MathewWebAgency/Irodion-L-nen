@@ -651,7 +651,16 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
 .haus__bild figcaption {
   margin-top: var(--r-2); color: var(--leinen-weich); max-width: 40ch;
 }
-.haus__bild figcaption .label { display: block; color: var(--kognak-hell); margin-bottom: .3em; }
+
+/* Erst ab 900px steht das Bild als zweite Spalte neben dem Text, wofuer
+   es gesetzt ist. Darunter haengt es als Block unter der Zeitleiste und
+   schiebt den naechsten Abschnitt weit nach unten, ohne dort etwas zu
+   erzaehlen, was der Text nicht schon sagt. Am Handy faellt es deshalb
+   weg. Es traegt loading="lazy", wird also gar nicht erst geholt, das
+   spart dort 48 KB. */
+@media (max-width: 899px) {
+  .haus__bild { display: none; }
+}
 
 /* ==========================================================================
    SAGEN SIE EINFACH DIE NUMMER
