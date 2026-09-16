@@ -33,7 +33,7 @@
 
 /* Der Kopf steht fest und ist rund 77px hoch. Ohne diesen Rand parkt
    jeder Ankersprung die Ueberschrift samt Eyebrow darunter. */
-section[id], .gang { scroll-margin-top: 7rem; }
+section[id], .gang { scroll-margin-top: 2rem; }   /* kein fixer Kopf mehr, der etwas verdeckt */
 
 /* --- Die hellen Sektionen ------------------------------------------------
    Sie sitzen als Blatt im dunklen Raum. Kein Schatten, keine runde Ecke:
@@ -91,57 +91,17 @@ section[id], .gang { scroll-margin-top: 7rem; }
    ========================================================================== */
 
 .kopf {
-  position: fixed; inset: 0 0 auto; z-index: 20;
+  /* Steht im Fluss, nicht ueber dem Bild. Er wird oben einmal gelesen
+     und scrollt dann weg, wie eine Leiste auf Papier. Damit braucht er
+     weder Schleier noch Textschatten: er hat seinen eigenen Grund. */
+  position: relative; z-index: 20;
   display: flex; align-items: center; gap: var(--r-4);
   padding: var(--r-3) var(--rand);
-  color: var(--leinen);
-  text-shadow: 0 1px 2px rgba(10, 6, 4, .95);  /* eine Lage, eng, ueber dem Schleier */
-  hyphens: none;
-  /* Der Grund und der Schleier blenden ueber 420ms. Der Schatten und die
-     Farbe der Nummer sprangen bisher mittendrin hart um, und genau das
-     liess den sonst weichen Umschlag unfertig wirken. Jetzt laeuft der
-     ganze Wechsel auf einer Kurve und einer Dauer. */
-  transition: text-shadow var(--t-ruhig) var(--ease-aus);
-}
-.kopf::before {
-  content: ""; position: absolute; inset: 0; z-index: -1;
   background: var(--eiche-tief);
   border-bottom: 1px solid var(--kerbe-fein);
-  opacity: 0;
-  transition: opacity var(--t-ruhig) var(--ease-aus);
+  color: var(--leinen);
+  hyphens: none;
 }
-
-/* Der Schleier ueber dem Film.
-   Gemessen, nicht geschaetzt: im Kopfbereich des Hochformat-Standbilds
-   liegt die Helligkeit im Mittel bei 119 von 255 und in der Spitze bei
-   218, das ist die beleuchtete Tuer. Ein Textschatten allein traegt
-   dagegen nicht, die Navigation stand auf dem hellen Feld praktisch
-   ohne Kontrast. Also bekommt der Kopf dieselbe Sprache wie die Baender
-   im Hero: eine Abdunklung, die am Rand beginnt und nach innen auslaeuft,
-   keine Leiste mit sichtbarer Kante. Unter dem Verlauf sinkt auch die
-   hellste Stelle auf rund 70 von 255, damit traegt Leinen dort ueber
-   4.5:1. Sobald der Kopf hinter sich seinen eigenen Grund hat, faellt
-   der Schleier weg. */
-.kopf::after {
-  content: ""; position: absolute; z-index: -1;
-  inset: 0 0 auto; height: calc(100% + 2.5rem);
-  background: linear-gradient(to bottom,
-    rgba(10, 7, 5, .86) 0%,
-    rgba(10, 7, 5, .80) 52%,
-    rgba(10, 7, 5, .58) 80%,
-    rgba(10, 7, 5, 0) 100%);
-  opacity: 1;
-  transition: opacity var(--t-ruhig) var(--ease-aus);
-  pointer-events: none;
-}
-body.kopf-hell .kopf::after { opacity: 0; }
-
-/* Ueber dem Film traegt die Nummer in Kognak nicht: der Akzent ist
-   dunkler als Leinen und faellt auf hellem Bild als Erstes aus. Er
-   kommt zurueck, sobald der Kopf auf eigenem Grund steht. */
-
-body.kopf-hell .kopf::before { opacity: .94; }
-body.kopf-hell .kopf { text-shadow: none; }   /* eigener Grund, kein Schatten noetig */
 
 .kopf__marke { display: flex; align-items: baseline; gap: .6em; text-decoration: none; white-space: nowrap; }
 .kopf__name { font-family: var(--display); font-size: var(--s-1); letter-spacing: -.01em; }
@@ -163,11 +123,9 @@ body.kopf-hell .kopf { text-shadow: none; }   /* eigener Grund, kein Schatten no
 .kopf__liste a:hover::after { transform: scaleX(1); }
 
 .kopf__tel {
-  white-space: nowrap; color: var(--leinen);
+  white-space: nowrap; color: var(--kognak-hell);
   font-size: 0.86rem; letter-spacing: .06em;
-  transition: color var(--t-ruhig) var(--ease-aus);
 }
-body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
 
 /* Die Auskunft, die hier am meisten gesucht wird: ob heute offen ist.
    Gesetzt aus main.js, aus demselben Wochentag, der die Tabelle markiert. */
@@ -810,7 +768,7 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
   gap: 0 var(--r-2);
   padding: var(--r-2) 0;
   border-bottom: 1px solid color-mix(in srgb, var(--kerbe) 28%, transparent);
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 2rem;
 }
 .gang__liste .gericht:last-child { border-bottom: 0; }
 .gericht__nr {
@@ -1099,7 +1057,7 @@ body.kopf-hell .kopf__tel { color: var(--kognak-hell); }
   pointer-events: none;
   mix-blend-mode: normal;
 }
-body.kopf-hell .weg { opacity: .5; }
+body.hero-durch .weg { opacity: .5; }
 
 #weg-linie {
   stroke-dasharray: 1128;

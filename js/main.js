@@ -134,33 +134,36 @@
   }
 
   /* ---------------------------------------------------------------------
-     Der Kopf bekommt seinen Grund, sobald der Hero durch ist.
+     Ist der Hero durch? Frueher faerbte das den Kopf ein, der steht jetzt
+     im Fluss und braucht es nicht mehr. Die Marke bleibt, weil die Linie
+     am Seitenrand daran haengt: sie beginnt erst, wenn der Film vorbei
+     ist. Deshalb heisst sie jetzt nach der Sache, nicht nach dem Kopf.
      --------------------------------------------------------------------- */
   var hero = document.getElementById('hero');
   if (hero) {
-    var kopfOffen = false;
-    function kopfPruefen() {
-      kopfOffen = false;
+    var standOffen = false;
+    function standPruefen() {
+      standOffen = false;
       var h = hero.getBoundingClientRect();
-      document.body.classList.toggle('kopf-hell', h.bottom <= 64);
+      document.body.classList.toggle('hero-durch', h.bottom <= 64);
     }
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (e) {
-        document.body.classList.toggle('kopf-hell', !e[0].isIntersecting);
+        document.body.classList.toggle('hero-durch', !e[0].isIntersecting);
       }, { rootMargin: '-64px 0px 0px 0px' }).observe(hero);
     }
     /* Absicherung. Der Beobachter kann seinen ersten Rueckruf feuern,
        bevor die Hoehe des Heros steht, und meldet dann einmal falsch und
-       danach nie wieder, weil die Grenze nie ueberschritten wird. Der Kopf
-       bliebe fuer immer eingefaerbt. Gemessen wird deshalb zusaetzlich
-       beim Scrollen, gedrosselt und nur bei echter Aenderung. */
+       danach nie wieder, weil die Grenze nie ueberschritten wird. Die
+       Linie bliebe dann fuer immer unsichtbar. Gemessen wird deshalb
+       zusaetzlich beim Scrollen, gedrosselt und nur bei echter Aenderung. */
     window.addEventListener('scroll', function () {
-      if (kopfOffen) return;
-      kopfOffen = true;
-      requestAnimationFrame(kopfPruefen);
+      if (standOffen) return;
+      standOffen = true;
+      requestAnimationFrame(standPruefen);
     }, { passive: true });
-    window.addEventListener('load', kopfPruefen);
-    kopfPruefen();
+    window.addEventListener('load', standPruefen);
+    standPruefen();
   }
 
   /* ---------------------------------------------------------------------
