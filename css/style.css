@@ -33,7 +33,7 @@
 
 /* Der Kopf steht fest und ist rund 77px hoch. Ohne diesen Rand parkt
    jeder Ankersprung die Ueberschrift samt Eyebrow darunter. */
-section[id], .gang { scroll-margin-top: 2rem; }   /* kein fixer Kopf mehr, der etwas verdeckt */
+section[id], .gang { scroll-margin-top: 7rem; }   /* der Kopf liegt auf, ein Anker muss darunter vorbei */
 
 /* --- Die hellen Sektionen ------------------------------------------------
    Sie sitzen als Blatt im dunklen Raum. Kein Schatten, keine runde Ecke:
@@ -91,16 +91,30 @@ section[id], .gang { scroll-margin-top: 2rem; }   /* kein fixer Kopf mehr, der e
    ========================================================================== */
 
 .kopf {
-  /* Steht im Fluss, nicht ueber dem Bild. Er wird oben einmal gelesen
-     und scrollt dann weg, wie eine Leiste auf Papier. Damit braucht er
-     weder Schleier noch Textschatten: er hat seinen eigenen Grund. */
-  position: relative; z-index: 20;
+  position: fixed; inset: 0 0 auto; z-index: 20;
   display: flex; align-items: center; gap: var(--r-4);
   padding: var(--r-3) var(--rand);
-  background: var(--eiche-tief);
-  border-bottom: 1px solid var(--kerbe-fein);
   color: var(--leinen);
+  text-shadow: 0 1px 2px rgba(10, 6, 4, .8);
   hyphens: none;
+}
+
+/* Der Kopf liegt auf, traegt aber keine Leiste. Ein voll gedeckter
+   Balken ueber der Seite war eine Nummer zu laut, besonders auf den
+   hellen Sektionen, wo er als schwarzer Streifen darauf sass.
+   Stattdessen eine Abdunklung, die oben beginnt und nach unten ausgeht,
+   dieselbe Sprache wie die Scrims im Hero: keine sichtbare Kante, nur
+   Deckung dort, wo Schrift steht. Sie gilt durchgehend, es wird nichts
+   mehr umgeschaltet. */
+.kopf::after {
+  content: ""; position: absolute; z-index: -1;
+  inset: 0 0 auto; height: calc(100% + 2.75rem);
+  background: linear-gradient(to bottom,
+    rgba(10, 7, 5, .80) 0%,
+    rgba(10, 7, 5, .74) 54%,
+    rgba(10, 7, 5, .48) 80%,
+    rgba(10, 7, 5, 0) 100%);
+  pointer-events: none;
 }
 
 .kopf__marke { display: flex; align-items: baseline; gap: .6em; text-decoration: none; white-space: nowrap; }
@@ -123,7 +137,7 @@ section[id], .gang { scroll-margin-top: 2rem; }   /* kein fixer Kopf mehr, der e
 .kopf__liste a:hover::after { transform: scaleX(1); }
 
 .kopf__tel {
-  white-space: nowrap; color: var(--kognak-hell);
+  white-space: nowrap; color: var(--leinen);
   font-size: 0.86rem; letter-spacing: .06em;
 }
 
@@ -743,20 +757,17 @@ section[id], .gang { scroll-margin-top: 2rem; }   /* kein fixer Kopf mehr, der e
 
 .gang { margin: 0; min-width: 0; }
 
-/* Der Gangkopf bleibt stehen, solange sein Gang laeuft. Nach drei
-   Bildschirmen Liste weiss sonst niemand mehr, ob er noch in den
-   Pfannengerichten ist oder schon beim Haehnchen. */
+/* Der Gangkopf steht still. Er klebte frueher oben mit, damit man nach
+   drei Bildschirmen Liste noch weiss, in welchem Gang man ist. Zwei
+   mitlaufende Ebenen uebereinander, Kopf und Gangkopf, waren aber eine
+   zu viel. Die Orientierung traegt jetzt der Index ueber der Karte. */
 .gang__titel {
   font-size: var(--s-1);
   color: var(--kognak);
   margin: 0 0 var(--r-3);
   padding: var(--r-2) 0 var(--r-1);
   border-bottom: 1px solid var(--kerbe);
-  position: sticky; top: 4.4rem;
-  background: var(--sandstein);
-  z-index: 1;
 }
-@media (prefers-reduced-motion: reduce) { .gang__titel { position: static; } }
 .gang__liste { list-style: none; margin: 0; padding: 0; }
 
 /* Ein Gericht. Nummer links in der Monospace, Name darueber gesetzt,
@@ -768,7 +779,7 @@ section[id], .gang { scroll-margin-top: 2rem; }   /* kein fixer Kopf mehr, der e
   gap: 0 var(--r-2);
   padding: var(--r-2) 0;
   border-bottom: 1px solid color-mix(in srgb, var(--kerbe) 28%, transparent);
-  scroll-margin-top: 2rem;
+  scroll-margin-top: 6rem;
 }
 .gang__liste .gericht:last-child { border-bottom: 0; }
 .gericht__nr {
