@@ -1,452 +1,326 @@
-# Design-Konzept · Irodion, Lünen
+# Irodion, Ausbaustufe: Design-Konzept
 
-Stand 11.09.2026. Dieses Dokument wird vom Build wörtlich konsumiert. Jede Textzeile
-darin geht unverändert auf die Seite. Es gilt, bis eine Änderung freigegeben ist.
+Stand 29.09.2026. **Entwurf mit Recherche, wartet auf Aarons Freigabe.** Erst nach dem Ja
+fließen Code und Kie.ai-Credits (Regel aus dem Skill `baue-website`, Phase 2).
+Nichts vom Redesign ist bisher committet oder hochgeladen.
 
----
+## 0. Ausgangslage
 
-## 0. Der Betrieb
+- Gebaut und in der Vorschau: das helle Redesign "Die Glasätzung"
+  - Einstieg mit Milchglasscheibe, am Desktop Querformat #37, am Handy Hochformat #35
+  - Karte mit allen Preisen, Nummernfeld mit Preis
+  - Heute-Anzeige
+  - Galerie 4x3
+  - Feiern, Draußen (Terrasse #38, Gasse #39), Zeiten und Platz
+- Aarons Urteil:
+  - Palette **C "Leinen & Eiche"** gefällt am ehesten.
+  - Die Seite wirkt aber **zu simpel**.
+  - Nicht zu kompliziert, nicht zu simpel. Die Bilder müssen sich "mega einfügen".
+- Bleibt fest: die Karte, das Nummernfeld, die Live-Anzeige "heute geöffnet".
+- Freigegeben: Kie.ai "wenn nötig", zum Beispiel ein Video für den Einstieg aus seinen
+  eigenen Fotos.
+- Gewünscht: eine interaktive, sehr ansprechende Darstellung für die Bilder.
+- Unverändert gültig:
+  - PRODUCT.md
+  - Fotos echt, nur retuschiert
+  - kein Baujahr
+  - kein Mäander
+  - keine Gedankenstriche
+  - Sie-Form auf der Seite
+  - kein Lieferservice
 
-**Irodion**, Griechisches Spezialitäten-Restaurant, Roggenmarkt 19, 44532 Lünen.
-Telefon 02306 12864, info@irodion-luenen.de. Inhaber und Geschäftsführer:
-**Christos Tzes**. Auf der eigenen Seite unterschreibt das Haus mit **Familie Tzes**.
+## 1. Recherche (Phase 1, erledigt am 29.09.2026)
 
-Seit **1983** in der Lünener Altstadt, im Fachwerkhaus am Roggenmarkt. **1990** umgebaut,
-**2009** modernisiert, im Sommer **2017** für Gruppen und Feiern erweitert. Draußen
-Kopfsteinpflaster und cremefarbene Schirme mit dem eigenen Namen darauf. Drinnen dunkle
-Eichenbalken, Kognakleder-Bänke, Terrakottaboden, Sandsteinwand, und in die hölzernen
-Trennwände zwischen den Nischen ist ein **Mäander** geschnitzt.
+Aaron hat keine eigenen Referenzen ("Hab keine, such du"). Angesehen und zerlegt:
 
-Öffnungszeiten: Mittwoch Ruhetag, außer an Feiertagen. Montag, Dienstag, Donnerstag,
-Freitag, Samstag, Sonntag von 11:30 bis 14:30 Uhr und von 17:00 bis 22:30 Uhr. Warme
-Küche mittags bis 14:00 Uhr, abends bis 22:00 Uhr. An allen Feiertagen geöffnet.
+**Studenterkilden, Kopenhagen** (studenterkilden.dk, Awwwards Honorable Mention 08/2026).
+Ein Gasthaus in einem Fachwerkhaus seit 1854, also die nächste Verwandte des Irodion.
+- Schrift: eine Familie (GT Ultra) in Gewicht 400, große ruhige Überschriften, viel Luft.
+- Farbe: fast Weiß, ein Anthrazitblock für den Über-uns-Text, sandfarbene Knöpfe; die
+  Farbe kommt aus den Fotos.
+- Rhythmus: das ganze Fachwerkhaus früh groß im Bild, dann drei Angebote mit Fotos, dann
+  ein dunkler Block mit einem einzigen großen Absatz.
+- Ton: warm, erzählend, das Haus als Hauptfigur.
+- Merkelement: das illustrierte Logo beim Laden, danach das Haus in voller Breite.
 
-**Was es gibt:** Essen im Haus, Außenbereich bei gutem Wetter, Mitnahme auf Vorbestellung,
-Räume für Gesellschaften mit individueller Aufteilung.
+**Palazzo Sogni, Florenz** (palazzosogni.com, Honorable Mention 06/2026), außerhalb der
+Branche, ein Hotel in einem historischen Palast.
+- Schrift: helle Serifen-Versalien mit weiter Laufweite (Sogo 300), Fließtext klein.
+- Farbe: warmer Putzton, ein gedecktes Blau als einziger Akzent, fast wie Leinen und
+  Logoblau.
+- Merkelement: Ornamente aus dem eigenen Haus (die Fresken) als feine Linienzeichnung,
+  die über die Fotos läuft. Der Einstieg zeigt ein Detail des Hauses, kein Gesamtbild.
 
-**Was wegfällt:** kein Lieferservice, an keiner Stelle, auch nicht im Alt-Text. Das Haus
-bietet Mitnahme auf Vorbestellung an, das ist etwas anderes und wird auch so genannt.
+**Qissa, Sevenoaks** (qissa.co.uk, Awwwards Nominee 2026), ein Restaurant.
+- Schrift: Cormorant Garamond in Gewicht 330 plus Manrope; Nachtblau mit Gold.
+- Stark: die Geschichte des Namens ("A word that means a tale") und die Karte als
+  Einstieg "Gang für Gang".
+- Bewusst nicht übernommen: dunkler Grund mit Gold und zentriertem Text über dem Foto.
+  Das ist der Standard-Look teurer Restaurants und genau das "zu dunkel", das Aaron
+  nicht will.
 
-**Bildmaterial:** Die zweiundzwanzig echten Fotos der alten Seite liegen in 640×480 vor.
-Das reicht für kleine Kacheln, nicht für den Hero. Das große Material wird erzeugt und
-dabei **auf die echten Fotos konditioniert**, damit der Raum aussieht wie dieser Raum
-und nicht wie eine beliebige Taverne: Mäander in den Trennwänden, Kognakleder,
-Terrakottaboden, dunkle Balken, Sandsteinverblendung. Kennzeichnung im Impressum unter
-Bildnachweis. Keine erfundenen Gästestimmen, keine erfundenen Auszeichnungen, keine
-nachgebauten echten Personen, keine fremden Marken im Bild.
+**Was übergeht, und warum es zum Irodion passt:**
+1. Die Überschriften in einem leichten Gewicht (300 bis 400) statt fett. Alle drei Seiten
+   wirken edel vor allem durch Leichtigkeit und Luft, nicht durch Schmuck. Das ist der
+   direkte Gegenpol zu "billig".
+2. Das eigene Ornament des Hauses als Linie: Beim Irodion sind das die geätzten Scheiben
+   mit dem Theater und der Akropolis. Sie werden als feine Linienzeichnung nachgezogen und
+   laufen als Detailebene durch die Seite, wie die Fresken bei Palazzo Sogni. Echt aus
+   dem Haus, kein erfundenes Muster wie früher der Mäander.
+3. Das Haus als Hauptfigur mit einem großen Moment in voller Breite (Studenterkilden) und
+   die Geschichte des Namens als eigener, ruhiger Block (Qissa).
 
----
+**Gäste-Sprache** (golocal, yably, Tripadvisor; nur zur Orientierung, nie als Zitat oder
+Bewertung auf der Seite):
+- Lob: "reichhaltig", "große Portion für einen annehmbaren Preis", "einfach herrlich
+  griechisch", "total gemütlich", "zum Wohlfühlen", "seit über 30 Jahren immer gleich gut".
+- Einwand: sich gehetzt fühlen ("nach einer Stunde gebeten zu gehen"), Aufpreise, die
+  man nicht kennt.
+- Antwort der Seite: Der Satz "in Ruhe essen und es nicht eilig haben müssen" bleibt
+  stehen, und alle Preise stehen offen auf der Karte, auch die Aufpreise.
 
-## 1. Die These in einem Satz
+## 2. Die These
 
-Das Haus heißt nach einem Theater in Athen, aber der Mann, nach dem zwei Gerichte auf
-der Karte heißen, steht seit 1983 selbst am Roggenmarkt, und die Seite führt genau
-diesen Weg vor: vom Pflaster unter den Schirmen durch die Tür bis an einen Tisch in der
-Nische, an dem man einfach eine Nummer sagt.
+**"Treten Sie ein."** Die Seite öffnet die Holztür unter dem Rundbogen und führt einmal
+durch das Haus bis an den Tisch. Unterwegs findet man Nummer, Preis und Uhrzeit.
 
----
+Warum man weiterscrollt: Man steht am Anfang vor dem Haus und ist nach einem Scroll drin.
 
-## 2. Die Kundensprache, recherchiert, geht wörtlich in die Texte
+## 3. Typografie (der größte Hebel gegen "zu simpel")
 
-**Gewünschtes Ergebnis:** die Portionen sind riesig · man geht satt raus · der Chef kommt
-selbst an den Tisch · seit Ewigkeiten dieselbe Familie · man sitzt gemütlich in der
-Nische · draußen in der Altstadt sitzen
+Bisher trägt Commissioner alles. Das ist sauber, aber neutral, und genau deshalb wirkt
+die Seite simpel. Neu ist ein echtes Trio:
 
-**Schmerz:** die Karte im Netz ist ein 22-MB-PDF, das auf dem Handy nicht aufgeht · man
-weiß nicht, ob mittwochs offen ist · man weiß nicht, ob man reservieren muss · wo parkt man
+- **Display, neu, mit Charakter.** Zwei Kandidaten werden als Prototyp nebeneinander
+  gesetzt, Aaron wählt:
+  - Zodiak (Fontshare): scharfe Keilserifen, erinnert an in Stein gehauene griechische
+    Inschriften, passt zum Theater im Namen.
+  - Gambetta (Fontshare): wärmer, lesefreundlicher, mit Haltung.
+  - Vor der Wahl prüfen: Lizenz, deutsche Umlaute, griechische Zeichen für Ηρώδειο.
+    Fehlen sie, steht Ηρώδειο weiter in Commissioner.
+- **Body: Commissioner bleibt.** Bewährt, echtes Griechisch, gut bei 17px.
+- **Label/Ziffern: Martian Mono bleibt**, nur für Nummer, Preis, Uhrzeit, Telefon und
+  den Live-Status.
 
-**Der Einwand, der abhält:** die Karte ist so lang, dass man sich nicht entscheiden kann ·
-wirkt von außen altmodisch · lohnt sich das für eine große Runde
+Die Schrift wird bearbeitet, nicht nur ausgewählt:
 
-**Antwort im Layout, nicht im Text:** Die vollständige Karte mit echten Preisen steht auf
-der Seite selbst, lesbar auf dem Handy, kein PDF-Download. Die lange Karte bekommt einen
-Einstieg über die Nummer, so wie im Haus bestellt wird. Der Ruhetag steht groß und ist
-nicht zu übersehen. Der Weg zum Tisch ist das Telefon, ohne Umweg.
+- Display in **leichtem Gewicht (300 bis 400)**, groß, mit -0.02 bis -0.03em Laufweite und
+  Zeilenhöhe 1.05 bis 1.1. Leichtigkeit ist der wichtigste Unterschied zu "billig".
+- Skala etwa 1.333, deutlich größerer Sprung zwischen Überschrift und Text als bisher.
+- `/impeccable typeset` ist Pflicht, sobald die Schriften stehen.
 
----
+Risiko, laut gesagt: Leinen plus Serif ist ein bekannter Standard-Look (Skill 6.2).
+Dagegen steht dreierlei. Es gibt keinen Terrakotta-Akzent, der einzige Akzent ist das
+Logoblau des Hauses. Der dunkle Ton ist die Eiche der Balken, kein Espresso. Und die
+Display-Schrift kommt aus der Welt der Inschriften, nicht aus dem Magazin.
 
-## 3. Die Typografie
+## 4. Farbe: Palette C "Leinen & Eiche" (gewählt)
 
-Auf der Seite stehen Ηρώδειο, Kalós ílthate und die griechischen Gerichtnamen. Zwei der
-drei Schriften mussten deshalb echtes Griechisch tragen. Geprüft, nicht angenommen: die
-Subsets wurden bei Google Fonts einzeln abgefragt.
-
-| Rolle | Familie | Griechisch | Einsatz | Warum diese |
-|---|---|---|---|---|
-| Display | **Alegreya**, variabel 400–900 | ja, greek und greek-ext | Schlagzeilen, Hero-Bänder, Sektionsköpfe, Gerichtnamen | Von Juan Pablo del Peral für längere Literatur gezeichnet, humanistisch, mit leicht keilförmigen Serifen und einem unruhigen, kalligrafischen Rhythmus. Das ist genau das Material der geschnitzten Eiche in den Nischen: warm, handgemacht, nicht glatt. Echte Kursive, echtes Griechisch. |
-| Body | **Commissioner**, variabel 100–900 | ja | Fließtext, Antworten, Beschreibungen | Von Kostas Bartsokas, einem griechischen Schriftgestalter. Niedriger Kontrast, ruhig, hält sich unter der Alegreya zurück, ohne farblos zu sein. |
-| Label | **Martian Mono**, variabel 100–800 | nein, wird nicht gebraucht | Gerichtnummern, Preise, Uhrzeiten, Eyebrows | Die Nummern sind bei diesem Haus die Marke, siehe Abschnitt 5. Sie brauchen eine Schrift mit gebauten, unverwechselbaren Ziffern, die neben der warmen Alegreya nach Werkstatt aussieht statt nach Dekoration. Trägt nur Ziffern, Zeiten und Versalien-Labels, also kein Griechisch nötig. |
-
-Alle drei unter SIL Open Font License, lokal als woff2 im Projekt, `font-display: swap`,
-Preload für Alegreya im Kopf. Kein fremder CDN-Aufruf. Subsets nach `unicode-range`
-getrennt, das griechische Paket lädt nur nach, wenn griechische Zeichen vorkommen.
-
-**Abgrenzung zu Xenios, laut gesagt:** Xenios trägt EB Garamond, Literata und
-Commissioner. Hier bleibt allein Commissioner, und zwar in einer anderen Rolle, dort
-kleine Versalien-Labels, hier der Fließtext. Display und Label sind neu und gegensätzlich
-gewählt, damit die beiden Häuser sich nicht verwechseln lassen.
-
-**Handwerk an der Schrift, verbindlich:**
-- Type-Scale mit Verhältnis 1.333, sieben Stufen als Token in `:root`. Keine freien
-  Zwischengrößen. Die großen Schlagzeilen skalieren fluid mit `clamp()`.
-- Laufweite: Display groß bei `-0.025em`, Versalien-Labels bei `+0.14em`.
-- Zeilenhöhe: Schlagzeilen 1.04 bis 1.12, Fließtext 1.62.
-- Zeilenlänge auf 62 bis 70 Zeichen begrenzt, in `ch` am Textelement selbst, nie am
-  Container.
-- Preise und Nummern mit `font-variant-numeric: tabular-nums`, damit die Spalte steht.
-- Echte Schnitte, kein Fake-Bold, kein Fake-Italic.
-- Deutsche Anführungszeichen unten und oben, `hyphens: auto` mit `lang="de"`.
-- Griechische Wörter bekommen `lang="el"`.
-
----
-
-## 4. Die Farbe
-
-Die Palette kommt aus dem echten Raum, und die Verteilung ist eine Entscheidung gegen
-das Klischee: **Dieses Haus ist innen dunkel.** Dunkle Eichenbalken, Kognakleder,
-gedämpftes Licht, Terrakotta unter den Füßen. Also ist die Seite überwiegend dunkel,
-und der helle Sandstein ist die seltene Unterbrechung, nicht der Grund.
-
-| Token | Wert | Rolle |
+| Rolle | Wert | Anteil |
 |---|---|---|
-| `--eiche` | `#1B1411` | die Balken, der Hauptgrund |
-| `--eiche-tief` | `#110C0A` | Fuß, Schatten, Nischen |
-| `--sandstein` | `#E3D7C0` | die Verblendung und das Tischtuch, die helle Fläche |
-| `--sandstein-hell` | `#F0E7D6` | Karten, Formularfelder |
-| `--tinte` | `#231A13` | Text auf Sandstein |
-| `--tinte-weich` | `#4C3D30` | Sekundärtext auf Sandstein |
-| `--leinen` | `#F0E6D4` | Text auf Eiche |
-| `--leinen-weich` | `#BCAE97` | Sekundärtext auf Eiche |
-| `--kognak` | `#8C3A1C` | der Akzent auf Sandstein, selten |
-| `--kognak-hell` | `#D08A4E` | derselbe Akzent auf Eiche |
-| `--terrakotta` | `#A8583A` | der Boden, nur als Fläche und Linie, nie als Text |
-| `--kerbe` | `#6B5540` | Haarlinien, der Mäander im Ruhezustand |
+| Leinen, Grund | #F6F3EE | ca. 70 % |
+| Leinen tief, ruhige Blöcke | #EBE5DC | |
+| Tinte, Text | #231C17 | |
+| Tinte weich, Nebentext | #5E554D | |
+| Eiche, dunkle Flächen, Überschriften, Knopf | #2A211B | ca. 15 % (Nummer, Feiern, Fuß) |
+| Text auf Eiche | #F4EFE8 / #C8BBAC | |
+| Logoblau, einziger Akzent | #305071 | ca. 3 % (Logo, Nummern, Links, Live-Status) |
+| Treffer, heute | #E8DDCB | |
+| Linie | #DCD2C5 | |
 
-Kein reines Schwarz, kein reines Weiß. Alle Paarungen werden gegen WCAG AA gerechnet
-und die Zahlen nach dem Build in `DESIGN.md` festgehalten, nicht geschätzt. Nach der
-Freigabe des Hero-Materials wird die Palette aus dem Film nachgezogen, damit Seite und
-Bild eine Welt sind.
+Kontraste sind geprüft, alle Paare bestehen AA. Die Ziegelfläche entfällt.
 
-**Die Abweichung, laut gesagt:** Warmes Beige plus Serife plus Terracotta ist genau der
-Standard-Look, den ich sonst sperre. Ich weiche bewusst ab und verdiene es strukturell:
-Der Beige-Ton ist hier nicht der Grund, sondern der Gast. Die Seite steht auf dunkler
-Eiche, so wie der Raum. Terrakotta erscheint nur als Fläche und Linie, nie als
-Textfarbe, weil es im Haus der Boden ist und keine Beschriftung. Und der Akzent ist das
-Kognakleder der Bänke, ein gebranntes Rot, das man aus dem Raum abnehmen kann.
+## 5. Das Signature-Element: der Einstieg "Eintreten"
 
-**Anti-Referenzen:** kein Blau-Weiß der griechischen Flagge, keine Säulen als Deko,
-kein Fast-Schwarz mit Neon, keine Amphoren, keine Sirtaki-Bildsprache, keine
-austauschbaren Icon-Dreispalter, keine gleich abgerundeten Karten mit gleichem Schatten,
-keine Stockfoto-Gyros-Nahaufnahme mit Bokeh.
+Die stärkste Bewegung der Seite, aus dem Haus hergeleitet: der Rundbogen mit der
+zweiflügeligen Holztür.
 
----
+- **Beim Laden:** Das Foto der Tür (#32, frontal) wird aus der Milchglas-Fassung klar.
+  Davor steht die Scheibe mit Logo, Überschrift, Live-Status, Ruf und Kartenlink.
+  Die Bewegung beginnt also sofort.
+- **Beim Scrollen**, gekoppelt über GSAP ScrollTrigger mit `scrub`, kurz gepinnt (etwa
+  120vh am Desktop, 90vh am Handy):
+  - Die Kamera fährt in den Rundbogen, gerechnet über `transform: scale` um die Mitte
+    des Bogens.
+  - Im Bogen öffnet sich per `clip-path` in Bogenform der Gastraum (Kronleuchter-Foto,
+    warmes Licht) und wächst, bis er den Bildschirm füllt.
+  - Dazu erscheint ein einziger Satz: *Kalós ílthate.* Schön, dass Sie da sind.
+- **Reduzierte Bewegung, kein JS, langsames Netz:** der heutige ruhige Einstieg, gleich
+  schön, gleiche Texte. Das ist die geplante Variante, kein Notbehelf.
+- **Durchschalten statt raten:** Mit Emils `prototype` entstehen drei Fassungen, Aaron
+  wählt:
+  - **A Eintreten** (oben beschrieben). Nur echte Fotos, kein Verzerrungsrisiko.
+    **Empfehlung.**
+  - **B Die Scheibe wird klar.** Eine geätzte Scheibe mit IRODION liegt über der
+    Fassade. Beim Scrollen klart sie auf und wandert in den Kopf.
+  - **C Kie.ai-Video.** Eine ruhige Fahrt auf die Tür zu, Startframe ist das echte Foto
+    #32, gescrubbt beim Scrollen.
+    - Modell: kling/v2-1-pro, 5 Sekunden.
+    - Kosten grob 100 bis 500 Credits. Genauen Preis vor dem Start nennen, dazu einen
+      möglichen Neuversuch.
+    - Bekanntes Risiko: KI-Video verzieht Fachwerk.
+    - Deshalb gilt GATE 1: Startframe freigeben. GATE 2: Start-, Mittel- und Endframe
+      per ffmpeg ansehen, bevor Aaron das Video sieht.
+    - Nach drei verlorenen Versuchen wird das Konzept gewechselt, nicht der Prompt.
+- Nur `transform`, `opacity` und `clip-path`, ease-out beim Erscheinen. Vorher
+  `find-animation-opportunities` und `animation-vocabulary` laufen lassen.
 
-## 5. Das Signature-Element: Sagen Sie einfach die Nummer
+## 6. Die Bilder interaktiv: "Rundgang durchs Haus"
 
-Die Karte dieses Hauses ist von 1 bis 1005 durchnummeriert, mit Untervarianten wie 28a,
-43a, 73b, 100a. Stammgäste bestellen so. Man sagt nicht Rhodos Teller, man sagt die 47.
-Das ist keine Idee von mir, das steht auf ihrer Karte.
+Ersetzt die 4x3-Galerie. Die Fotos werden groß und bekommen Namen, statt als Kacheln zu
+liegen.
 
-Daraus wird das eine Element, das man sich merkt, und es löst zugleich das größte
-echte Problem der Seite: Diese Karte hat über zweihundert Positionen, und eine lange
-Liste ohne Einstieg schreckt ab.
+- **Desktop:** Beim senkrechten Scrollen wandert ein Band großer Fotos waagerecht vorbei
+  (gepinnt, ScrollTrigger).
+  - Die Fotos sind unterschiedlich hoch. Eines ist im Rundbogen geschnitten, als Echo
+    der Tür.
+  - Jedes Foto trägt den Namen seines Ortes und eine Zeile, nur mit belegten Fakten:
+    - Die Bar
+    - Die Weinwand
+    - Der Flügel mit dem Terrakottaboden
+    - Die Glaswand mit der Akropolis
+    - Santorini in Schwarzweiß
+    - Die Fensternische
+    - Die Flasche "Restaurant IRODION by Elena"
+    - Der Gastraum mit dem Kronleuchter
+  - Eine dünne Linie zeigt den Fortschritt.
+  - Jedes Foto wird beim Eintreffen klar, derselbe Auftritt wie überall.
+- **Handy:** Ein natives waagerechtes Wischen mit Einrasten (`scroll-snap`). Das nächste
+  Foto schaut an der Kante herein, dazu ein Zähler "3 / 8". Kein selbstgebautes Ziehen,
+  damit nichts hakt (Lehre aus RevierKlar und Gartenprofi Baleca).
+- **Tippen oder Klicken öffnet das Foto groß**, mit Wischen, Pfeiltasten und Esc.
+  Diese Großansicht ist optional und wird erst nach dem Rundgang entschieden.
+- Offene Frage an Aaron: Soll die Glasätzung (#18) als Station in den Rundgang, oder
+  ganz raus?
 
-**Der Mitmach-Moment:** Ein Feld mit drei Stellen und den Ziffern darunter, gesetzt in
-Martian Mono, in der Form der Nummernschilder auf der echten Karte. Der Besucher tippt
-eine Nummer, und die Karte darunter springt an die Stelle und hebt das Gericht kurz
-hervor. Tippt er eine Nummer, die es nicht gibt, sagt die Zeile das freundlich und
-nennt die nächstgelegene. Ohne Tastatur bedienbar, mit Tastatur bedienbar, und bei
-`prefers-reduced-motion` springt die Karte ohne Fahrt direkt an die Stelle.
+## 6b. Die Detailebene: Ätzlinien
 
-Der Test aus dem Skill: Nimmt man das Element weg, ändert sich die Seite spürbar? Ja.
-Ohne es ist die Karte eine Liste, mit ihm ist sie die Karte dieses Hauses.
+**Ergebnis 29.09.2026:** Kie.ai lieferte zweimal nur das Foto zurück und einmal eine saubere
+Zeichnung mit erfundenen Arkaden, die es auf der Folie nicht gibt; nicht verwendet (12
+Credits). Umgesetzt ist die eigene Nachzeichnung des Theaters von der Akropolis-Glaswand
+(#27), nur an einer Stelle: unter der Überschrift im Namens-Abschnitt.
 
-**Das zweite, leisere Signature: der Mäander.** In die Trennwände zwischen den Nischen
-ist ein Mäander geschnitzt, das ist im Haus vorhanden und keine Griechenland-Tapete.
-Er wird zur Linie, die sich beim Scrollen am Rand der Seite selbst zeichnet und an
-jeder Sektion einen Knick macht, so wie das Band im Holz an jeder Kante umspringt. Eine
-Bordüre wird daraus ausdrücklich nicht.
+Das Theater aus der Glasätzung (#18) und die Akropolis von der Glaswand (#27) werden als
+feine Linienzeichnung nachgezogen, zuerst mit potrace aus den Fotos (kostenlos), nur
+wenn das nicht sauber wird, als Linienauszug über Kie.ai (flux-kontext, rund 5 bis 10
+Credits, Ergebnis vorher zeigen).
+- Einsatz sparsam, drei Stellen: hinter dem Namen-Block (das Theater), am Rand der
+  Karte (die Akropolis, sehr hell), im Fuß.
+- Die Linie zeichnet sich einmal beim Hineinscrollen selbst, danach steht sie still.
+  Bei reduzierter Bewegung steht sie sofort da.
+- Farbe: Linie in Leinen tief oder Eiche mit geringer Deckung, nie als Muster gekachelt.
 
----
+## 6c. Bewegungsplan (find-animation-opportunities, 29.09.2026)
 
-## 6. Die Band-Map des Heros
+Eine Restaurantseite, die man gelegentlich besucht. Stammgäste schauen öfter nach den
+Zeiten. Deshalb wenig Bewegung, und nur dort, wo sie etwas erklärt.
 
-Dieselbe Mechanik wie bei Xenios, weil sie dort funktioniert hat: ein erzeugter Film,
-der beim Runterscrollen vorwärts und beim Hochscrollen rückwärts läuft, mit Textbändern
-in den ruhigen Flächen. Die Reise ist eine andere, weil das Haus ein anderes ist.
-
-Drei Segmente, etwa 16 Sekunden, rund 1000vh Scrollstrecke. Die Bereiche sind
-Startpunkte und werden vom Flick-Test bei 120, 240 und 360 Pixeln bestätigt oder
-verschoben.
-
-| Band | Bereich | Was der Film tut | Text, wörtlich | Auftritt |
+| # | Ort | Zweck | Häufigkeit | Bewegung |
 |---|---|---|---|---|
-| 1 | 0.00–0.14 | Roggenmarkt am frühen Abend, Kopfsteinpflaster, Fachwerkgiebel, die cremefarbenen Schirme stehen im warmen Licht | Eyebrow `ΗΡΩΔΕΙΟ`, Zeile **„Benannt nach einem Theater in Athen."** | Annäherung aus der Tiefe, beim Laden einmalig gesetzt |
-| 2 | 0.17–0.34 | Unter die Schirme hindurch, an den eingedeckten Tischen vorbei auf die Tür zu, kalt wird warm | **„Gebaut in ein Fachwerkhaus in Lünen."** | Weich zu scharf, echot die Schwelle |
-| 3 | 0.38–0.56 | Durch die Tür, dunkle Balken, die geschnitzten Mäander der Trennwände ziehen seitlich durch | **„Seit 1983. Dieselbe Familie, dieselbe Adresse."** | Zeichen fahren seitlich ein, im Takt der durchziehenden Wand |
-| 4 | 0.60–0.78 | Tiefer im Raum, an der Theke vorbei, Kognakleder, Terrakotta, Gläser | **„Über hundert Gerichte. Die Stammgäste sagen eine Zahl."** | Wortsprung mit Überschwingen auf „Zahl" |
-| 5 | 0.82–1.00 | Ankunft an einer freien Nische, gedeckt, die Fahrt kommt zur Ruhe | Schlagzeile **„Ihr Platz steht bereit."** Subline „Roggenmarkt 19, Lünener Altstadt. Küche bis 22:00 Uhr." CTA **„Tisch reservieren: 02306 12864"** | Wörter steigen auf, dann Subline, dann der Ruf |
+| 1 | Einstieg "Eintreten" | Erklärung: man tritt ins Haus | einmal pro Besuch | an den Scroll gekoppelt, ohne feste Dauer; `transform: scale` um die Tür, `clip-path: inset(... round)` in Bogenform, Scheibe `opacity` und `translateY`; bei reduzierter Bewegung steht der Einstieg still |
+| 2 | Rundgang Desktop | räumliche Führung durch die Räume | einmal pro Besuch | Band `translateX` an den Scroll gekoppelt, gepinnt; Handy nativ per scroll-snap, ohne eigene Bewegung |
+| 3 | Ätzlinie Theater | Freude, einmal | einmal pro Besuch | `clip-path: inset(0 100% 0 0)` zu `inset(0)`, 1200ms, `cubic-bezier(0.23, 1, 0.32, 1)`, einmal; bei reduzierter Bewegung sofort da |
+| 4 | Fotos | Übergang ohne Sprung beim Laden | je Foto einmal | bleibt: Frost zu klar, `opacity` 700ms |
+| 5 | Knöpfe | Rückmeldung | oft | bleibt: `:active` scale(0.97), 160ms |
 
-Band 1 lässt die Einblend-Rampe weg, Band 5 die Ausblend-Rampe, damit die Reise gesetzt
-beginnt und gesetzt endet.
+**Bewusst nicht animiert:**
+- **Die Karte mit 132 Gerichten:** Die Gäste lesen sie. Kein Einblenden, kein Staffeln.
+- **Die Zeitleiste:** Das ist eine Information. Keine sich zeichnende Linie.
+- **Der Live-Status:** Kein pulsierender Punkt, keine Dauerschleife. Der Text wechselt
+  einfach.
+- **Der Kopf:** Kein Ein- und Ausfahren beim Scrollen, das ist Navigation, die man oft
+  benutzt.
+- **Die übrigen Sektionen:** Kein Einblenden je Sektion. Genau das war beim alten Film
+  "zu viel". Auch keine Parallaxe auf Fotos.
 
-**Die Textbahnen:** Die Mittelbahn gehört dem Weg zum Tisch und bleibt frei. Die Texte
-stehen links und rechts davon. Die Scrims liegen als eigene Ebenen auf der Bühne und
-laufen vom Bildrand nach innen aus, damit keine Kante im Bild sichtbar wird. Jeder
-Textblock wird gegen seinen schlechtesten Frame gemessen, Boden 3,5 zu 1.
+Hinweis: Emils Skills `prototype` und `review-animations` sind in dieser Umgebung nicht
+installiert (`npx skills@latest add emilkowalski/skills`). Die Varianten des Einstiegs
+werden deshalb von Hand umschaltbar gebaut. Das Review läuft über `emil-design-eng` und
+`improve-animations`.
 
-**Zwei Fassungen**, quer und hoch, wie bei Xenios. Das Handy bekommt eine eigene
-Hochkant-Fahrt und nicht den beschnittenen Querfilm. Bei `prefers-reduced-motion` und
-bei quer gehaltenem Handy ohne Höhe läuft gar kein Video, dann steht der Standbild-Hero.
+## 7. Die Live-Anzeige ausbauen
 
----
+Sie war stark und wird wichtiger:
 
-## 7. Der Standbild-Hero
+- Sie rechnet nach deutscher Zeit (Europe/Berlin), auch für Besucher im Ausland, und
+  aktualisiert sich jede Minute.
+- Mögliche Zustände:
+  - "Jetzt geöffnet, warme Küche bis 22:00 Uhr"
+  - "Mittagspause, ab 17:00 Uhr wieder da"
+  - "Heute Ruhetag"
+  - "Geschlossen, morgen ab 11:30 Uhr"
+- An Feiertagen steht ein ehrlicher Vorbehalt dabei.
+- Sie steht in der Scheibe des Einstiegs, im Kopf und in der Wochentabelle.
 
-Für Handys ohne Video und für reduzierte Bewegung. Ein entworfenes Layout auf dem
-Endframe, keine Entschuldigung.
+## 8. Sektionsfolge
 
-- Eyebrow: `ΗΡΩΔΕΙΟ`
-- Schlagzeile: **„Benannt nach einem Theater in Athen. Gebaut in ein Fachwerkhaus in Lünen."**
-- Subline: „Griechische Küche am Roggenmarkt, seit 1983 dieselbe Familie."
-- CTA: **„Tisch reservieren: 02306 12864"**
+1. **Einstieg "Eintreten":** Tür, dann Gastraum. Scheibe mit Logo, Überschrift,
+   Live-Status, Ruf und Kartenlink.
+2. **Name:** Benannt nach dem Theater in Athen. Rein typografisch, Ηρώδειο groß in der
+   Display-Schrift, ohne Foto.
+3. **Das Haus:** Text und Zeitleiste 1983, 1990, 2009, 2017.
+4. **Rundgang:** die interaktive Bildstrecke.
+5. **Nummer:** Eichenblock, das Feld nennt den Preis. Bleibt.
+6. **Karte:** bleibt vollständig. Gänge in der Display-Schrift, feste Spalten für
+   Nummer, Name und Preis.
+7. **Feiern:** Eichenblock, die lange Tafel randabfallend.
+8. **Draußen:** Terrasse und Gasse versetzt.
+9. **Zeiten und Platz:**
+   - Live-Status groß, Wochentabelle.
+   - Zum Abschluss das ganze Haus im Querformat (#37) als Abschlussbild: Hier finden
+     Sie uns, mit Adresse und Anfahrt. Die Seite endet vor dem Haus, wo sie begann.
+10. **Fuß:** Eiche, helles Logo.
 
----
+## 9. Der eine Call to Action
 
-## 8. Die Seite unter dem Hero
+**Anrufen: 02306 12864, Tisch reservieren.** Die Nummer steht in der Scheibe, im Kopf,
+bei Feiern und groß am Ende. Die Mail ist der leisere zweite Weg.
 
-Jede Sektion ist ein Schritt. Keine zwei Nachbarn teilen dasselbe Layout-Skelett.
+## 10. Asset-Plan
 
-### 8.1 Der Settle
-Läuft direkt aus Band 5 heraus, auf dem Endframe.
+| Sektion | Material | Herkunft | Kosten |
+|---|---|---|---|
+| Einstieg | Tür #32, Gastraum #3 (Kronleuchter) | echt | 0 |
+| Einstieg Handy (Standbild) | #35 Schirm vor Fassade | echt | 0 |
+| Einstieg Variante C | Video aus #32 | Kie.ai | ca. 100 bis 500 Credits, nur nach GATE |
+| Rundgang | #13, #10, #26, #27, #19, #4, #21, #3 | echt | 0 |
+| Feiern | #8 Tafel | echt | 0 |
+| Draußen | #38 Terrasse, #39 Gasse | echt | 0 |
+| Abschluss Platz | #37 Haus quer | echt | 0 |
 
-### 8.2 Woher der Name kommt
-Kopf: **„Das Odeon des Herodes Atticus."**
-Text: „Am Fuß der Akropolis steht ein antikes Theater, fünftausend Plätze, gestiftet
-von Herodes Atticus. Auf Griechisch heißt es Ηρώδειο, und gespielt wird dort bis heute.
-Wir haben unser Haus danach benannt, weil sich an diesem Ort seit zweitausend Jahren
-Leute treffen, um einen Abend miteinander zu verbringen. Mehr wollten wir am
-Roggenmarkt eigentlich auch nie."
-Ein Bild, hochformatig, warmes Abendlicht auf Steinrängen. Ausdrücklich als Stimmungsbild
-gekennzeichnet, nicht als Aufnahme des Denkmals ausgegeben.
+Alle Fotos sind bereits als WebP in `assets/bilder/` (Herkunft in `herkunft.json`). Neu
+exportiert werden müssen nur die Tür in Quer- und Hochformat-Ausschnitten sowie das
+Endbild des Gastraums in voller Breite.
 
-### 8.3 Seit 1983 am Roggenmarkt
-Kopf: **„Ein Haus, eine Familie, vier Umbauten."**
-Text: „1983 haben wir hier aufgemacht, im Fachwerkhaus am Roggenmarkt. Die Adresse hat
-sich seitdem nicht geändert, nur das Haus ist mitgewachsen. Viermal haben wir angefasst,
-was nötig war, und die Nischen stehen immer noch da, wo sie immer standen. Wer öfter
-kommt, den begrüßen wir beim Namen. Und wer zum ersten Mal kommt, bekommt dieselbe
-Nische und dieselbe Begrüßung wie alle anderen: Kalós ílthate, schön, dass Sie da sind."
-Eine Zeitleiste als Mäander-Knoten, vier Stationen mit je einer Zeile:
-`1983` eröffnet · `1990` umgebaut · `2009` modernisiert · `2017` erweitert
-Das ist der Vektorplan-Moment dieser Sektion, kein Icon-Set.
+## 11. Ablauf, in dieser Reihenfolge
 
-### 8.4 Sagen Sie einfach die Nummer
-Kopf: **„Die Stammgäste bestellen mit einer Zahl."**
-Text: „Unsere Karte ist durchnummeriert, von der 1 bis zur 1005. Wer öfter bei uns
-sitzt, bestellt keinen Rhodos Teller, sondern die 47, und wir wissen Bescheid. Sie müssen das
-natürlich nicht. Tippen Sie einfach eine Nummer ein, dann zeigen wir Ihnen, was
-dahintersteckt."
-Darunter das Nummernfeld aus Abschnitt 5.
+1. Diese Datei und `.impeccable/redesign-stand.md` lesen.
+2. ~~Phase 1: Referenzfrage, eigene Recherche, Rezensionen.~~ Erledigt, siehe Abschnitt 1.
+3. **GATE:** Aaron sagt ja zu diesem Konzept.
+4. ~~Palette C festschreiben.~~ Erledigt am 29.09. (Token heißen jetzt leinen, eiche,
+   auf-eiche; Ziegel ist raus, Feiern steht auf Eiche.)
+5. Schrift-Prototyp mit Zodiak und Gambetta, Aaron wählt, dann `/impeccable typeset`.
+6. GSAP lokal nach `js/vendor/` (frei lizenziert, kein CDN wegen CSP).
+7. Einstieg: drei Prototypen, Aaron wählt. Kie.ai nur bei C, mit Kostenansage und
+   beiden GATEs.
+8. Rundgang bauen: Desktop gepinnt, Handy per scroll-snap.
+9. Live-Status ausbauen.
+10. Bilder einfügen und die übrigen Sektionen verfeinern.
+    - Offen: der Rahmen der Trennwände als dunkler Holzrand um einzelne Fotos.
+11. Laufend `npx impeccable detect`. Dann `review-animations` (Emil), danach
+    `/impeccable critique`, `audit`, `polish`, Taste Pre-Flight, Finish-Reviewer und
+    Documenter (DESIGN.md neu).
+12. Aaron die Wahl vorlegen: mutiger, ruhiger, verspielter, spektakulärer, oder passt es?
+13. Commit, Skill `hostinger-upload`, Push, `pruefe_live.sh` bis `== ALLES OK`, Lighthouse
+    zeigen.
 
-### 8.5 Die Karte
-Kopf: **„Die ganze Karte. Kein Download."**
-**Ohne Unterzeile.** Die kleinen grauen Zeilen unter den Überschriften häuften sich,
-und diese sagte nichts, was die Überschrift nicht schon sagt. Die Preisauskunft steht
-dafür in den Anmerkungen unter der Karte.
-Alle Kategorien, gesetzt als ein einziges, identisch wiederholtes Bauteil, mit
-Nummer, Name und Beschreibung. **Ohne Preise, so entschieden.** Die Preise stehen auf
-der Karte im Haus, und solange sie nicht vom Betrieb bestätigt sind, steht lieber
-nichts da als eine Zahl, die nicht mehr stimmt. Dafür steht in den Anmerkungen unter der Karte: „Die Preise stehen auf der Karte im
-Haus. Rufen Sie uns an, wenn Sie vorher etwas wissen wollen."
+## 12. Offene Punkte aus dem letzten Review
 
-**Offener Punkt dazu:** Der Prüfer hatte empfohlen, diese Zeile über die Karte zu
-stellen, weil eine unerklärte Lücke sich als Verheimlichung liest und dieses Urteil in
-den ersten Sekunden fällt. Der Kunde wollte die Unterzeile weg, also steht sie jetzt
-unten. Wenn sich zeigt, dass Gäste nach den Preisen fragen, gehört sie nach oben.
-
-**Über den Gängen steht ein Verzeichnis**, neunzehn Anker in einer Zeile. Neunzehn
-Gänge ohne Einstieg sind keine Karte, sondern eine Wand. Die Gangköpfe bleiben beim
-Scrollen stehen, solange ihr Gang läuft.
-
-Die Kategorien:
-Warme Vorspeisen · Kalte Vorspeisen · Suppen · Salate · Beilagen · Saucen ·
-Vegetarische Gerichte · Vom Grill · Gemischtes vom Grill · Lamm und Rind vom Grill ·
-Platten für zwei oder vier Personen · Pfannengerichte · Hähnchen · Lamm aus dem Ofen ·
-Fischgerichte · Typisch griechisch · Für unsere kleinen Gäste bis 12 Jahre · Nachtisch ·
-Warme Getränke · Spirituosen · Alkoholfreie Getränke · Biere
-Dazu die drei Hinweise, die auf der echten Karte unter den Grillseiten stehen, wörtlich,
-und zwar **einmal unter der ganzen Karte**, nicht unter jedem Grillgang. Auf dem Papier
-steht der Absatz fünfmal, weil jede Seite für sich lesbar sein muss. Auf einer Seite,
-die man am Stück scrollt, sind das fünfmal dieselben 55 Wörter:
-„Bei Beilagenänderungen berechnen wir zusätzlich den Preis der gewünschten Beilage.
-Statt gemischtem Salat reichen wir zum Aufpreis von 3,00 Euro einen Bauernsalat.
-Auf Wunsch überbacken wir alle Gerichte mit Metaxasauce und Käse zum Aufpreis von 3,50 Euro."
-Und der Allergiehinweis: „Sollten Sie von Allergien betroffen sein, melden Sie sich
-bitte. Unsere separate Allergiekarte gibt Ihnen Auskunft über die in den Speisen
-enthaltenen Zutaten."
-Nummern in Martian Mono, tabellarische Ziffern. Der Aufbau der Karte ist so gesetzt,
-dass eine Preisspalte später ohne Umbau dazukommen kann.
-
-### 8.6 Wenn Sie mehr werden
-Kopf: **„Wenn Sie mehr werden, haben wir Platz."**
-Text: „2017 haben wir dafür angebaut. Seitdem teilen wir den Raum so, wie Sie ihn
-brauchen: mehrere kleine Runden oder eine lange Tafel. Ob Geburtstag, Taufe oder
-Firmenessen, sagen Sie uns am Telefon, wie viele Sie sind und was gefeiert wird. Den
-Rest stellen wir, und Sie kommen einfach."
-
-### 8.7 Draußen in der Altstadt
-Kopf: **„Bei gutem Wetter sitzen Sie draußen."**
-Text: „Dann stellen wir die Schirme raus, auf das Kopfsteinpflaster am Roggenmarkt,
-zwischen die Fachwerkgiebel. Ein guter Platz für einen langen Sommerabend. Und wer
-lieber zu Hause isst: Rufen Sie vorher an, dann steht alles fertig da, wenn Sie kommen."
-Das ist die Stelle, an der die Mitnahme genannt wird, und sie heißt Mitnahme.
-
-### 8.8 Wann die Küche an ist
-Kopf: **„Mittwoch ist Ruhetag."**
-Wochentabelle, der heutige Tag ist markiert, der Mittwoch deutlich als Ruhetag gesetzt.
-Montag, Dienstag, Donnerstag, Freitag, Samstag, Sonntag: 11:30 bis 14:30 Uhr und 17:00
-bis 22:30 Uhr. Warme Küche mittags bis 14:00 Uhr, abends bis 22:00 Uhr.
-Zeile darunter: **„An Feiertagen haben wir offen, auch mittwochs."**
-Das beantwortet den Schmerz, ohne ihn zu wiederholen.
-
-### 8.9 Ihr Platz
-Kopf: **„Rufen Sie an, dann steht der Tisch."**
-Der Ruf groß: **„02306 12864"**, darunter „Montag bis Sonntag zu den Küchenzeiten,
-mittwochs nur an Feiertagen."
-Formular als zweiter Weg, vier Felder: Name, Personen, Wunschzeit, freies Feld.
-Buttontext: **„Anfrage schicken"**
-Erfolgszustand: **„Ihr Mailprogramm ist offen. Schicken Sie die Nachricht ab, wir
-melden uns."**
-
-**Der Weg der Anfrage, ehrlich gesagt:** Es gibt kein Backend. Das Formular baut eine
-`mailto`-Nachricht an info@irodion-luenen.de und öffnet das Mailprogramm des Besuchers.
-Der Erfolgstext sagt genau das. Der verlässliche Weg bleibt das Telefon, deshalb steht
-es größer.
-
-### 8.10 Fuß
-Adresse, Telefon, Mail, Facebook, Anfahrt, Impressum, Datenschutz. Kolophon mit dem
-Hinweis auf das erzeugte Bildmaterial und dem Stand der Preise.
-
----
-
-## 9. Der Vektorplan
-
-Von Hand gezeichnetes SVG, kein Icon-Set.
-
-- **Der Mäander:** eine Linie am Seitenrand, die sich beim Scrollen selbst zeichnet und
-  an jeder Sektion einen rechten Winkel macht, wie das geschnitzte Band in den
-  Trennwänden. Ein Knoten pro Sektion.
-- **Die Zeitleiste:** vier Knoten für 1983, 1990, 2009, 2017, auf demselben Band.
-- **Das Nummernfeld:** die Ziffernform der echten Karte, als Strichzeichnung.
-- **Die Wochenmarke:** ein einzelner Kognakstrich unter dem heutigen Tag, und eine
-  durchgezogene Kerbe über dem Mittwoch.
-- **Der Grund:** eine feste Hintergrundebene mit sehr feinem Korn und einem langsamen
-  Wärmeverlauf, damit die Seite ein Ort ist und keine gestapelten Kästen.
-
-Alles davon respektiert `prefers-reduced-motion`: Endzustände sichtbar, Antriebe aus.
-
----
-
-## 10. Der Asset-Plan und was er kostet
-
-**Entschieden: Der Hero wird zurückgestellt.** Die Mechanik des Heros wird vollständig
-gebaut und läuft mit dem vorhandenen Material aus dem Xenios-Projekt als Platzhalter,
-damit Bandtakt, Scrims, Lesbarkeit und Flick-Test schon jetzt gemessen werden können.
-Der eigene Film für Irodion wird später erzeugt und eingesetzt. Die Band-Texte aus
-Abschnitt 6 stehen bereits fest und ändern sich dabei nicht.
-
-**Der Platzhalter wird sichtbar als solcher behandelt:** Er geht nicht mit auf einen
-öffentlichen Server, und solange er drin ist, steht die Seite auf `noindex`.
-
-Jetzt erzeugt werden die Bilder der Sektionen, konditioniert auf die echten Fotos des
-Hauses. Reihenfolge verbindlich: erst das Bild, dann selbst ansehen, dann einsetzen.
-
-| Nr. | Was | Modell | Wofür | Credits, grob |
-|---|---|---|---|---|
-| 1 | Steinränge eines antiken Theaters im Abendlicht | nano-banana-pro | Sektion Name | 30 |
-| 2 | Die Fassade am Roggenmarkt, Fachwerk, Abend | nano-banana-pro | Sektion 1983 | 30 |
-| 3 | Die geschnitzte Mäanderwand einer Nische, nah | nano-banana-pro | Sektion 1983 oder Karte | 30 |
-| 4–6 | Drei Gerichte aus dem Haus, wie sie hier kommen | nano-banana-pro | Sektion Karte | 90 |
-| 7 | Die Schirme auf dem Pflaster bei Tag | nano-banana-pro | Sektion Draußen | 30 |
-| 8 | Der Raum für Gesellschaften, lange Tafel | nano-banana-pro | Sektion Gesellschaften | 30 |
-| 9 | Endframe-Ersatz, freie Nische gedeckt | nano-banana-pro | Standbild-Hero, später | 30 |
-| | **Summe ohne Nachzieher** | | | **rund 300** |
-
-Mit zwei bis drei Nachziehern realistisch **rund 360 bis 420 Credits**. Der Hero-Film
-kommt später dazu und kostet dann noch einmal rund 650.
-
-In jedem Bild-Prompt steht verbindlich: kein Text, keine Beschriftung, keine Logos,
-keine Schilder, keine Wasserzeichen. Der Name kommt später per HTML darüber. Dazu
-gegen den Hochglanz: dokumentarisches Licht, echte Gebrauchsspuren, leichte Asymmetrie.
-Und die verbindlichen Detailangaben: deutsches Fachwerk, Kopfsteinpflaster, deutsche
-Gastronomie-Bestuhlung, keine amerikanische Bauweise, keine Amphoren, keine Säulen,
-keine griechische Flagge.
-
----
-
-## 10a. Die Tonlage
-
-**Die Seite spricht in der Wir-Form, aus dem Haus heraus.** Nicht „die Familie Tzes hat
-1983 aufgemacht", sondern „1983 haben wir hier aufgemacht". Nicht „wer öfter kommt, wird
-beim Namen begrüßt", sondern „wer öfter kommt, den begrüßen wir beim Namen".
-
-Der Unterschied ist nicht Kosmetik. Die dritte Person beschreibt einen Betrieb von
-außen, so wie ein Branchenverzeichnis. Die erste Person ist jemand, der einem
-gegenübersteht, und genau das ist dieses Haus seit 1983.
-
-**Der Ton ist herzlich, und zwar durch Konkretes.** Wärme entsteht nicht aus
-Adjektiven, sondern aus einem Angebot und aus Sätzen, die jemand wirklich sagen würde.
-Also nicht „Wohlfühlatmosphäre", sondern „dass Sie sich hinsetzen, in Ruhe essen und es
-nicht eilig haben müssen". Nicht „gemütliches Ambiente", sondern „lassen Sie sich Zeit,
-die Küche ist bis 22:00 Uhr an". Nicht „herzlich willkommen", sondern die Begrüßung,
-mit der das Haus auf seiner eigenen Seite unterschreibt: **Kalós ílthate**.
-
-Die Sätze nehmen Druck heraus, statt welchen aufzubauen: „Sie müssen das natürlich
-nicht." „Den Rest stellen wir, und Sie kommen einfach." Das ist die Haltung eines
-Gastgebers, und sie ist etwas anderes als ein Versprechen.
-
-**Die Grenze ist die Wahrheit.** Warm heißt nicht ausgeschmückt. Es steht nichts auf
-dieser Seite, was der Betrieb nicht bestätigen kann: keine erfundenen Stammgäste, keine
-Behauptungen über Portionsgrößen, keine Gefühle, die dem Gast vorgeschrieben werden.
-Verboten bleibt das ganze Gastronomie-Vokabular, das jede zweite Seite trägt: Genuss,
-kulinarisch, Gaumen, Ambiente, Wohlfühlatmosphäre, herzlich willkommen.
-
----
-
-## 11. Das Textgatter
-
-Jede Zeile oben geht wörtlich auf die Seite. Vor der Abnahme läuft die Suche über die
-fertige Datei: null Gedankenstriche, null Treffer auf ganzheitlich, nahtlos, innovativ,
-maßgeschneidert, Lösungen, zukunftssicher, Mehrwert, Ihr starker Partner, Kompetenz aus
-einer Hand, passgenau, Rundum-sorglos. Dazu die leiseren Muster und der
-Lieferservice-Durchgang.
-
-Bewusst gesetzt und bleibt: der Dreiklang „Ein Haus, eine Familie, vier Umbauten" und
-der Zweischlag „Benannt nach einem Theater in Athen. Gebaut in ein Fachwerkhaus in
-Lünen." Das ist Handwerk für diese Marke, kein Drift.
-
-**Gestrichen, und der Grund gehört festgehalten:** Über jeder Sektionsüberschrift stand
-eine kleine Versalienzeile, und unter zwei Sektionen eine Schlagwortzeile. Nebeneinander
-gelesen stand siebenmal dasselbe zweimal untereinander, „Bei gutem Wetter" über „Bei
-gutem Wetter sitzt man auf dem Pflaster", „Der Anbau von 2017" über „2017 haben wir
-dafür angebaut". Struktur codiert Information. Eine Auszeichnung, die nichts Wahres über
-ihren Inhalt sagt, ist Dekoration, und genau daran erkennt man eine Seite, die nach
-Vorlage gebaut wurde. Der mechanische Prüfer hatte das fünfmal als
-`kicker-above-heading` gemeldet, und der Kunde hat es unabhängig davon gesehen. Der
-Eyebrow im Hero bleibt, dort ist Ηρώδειο die Namensmarke über dem Film.
-
----
-
-## 12. Die offenen Fragen an den Betrieb
-
-1. **Reservierung:** Die Startseite sagt telefonisch oder per Mail, die Seite mit den
-   Öffnungszeiten sagt ausdrücklich nur telefonisch. Was gilt? Bis zur Antwort steht
-   das Telefon groß und die Mail als zweiter Weg daneben.
-2. **Preise:** Die Karte steht vorerst ohne Preise auf der Seite, so entschieden. Sobald
-   der Betrieb die Preise bestätigt, kommt die Spalte dazu, der Aufbau ist dafür vorbereitet.
-3. **Weinkarte:** Auf der Karte im Netz steht keine Weinkarte. Gibt es eine, und soll
-   sie auf die Seite?
-4. **Fotos:** Die echten Fotos sind 640×480 und zehn Jahre alt. Gibt es neuere in
-   voller Auflösung? Jedes echte Foto ersetzt ein erzeugtes.
-5. **Bildkennzeichnung:** Erzeugtes Material wird im Impressum ausgewiesen. Einverstanden?
+- **DESIGN.md** beschreibt noch die alte dunkle Welt. Der Documenter schreibt sie nach
+  dem Ausbau neu.
+- **"Name in der Scheibe als echte Ätzung":** Das geht im neuen Einstieg auf.
+- **Unbenutzte Exporte löschen:** `fassade-*` (#32 wird neu geschnitten),
+  `glasaetzung-*`, je nach Antwort auf die Frage in Abschnitt 6.
+- **Werkzeuge:** Prüfen, ob Emils Skills `prototype`, `review-animations`,
+  `find-animation-opportunities` und `animation-vocabulary` installiert sind, sonst
+  `npx skills@latest add emilkowalski/skills`.

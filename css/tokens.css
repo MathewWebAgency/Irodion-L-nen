@@ -1,76 +1,73 @@
 /* ==========================================================================
-   Irodion, Luenen. Die Token.
-   Alle Werte sind in KONZEPT.md hergeleitet. Kontraste sind gerechnet,
-   nicht geschaetzt, nachzurechnen mit scripts/kontrast.mjs.
+   Irodion, Luenen. Die Token. Stand Redesign September 2026, "Die Glasaetzung".
+   Kontraste sind gerechnet, nicht geschaetzt (Werte hinter den Farben).
    Wer hier etwas aendert, aendert die ganze Seite.
    ========================================================================== */
 
 :root {
 
   /* --- Farbe -------------------------------------------------------------
-     Aus dem echten Raum: dunkle Eichenbalken, Kognakleder, Terrakotta
-     unter den Fuessen, Sandsteinverblendung an der Wand. Dieses Haus ist
-     innen dunkel, also steht die Seite auf Eiche und der helle Sandstein
-     ist die seltene Unterbrechung. Kein reines Schwarz, kein reines Weiss,
-     Terrakotta nie als Textfarbe.                                       */
+     Palette von Aaron, 30.09.2026: Blau, Navy, Creme, Orange. Kein Gold,
+     kein Braun. Orange ist der einzige Akzent und sparsam (Knoepfe, Linien
+     auf Blau, grosse Ueberschriften). Nie weisse Schrift auf Orange, nie
+     orange Schrift auf Blau. Werte hinter den Farben: Kontrast.          */
 
-  --eiche:         #1B1411;  /* die Balken, der Hauptgrund                */
-  --eiche-tief:    #110C0A;  /* Fuss, Schatten, Nischen                   */
-  --sandstein:     #E3D7C0;  /* die Verblendung, das Tischtuch            */
-  --sandstein-hell:#F0E7D6;  /* Karten, Formularfelder                    */
-  --tinte:         #231A13;  /* Text auf Sandstein          12.00:1       */
-  --tinte-weich:   #4C3D30;  /* Sekundaertext auf Sandstein  7.31:1       */
-  --leinen:        #F0E6D4;  /* Text auf Eiche              14.70:1       */
-  --leinen-weich:  #BCAE97;  /* Sekundaertext auf Eiche      8.35:1       */
-  --kognak:        #8C3A1C;  /* Akzent auf Sandstein         5.39:1       */
-  --kognak-hell:   #D08A4E;  /* derselbe Akzent auf Eiche    6.43:1       */
-  --terrakotta:    #A8583A;  /* der Boden, nur Flaeche und Linie          */
+  --leinen:          #FAF5EC;  /* Creme, der Grund                         */
+  --leinen-tief:     #F1E8D8;  /* Creme tief, ruhige Bloecke               */
+  --tinte:           #1E3450;  /* Navy, Fliesstext auf Creme 11.63:1       */
+  --tinte-weich:     #4E5D70;  /* Nebentext auf Creme 6.19:1, tief 5.53:1  */
+  --eiche:           #1E3450;  /* Navy: dunkle Flaechen, Fuss, starker Text (Tokenname historisch) */
+  --logoblau:        #305071;  /* Hauptblau: Kopf, Nummernfeld, Links 7.70:1 */
+  --orange:          #F28C38;  /* Knoepfe, Linien auf Blau; Navy darauf 5.16:1 */
+  --orange-hover:    #FFA050;  /* Hover der Knoepfe; Navy darauf 6.25:1    */
+  --orange-dunkel:   #C2542A;  /* grosse Ueberschriften auf Creme 4.21:1   */
+  --auf-eiche:       #FAF5EC;  /* Creme auf Navy 11.63:1, auf Blau 7.70:1  */
+  --auf-eiche-weich: #C3D3E4;  /* Nebentext auf Navy 8.28:1, auf Blau 5.48:1 */
+  --auf-blau-weich:  #C3D3E4;
+  --treffer:         #F8D2AE;  /* das gefundene Gericht, der heutige Tag, Navy 8.92:1 */
+  --linie:           #E3D9C8;  /* Trennlinien, ohne Textanforderung         */
+  --feldrand:        #7A8494;  /* Rand der Eingabe, 3.48:1 auf Creme        */
 
-  /* Linien. Der Maeander im Ruhezustand. Zwei Werte, weil eine einzige
-     Kerbe nicht auf Eiche und auf Sandstein zugleich bestehen kann.     */
-  --kerbe:         #6B5540;  /* auf Sandstein                4.92:1       */
-  --kerbe-hell:    #7E6650;  /* auf Eiche                    3.38:1       */
-  --kerbe-fein:    #33241B;  /* Trennlinien im Dunkeln, ohne Anforderung  */
+  /* Das Glas. Glattes Milchglas wie die geaetzten Scheiben im Haus, in
+     Creme getoent. 88 Prozent Deckung, damit das dunkle Orange der Ueberschrift auch ueber dunklem Bild 3:1 haelt, damit das Haus dahinter warm
+     durchscheint. Auf Glas stehen nur tinte und eiche, nie tinte-weich.
+     Selbst ueber reinem Schwarz bleibt tinte bei 6.44:1 und eiche bei
+     6.05:1.                                                              */
+  --glas:           rgba(250, 245, 236, 0.88);
+  --glas-voll:      #FAF5EC;  /* ohne backdrop-filter, und bei reduzierter Transparenz */
+  --glas-rand:      rgba(255, 255, 255, 0.78);
+  --glas-schatten:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 2px 6px -2px rgba(30, 52, 80, 0.12),
+      0 28px 56px -28px rgba(30, 52, 80, 0.38);
 
   /* --- Schrift -----------------------------------------------------------
-     Drei Rollen. Alegreya und Commissioner tragen echtes Griechisch,
-     geprueft, nicht angenommen. Martian Mono traegt nur Ziffern,
-     Zeiten und Versalien-Labels, dort wird kein Griechisch gebraucht.   */
+     Zwei Rollen. Die Ueberschriften tragen die Display-Serif Zodiak in
+     leichtem Gewicht; die Leichtigkeit ist der Unterschied zu "billig".
+     Alles Gelesene steht in Source Serif 4, einer Buchschrift, wie auf
+     einer gedruckten Karte. Zahlen bleiben in derselben Schrift, nur mit
+     Tabellenziffern (.ziffer), damit Zeiten und Preise senkrecht fluchten.
+     Griechisch kommt aus Literata (siehe fonts.css).                      */
 
-  --display: 'Alegreya', Georgia, 'Times New Roman', serif;
-  --body:    'Commissioner', system-ui, sans-serif;
-  --label:   'Martian Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --display: 'Zodiak', 'Source Serif 4', 'Literata', Georgia, serif;
+  --schrift: 'Source Serif 4', 'Literata', Georgia, 'Times New Roman', serif;
+  --ziffer:  var(--schrift);
 
-  /* Leiter, Verhaeltnis 1.333. Sieben Stufen. Freie Zwischengroessen
-     gibt es nicht. Die grossen Stufen skalieren fluid.                  */
-  --s--1:  0.79rem;
-  --s-0:   1.0625rem;                                  /* 17px Basis     */
-  --s-1:   1.417rem;
-  --s-2:   clamp(1.62rem, 1.35rem + 1.35vw, 1.889rem);
-  --s-3:   clamp(2.05rem, 1.62rem + 2.15vw, 2.518rem);
-  --s-4:   clamp(2.55rem, 1.85rem + 3.5vw,  3.357rem);
-  --s-5:   clamp(3.10rem, 1.90rem + 6.0vw,  4.476rem);
-  --s-6:   clamp(3.60rem, 1.60rem + 10.0vw, 7.078rem); /* nur der Hero   */
+  --s--1:  0.8125rem;
+  --s-0:   1.0625rem;                                   /* 17px Basis      */
+  --s-1:   1.25rem;
+  --s-2:   clamp(1.625rem, 1.3rem + 1.4vw, 2.125rem);
+  --s-3:   clamp(2.125rem, 1.5rem + 2.6vw, 3.25rem);
+  --s-4:   clamp(2.625rem, 1.7rem + 3.9vw, 4.5rem);     /* nur der Hero    */
 
-  --lh-eng:    1.04;
-  --lh-kopf:   1.12;
-  --lh-text:   1.62;
-  --tr-display: -0.025em;
-  --tr-label:    0.14em;
+  --lh-kopf:    1.06;
+  --lh-text:    1.6;
+  --tr-display: -0.02em;
 
   /* --- Raum --------------------------------------------------------------
-     Eine Leiter, keine zufaelligen Abstaende.
-
-     Die unteren vier Sprossen sind Textabstaende und stehen fest, die
-     liest man auf jedem Geraet gleich. Die oberen drei tragen die
-     Sektionen und wachsen mit dem Fenster.
-
-     Der Grund: --r-7 stand mit 8.5rem fest, also 136px, quer wie hoch.
-     Am Handy trafen unten und oben aufeinander, das waren 272px Leere
-     zwischen zwei Sektionen, ein Drittel des Schirms, sechsmal auf der
-     Seite. Man scrollte durch Nichts. Quer ist derselbe Wert richtig,
-     dort traegt die Flaeche. Also skalieren sie jetzt: am Handy die
-     Haelfte, ab etwa 1440px die bisherigen Werte, dazwischen weich.  */
+     Die unteren vier Sprossen sind Textabstaende und stehen fest. Die
+     oberen drei tragen die Sektionen und wachsen mit dem Fenster, am
+     Handy etwa die Haelfte.                                               */
   --r-1:  0.375rem;
   --r-2:  0.75rem;
   --r-3:  1.25rem;
@@ -79,25 +76,21 @@
   --r-6:  clamp(2.75rem,  1.85rem + 3.76vw, 5.25rem);
   --r-7:  clamp(4rem,     2.40rem + 6.80vw, 8.5rem);
 
-  --breite:      72rem;   /* der Satzspiegel            */
-  --breite-eng:  40rem;   /* Textspalten                */
-  --rand:        clamp(1.25rem, 5vw, 4rem);
+  --breite: 76rem;                      /* der Satzspiegel                 */
+  --rand:   clamp(1.25rem, 5vw, 4rem);  /* Aussenrand                      */
+  --kopf-h: 3.75rem;                    /* Hoehe der Kopfleiste            */
+
+  /* Was man drueckt oder ausfuellt, hat leicht abgerundete Ecken, wie
+     eine gestanzte Karte. Fotos und Flaechen bleiben kantig.             */
+  --rund:   6px;
 
   /* --- Bewegung ----------------------------------------------------------
-     Zwei Kurven, ueberall dieselben. Nichts schnappt.
-     Erscheinen laeuft aus, Bewegen laeuft rein und raus.               */
-  --ease-aus:  cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-beid: cubic-bezier(0.65, 0, 0.35, 1);
-  --t-schnell: 140ms;
-  --t-ui:      200ms;
-  --t-ruhig:   420ms;
-
-  /* Der Textschatten fuer alles, was ueber dem Film steht.
-     Drei Lagen: harte Kante, mittlerer Schein, weiter Abfall.          */
-  --tschatten:
-      0 1px 2px  rgba(10, 6, 4, 0.95),
-      0 3px 12px rgba(10, 6, 4, 0.78),
-      0 10px 44px rgba(10, 6, 4, 0.80);
+     Eine Kurve fuer alles, was erscheint oder antwortet. Nur transform
+     und opacity werden bewegt.                                            */
+  --ease-aus: cubic-bezier(0.23, 1, 0.32, 1);
+  --t-druck:  160ms;
+  --t-ui:     200ms;
+  --t-klar:   700ms;
 }
 
 /* ==========================================================================
@@ -107,14 +100,14 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  /* clip erst nach hidden, hidden allein laesst die Seite noch
-     seitwaerts schieben. Beides an html UND body.                      */
   overflow-x: hidden;
   overflow-x: clip;
   -webkit-text-size-adjust: 100%;
-  /* Kein scroll-behavior: smooth auf html. Das Dokument ist rund
-     20000 Pixel hoch, und eine weiche Fahrt ueber fuenfzehn Bildschirme
-     Karte ist keine Animation mehr, sondern eine Geiselnahme. main.js
+  color-scheme: light;
+  /* Die Kopfleiste steht fest. Jeder Sprung landet darunter, nicht darin. */
+  scroll-padding-top: calc(var(--kopf-h) + var(--r-3));
+  scrollbar-color: #9AA6B6 var(--leinen);
+  /* Kein scroll-behavior: smooth. Das Dokument ist lang, main.js
      entscheidet je Sprung nach Distanz: nah weich, weit sofort. */
 }
 
@@ -122,55 +115,54 @@ body {
   overflow-x: hidden;
   overflow-x: clip;
   margin: 0;
-  background: var(--eiche);
-  color: var(--leinen);
-  font-family: var(--body);
+  background: var(--leinen);
+  color: var(--tinte);
+  font-family: var(--schrift);
   font-size: var(--s-0);
   line-height: var(--lh-text);
-  font-optical-sizing: auto;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  hyphens: auto;              /* deutsche Komposita, mit lang="de"      */
-  /* Ohne Grenze trennt der Browser auch "im-mer" und zerlegt den
-     Roggenmarkt. Ein Wort muss mindestens acht Zeichen haben und vier
-     davon auf jeder Seite behalten, sonst bleibt es ganz.            */
-  hyphenate-limit-chars: 8 4 4;
+  /* Keine Worttrennung, nirgends (Aaron, 30.09.2026). */
+  hyphens: manual;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: var(--display);
-  font-weight: 500;
+  font-weight: 400;
   line-height: var(--lh-kopf);
   letter-spacing: var(--tr-display);
+  /* Ueberschriften auf Creme in dunklem Orange (nur gross, 4.21:1). Auf
+     Blau und Navy setzen die Abschnitte Creme. */
+  color: var(--orange-dunkel);
   margin: 0;
   text-wrap: balance;
-  /* Ueberschriften brechen nie mitten im Wort. Bei grossen Graden sieht
-     eine getrennte Zeile wie ein Fehler aus, nicht wie Satz. Der
-     Fliesstext behaelt hyphens:auto, dort hilft es bei Komposita. */
+  /* Ueberschriften brechen nie mitten im Wort. */
   hyphens: none;
 }
 
-p { margin: 0 0 var(--r-3); max-width: 68ch; }
+p { margin: 0 0 var(--r-3); max-width: 65ch; text-wrap: pretty; }
+p:last-child { margin-bottom: 0; }
 
-/* Die Zeilenlaenge sitzt am Textelement selbst, nie am Container:
-   ch loest gegen die geerbte Schrift auf, ein Container misst also
-   in der falschen Schrift.                                             */
-
-a { color: inherit; }
-
-/* Das Label, die dritte Rolle. Versalien, weite Laufweite,
-   tabellarische Ziffern fuer Preise und Uhrzeiten.                     */
-.label {
-  font-family: var(--label);
-  font-weight: 500;
-  font-size: var(--s--1);
-  letter-spacing: var(--tr-label);
-  text-transform: uppercase;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.3;
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
 }
 
-/* Griechisch bekommt lang="el", damit Trennung und Vorlesen stimmen.   */
+img { display: block; max-width: 100%; height: auto; }
+figure { margin: 0; }
+address { font-style: normal; }
+
+::selection { background: var(--treffer); color: var(--tinte); }
+
+/* Ziffern: Nummern, Preise, Zeiten, Telefon. Dieselbe Schrift wie der
+   Text, nur mit gleich breiten Ziffern in Versalhoehe. */
+.ziffer {
+  font-family: var(--ziffer);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
 [lang="el"] { hyphens: none; }
 
 /* --- Zugaenglichkeit ----------------------------------------------------- */
@@ -185,59 +177,35 @@ a { color: inherit; }
   position: absolute; left: var(--rand); top: 0;
   transform: translateY(-120%);
   z-index: 999;
-  background: var(--sandstein-hell); color: var(--tinte);
+  background: var(--eiche); color: var(--auf-eiche);
   padding: var(--r-2) var(--r-3);
-  border: 1px solid var(--kerbe);
   transition: transform var(--t-ui) var(--ease-aus);
 }
 .sprungmarke:focus { transform: translateY(0); }
 
 :focus-visible {
-  outline: 2px solid var(--kognak-hell);
+  outline: 2px solid var(--logoblau);
   outline-offset: 3px;
-  border-radius: 1px;
 }
-.auf-sandstein :focus-visible { outline-color: var(--kognak); }
+.auf-eiche :focus-visible,
+.auf-blau :focus-visible { outline-color: var(--auf-eiche); }
 
-/* Grobe Zeiger brauchen 44px, ohne dass das Layout kippt.
-   Nie display umstellen, ohne die Ausrichtung neu zu setzen.           */
+/* Grobe Zeiger brauchen 44px Trefferflaeche. */
 @media (pointer: coarse) {
-  .knopf, .tel {
+  .knopf, .tipp, .kopf__liste a {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
   }
-
-  /* Die Vorschlaege unter dem Nummernfeld sind Knoepfe und wurden am
-     Handy nur 30px hoch. Breit genug waren sie immer. */
-  .tipp { min-height: 44px; }
-
-  /* Die Marke im Kopf hing bei 37px. Ein Rand oben und unten reicht,
-     die Grundlinienausrichtung darf dabei nicht kippen, deshalb kein
-     min-height mit align-items. */
-  .kopf__marke { padding-block: 5px; }
-
-  /* Die Links im Fuss und in der Anschrift der Nebenseiten sind inline
-     und damit nur so hoch wie ihre Schrift, rund 21px. Eine hoehere
-     Zeilenhoehe hilft dort nichts, weil die Trefferflaeche eines inline
-     Elements am Inhaltskasten haengt und nicht am Zeilenkasten. Also
-     inline-block mit Rand, und die Zeilenhoehe der Liste faellt um
-     denselben Betrag, damit der Fuss nicht auseinandergeht. */
-  .fuss__liste a,
-  .fuss address a,
-  .blatt address a {
+  .fuss__link,
+  .blatt address a,
+  .karte__index a,
+  .hero__karte,
+  .karte-link,
+  .platz__mail a {
     display: inline-block;
     padding-block: 11px;
   }
-  .fuss__liste { line-height: 1.15; }
-  .fuss address { line-height: 1.2; }
+  .fuss__link { line-height: 1.2; }
   .blatt address { line-height: 1.25; }
 }
-
-/* Alles pausiert, wenn der Tab weg ist. animation-play-state vererbt
-   nicht, deshalb muss die Regel jedes Element und jedes Pseudo direkt
-   treffen.                                                             */
-body.pausiert *,
-body.pausiert *::before,
-body.pausiert *::after { animation-play-state: paused !important; }

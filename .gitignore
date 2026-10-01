@@ -16,8 +16,3 @@ node_modules/
 ._*
 .Spotlight-V100
 .Trashes
-
-# assets/video/ ist bewusst mit im Repo, damit sich die Seite dem Kunden
-# als vollstaendiges Muster zeigen laesst. Was dort liegt, ist NICHT der
-# Film fuer Irodion, sondern der Platzhalter aus dem Xenios-Projekt.
-# Naeheres in assets/video/PLATZHALTER.md.

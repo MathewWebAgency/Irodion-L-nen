@@ -1,76 +1,101 @@
 /* ==========================================================================
-   Irodion. Die Seite unter dem Hero.
-   Auftritte, der heutige Tag, das Nummernfeld, das Formular.
+   Irodion. Das Wenige, das die Seite an JavaScript braucht:
+   die Fotos werden klar, Ankerspruenge, der heutige Tag, das Nummernfeld.
+   Ohne JavaScript steht alles vollstaendig da, nur das Nummernfeld fehlt.
    ========================================================================== */
 
 (function () {
   'use strict';
 
+  var html = document.documentElement;
   var reduziert = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  // Die Notfallregel im CSS greift nur, solange diese Datei nicht laeuft.
+  html.classList.add('js-laeuft');
+
   /* ---------------------------------------------------------------------
-     Auftritte. Ein Auftritt pro Moment, nicht ein Effekt pro Element.
-     Nach dem Auftritt werden die Staffelverzoegerungen zurueckgenommen,
-     sonst haengt jeder spaetere Hover genau um diese Staffelung hinterher.
+     DAS GLAS WIRD KLAR. Unter jedem Foto liegt seine weichgezeichnete
+     Fassung. Ist das Foto geladen und im Bild, blendet es darueber auf,
+     einmal, 700ms, nur opacity. Fotos, die zusammen ins Bild kommen,
+     folgen einander im Abstand von 60ms, in der Reihenfolge der Seite.
      --------------------------------------------------------------------- */
-  var gruppen = document.querySelectorAll(
-    '.name__text, .haus__innen, .nummer__innen, .karte__kopf,' +
-    '.feiern__innen, .draussen__text, .zeiten__innen, .platz__innen'
-  );
-  Array.prototype.forEach.call(gruppen, function (g) { g.classList.add('auftritt'); });
+  var fotos = document.querySelectorAll('.klaert');
 
-  if ('IntersectionObserver' in window && !reduziert.matches) {
-    var beobachter = new IntersectionObserver(function (eintraege) {
-      eintraege.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        e.target.classList.add('in');
-        beobachter.unobserve(e.target);
-        // Aufraeumen, sobald der letzte Uebergang wirklich durch ist.
-        setTimeout(function () { e.target.classList.add('fertig'); }, 900);
-      });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
-    Array.prototype.forEach.call(gruppen, function (g) { beobachter.observe(g); });
-
-    /* Nachzuegler einsammeln.
-       Ein Sprung ueber eine Sektion hinweg, etwa ueber einen Anker im Menue
-       oder ueber das Nummernfeld, kann den Beobachter ueberspringen: Der
-       Zustand wechselt von "noch darunter" direkt auf "schon darueber",
-       beide Male ohne Schnittmenge, also meldet er gar nichts. Die Sektion
-       bliebe dann fuer immer unsichtbar. Wer schon daran vorbei ist,
-       bekommt den Endzustand deshalb sofort und ohne Bewegung. */
-    var offen = false;
-    function nachzuegler() {
-      offen = false;
-      Array.prototype.forEach.call(gruppen, function (g) {
-        if (g.classList.contains('in')) return;
-        if (g.getBoundingClientRect().bottom < 0) {
-          g.classList.add('in', 'fertig');
-          beobachter.unobserve(g);
-        }
-      });
+  function klaeren(img, verzug) {
+    if (img.classList.contains('klar')) return;
+    function los() {
+      if (verzug) img.style.transitionDelay = verzug + 'ms';
+      img.classList.add('klar');
+      // Die Verzoegerung gilt nur fuer diesen einen Auftritt.
+      if (verzug) setTimeout(function () { img.style.transitionDelay = ''; }, verzug + 800);
     }
-    window.addEventListener('scroll', function () {
-      if (offen) return;
-      offen = true;
-      requestAnimationFrame(nachzuegler);
-    }, { passive: true });
-    window.addEventListener('hashchange', function () { setTimeout(nachzuegler, 60); });
-  } else {
-    Array.prototype.forEach.call(gruppen, function (g) { g.classList.add('in', 'fertig'); });
+    if (img.complete && img.naturalWidth) { los(); return; }
+    img.addEventListener('load', los, { once: true });
+    // Ein Foto, das nicht kommt, soll die Scheibe nicht fuer immer
+    // milchig lassen. Dann bleibt eben die weiche Fassung stehen.
+    img.addEventListener('error', function () { img.classList.add('klar'); }, { once: true });
   }
 
-  /* Der Anfangszustand muss mitgesetzt werden. Wird die Seite in einem
-     Hintergrundtab geladen, feuert visibilitychange nie, und die Schleifen
-     liefen dort ungebremst weiter. */
-  document.body.classList.toggle('pausiert', document.hidden);
+  if (reduziert.matches || !('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(fotos, function (img) { img.classList.add('klar'); });
+  } else {
+    var sicht = new IntersectionObserver(function (eintraege) {
+      var neu = eintraege.filter(function (e) { return e.isIntersecting; });
+      neu.forEach(function (e, i) {
+        sicht.unobserve(e.target);
+        klaeren(e.target, i * 60);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.01 });
+    Array.prototype.forEach.call(fotos, function (img) { sicht.observe(img); });
+  }
 
   /* ---------------------------------------------------------------------
-     Ankersprünge. Auf html stand weiches Scrollen, und über ein Dokument
-     von rund 20000 Pixeln ist das keine Animation mehr: Ein Klick auf
-     "Zeiten" fährt durch fünfzehn Bildschirme Karte, und jede Radbewegung
-     unterwegs bricht ab und lässt den Leser irgendwo dazwischen stehen.
-     Also wird je Sprung entschieden: bis drei Bildschirme weich, darüber
-     sofort. Bei reduzierter Bewegung immer sofort.
+     ANFAHRT. Auf Apple-Geraeten (iPhone, iPad, Mac) oeffnet sich Apple
+     Karten, ueberall sonst Google Maps. Ohne JavaScript bleibt Google.
+     --------------------------------------------------------------------- */
+  if (/iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent)) {
+    var ziel = 'https://maps.apple.com/?daddr=Roggenmarkt+19,+44532+L%C3%BCnen&dirflg=d';
+    Array.prototype.forEach.call(document.querySelectorAll('.karte-link'), function (a) { a.href = ziel; });
+  }
+
+  /* ---------------------------------------------------------------------
+     DIE AETZLINIE zeichnet sich einmal, wenn sie ins Bild kommt.
+     --------------------------------------------------------------------- */
+  var linie = document.querySelector('.name__linie');
+  if (linie) {
+    if (reduziert.matches || !('IntersectionObserver' in window)) {
+      linie.classList.add('gezeichnet');
+    } else {
+      var linienSicht = new IntersectionObserver(function (e) {
+        if (!e[0].isIntersecting) return;
+        linie.classList.add('gezeichnet');
+        linienSicht.disconnect();
+      }, { rootMargin: '0px 0px -15% 0px' });
+      // Beobachtet wird der Abschnitt, nicht die Linie: Solange sie per
+      // clip-path ganz zugeschnitten ist, hat sie keine sichtbare Flaeche,
+      // und der Browser meldet sie nie als sichtbar.
+      linienSicht.observe(linie.parentElement || linie);
+    }
+  }
+
+  /* ---------------------------------------------------------------------
+     EIN NAME, EINMAL IM BLICK. Solange das Logo gross in der Scheibe des
+     Einstiegs zu sehen ist, blendet der Kopf seins aus. Ist die Scheibe
+     unter der Leiste verschwunden, uebernimmt der Kopf den Namen.
+     --------------------------------------------------------------------- */
+  var kopf = document.querySelector('.kopf');
+  var glasName = document.querySelector('.hero__logo');
+  // Laeuft der Einstieg mit Bewegung, steuert js/eintritt.js das selbst.
+  if (kopf && glasName && 'IntersectionObserver' in window && !html.classList.contains('js-eintritt')) {
+    new IntersectionObserver(function (e) {
+      kopf.classList.toggle('kopf--name-im-glas', e[0].isIntersecting);
+    }, { rootMargin: '-60px 0px 0px 0px' }).observe(glasName);
+  }
+
+  /* ---------------------------------------------------------------------
+     ANKERSPRUENGE. Bis drei Bildschirme weich, darueber sofort. Eine
+     weiche Fahrt durch die ganze Karte ist keine Animation mehr.
+     Bei reduzierter Bewegung immer sofort.
      --------------------------------------------------------------------- */
   function springen(e) {
     var a = e.target.closest && e.target.closest('a[href^="#"]');
@@ -85,8 +110,6 @@
       behavior: (reduziert.matches || weit) ? 'auto' : 'smooth',
       block: 'start'
     });
-    // Die Adresse soll den Sprung trotzdem behalten, ohne ein zweites Mal
-    // zu scrollen. Deshalb ersetzen statt setzen.
     history.replaceState(null, '', '#' + id);
     // Tastatur und Vorlesen sollen mitkommen, nicht oben stehen bleiben.
     if (!ziel.hasAttribute('tabindex')) ziel.setAttribute('tabindex', '-1');
@@ -95,88 +118,104 @@
   document.addEventListener('click', springen);
 
   /* ---------------------------------------------------------------------
-     Der heutige Tag in der Wochentabelle.
-     Die Marke ist ein eigener Strich und nicht nur eine Farbe, damit sie
-     auch ohne Farbwahrnehmung ankommt.
+     DER LIVE-STATUS. Gerechnet nach deutscher Zeit (Europe/Berlin), auch
+     fuer Besucher, deren Geraet anders eingestellt ist, und jede Minute
+     neu. Er steht in der Scheibe des Einstiegs, im Kopf (ab 1001px) und
+     ueber der Wochentabelle. Der heutige Tag ist in der Tabelle markiert,
+     mit sichtbarem Wort und nicht nur mit Farbe.
+
+     Feiertage kennt der Browser nicht. Am Mittwoch steht deshalb der
+     Vorbehalt dabei, statt eine Auskunft zu geben, die falsch sein kann.
+     Keine Animation: Das ist eine Auskunft, kein Effekt.
      --------------------------------------------------------------------- */
-  var heute = new Date().getDay();
-  var zeile = document.querySelector('.woche tr[data-tag="' + heute + '"]');
-  if (zeile) {
-    zeile.setAttribute('data-heute', '');
-    var th = zeile.querySelector('th');
-    if (th) {
-      var hinweis = document.createElement('span');
-      hinweis.className = 'nur-fuer-screenreader';
-      hinweis.textContent = ' (heute)';
-      th.appendChild(hinweis);
+  var TAGE = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+  var ZEITEN = { auf1: 690, kueche1: 840, zu1: 870, auf2: 1020, kueche2: 1320, zu2: 1350 };
+
+  function berlin() {
+    var teile = {};
+    try {
+      new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Berlin', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+      }).formatToParts(new Date()).forEach(function (t) { teile[t.type] = t.value; });
+    } catch (e) {
+      var d = new Date();
+      return { tag: d.getDay(), min: d.getHours() * 60 + d.getMinutes() };
     }
+    var tage = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    return { tag: tage[teile.weekday], min: parseInt(teile.hour, 10) * 60 + parseInt(teile.minute, 10) };
   }
 
-  /* ---------------------------------------------------------------------
-     Die Zeile im Kopf, die sagt, ob heute offen ist.
-     Der Mittwoch ist der meistgesuchte Punkt dieser Seite, und die Antwort
-     lag bisher bei neunundachtzig Prozent der Scrollstrecke. Sie steht
-     jetzt oben, gerechnet aus demselben Wochentag wie die Tabelle.
-     Feiertage kennt der Browser nicht, deshalb steht der Vorbehalt in der
-     Zeile selbst, statt eine Auskunft zu geben, die falsch sein kann.
-     --------------------------------------------------------------------- */
-  var heuteZeile = document.getElementById('kopf-heute');
-  if (heuteZeile) {
-    if (heute === 3) {
-      heuteZeile.textContent = 'Heute Ruhetag';
-      heuteZeile.title = 'Mittwoch ist Ruhetag, außer an Feiertagen';
-      heuteZeile.setAttribute('data-zu', '');
-    } else {
-      heuteZeile.textContent = 'Heute geöffnet';
-      heuteZeile.title = '11:30 bis 14:30 und 17:00 bis 22:30 Uhr';
-    }
-    heuteZeile.hidden = false;
+  function naechsterOffenerTag(tag) {
+    var t = (tag + 1) % 7;
+    return t === 3 ? 4 : t;
   }
 
-  /* ---------------------------------------------------------------------
-     Ist der Hero durch? Frueher faerbte das den Kopf ein, der steht jetzt
-     im Fluss und braucht es nicht mehr. Die Marke bleibt, weil die Linie
-     am Seitenrand daran haengt: sie beginnt erst, wenn der Film vorbei
-     ist. Deshalb heisst sie jetzt nach der Sache, nicht nach dem Kopf.
-     --------------------------------------------------------------------- */
-  var hero = document.getElementById('hero');
-  if (hero) {
-    var standOffen = false;
-    function standPruefen() {
-      standOffen = false;
-      var h = hero.getBoundingClientRect();
-      document.body.classList.toggle('hero-durch', h.bottom <= 64);
+  /* Liefert eine kurze Zeile fuer den Kopf, eine lange fuer die Seite und
+     ob gerade geoeffnet ist. */
+  function status() {
+    var j = berlin(), m = j.min, z = ZEITEN;
+    if (j.tag === 3) {
+      return { offen: false, kurz: 'Heute Ruhetag',
+        lang: 'Heute ist Ruhetag. Donnerstag ab 11:30 Uhr sind wir wieder da. An Feiertagen haben wir auch mittwochs offen.' };
     }
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (e) {
-        document.body.classList.toggle('hero-durch', !e[0].isIntersecting);
-      }, { rootMargin: '-64px 0px 0px 0px' }).observe(hero);
-    }
-    /* Absicherung. Der Beobachter kann seinen ersten Rueckruf feuern,
-       bevor die Hoehe des Heros steht, und meldet dann einmal falsch und
-       danach nie wieder, weil die Grenze nie ueberschritten wird. Die
-       Linie bliebe dann fuer immer unsichtbar. Gemessen wird deshalb
-       zusaetzlich beim Scrollen, gedrosselt und nur bei echter Aenderung. */
-    window.addEventListener('scroll', function () {
-      if (standOffen) return;
-      standOffen = true;
-      requestAnimationFrame(standPruefen);
-    }, { passive: true });
-    window.addEventListener('load', standPruefen);
-    standPruefen();
+    if (m < z.auf1) return { offen: false, kurz: 'Ab 11:30 geöffnet', lang: 'Heute ab 11:30 Uhr geöffnet, warme Küche bis 14:00 Uhr.' };
+    if (m < z.kueche1) return { offen: true, kurz: 'Jetzt geöffnet', lang: 'Jetzt geöffnet. Warme Küche bis 14:00 Uhr.' };
+    if (m < z.zu1) return { offen: true, kurz: 'Geöffnet bis 14:30', lang: 'Geöffnet bis 14:30 Uhr. Warme Küche wieder ab 17:00 Uhr.' };
+    if (m < z.auf2) return { offen: false, kurz: 'Ab 17:00 wieder da', lang: 'Mittagspause. Ab 17:00 Uhr sind wir wieder da.' };
+    if (m < z.kueche2) return { offen: true, kurz: 'Jetzt geöffnet', lang: 'Jetzt geöffnet. Warme Küche bis 22:00 Uhr.' };
+    if (m < z.zu2) return { offen: true, kurz: 'Geöffnet bis 22:30', lang: 'Geöffnet bis 22:30 Uhr, die warme Küche ist für heute durch.' };
+    var morgen = naechsterOffenerTag(j.tag);
+    var wann = morgen === (j.tag + 1) % 7 ? 'morgen' : TAGE[morgen];
+    return { offen: false, kurz: 'Jetzt geschlossen', lang: 'Jetzt geschlossen. ' + wann.charAt(0).toUpperCase() + wann.slice(1) + ' ab 11:30 Uhr wieder geöffnet.' };
   }
 
-  /* ---------------------------------------------------------------------
-     DAS NUMMERNFELD. Der eine Mitmach-Moment.
+  var liveFelder = document.querySelectorAll('[data-live]');
+  var kopfLive = document.getElementById('kopf-heute');
+  var markiert = null;
 
-     Die Karte dieses Hauses ist von 1 bis 1005 durchnummeriert, und die
-     Stammgaeste bestellen so. Wer eine Nummer eintippt, wird an das
-     Gericht gefuehrt. Wer eine Nummer eintippt, die es nicht gibt, bekommt
-     die naechstgelegene genannt statt einer Fehlermeldung.
+  function zeigen() {
+    var st = status();
+    Array.prototype.forEach.call(liveFelder, function (el) {
+      var text = el.getAttribute('data-live') === 'kurz' ? st.kurz : st.lang;
+      var t = el.querySelector('.live__text') || el;
+      if (t.textContent !== text) t.textContent = text;
+      el.toggleAttribute('data-offen', st.offen);
+      el.hidden = false;
+    });
+    // Der heutige Tag in der Wochentabelle, nach deutscher Zeit.
+    var tag = berlin().tag;
+    var zeile = document.querySelector('.woche tr[data-tag="' + tag + '"]');
+    if (zeile && zeile !== markiert) {
+      if (markiert) {
+        markiert.removeAttribute('data-heute');
+        var alt = markiert.querySelector('.woche__heute');
+        if (alt) alt.remove();
+      }
+      zeile.setAttribute('data-heute', '');
+      var th = zeile.querySelector('th');
+      if (th) {
+        var marke = document.createElement('span');
+        marke.className = 'woche__heute';
+        marke.textContent = 'heute';
+        th.appendChild(marke);
+      }
+      markiert = zeile;
+    }
+  }
+  if (kopfLive) kopfLive.setAttribute('data-live', 'kurz');
+  liveFelder = document.querySelectorAll('[data-live]');
+  zeigen();
+  // Zur naechsten vollen Minute, dann jede Minute.
+  setTimeout(function () { zeigen(); setInterval(zeigen, 60000); }, (60 - new Date().getSeconds()) * 1000);
+
+  /* ---------------------------------------------------------------------
+     DAS NUMMERNFELD. Die Karte ist von 1 bis 1005 durchnummeriert, und
+     die Stammgaeste bestellen so. Wer eine Nummer eintippt, wird an das
+     Gericht gefuehrt und bekommt Name und Preis genannt. Wer eine Nummer
+     eintippt, die es nicht gibt, bekommt die naechstgelegene.
 
      Das Feld steht im HTML auf hidden und wird hier eingeschaltet: Ohne
-     JavaScript soll es gar nicht erst da sein, denn die Karte darunter
-     steht auch so vollstaendig da.
+     JavaScript soll es gar nicht erst da sein.
      --------------------------------------------------------------------- */
   var feld    = document.getElementById('feldnr');
   var eingabe = document.getElementById('nr-eingabe');
@@ -188,10 +227,9 @@
     if (gerichte.length) {
       feld.hidden = false;
 
-      /* Ein Verzeichnis, einmal gebaut. Die Karte fuehrt die 290 zweimal,
-         einmal unter den warmen Vorspeisen und einmal unter den
-         vegetarischen Gerichten. Der Sprung geht auf die erste Stelle,
-         das ist die, die auf der gedruckten Karte zuerst kommt. */
+      /* Ein Verzeichnis, einmal gebaut. Fuehrt die Karte eine Nummer
+         zweimal, geht der Sprung auf die erste Stelle, das ist die, die
+         auf der gedruckten Karte zuerst kommt. */
       var verzeichnis = Object.create(null);
       var zahlen = [];
       Array.prototype.forEach.call(gerichte, function (g) {
@@ -209,27 +247,27 @@
         var n = g.querySelector('.gericht__name');
         return n ? n.textContent.trim() : '';
       }
+      function preis(g) {
+        var p = g.getAttribute('data-preis');
+        return p ? ', ' + p + ' Euro' : '';
+      }
 
-      function hinfuehren(g, nr) {
+      function hinfuehren(g) {
         if (letzterTreffer && letzterTreffer !== g) {
           letzterTreffer.classList.remove('getroffen');
         }
-        // Neu anstossen, auch wenn dieselbe Zeile noch einmal gesucht wird.
-        g.classList.remove('getroffen');
-        void g.offsetWidth;
         g.classList.add('getroffen');
         letzterTreffer = g;
-
+        // Dieselbe Regel wie bei den Ankern: nah weich, weit sofort.
+        var weit = Math.abs(g.getBoundingClientRect().top) > window.innerHeight * 3;
         g.scrollIntoView({
-          behavior: reduziert.matches ? 'auto' : 'smooth',
+          behavior: (reduziert.matches || weit) ? 'auto' : 'smooth',
           block: 'center'
         });
-        nrText.removeAttribute('data-art');
-        nrText.textContent = 'Die ' + nr + ' ist ' + name(g) + '.';
       }
 
-      // Ein Treffer, der stehen bleibt, während die Meldung schon etwas
-      // anderes sagt, zeigt auf ein Gericht, das niemand gesucht hat.
+      // Eine Markierung, die stehen bleibt, waehrend die Meldung schon
+      // etwas anderes sagt, zeigt auf ein Gericht, das niemand gesucht hat.
       function markeLoeschen() {
         if (letzterTreffer) {
           letzterTreffer.classList.remove('getroffen');
@@ -237,23 +275,42 @@
         }
       }
 
+      /* Die Bloecke der Karte, aus den Nummern selbst gelesen: "1 bis 109,
+         289 bis 293 und 1001 bis 1005". Eine Luecke ueber 20 trennt. */
+      function bereiche() {
+        var teile = [], von = null, bis = null;
+        for (var i = 0; i < zahlen.length; i++) {
+          var z = zahlen[i].zahl;
+          if (von === null) { von = bis = z; continue; }
+          if (z - bis > 20) { teile.push(von + ' bis ' + bis); von = z; }
+          bis = z;
+        }
+        if (von !== null) teile.push(von + ' bis ' + bis);
+        return teile.length > 1
+          ? teile.slice(0, -1).join(', ') + ' und ' + teile[teile.length - 1]
+          : teile.join('');
+      }
+
+      function melden(text) { nrText.removeAttribute('data-art'); nrText.textContent = text; }
+
       function suchen(roh) {
         var wert = (roh || '').replace(/[^0-9a-zA-Z]/g, '').toLowerCase();
         if (!wert) {
           markeLoeschen();
-          nrText.setAttribute('data-art', 'leer');
-          nrText.textContent = 'Tippen Sie eine Nummer zwischen 1 und 1005 ein.';
+          melden('Tippen Sie eine Nummer zwischen 1 und 1005 ein.');
           return;
         }
-        if (verzeichnis[wert]) { hinfuehren(verzeichnis[wert], wert); return; }
+        if (verzeichnis[wert]) {
+          var g0 = verzeichnis[wert];
+          hinfuehren(g0);
+          melden('Die ' + wert + ' ist ' + name(g0) + preis(g0) + '.');
+          return;
+        }
 
-        /* Keine genaue Nummer. Statt einer Fehlermeldung die naechste,
-           die es wirklich gibt. Bei 42 kommt also die 41 oder die 43. */
         var zahl = parseInt(wert, 10);
         if (isNaN(zahl)) {
           markeLoeschen();
-          nrText.setAttribute('data-art', 'leer');
-          nrText.textContent = 'Das ist keine Nummer. Auf der Karte stehen Zahlen von 1 bis 1005.';
+          melden('Das ist keine Nummer. Auf der Karte stehen Zahlen von 1 bis 1005.');
           return;
         }
         var beste = null, abstand = Infinity;
@@ -263,27 +320,29 @@
         }
         if (!beste) return;
 
-        /* Die Nachbarschaft braucht eine Grenze. Bei der 42 ist die 41 ein
-           hilfreicher Hinweis. Bei der 500 wäre es die 293, also 207
-           daneben, und die Seite würde fünftausend Pixel weit springen,
-           um etwas zu zeigen, das niemand gemeint hat. Die Zahlenreihe
-           der Karte hat Lücken, das ist die ehrlichere Auskunft. */
+        /* Die Nachbarschaft braucht eine Grenze. Bei der 42 ist die 41
+           ein hilfreicher Hinweis, bei der 500 waere es eine Nummer weit
+           daneben, und die Seite spraenge weit, um etwas zu zeigen, das
+           niemand gemeint hat. Die Zahlenreihe hat Luecken, das ist die
+           ehrlichere Auskunft. */
         if (abstand > 20) {
           markeLoeschen();
-          nrText.setAttribute('data-art', 'leer');
-          nrText.textContent = 'Die ' + wert + ' gibt es nicht. Die Karte geht bis 1005, '
-                             + 'aber nicht lückenlos. Probieren Sie eine kleinere Zahl.';
+          melden('Die ' + wert + ' gibt es nicht. Auf der Karte stehen die Nummern '
+               + bereiche() + '.');
           return;
         }
 
         var g = verzeichnis[beste.nr];
-        hinfuehren(g, beste.nr);
-        nrText.textContent = 'Die ' + wert + ' gibt es nicht. Am nächsten dran ist die '
-                           + beste.nr + ', ' + name(g) + '.';
+        hinfuehren(g);
+        melden('Die ' + wert + ' gibt es nicht. Am nächsten dran ist die '
+             + beste.nr + ', ' + name(g) + preis(g) + '.');
       }
 
+      // Am Telefon schliesst die Tastatur, damit das Gericht zu sehen ist.
+      var grob = window.matchMedia('(pointer: coarse)');
       feld.addEventListener('submit', function (e) {
         e.preventDefault();
+        if (grob.matches) eingabe.blur();
         suchen(eingabe.value);
       });
 
@@ -296,78 +355,4 @@
     }
   }
 
-})();
-
-/* ==========================================================================
-   Der Maeander am Seitenrand.
-   Zeichnet sich ueber die Seite unter dem Hero selbst. Die Laenge des
-   Pfades wird gemessen, nicht geraten, und die Knoten bekommen ihre
-   Schwelle aus der tatsaechlichen Lage auf dem Pfad, nicht aus ihrer
-   Hoehe: Das Band macht Haken, also ist der Weg laenger als die Strecke.
-   Geschrieben wird nur bei echter Aenderung, die Schleife laeuft nicht
-   frei mit.
-   ========================================================================== */
-(function () {
-  'use strict';
-  var weg    = document.getElementById('weg');
-  var linie  = document.getElementById('weg-linie');
-  var knoten = document.querySelectorAll('#weg-knoten circle');
-  if (!weg || !linie || !knoten.length || !linie.getTotalLength) return;
-
-  var laenge = linie.getTotalLength();
-  linie.style.strokeDasharray = laenge;
-  linie.style.strokeDashoffset = 'calc(' + laenge + ' - ' + laenge + ' * var(--wp, 0))';
-
-  /* Fuer jeden Knoten die Stelle auf dem Pfad suchen, an der seine Hoehe
-     zuerst erreicht ist. Zwanzig Halbierungen reichen auf ein Tausendstel
-     genau, und das laeuft genau einmal beim Laden. */
-  var schwellen = [];
-  Array.prototype.forEach.call(knoten, function (k) {
-    var y = parseFloat(k.getAttribute('cy'));
-    var a = 0, b = laenge;
-    for (var i = 0; i < 20; i++) {
-      var m = (a + b) / 2;
-      if (linie.getPointAtLength(m).y < y) a = m; else b = m;
-    }
-    schwellen.push(b / laenge);
-  });
-
-  var reduziert = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var letzterP = -1, offen = false;
-
-  function anfang() {
-    var h = document.getElementById('hero');
-    return h ? h.offsetHeight : 0;
-  }
-
-  function messen() {
-    offen = false;
-    var start = anfang();
-    var ende = document.body.scrollHeight - window.innerHeight;
-    var strecke = ende - start;
-    if (strecke <= 0) return;
-    var p = Math.min(1, Math.max(0, (window.scrollY - start) / strecke));
-    if (Math.abs(p - letzterP) < 0.004) return;
-    letzterP = p;
-    weg.style.setProperty('--wp', p.toFixed(3));
-    for (var i = 0; i < knoten.length; i++) {
-      var an = p >= schwellen[i];
-      if (an !== knoten[i].classList.contains('an')) knoten[i].classList.toggle('an', an);
-    }
-  }
-
-  function beiScroll() {
-    if (offen) return;
-    offen = true;
-    requestAnimationFrame(messen);
-  }
-
-  if (reduziert.matches) {
-    weg.style.setProperty('--wp', '1');
-    Array.prototype.forEach.call(knoten, function (k) { k.classList.add('an'); });
-  } else {
-    window.addEventListener('scroll', beiScroll, { passive: true });
-    window.addEventListener('resize', beiScroll, { passive: true });
-    messen();
-  }
 })();

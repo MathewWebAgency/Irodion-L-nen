@@ -1,0 +1,117 @@
+{
+ "fassade": {
+  "nr": 32,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 22_12_14-2.png",
+  "groesse": "1122x1402",
+  "verwendet": "nicht mehr auf der Seite (Exporte in roh/export-unbenutzt); Grundlage der Eintritts-Fahrt"
+ },
+ "glasaetzung": {
+  "nr": 18,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 14_56_00-4.png",
+  "groesse": "1122x1402"
+ },
+ "raum-kronleuchter": {
+  "nr": 3,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 13_04_21-3.png",
+  "groesse": "1086x1448",
+  "verwendet": "Rundgang"
+ },
+ "bar": {
+  "nr": 13,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 14_55_01-4.png",
+  "groesse": "1086x1448"
+ },
+ "fluegel-terrakotta": {
+  "nr": 26,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 14_56_28-4.png",
+  "groesse": "1086x1448"
+ },
+ "fensternische": {
+  "nr": 4,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 13_04_23-4.png",
+  "groesse": "1086x1448"
+ },
+ "weinwand": {
+  "nr": 10,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 14_54_59-1.png",
+  "groesse": "1086x1448",
+  "verwendet": "nicht mehr auf der Seite (Exporte in roh/export-unbenutzt)"
+ },
+ "flasche": {
+  "nr": 21,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 14_56_14-3.png",
+  "groesse": "1086x1448"
+ },
+ "glaswand-akropolis": {
+  "nr": 27,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 14_58_15.png",
+  "groesse": "1086x1448"
+ },
+ "santorini": {
+  "nr": 19,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 14_56_10-1.png",
+  "groesse": "1086x1448"
+ },
+ "tafel": {
+  "nr": 8,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 14_54_52-2.png",
+  "groesse": "1024x1536"
+ },
+ "schirme": {
+  "nr": 35,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 22_15_01.png",
+  "groesse": "1086x1448"
+ },
+ "fassade-quer": {
+  "nr": 37,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 22_21_01.png",
+  "groesse": "1448x1086"
+ },
+ "terrasse": {
+  "nr": 38,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 22_22_34-1.png",
+  "groesse": "1086x1448",
+  "bearbeitet": "30.09.2026 um 2 Grad gerade gedreht (Balken und Rahmen standen schief), Raender beschnitten. Schiefe Fassung in roh/export-unbenutzt/terrasse-schief."
+ },
+ "diskuswerfer": {
+  "nr": 16,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 14_55_57-2.png",
+  "groesse": "1122x1402"
+ },
+ "eintritt-film": {
+  "nr": "32 (Tuer) und neues Raumfoto",
+  "quelle": [
+   "ChatGPT-Bild 27. Sept. 2026, 22_12_14-2.png",
+   "roh/ChatGPT-Bild 29. Sept. 2026, 23_38_32.png"
+  ],
+  "ablage": "assets/film/ (Film *-3.mp4, Start *-start-2.webp, Ende *-ende-3.webp)",
+  "erzeugt": "Kling 3.0 (kie.ai, kling-3.0/video, pro, 5 s, ohne Ton) am 29.09.2026, Runde 2. Erstes Bild Tuer #32, letztes Bild der Gastraum direkt hinter der linken Tuer, quer 16:9 (Mitte y 0.45) und hoch 9:16 zugeschnitten. Aufgaben c7fdc06032d340b71672663c507e3f08 (quer) und 28407da67e50479deada5b894ebd61c5 (hoch). Runde 1 (falsche Tuer, falscher Raum) in roh/film-alt.",
+  "gekuerzt": "Zusammengesetzt (30.09.2026): Runde 2 Bilder 0 bis 69, dann Anschlussstueck (Kling 3.0 pro, 3 s) vom Bild 70 aus Runde 2 bis zum echten Raumfoto. Aufgaben Anschluss 7c8a200f34c127b8a8364ad4a754801b (quer) und 6bcb0094595b04903ca56d83a7f6891e (hoch). Grund: Ein einziges 5-s-Stueck hatte im Raum Einzelheiten veraendert (Glasmuster, Zahl der Baenke). Naht geprueft: kein Sprung.",
+  "kodiert": "H.264, Keyframe alle 8 Bilder, keine B-Frames, faststart. Quer 1920x1080 CRF 23 (6,8 MB), hoch 810x1440 CRF 24 (4,3 MB), 143 Bilder, 5,96 s.",
+  "hinweis": "Im Impressum als KI-Fahrt ausgewiesen."
+ },
+ "raum-eingang": {
+  "nr": "neu",
+  "quelle": "roh/ChatGPT-Bild 29. Sept. 2026, 23_38_32.png",
+  "groesse": "1086x1448",
+  "verwendet": "Endbild der Eintritts-Fahrt"
+ },
+ "stube": {
+  "nr": 1,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 13_04_17-1.png",
+  "groesse": "1086x1448",
+  "verwendet": "Rundgang"
+ },
+ "gang": {
+  "nr": 14,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 14_55_02-5.png",
+  "groesse": "1086x1448",
+  "verwendet": "Rundgang"
+ },
+ "durchgang": {
+  "nr": 23,
+  "quelle": "ChatGPT-Bild 27. Sept. 2026, 14_56_26-1.png",
+  "groesse": "1086x1448",
+  "verwendet": "Rundgang"
+ }
+}
