@@ -349,10 +349,13 @@ Eine Kurve für alles, was erscheint oder antwortet: cubic-bezier(0.23, 1, 0.32,
 - **Fuß:** Vier Spalten (Marke, Adresse mit "Anfahrt planen", Kontakt, Mehr), Links ohne Unterstrich, je eine Zeile, erst beim Darüberfahren unterstrichen. Keine Öffnungszeiten im Fuß.
 - **Anfahrt:** Auf Android ein geo-Link, der die eingestellte Navi-App öffnet oder wählen lässt; auf Apple-Geräten Apple Karten; sonst Google Maps (js/main.js, Klasse `karte-link`).
 - **Feiern:** Der Anruf ist ein Knopf wie im Einstieg (Orange, zweizeilig: "Feier besprechen", darunter die Nummer).
-- **Nummernfeld:** Kein Einleitungssatz; unter dem Feld "Unsere Empfehlungen" mit 68 Irodion Platte, 37 Lammkoteletts, 87 Mussakas, 95 Stifado, zwei mal zwei.
+- **Nummernfeld:** Kein Einleitungssatz; unter dem Feld "Unsere Empfehlungen" mit 30a Gyros überbacken, 44 Ouzo Teller, 35a Bifteki und Gyros, 23 Christos-Salat, zwei mal zwei.
 - **Einstieg:** Strecke zwei Schirmhöhen, scrub 1. Der Film lädt, sobald das Türfoto steht. Sprünge haben einen Wachhund (300ms) und entfallen, wenn der Film schon auf dem Bild steht. Ohne fertigen Film fährt das Türfoto auf die Tür zu und der Gastraum blendet allmählich darüber.
 - **Ätzlinie:** Aufgedeckt, sobald der Abschnitt ins Bild kommt (beobachtet wird der Abschnitt, nicht die zugeschnittene Linie), Deckung 30 Prozent.
 - Keine Silbentrennung; E-Mail-Adressen brechen nicht am Bindestrich.
 - **Handy-Kopf:** Unter 375px rücken Liste und Knopf enger, damit "Reservieren" ganz im Bild steht.
 - **Theme-Farbe und Favicon:** theme-color Hauptblau; das Favicon ist der Rundbogen der Tür in Creme auf Navy.
 - **Treffer am Telefon:** Nach dem Absenden schließt die Tastatur, damit das gefundene Gericht zu sehen ist.
+- **Öffnungszeiten:** Freitag und Samstag abends bis 23:00 Uhr, sonst 22:30 Uhr; warme Küche abends bis 22:00 Uhr. Live-Status, Wochentabelle und JSON-LD folgen dem.
+- **Empfehlungen am Handy:** Unter 520px stehen sie untereinander, linksbündig, die Nummern auf einer Flucht; kein Name bricht um.
+- **E-Mail:** irodion1@freenet.de.

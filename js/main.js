@@ -137,6 +137,9 @@
      --------------------------------------------------------------------- */
   var TAGE = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
   var ZEITEN = { auf1: 690, kueche1: 840, zu1: 870, auf2: 1020, kueche2: 1320, zu2: 1350 };
+  // Freitags und samstags ist abends bis 23:00 Uhr offen.
+  function schluss(tag) { return (tag === 5 || tag === 6) ? 1380 : ZEITEN.zu2; }
+  function uhr(min) { var h = Math.floor(min / 60), m = min % 60; return h + ':' + (m < 10 ? '0' : '') + m; }
 
   function berlin() {
     var teile = {};
@@ -170,7 +173,8 @@
     if (m < z.zu1) return { offen: true, kurz: 'Geöffnet bis 14:30', lang: 'Geöffnet bis 14:30 Uhr. Warme Küche wieder ab 17:00 Uhr.' };
     if (m < z.auf2) return { offen: false, kurz: 'Ab 17:00 wieder da', lang: 'Mittagspause. Ab 17:00 Uhr sind wir wieder da.' };
     if (m < z.kueche2) return { offen: true, kurz: 'Jetzt geöffnet', lang: 'Jetzt geöffnet. Warme Küche bis 22:00 Uhr.' };
-    if (m < z.zu2) return { offen: true, kurz: 'Geöffnet bis 22:30', lang: 'Geöffnet bis 22:30 Uhr, die warme Küche ist für heute durch.' };
+    var zu = schluss(j.tag);
+    if (m < zu) return { offen: true, kurz: 'Geöffnet bis ' + uhr(zu), lang: 'Geöffnet bis ' + uhr(zu) + ' Uhr, die warme Küche ist für heute durch.' };
     var morgen = naechsterOffenerTag(j.tag);
     var wann = morgen === (j.tag + 1) % 7 ? 'morgen' : TAGE[morgen];
     return { offen: false, kurz: 'Jetzt geschlossen', lang: 'Jetzt geschlossen. ' + wann.charAt(0).toUpperCase() + wann.slice(1) + ' ab 11:30 Uhr wieder geöffnet.' };

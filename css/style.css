@@ -848,6 +848,15 @@
               background-color var(--t-druck) ease;
 }
 .tipp .ziffer { color: var(--logoblau); font-weight: 600; margin-right: 0.3em; }
+.tipp { white-space: nowrap; }
+/* Am schmalen Handy passen die laengeren Namen nicht zu zweit in eine
+   Zeile. Dann stehen die Empfehlungen untereinander, linksbuendig, die
+   Nummern auf einer Flucht. */
+@media (max-width: 519px) {
+  .feldnr__tipps { grid-template-columns: minmax(0, 1fr); }
+  .tipp { justify-content: flex-start; text-align: left; }
+  .tipp .ziffer { display: inline-block; min-width: 2.4em; }
+}
 .tipp:active { transform: scale(0.97); }
 @media (hover: hover) {
   .tipp:hover { background: #FFFFFF; }

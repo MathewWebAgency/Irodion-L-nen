@@ -26,8 +26,8 @@ Seit 1983 dieselbe Familie in demselben Fachwerkhaus am Roggenmarkt. Die Karte i
 
 ## Operating Context
 
-- Reserviert wird telefonisch, 02306 12864. Kein Formular, keine Online-Reservierung. Zweiter Weg: info@irodion-luenen.de.
-- Mittwoch Ruhetag, außer an Feiertagen. Mo, Di, Do bis So 11:30 bis 14:30 und 17:00 bis 22:30 Uhr. Warme Küche bis 14:00 und bis 22:00 Uhr.
+- Reserviert wird telefonisch, 02306 12864. Kein Formular, keine Online-Reservierung. Zweiter Weg: irodion1@freenet.de.
+- Mittwoch Ruhetag, außer an Feiertagen. Mo, Di, Do bis So 11:30 bis 14:30 und 17:00 bis 22:30 Uhr, Fr und Sa abends bis 23:00 Uhr. Warme Küche bis 14:00 und bis 22:00 Uhr.
 - Außenbereich bei gutem Wetter unter Schirmen auf dem Kopfsteinpflaster.
 - Mitnahme auf Vorbestellung. Kein Lieferservice, an keiner Stelle.
 - Räume für Gesellschaften mit individueller Aufteilung, seit der Erweiterung 2017.
