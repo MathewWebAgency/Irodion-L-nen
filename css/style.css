@@ -255,19 +255,16 @@
   .kopf__liste { gap: var(--r-3); }
   .kopf__weit { display: none; }
   .logo { height: 1.125rem; }
-  .kopf__ruf { padding: 0 0.9rem; }
+  /* Am Handy steht im Knopf nur der Hoerer (Phosphor, gefuellt). Was
+     er tut, sagt das aria-label: Tisch reservieren, Nummer anrufen. */
+  .kopf__ruf {
+    justify-content: center;
+    width: 2.75rem;
+    padding: 0;
+  }
   .kopf__ruf-lang { display: none; }
-  .kopf__ruf-kurz { display: inline; }
-}
-/* Am ganz schmalen Schirm ruecken Liste und Knopf enger, damit
-   "Reservieren" ganz im Bild steht. */
-@media (max-width: 374px) {
-  .kopf__innen { gap: 0.5rem; }
-  .kopf__liste { gap: 0.75rem; }
-  .kopf__liste a,
-  .kopf__ruf { font-size: 0.875rem; }
-  .kopf__ruf { padding: 0 0.6rem; }
-  .logo { height: 1rem; }
+  .kopf__ruf-kurz { display: inline-flex; }
+  .kopf__ruf-symbol { width: 1.25rem; height: 1.25rem; fill: currentColor; }
 }
 
 
@@ -1316,20 +1313,11 @@
 .blatt h2 {
   font-size: var(--s-1);
   margin: var(--r-5) 0 var(--r-2);
+  /* Klein gesetzt reicht das dunkle Orange nicht fuer Textkontrast. */
+  color: var(--tinte);
 }
 .blatt a { color: var(--eiche); }
-.platzhalter {
-  margin: var(--r-4) 0;
-  padding: var(--r-3) var(--r-3);
-  background: var(--leinen-tief);
-  border: 1px solid var(--linie);
-}
-.platzhalter__titel {
-  display: block;
-  margin-bottom: var(--r-1);
-  font-weight: 600;
-  color: var(--eiche);
-}
+.blatt__stand { margin-top: var(--r-5); font-size: 0.9375rem; color: var(--tinte-weich); }
 .zurueck { margin-top: var(--r-6); }
 
 .fehler {

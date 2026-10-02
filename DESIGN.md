@@ -298,7 +298,7 @@ Orange mit Navy-Schrift, 6px Ecken, geben beim Drücken nach.
 - **Status:** Leer steht unter dem Feld nichts. Sagt die Meldung etwas, hält sie zwei Zeilen Höhe, damit nichts springt, wenn sie wächst.
 
 ### Navigation
-- **Kopf:** Feste Leiste in Hauptblau, 3.75rem. Logo und Punkte in vollem Creme (600), nie im weichen Blaugrau: Halbtöne wirken auf Blau durchscheinend und billig. Hover unterstreicht 1px. Rechts der Anrufknopf in Orange mit Navy-Schrift, ohne Zeichen davor: "Tisch reservieren", unter 700px "Reservieren"; dahinter liegt die Nummer (tel-Link, aria-label nennt sie). Solange das Logo groß in der Scheibe steht, blendet das Kopflogo aus.
+- **Kopf:** Feste Leiste in Hauptblau, 3.75rem. Logo und Punkte in vollem Creme (600), nie im weichen Blaugrau: Halbtöne wirken auf Blau durchscheinend und billig. Hover unterstreicht 1px. Rechts der Anrufknopf in Orange mit Navy-Schrift, ohne Zeichen davor: "Tisch reservieren", unter 700px nur der Hörer (Phosphor Icons, gefüllt, Navy auf Orange, 44 x 40px); dahinter liegt die Nummer (tel-Link, aria-label nennt sie). Solange das Logo groß in der Scheibe steht, blendet das Kopflogo aus.
 - **Kartenindex:** Gänge als Logoblau-Links. Ab 1100px steht er als Spalte links neben der Karte und bleibt beim Lesen stehen (sticky); darunter in Spalten zwischen zwei Haarlinien über der Karte.
 
 ### Die Karte
@@ -359,3 +359,5 @@ Eine Kurve für alles, was erscheint oder antwortet: cubic-bezier(0.23, 1, 0.32,
 - **Öffnungszeiten:** Freitag und Samstag abends bis 23:00 Uhr, sonst 22:30 Uhr; warme Küche abends bis 22:00 Uhr. Live-Status, Wochentabelle und JSON-LD folgen dem.
 - **Empfehlungen am Handy:** Unter 520px stehen sie untereinander, linksbündig, die Nummern auf einer Flucht; kein Name bricht um.
 - **E-Mail:** irodion1@freenet.de.
+- **Fuß:** Unter "Mehr" stehen Facebook und Instagram (irodion_luenen), beide als einfache Links; die Datenschutzerklärung nennt sie.
+- **Rechtstexte (Stand Oktober 2026):** Kein Hinweis mehr auf die OS-Plattform (seit 20.07.2025 eingestellt); Impressum nach Paragraf 5 DDG, Verantwortlich nach Paragraf 18 Absatz 2 MStV; Datenschutz nennt Hostinger als Hoster samt Auftragsverarbeitung. Überschriften auf den Nebenseiten in Navy (Kontrast).
