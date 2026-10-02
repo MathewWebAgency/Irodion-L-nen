@@ -131,10 +131,15 @@ components:
   tipp-hover:
     backgroundColor: "{colors.feld}"
   ruhetag:
+    backgroundColor: "{colors.treffer}"
+    textColor: "{colors.eiche}"
+    rounded: "{rounded.marke}"
+    padding: "0.05rem 0.45rem"
+  heute:
     backgroundColor: "{colors.orange}"
     textColor: "{colors.eiche}"
     rounded: "{rounded.marke}"
-    padding: "0.1rem 0.55rem"
+    padding: "0.05rem 0.4rem"
   eingabe-nummer:
     backgroundColor: "{colors.feld}"
     textColor: "{colors.tinte}"
@@ -174,9 +179,9 @@ Die Überschriften stehen in einer leichten Display-Serif, und genau diese Leich
 Bewegung erzählt einen einzigen Gang: vom Eingang unter dem Rundbogen durchs Haus bis an den Tisch. Jede Bewegung hat eine ruhige Fassung, die ohne JavaScript und bei reduzierter Bewegung vollständig ist. Abgelehnt sind ein dunkler Vollbild-Einstieg mit Text in der Mitte, Gold auf Nachtblau und ein Scroll-Film mit Bändern.
 
 **Key Characteristics:**
-- Creme als Grund statt hellem Weiß, dazu Abschnitte in Navy, Hauptblau und Sand im Wechsel. Orange ist der einzige Akzent, sparsam (rund 10 Prozent): Knöpfe mit Navy-Schrift, die Marke Ruhetag; das dunkle Orange nur für große Überschriften.
+- Creme als Grund statt hellem Weiß, dazu Abschnitte in Navy, Hauptblau und Sand im Wechsel. Orange ist der einzige Akzent, sparsam (rund 10 Prozent): Knöpfe mit Navy-Schrift, die Marke "heute"; das dunkle Orange nur für große Überschriften.
 - Milchglas nur über Fotos, sonst massive Blöcke.
-- Fotos, Flächen und Glas eckig. Knöpfe, Felder und Tipps 6px, die Ruhetag-Marke 4px.
+- Fotos, Flächen und Glas eckig. Knöpfe, Felder und Tipps 6px, die Marken "heute" und "Ruhetag" 4px.
 - Leichte Display-Serif für Überschriften und große Nummern, Source Serif 4 für alles Gelesene, Zahlen darin mit Tabellenziffern.
 - Eine Achse: Die linke Kante der Scheibe im Einstieg ist die linke Kante jeder Sektion.
 - Fotos kommen weich an und werden klar, einmal, nur über Deckkraft.
@@ -205,7 +210,7 @@ Die Palette hat Aaron am 30.09.2026 vorgegeben: Hauptblau #305071, Navy #1E3450,
 - **Glas / Glas voll / Glasrand** (glas, glas-voll, glas-rand): Das Milchglas der Scheibe, 70 Prozent Kalk mit Weichzeichnung dahinter; Glas voll ist die deckende Fassung ohne backdrop-filter und bei reduzierter Transparenz.
 
 ### Named Rules
-**The Ganze-Flächen Rule.** Navy und Hauptblau sind Flächen, keine Tupfer: Hauptblau trägt den Kopf und das Nummernfeld, Navy Name, Feiern und Fuß. Orange steht nur auf Knöpfen und der Ruhetag-Marke, das dunkle Orange nur in großen Überschriften auf Creme und Sand (kleine Überschriften wie die Getränketitel stehen in Navy). Kein Gold. Zwei gleichfarbige Abschnitte stehen nie direkt nebeneinander.
+**The Ganze-Flächen Rule.** Navy und Hauptblau sind Flächen, keine Tupfer: Hauptblau trägt den Kopf und das Nummernfeld, Navy Name, Feiern und Fuß. Orange steht nur auf Knöpfen und der Marke "heute", das dunkle Orange nur in großen Überschriften auf Creme und Sand (kleine Überschriften wie die Getränketitel stehen in Navy). Kein Gold. Zwei gleichfarbige Abschnitte stehen nie direkt nebeneinander.
 
 **The Kein-Verlauf Rule.** Farben mischen sich nie, es gibt keinen Farbverlauf zwischen zwei Palettentönen. Die einzige Ausnahme ist ein Schleier aus Eiche mit abnehmender Deckkraft über dem Gastraumfoto, damit der Gruß darauf lesbar bleibt; er mischt keine zweite Farbe hinein.
 
@@ -262,7 +267,7 @@ Das System ist flach. Tiefe entsteht durch Tonwechsel der Blöcke und durch das 
 
 ## Shapes
 
-Fotos, Flächen, Blöcke und Glas sind eckig. Was man drückt oder ausfüllt (Knöpfe, Anruf, Nummernfeld, Tipps), hat 6px Ecken, die Ruhetag-Marke 4px; eine Pille wäre zu weich für die kantige Zodiak. Der Rundbogen der Tür steht im Foto, im Film und als Favicon (Creme auf Navy). Die Raute aus dem O des Schriftzugs steht nur noch an den Haltepunkten der Zeitleiste und im Live-Status, nicht im Kopf. Linien sind Haarlinien von 1px; nur unter den Gängen der Karte steht eine 2px Eichelinie, wie auf der gedruckten Karte. Die Ätzlinie des Theaters, nachgezeichnet nach der geätzten Folie im Haus, steht groß und angeschnitten hell auf Navy (30 Prozent Deckung) hinter der Überschrift. Am Desktop links neben dem Text, am Tablet unter dem Text, am Handy (unter 700px) oben: das Halbrund der Sitzreihen links und oben angeschnitten, nach unten in das Navy ausgeblendet, bevor der Text beginnt.
+Fotos, Flächen, Blöcke und Glas sind eckig. Was man drückt oder ausfüllt (Knöpfe, Anruf, Nummernfeld, Tipps), hat 6px Ecken, die Marken in der Wochentabelle 4px; eine Pille wäre zu weich für die kantige Zodiak. Der Rundbogen der Tür steht im Foto, im Film und als Favicon (Creme auf Navy). Die Raute aus dem O des Schriftzugs steht nur noch an den Haltepunkten der Zeitleiste und im Live-Status, nicht im Kopf. Linien sind Haarlinien von 1px; nur unter den Gängen der Karte steht eine 2px Eichelinie, wie auf der gedruckten Karte. Die Ätzlinie des Theaters, nachgezeichnet nach der geätzten Folie im Haus, steht groß und angeschnitten hell auf Navy (30 Prozent Deckung) hinter der Überschrift. Am Desktop links neben dem Text, am Tablet unter dem Text, am Handy (unter 700px) oben: ganz und ohne Anschnitt in der Breite der Textspalte, mit Luft nach oben, die Überschrift auf dem unteren Teil, der nach unten ins Navy ausläuft, bevor der Text beginnt.
 
 **The Ecken Rule.** Fotos und Flächen bleiben eckig. Gerundet (6px) wird nur, was man drückt oder ausfüllt; nie als Pille.
 
@@ -283,14 +288,14 @@ Orange mit Navy-Schrift, 6px Ecken, geben beim Drücken nach.
 ### Cards / Containers
 - **Corner Style:** 0 (Blöcke und Glas bleiben eckig).
 - **Kalkblock:** Das Nummernfeld steht als Kalkblock auf Logoblau, klar geschnitten, ohne Glas, weil nichts dahinter liegt. Innenabstand clamp 1.25rem bis 2.5rem.
-- **Scheibe:** Das Glas im Einstieg mit Logo, h1, Satz, Live-Status, Ruf und Kartenlink.
+- **Scheibe:** Das Glas im Einstieg mit Logo, h1, Satz, Live-Status und Ruf. Kein Kartenlink.
 - **Shadow Strategy:** Siehe Elevation; nur die Scheibe.
 - **Platzhalter (Nebenseiten):** Sand mit 1px Linie.
 
 ### Inputs / Fields
 - **Style:** Nummernfeld 4.25rem hoch, weiß, 1px Feldrand, 6px Ecken, Eingabe auf Headline-Stufe, Einfügemarke Logoblau. Platzhalter in Feldrand, deutlich leiser als eine getippte Zahl.
 - **Focus:** Fokusring ohne Abstand direkt am Feld.
-- **Status:** Die Meldung darunter hält schon vorher zwei Zeilen Höhe, damit nichts springt; wartend in Tinte weich.
+- **Status:** Leer steht unter dem Feld nichts. Sagt die Meldung etwas, hält sie zwei Zeilen Höhe, damit nichts springt, wenn sie wächst.
 
 ### Navigation
 - **Kopf:** Feste Leiste in Hauptblau, 3.75rem. Logo und Punkte in vollem Creme (600), nie im weichen Blaugrau: Halbtöne wirken auf Blau durchscheinend und billig. Hover unterstreicht 1px. Rechts der Anrufknopf in Orange mit Navy-Schrift, ohne Zeichen davor: "Tisch reservieren", unter 700px "Reservieren"; dahinter liegt die Nummer (tel-Link, aria-label nennt sie). Solange das Logo groß in der Scheibe steht, blendet das Kopflogo aus.
@@ -300,10 +305,10 @@ Orange mit Navy-Schrift, 6px Ecken, geben beim Drücken nach.
 Nummer, Name, Preis in festen Spalten; keine Linie je Zeile. Die Gänge stehen in einer Spalte (höchstens 46rem) in Lesereihenfolge; zwei Zeitungsspalten hätten am Desktop sieben Bildschirme Rücksprung bedeutet. Findet die Nummernsuche nichts in der Nähe, nennt sie die echten Bereiche der Karte (aus den Nummern gelesen). Das gefundene Gericht bekommt eine Trefferfläche, die als eigene Ebene nur über Deckkraft kommt. Getränke mit Menge und Preis, Preise brechen nie.
 
 ### Die Wochentabelle
-Haarlinien zwischen den Tagen. Keine sichtbare Überschrift (nur für Screenreader). Mittwoch trägt die Marke "Ruhetag" in Orange mit Navy-Schrift. Der heutige Tag ist an einer Logoblau-Linie, kräftigerer Schrift in Eiche und der Marke "heute" auf Treffer zu erkennen, nicht an einer Fläche.
+Haarlinien zwischen den Tagen. Keine sichtbare Überschrift (nur für Screenreader). Der heutige Tag trägt die laute Marke "heute" in Orange mit Navy-Schrift, Mittwoch die leise Marke "Ruhetag" auf Pfirsich (Treffer). Der heutige Tag ist an einer Logoblau-Linie, kräftigerer Schrift in Eiche und der Marke "heute" auf Treffer zu erkennen, nicht an einer Fläche.
 
 ### Der Rundgang
-Elf Plätze im Haus als waagerechtes Band, das an jedem Foto einrastet, der nächste Platz schaut an der Kante herein; keine Beschriftung, alle Fotos eckig (auch das erste); Zähler "3 / 11" in Ziffern. Rhythmus nur über zwei kleinere Plätze (74 Prozent), am Handy alle 3:4. Am Desktop mit Bewegung wird er gepinnt und folgt dem Scroll, eine 1px Spur in Eiche zeigt den Fortschritt.
+Elf Plätze im Haus als waagerechtes Band, das an jedem Foto einrastet, der nächste Platz schaut an der Kante herein; keine Beschriftung, alle Fotos eckig (auch das erste); Zähler "3 / 11" in Ziffern. Alle Plätze gleich groß, 3:4. Am Desktop mit Bewegung wird er gepinnt und folgt dem Scroll, eine 1px Spur in Eiche zeigt den Fortschritt.
 
 ### Das Frostfoto
 Unter jedem Foto liegt dieselbe Aufnahme in 40 Pixeln als weiche Fläche. Das echte Foto blendet einmal darüber auf, 700ms, nur über Deckkraft. Ohne JavaScript und bei reduzierter Bewegung steht es sofort klar da; eine Notfallregel holt es nach 2.5 Sekunden.
@@ -329,7 +334,7 @@ Eine Kurve für alles, was erscheint oder antwortet: cubic-bezier(0.23, 1, 0.32,
 ### Don't:
 - **Don't** Milchglas über flacher Farbe einsetzen; der Kopf ist massives Hauptblau.
 - **Don't** Fotos oder Flächen runden, und keine Pillenknöpfe.
-- **Don't** Farbverläufe zwischen Palettentönen, Orange als Fläche oder Tupfer außerhalb von Knöpfen und Ruhetag, weiße Schrift auf Orange, Gold, Braun, helles Weiß als Grund.
+- **Don't** Farbverläufe zwischen Palettentönen, Orange als Fläche oder Tupfer außerhalb von Knöpfen und der Marke "heute", weiße Schrift auf Orange, Gold, Braun, helles Weiß als Grund.
 - **Don't** die Raute in den Kopf setzen.
 - **Don't** Tinte weich auf Glas setzen.
 - **Don't** Überschriften fett setzen oder Text in Versalien stellen.
@@ -342,7 +347,7 @@ Eine Kurve für alles, was erscheint oder antwortet: cubic-bezier(0.23, 1, 0.32,
 ## Stand 01.10.2026 (Nachtrag)
 
 - **Fuß:** Vier Spalten (Marke, Adresse mit "Anfahrt planen", Kontakt, Mehr), Links ohne Unterstrich, je eine Zeile, erst beim Darüberfahren unterstrichen. Keine Öffnungszeiten im Fuß.
-- **Anfahrt:** Auf Apple-Geräten öffnet der Link Apple Karten, sonst Google Maps (js/main.js, Klasse `karte-link`).
+- **Anfahrt:** Auf Android ein geo-Link, der die eingestellte Navi-App öffnet oder wählen lässt; auf Apple-Geräten Apple Karten; sonst Google Maps (js/main.js, Klasse `karte-link`).
 - **Feiern:** Der Anruf ist ein Knopf wie im Einstieg (Orange, zweizeilig: "Feier besprechen", darunter die Nummer).
 - **Nummernfeld:** Kein Einleitungssatz; unter dem Feld "Unsere Empfehlungen" mit 68 Irodion Platte, 37 Lammkoteletts, 87 Mussakas, 95 Stifado, zwei mal zwei.
 - **Einstieg:** Strecke zwei Schirmhöhen, scrub 1. Der Film lädt, sobald das Türfoto steht. Sprünge haben einen Wachhund (300ms) und entfallen, wenn der Film schon auf dem Bild steht. Ohne fertigen Film fährt das Türfoto auf die Tür zu und der Gastraum blendet allmählich darüber.

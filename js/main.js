@@ -50,11 +50,18 @@
   }
 
   /* ---------------------------------------------------------------------
-     ANFAHRT. Auf Apple-Geraeten (iPhone, iPad, Mac) oeffnet sich Apple
-     Karten, ueberall sonst Google Maps. Ohne JavaScript bleibt Google.
+     ANFAHRT. Auf Android ein geo-Link: Das Telefon oeffnet die Navi-App,
+     die dort als Standard eingestellt ist, oder laesst waehlen (Google
+     Maps, Waze, HERE ...). Auf Apple-Geraeten Apple Karten, ueberall
+     sonst Google Maps im Browser. Ohne JavaScript bleibt Google.
      --------------------------------------------------------------------- */
-  if (/iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent)) {
-    var ziel = 'https://maps.apple.com/?daddr=Roggenmarkt+19,+44532+L%C3%BCnen&dirflg=d';
+  var ua = navigator.userAgent, ziel = null;
+  if (/Android/.test(ua)) {
+    ziel = 'geo:0,0?q=Roggenmarkt+19,+44532+L%C3%BCnen';
+  } else if (/iPhone|iPad|iPod|Macintosh/.test(ua)) {
+    ziel = 'https://maps.apple.com/?daddr=Roggenmarkt+19,+44532+L%C3%BCnen&dirflg=d';
+  }
+  if (ziel) {
     Array.prototype.forEach.call(document.querySelectorAll('.karte-link'), function (a) { a.href = ziel; });
   }
 
@@ -291,7 +298,7 @@
           : teile.join('');
       }
 
-      function melden(text) { nrText.removeAttribute('data-art'); nrText.textContent = text; }
+      function melden(text) { nrText.textContent = text; }
 
       function suchen(roh) {
         var wert = (roh || '').replace(/[^0-9a-zA-Z]/g, '').toLowerCase();

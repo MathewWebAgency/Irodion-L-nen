@@ -200,7 +200,6 @@ address { font-style: normal; }
   .fuss__link,
   .blatt address a,
   .karte__index a,
-  .hero__karte,
   .karte-link,
   .platz__mail a {
     display: inline-block;

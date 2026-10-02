@@ -423,15 +423,6 @@
   margin: 0 0 var(--r-2);
   hyphens: none;
 }
-.hero__karte {
-  font-weight: 600;
-  color: var(--eiche);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.25em;
-}
-@media (hover: hover) {
-  .hero__karte:hover { text-decoration-thickness: 2px; }
-}
 
 /* Die Scheibe steht vom ersten Bild an still da. Beim Laden bewegt sich
    nur das Foto dahinter: es wird klar. Ein Auftritt, nicht zwei. */
@@ -561,24 +552,25 @@
     transform: none;
   }
 }
-/* Am Handy steht die Zeichnung oben, wie am Desktop hinter der
-   Ueberschrift: das Halbrund der Sitzreihen links und oben angeschnitten,
-   nach unten laeuft es ins Navy aus, bevor der Text beginnt. Darunter
-   bleibt keine leere Flaeche. Das Tablet behaelt die Lage darueber. */
+/* Am Handy steht die Zeichnung oben, ganz und ohne Anschnitt, in der
+   Breite der Textspalte: das Halbrund der Sitzreihen mit Luft nach oben,
+   damit es nicht wie ein Rest des Einstiegs wirkt. Die Ueberschrift
+   steht auf dem unteren Teil, dort laeuft die Zeichnung ins Navy aus,
+   bevor der Text beginnt. Das Tablet behaelt die Lage darueber. */
 @media (max-width: 699px) {
-  .name { padding-top: calc(var(--r-6) + 34vw); padding-bottom: var(--r-7); }
+  .name { padding-top: calc(var(--r-5) + 46vw); padding-bottom: var(--r-7); }
   .name__linie {
-    top: -30vw;
+    top: var(--r-5);
     bottom: auto;
-    left: -22vw;
-    width: 120vw;
+    left: 6vw;
+    width: 88vw;
     -webkit-mask:
       url(../assets/bilder/theater-linie.svg) center / contain no-repeat,
-      linear-gradient(var(--eiche) 45%, transparent 78%);
+      linear-gradient(var(--eiche) 40%, transparent 68%);
     -webkit-mask-composite: source-in;
             mask:
       url(../assets/bilder/theater-linie.svg) center / contain no-repeat,
-      linear-gradient(var(--eiche) 45%, transparent 78%);
+      linear-gradient(var(--eiche) 40%, transparent 68%);
             mask-composite: intersect;
   }
 }
@@ -717,9 +709,8 @@
   height: var(--bildhoehe);
   aspect-ratio: 3 / 4;
 }
-/* Rhythmus: nicht jedes Foto gleich gross. Zwei Plaetze stehen kleiner.
-   Alle Fotos eckig, ohne Beschriftung; was darauf ist, sagt der alt-Text. */
-.station--klein .station__bild { height: calc(var(--bildhoehe) * 0.74); }
+/* Alle Plaetze gleich gross, eckig, ohne Beschriftung; was darauf ist,
+   sagt der alt-Text. */
 .rundgang__fortschritt {
   display: none;
   height: 1px;
@@ -741,8 +732,7 @@
   .rundgang__kopf { margin-bottom: var(--r-4); }
   .rundgang__liste { align-items: flex-start; gap: var(--r-3); }
   .station { width: min(78vw, 24rem); }
-  .station__bild,
-  .station--klein .station__bild {
+  .station__bild {
     height: auto;
     width: 100%;
     aspect-ratio: 3 / 4;
@@ -823,8 +813,9 @@
 .feldnr__eingabe:focus-visible { outline-offset: 0; }
 .feldnr .knopf { height: 4.25rem; padding-inline: 1.75rem; }
 
-/* Die Meldung hat ihren Platz schon, bevor sie etwas sagt: zwei Zeilen
-   Hoehe. So springt unter ihr nichts, wenn sie erscheint. */
+/* Leer steht die Meldung nicht im Weg. Sagt sie etwas, hat sie zwei
+   Zeilen Hoehe, damit nichts springt, wenn sie von einer auf zwei
+   Zeilen waechst. */
 .feldnr__status {
   min-height: 3.2em;
   margin: var(--r-3) 0;
@@ -833,7 +824,7 @@
   line-height: 1.5;
   color: var(--tinte);
 }
-.feldnr__status[data-art="wartet"] { color: var(--tinte-weich); font-weight: 400; }
+.feldnr__status:empty { min-height: 0; margin: var(--r-4) 0 0; }
 /* Die Empfehlungen stehen zwei mal zwei, gleich breit, jede auf einer
    Zeile. Nichts bricht um, nichts bleibt allein haengen. */
 .feldnr__tipps {
@@ -1131,12 +1122,13 @@
 .woche th { font-weight: 600; white-space: nowrap; }
 .woche td:last-child { padding-right: 0; }
 .woche .spanne { display: inline-block; margin-right: 0.9rem; white-space: nowrap; }
-/* Ruhetag als orange Marke mit Navy-Schrift (5.16:1), wie die Knoepfe. */
+/* Ruhetag als leise Marke auf Pfirsich. Die laute Marke gehoert dem
+   heutigen Tag, denn der ist es, den man sucht. */
 .woche__ruhe td { color: var(--tinte); }
 .ruhetag {
   display: inline-block;
-  padding: 0.1rem 0.55rem;
-  background: var(--orange);
+  padding: 0.05rem 0.45rem;
+  background: var(--treffer);
   color: var(--eiche);
   border-radius: 4px;
   font-weight: 600;
@@ -1151,7 +1143,7 @@
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--eiche);
-  background: var(--treffer);
+  background: var(--orange);
   border-radius: 4px;
 }
 .zeiten__kueche { color: var(--tinte-weich); }
