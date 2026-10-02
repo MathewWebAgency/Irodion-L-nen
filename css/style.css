@@ -241,11 +241,11 @@
               color var(--t-ui) ease;
 }
 .kopf__ruf:active { transform: scale(0.97); }
-/* Im Knopf steht auf allen Breiten nur der Hoerer (Phosphor, gefuellt).
-   Was er tut, sagt das aria-label: Tisch reservieren, Nummer anrufen. */
-.kopf__ruf { justify-content: center; width: 2.75rem; padding: 0; }
+/* Im Knopf steht auf allen Breiten der Hoerer (Phosphor, gefuellt) und
+   "Reservieren". Das aria-label nennt dazu die Nummer. */
+.kopf__ruf { gap: 0.5rem; }
 .kopf__ruf-kurz { display: inline-flex; }
-.kopf__ruf-symbol { width: 1.25rem; height: 1.25rem; fill: currentColor; }
+.kopf__ruf-symbol { width: 1.125rem; height: 1.125rem; fill: currentColor; }
 @media (min-width: 1001px) {
   .kopf__heute:not([hidden]) { display: block; }
 }
@@ -258,6 +258,18 @@
   .kopf__liste { gap: var(--r-3); }
   .kopf__weit { display: none; }
   .logo { height: 1.125rem; }
+  .kopf__ruf { padding: 0 0.85rem; gap: 0.4rem; }
+}
+/* Am ganz schmalen Handy ruecken Liste und Knopf enger, damit Hoerer und
+   "Reservieren" ganz im Bild stehen. */
+@media (max-width: 419px) {
+  .kopf__innen { gap: 0.4rem; }
+  .kopf__liste { gap: 0.6rem; }
+  .kopf__liste a,
+  .kopf__ruf { font-size: 0.8125rem; }
+  .kopf__ruf { padding: 0 0.6rem; gap: 0.3rem; }
+  .kopf__ruf-symbol { width: 0.95rem; height: 0.95rem; }
+  .logo { height: 0.95rem; }
 }
 
 
@@ -1276,7 +1288,8 @@
   line-height: 1.9;
   white-space: nowrap;
 }
-.fuss__block p + .fuss__link { margin-top: var(--r-2); }
+/* Abstand nur nach einem Text, nicht direkt unter dem Spaltentitel. */
+.fuss__block p:not(.fuss__titel) + .fuss__link { margin-top: var(--r-2); }
 @media (hover: hover) {
   .fuss__link:hover { text-decoration-line: underline; }
 }
@@ -1284,6 +1297,11 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+/* Am Tablet zwei mal zwei: Marke und Adresse, darunter Kontakt und Mehr.
+   Mit auto-fit blieb dort "Mehr" allein in einer zweiten Zeile. */
+@media (min-width: 600px) and (max-width: 1099px) {
+  .fuss__innen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 

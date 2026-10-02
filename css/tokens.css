@@ -206,5 +206,10 @@ address { font-style: normal; }
     padding-block: 11px;
   }
   .fuss__link { line-height: 1.2; }
+  /* Die Trefferflaeche waechst nach oben und unten; der erste Link unter
+     einem Spaltentitel rueckt um das Polster hoch, damit seine Schrift
+     auf einer Linie mit der Adresse daneben steht. */
+  .fuss__titel + .fuss__link,
+  .fuss__titel + .fuss__liste > li:first-child > .fuss__link { margin-top: -11px; }
   .blatt address { line-height: 1.25; }
 }
