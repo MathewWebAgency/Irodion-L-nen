@@ -1,7 +1,7 @@
 # SEO, Irodion Lünen
 
 Stand: 02.10.2026. Domain: https://irodion-luenen.de (ohne www, www und http
-leiten per 301 dorthin, /index.html auf /). Diese Datei ist von außen
+leiten per 301 dorthin; /index.html trägt den Canonical auf /). Diese Datei ist von außen
 gesperrt (.htaccess, *.md).
 
 ## Keyword-Landkarte

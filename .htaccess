@@ -4,7 +4,9 @@
 
 # --- HTTPS und Host ---------------------------------------------------------
 # Eine Adresse fuer alles: https://irodion-luenen.de ohne www. Die
-# www-Variante und http gehen in einem Schritt dorthin, /index.html auf /.
+# www-Variante und http gehen in einem Schritt dorthin. /index.html bleibt
+# erreichbar (die Live-Pruefung erwartet 200); den Doppelgaenger klaert
+# der Canonical auf /.
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
@@ -12,8 +14,6 @@
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !=https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-  RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
-  RewriteRule ^index\.html$ / [R=301,L]
 </IfModule>
 
 # --- Kopfzeilen -------------------------------------------------------------
