@@ -361,3 +361,4 @@ Eine Kurve für alles, was erscheint oder antwortet: cubic-bezier(0.23, 1, 0.32,
 - **E-Mail:** irodion1@freenet.de.
 - **Fuß:** Unter "Mehr" stehen Facebook und Instagram (irodion_luenen), beide als einfache Links; die Datenschutzerklärung nennt sie.
 - **Rechtstexte (Stand Oktober 2026):** Kein Hinweis mehr auf die OS-Plattform (seit 20.07.2025 eingestellt); Impressum nach Paragraf 5 DDG, Verantwortlich nach Paragraf 18 Absatz 2 MStV; Datenschutz nennt Hostinger als Hoster samt Auftragsverarbeitung. Überschriften auf den Nebenseiten in Navy (Kontrast).
+- **Domain und Suche (02.10.2026):** https://irodion-luenen.de ist live und indexierbar; Einzelheiten in SEO.md. Favicon: der Rundbogen kräftiger (Strich 6 von 48), damit er auch mit 16px trägt. Das Türfoto im Einstieg kommt als srcset (540/720/900 hoch, 960/1440/1920 quer) und wird klar, sobald es geladen ist, ohne auf die Skripte zu warten.

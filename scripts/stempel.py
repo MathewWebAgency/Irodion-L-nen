@@ -38,9 +38,9 @@ import sys
 
 WURZEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# href="css/..." und src="js/...", ein bereits vorhandener Stempel wird
+# href="css/..." und src="js/..." (auch mit / davor), ein vorhandener Stempel wird
 # mitgefasst und ersetzt.
-MUSTER = re.compile(r'(\s(?:href|src)=")((?:css|js)/[^"?]+\.(?:css|js))(\?v=[0-9a-f]+)?(")')
+MUSTER = re.compile(r'(\s(?:href|src)=")(/?(?:css|js)/[^"?]+\.(?:css|js))(\?v=[0-9a-f]+)?(")')
 
 
 def fingerabdruck(pfad):
@@ -60,7 +60,9 @@ def lauf(nur_pruefen=False):
             alt = f.read()
 
         def ersetzen(m):
-            ziel = os.path.join(WURZEL, m.group(2))
+            # Die 404-Seite verweist von der Wurzel aus (/css/...), damit
+            # sie auch unter tiefen Adressen ihr Aussehen findet.
+            ziel = os.path.join(WURZEL, m.group(2).lstrip('/'))
             if not os.path.exists(ziel):
                 fehlend.append('%s -> %s' % (name, m.group(2)))
                 return m.group(0)

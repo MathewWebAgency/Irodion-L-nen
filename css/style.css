@@ -1309,6 +1309,13 @@
 }
 .blatt .logo-link .logo,
 .fehler .logo-link .logo { height: 1.5rem; }
+/* Brotkrumen auf den Nebenseiten: klein, unter dem Logo. */
+.brotkrumen {
+  margin: calc(-1 * var(--r-4)) 0 var(--r-5);
+  font-size: 0.9375rem;
+  color: var(--tinte-weich);
+}
+.brotkrumen a { color: var(--eiche); }
 .blatt h1 { font-size: var(--s-3); margin-bottom: var(--r-5); }
 .blatt h2 {
   font-size: var(--s-1);
