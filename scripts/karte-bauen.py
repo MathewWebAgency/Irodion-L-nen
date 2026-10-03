@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Erzeugt den Karten-Abschnitt aus daten/karte.json und setzt ihn in index.html
-   zwischen die Marken KARTE ANFANG und KARTE ENDE.
+"""Erzeugt den Karten-Abschnitt aus daten/karte.json und setzt ihn in
+   speisekarte.html zwischen die Marken KARTE ANFANG und KARTE ENDE.
+   Dazu js/karte-daten.js: Nummer, Name, Preis je Gericht, damit das
+   Nummernfeld auf der Startseite ohne die ganze Karte antworten kann.
 
    Seit dem Redesign im September 2026 mit Preisen. Die Preise stehen in
    einer festen Spalte in der Ziffernschrift, jede Zeile gleich breit, damit
@@ -32,7 +34,7 @@ teile, gesehen = [], set()
 
 def gang(g):
     z = [f'<section class="gang" id="gang-{g["id"]}" aria-labelledby="gt-{g["id"]}">',
-         f'  <h3 class="gang__titel" id="gt-{g["id"]}">{e(g["titel"])}</h3>',
+         f'  <h2 class="gang__titel" id="gt-{g["id"]}">{e(g["titel"])}</h2>',
          '  <ol class="gang__liste" role="list">']
     for nr, name, text, p in g['gerichte']:
         eid = f'nr-{nr}' if nr not in gesehen else f'nr-{nr}-{g["id"]}'
@@ -57,11 +59,11 @@ for g in d['gruppen']:
 # Die Getraenke tragen keine Nummern, dafuer Mengen. Eine Zeile je Getraenk,
 # rechts die Paare aus Menge und Preis.
 gt = ['<section class="gang gang--getraenke" id="gang-getraenke" aria-labelledby="gt-getraenke">',
-      '  <h3 class="gang__titel" id="gt-getraenke">Getränke</h3>',
+      '  <h2 class="gang__titel" id="gt-getraenke">Getränke</h2>',
       '  <div class="getraenke">']
 for g in d['getraenke']:
     gt.append('    <div class="getraenke__block">')
-    gt.append(f'      <h4 class="getraenke__titel">{e(g["titel"])}</h4>')
+    gt.append(f'      <h3 class="getraenke__titel">{e(g["titel"])}</h3>')
     gt.append('      <ul class="getraenke__liste" role="list">')
     for name, paare in g['zeilen']:
         gt.append('        <li class="trank">')
@@ -95,12 +97,27 @@ block = ('\n'.join(idx) + '\n\n<div class="karte__gaenge">\n'
          + '\n\n'.join(teile) + '\n</div>\n\n' + '\n'.join(noten))
 anz = sum(len(g['gerichte']) for g in d['gruppen'])
 
-pfad = wurzel/'index.html'
+pfad = wurzel/'speisekarte.html'
 t = pfad.read_text(encoding='utf-8')
 if '<!-- KARTE ANFANG -->' not in t or '<!-- KARTE ENDE -->' not in t:
-    sys.exit('Die Marken KARTE ANFANG und KARTE ENDE fehlen in index.html.')
+    sys.exit('Die Marken KARTE ANFANG und KARTE ENDE fehlen in speisekarte.html.')
 neu = re.sub(r'(<!-- KARTE ANFANG -->).*?(<!-- KARTE ENDE -->)',
              lambda m: m.group(1)+'\n'+block+'\n'+m.group(2), t, flags=re.S)
 pfad.write_text(neu, encoding='utf-8')
+
+# Die Daten fuer das Nummernfeld auf der Startseite, in Kartenreihenfolge.
+# Fuehrt die Karte eine Nummer zweimal, gilt die erste Stelle, wie beim
+# Anker nr-<nummer> auf der Speisekarte.
+daten, schon = [], set()
+for g in d['gruppen']:
+    for nr, name, text, p in g['gerichte']:
+        if nr in schon:
+            continue
+        schon.add(nr)
+        daten.append([nr, name, p])
+js = ('/* Erzeugt von scripts/karte-bauen.py aus daten/karte.json. Nicht von\n'
+      '   Hand bearbeiten. Je Gericht: Nummer, Name, Preis. */\n'
+      'window.IRODION_KARTE = ' + json.dumps(daten, ensure_ascii=False, separators=(',', ':')) + ';\n')
+(wurzel/'js'/'karte-daten.js').write_text(js, encoding='utf-8')
 print(f'{anz} Gerichte in {len(d["gruppen"])} Gängen gesetzt, dazu '
       f'{sum(len(g["zeilen"]) for g in d["getraenke"])} Getränke in {len(d["getraenke"])} Listen, alle mit Preis.')

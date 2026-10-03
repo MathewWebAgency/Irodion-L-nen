@@ -221,9 +221,13 @@
 
   /* ---------------------------------------------------------------------
      DAS NUMMERNFELD. Die Karte ist von 1 bis 1005 durchnummeriert, und
-     die Stammgaeste bestellen so. Wer eine Nummer eintippt, wird an das
-     Gericht gefuehrt und bekommt Name und Preis genannt. Wer eine Nummer
-     eintippt, die es nicht gibt, bekommt die naechstgelegene.
+     die Stammgaeste bestellen so. Wer eine Nummer eintippt, bekommt Name
+     und Preis genannt; wer eine Nummer eintippt, die es nicht gibt, die
+     naechstgelegene.
+
+     Auf der Speisekarte fuehrt das Feld an das Gericht und markiert es.
+     Auf der Startseite steht die Karte nicht, dort liest das Feld aus
+     js/karte-daten.js und verlinkt das Gericht auf der Speisekarte.
 
      Das Feld steht im HTML auf hidden und wird hier eingeschaltet: Ohne
      JavaScript soll es gar nicht erst da sein.
@@ -232,46 +236,52 @@
   var eingabe = document.getElementById('nr-eingabe');
   var nrText  = document.getElementById('nr-status');
 
+  /* Kommt man ueber einen Link wie speisekarte.html#nr-30a, ist das
+     Gericht gleich markiert. Hinscrollen erledigt der Anker selbst. */
+  var zielGericht = location.hash && /^#nr-/.test(location.hash)
+    ? document.getElementById(location.hash.slice(1)) : null;
+  if (zielGericht && zielGericht.classList.contains('gericht')) {
+    zielGericht.classList.add('getroffen');
+  }
+
   if (feld && eingabe && nrText) {
+    /* Ein Verzeichnis, einmal gebaut. Fuehrt die Karte eine Nummer
+       zweimal, gilt die erste Stelle, das ist die, die auf der
+       gedruckten Karte zuerst kommt. */
+    var verzeichnis = Object.create(null);
+    var zahlen = [];
+    function aufnehmen(nr, name, preis, el) {
+      if (nr in verzeichnis) return;
+      verzeichnis[nr] = { nr: nr, name: name, preis: preis, el: el };
+      zahlen.push({ nr: nr, zahl: parseInt(nr, 10) });
+    }
     var gerichte = document.querySelectorAll('.gericht[data-nr]');
-
     if (gerichte.length) {
-      feld.hidden = false;
-
-      /* Ein Verzeichnis, einmal gebaut. Fuehrt die Karte eine Nummer
-         zweimal, geht der Sprung auf die erste Stelle, das ist die, die
-         auf der gedruckten Karte zuerst kommt. */
-      var verzeichnis = Object.create(null);
-      var zahlen = [];
       Array.prototype.forEach.call(gerichte, function (g) {
-        var nr = g.getAttribute('data-nr');
-        if (!(nr in verzeichnis)) {
-          verzeichnis[nr] = g;
-          zahlen.push({ nr: nr, zahl: parseInt(nr, 10) });
-        }
+        var n = g.querySelector('.gericht__name');
+        aufnehmen(g.getAttribute('data-nr'), n ? n.textContent.trim() : '', g.getAttribute('data-preis') || '', g);
       });
-      zahlen.sort(function (a, b) { return a.zahl - b.zahl; });
+    } else if (window.IRODION_KARTE) {
+      window.IRODION_KARTE.forEach(function (z) { aufnehmen(z[0], z[1], z[2], null); });
+    }
+    zahlen.sort(function (a, b) { return a.zahl - b.zahl; });
 
+    if (zahlen.length) {
+      feld.hidden = false;
       var letzterTreffer = null;
 
-      function name(g) {
-        var n = g.querySelector('.gericht__name');
-        return n ? n.textContent.trim() : '';
-      }
-      function preis(g) {
-        var p = g.getAttribute('data-preis');
-        return p ? ', ' + p + ' Euro' : '';
-      }
+      function nennung(e) { return e.name + (e.preis ? ', ' + e.preis + ' Euro' : ''); }
 
-      function hinfuehren(g) {
-        if (letzterTreffer && letzterTreffer !== g) {
+      function hinfuehren(e) {
+        if (!e.el) return;
+        if (letzterTreffer && letzterTreffer !== e.el) {
           letzterTreffer.classList.remove('getroffen');
         }
-        g.classList.add('getroffen');
-        letzterTreffer = g;
+        e.el.classList.add('getroffen');
+        letzterTreffer = e.el;
         // Dieselbe Regel wie bei den Ankern: nah weich, weit sofort.
-        var weit = Math.abs(g.getBoundingClientRect().top) > window.innerHeight * 3;
-        g.scrollIntoView({
+        var weit = Math.abs(e.el.getBoundingClientRect().top) > window.innerHeight * 3;
+        e.el.scrollIntoView({
           behavior: (reduziert.matches || weit) ? 'auto' : 'smooth',
           block: 'center'
         });
@@ -302,7 +312,19 @@
           : teile.join('');
       }
 
-      function melden(text) { nrText.textContent = text; }
+      /* Auf der Startseite haengt an einem Treffer der Weg zum Gericht
+         auf der Speisekarte. */
+      function melden(text, e) {
+        nrText.textContent = text;
+        if (e && !e.el) {
+          var a = document.createElement('a');
+          a.className = 'feldnr__zur-karte';
+          a.href = 'speisekarte.html#nr-' + e.nr;
+          a.textContent = 'In der Karte ansehen';
+          nrText.appendChild(document.createTextNode(' '));
+          nrText.appendChild(a);
+        }
+      }
 
       function suchen(roh) {
         var wert = (roh || '').replace(/[^0-9a-zA-Z]/g, '').toLowerCase();
@@ -312,9 +334,9 @@
           return;
         }
         if (verzeichnis[wert]) {
-          var g0 = verzeichnis[wert];
-          hinfuehren(g0);
-          melden('Die ' + wert + ' ist ' + name(g0) + preis(g0) + '.');
+          var e0 = verzeichnis[wert];
+          hinfuehren(e0);
+          melden('Die ' + wert + ' ist ' + nennung(e0) + '.', e0);
           return;
         }
 
@@ -333,9 +355,8 @@
 
         /* Die Nachbarschaft braucht eine Grenze. Bei der 42 ist die 41
            ein hilfreicher Hinweis, bei der 500 waere es eine Nummer weit
-           daneben, und die Seite spraenge weit, um etwas zu zeigen, das
-           niemand gemeint hat. Die Zahlenreihe hat Luecken, das ist die
-           ehrlichere Auskunft. */
+           daneben. Die Zahlenreihe hat Luecken, das ist die ehrlichere
+           Auskunft. */
         if (abstand > 20) {
           markeLoeschen();
           melden('Die ' + wert + ' gibt es nicht. Auf der Karte stehen die Nummern '
@@ -343,16 +364,16 @@
           return;
         }
 
-        var g = verzeichnis[beste.nr];
-        hinfuehren(g);
+        var e = verzeichnis[beste.nr];
+        hinfuehren(e);
         melden('Die ' + wert + ' gibt es nicht. Am nächsten dran ist die '
-             + beste.nr + ', ' + name(g) + preis(g) + '.');
+             + beste.nr + ', ' + nennung(e) + '.', e);
       }
 
-      // Am Telefon schliesst die Tastatur, damit das Gericht zu sehen ist.
+      // Am Telefon schliesst die Tastatur, damit die Antwort zu sehen ist.
       var grob = window.matchMedia('(pointer: coarse)');
-      feld.addEventListener('submit', function (e) {
-        e.preventDefault();
+      feld.addEventListener('submit', function (ev) {
+        ev.preventDefault();
         if (grob.matches) eingabe.blur();
         suchen(eingabe.value);
       });

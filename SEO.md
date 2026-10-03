@@ -9,6 +9,7 @@ gesperrt (.htaccess, *.md).
 | URL | Suchintent | Haupt-Keyword | Neben-Keywords |
 |---|---|---|---|
 | / | lokal, Besuch planen, reservieren, Karte ansehen | griechisches Restaurant Lünen | Grieche Lünen, Irodion Lünen Speisekarte, Restaurant Roggenmarkt Lünen |
+| /speisekarte.html | Karte und Preise ansehen | Irodion Speisekarte | griechisch essen Lünen Preise, Gyros Lünen, Grieche Lünen Karte |
 | /impressum.html | navigational | (keins) | Irodion Impressum |
 | /datenschutz.html | navigational | (keins) | (keins) |
 
@@ -23,7 +24,7 @@ Text (Lünener Altstadt, Roggenmarkt, Fachwerkhaus).
 - Open Graph und Twitter Card, Vorschaubild 1200 x 630 (echtes Foto der Fassade).
 - JSON-LD: WebSite (Name "Irodion" für den Seitennamen bei Google) und
   Restaurant mit Adresse, Geo, Telefon, E-Mail, Öffnungszeiten (Fr/Sa bis 23 Uhr),
-  Speisekarte (#karte), Preisniveau, Bildern, sameAs Facebook/Instagram.
+  Speisekarte (speisekarte.html), Preisniveau, Bildern, sameAs Facebook/Instagram.
   Unterseiten mit BreadcrumbList und sichtbaren Brotkrumen. Keine Bewertungen.
 - robots.txt mit Sitemap, sitemap.xml mit lastmod.
 - Favicon-Satz: favicon.ico (16/32/48), favicon.svg, PNG 48/96/192/512,

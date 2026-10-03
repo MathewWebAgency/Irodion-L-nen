@@ -31,7 +31,7 @@ Seit 1983 dieselbe Familie in demselben Fachwerkhaus am Roggenmarkt. Die Karte i
 - Außenbereich bei gutem Wetter unter Schirmen auf dem Kopfsteinpflaster.
 - Mitnahme auf Vorbestellung. Kein Lieferservice, an keiner Stelle.
 - Räume für Gesellschaften mit individueller Aufteilung, seit der Erweiterung 2017.
-- Umbauten 1990, Modernisierung 2009, Erweiterung 2017.
+- Umbauten 1990, Modernisierung 2010, Erweiterung 2017.
 
 ## Capabilities and Constraints
 
