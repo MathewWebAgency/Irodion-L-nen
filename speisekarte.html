@@ -31,7 +31,7 @@
 <link rel="preload" href="assets/fonts/zodiak-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/fonts.css?v=7d1404c1">
 <link rel="stylesheet" href="css/tokens.css?v=82212bbb">
-<link rel="stylesheet" href="css/style.css?v=fb75449b">
+<link rel="stylesheet" href="css/style.css?v=4113d555">
 
 <script src="js/vor-anstrich.js?v=f3c533a9"></script>
 </head>
@@ -69,6 +69,18 @@
   <div class="karte__kopf">
     <nav class="brotkrumen" aria-label="Brotkrumen"><a href="/">Startseite</a> <span aria-hidden="true">/</span> <span aria-current="page">Speisekarte</span></nav>
     <h1 id="karte-titel">Die ganze Karte. Kein Download.</h1>
+    <!-- Dasselbe Nummernfeld wie auf der Startseite. Hier fuehrt es an das
+         Gericht und markiert es (js/main.js). Ohne JavaScript bleibt es weg. -->
+    <form class="feldnr feldnr--karte" id="feldnr" hidden>
+      <label class="feldnr__label" for="nr-eingabe">Nummer von der Karte</label>
+      <div class="feldnr__zeile">
+        <input class="feldnr__eingabe ziffer" id="nr-eingabe" name="nr" type="text"
+               inputmode="numeric" autocomplete="off" maxlength="5"
+               placeholder="z. B. 47" aria-describedby="nr-status">
+        <button class="knopf" type="submit">Zeigen</button>
+      </div>
+      <p class="feldnr__status" id="nr-status" role="status" aria-live="polite"></p>
+    </form>
   </div>
   <div class="karte__inhalt">
 <!-- KARTE ANFANG -->
@@ -1314,6 +1326,6 @@
 }
 </script>
 
-<script src="js/main.js?v=607ac768" defer></script>
+<script src="js/main.js?v=085c62b7" defer></script>
 </body>
 </html>

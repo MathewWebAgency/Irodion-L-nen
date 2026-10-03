@@ -268,7 +268,9 @@
 
     if (zahlen.length) {
       feld.hidden = false;
-      var letzterTreffer = null;
+      // Kam man ueber einen Link mit Gericht, gilt dieses als markiert und
+      // wird bei der naechsten Suche wieder freigegeben.
+      var letzterTreffer = (zielGericht && zielGericht.classList.contains('getroffen')) ? zielGericht : null;
 
       function nennung(e) { return e.name + (e.preis ? ', ' + e.preis + ' Euro' : ''); }
 

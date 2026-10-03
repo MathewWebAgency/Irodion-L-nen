@@ -888,6 +888,20 @@
 .karte--seite { padding-top: calc(var(--kopf-h) + var(--r-6)); }
 .karte--seite .brotkrumen { margin: 0 0 var(--r-3); }
 .karte--seite h1 { font-size: var(--s-3); margin-bottom: 0; }
+/* Das Nummernfeld auf der Speisekarte: ein Sandblock auf dem Kalk, etwas
+   flacher als auf der Startseite, damit die Karte bald beginnt. */
+.feldnr--karte {
+  max-width: 36rem;
+  margin-top: var(--r-5);
+  padding: clamp(1rem, 0.7rem + 1.4vw, 1.75rem);
+  background: var(--leinen-tief);
+  border: 1px solid var(--linie);
+}
+.feldnr--karte .feldnr__eingabe,
+.feldnr--karte .knopf { height: 3.5rem; }
+.feldnr--karte .feldnr__eingabe { font-size: var(--s-2); }
+.feldnr--karte .feldnr__status { margin: var(--r-3) 0 0; min-height: 0; }
+.feldnr--karte .feldnr__status:empty { margin: 0; }
 .karte__kopf p { color: var(--tinte-weich); }
 
 .karte__index {
@@ -1313,6 +1327,7 @@
   padding: 0;
 }
 .fuss__credit {
+  max-width: none;
   margin: var(--r-5) 0 0;
   padding-top: var(--r-3);
   border-top: 1px solid rgba(250, 245, 236, 0.14);
