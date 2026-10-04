@@ -1415,7 +1415,7 @@
   margin: var(--r-5) 0;
   padding: var(--r-3) var(--r-4);
   background: var(--leinen-tief);
-  border-left: 3px solid var(--logoblau);
+  border: 1px solid var(--linie);
 }
 .blatt__abgesetzt h2 { margin-top: 0; }
 .blatt__abgesetzt p { margin-bottom: 0; }
