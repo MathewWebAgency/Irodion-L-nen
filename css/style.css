@@ -1403,7 +1403,9 @@
   color: var(--tinte-weich);
 }
 .brotkrumen a { color: var(--eiche); }
-.blatt h1 { font-size: var(--s-3); margin-bottom: var(--r-5); }
+/* "Datenschutzerklärung" ist ein langes Wort, getrennt wird nicht. Am
+   schmalen Handy wird die Ueberschrift so klein, dass es ganz passt. */
+.blatt h1 { font-size: min(var(--s-3), 7.8vw); margin-bottom: var(--r-5); }
 .blatt h2 {
   font-size: var(--s-1);
   margin: var(--r-5) 0 var(--r-2);
