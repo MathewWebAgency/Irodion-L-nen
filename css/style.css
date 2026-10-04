@@ -1390,6 +1390,14 @@
   color: var(--tinte);
 }
 .blatt a { color: var(--eiche); }
+.blatt__abgesetzt {
+  margin: var(--r-5) 0;
+  padding: var(--r-3) var(--r-4);
+  background: var(--leinen-tief);
+  border-left: 3px solid var(--logoblau);
+}
+.blatt__abgesetzt h2 { margin-top: 0; }
+.blatt__abgesetzt p { margin-bottom: 0; }
 .blatt__stand { margin-top: var(--r-5); font-size: 0.9375rem; color: var(--tinte-weich); }
 .zurueck { margin-top: var(--r-6); }
 
