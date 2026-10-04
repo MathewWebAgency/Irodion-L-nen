@@ -1326,14 +1326,20 @@
   margin: 0;
   padding: 0;
 }
+/* Die letzte Zeile: links das Copyright, rechts der Hinweis auf die
+   Agentur. Am Handy untereinander. */
 .fuss__credit {
-  max-width: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--r-1) var(--r-4);
   margin: var(--r-5) 0 0;
   padding-top: var(--r-3);
   border-top: 1px solid rgba(250, 245, 236, 0.14);
   font-size: 0.875rem;
   color: var(--auf-eiche-weich);
 }
+.fuss__credit p { margin: 0; color: inherit; }
 .fuss__credit a {
   color: var(--auf-eiche);
   text-decoration: none;

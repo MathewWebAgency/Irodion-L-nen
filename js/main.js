@@ -180,6 +180,14 @@
     return { offen: false, kurz: 'Jetzt geschlossen', lang: 'Jetzt geschlossen. ' + wann.charAt(0).toUpperCase() + wann.slice(1) + ' ab 11:30 Uhr wieder geöffnet.' };
   }
 
+  // Das Jahr im Copyright stellt sich selbst um, nach deutscher Zeit.
+  try {
+    var jahr = new Intl.DateTimeFormat('de-DE', { timeZone: 'Europe/Berlin', year: 'numeric' }).format(new Date());
+    Array.prototype.forEach.call(document.querySelectorAll('[data-jahr]'), function (el) {
+      if (el.textContent !== jahr) el.textContent = jahr;
+    });
+  } catch (e) {}
+
   var liveFelder = document.querySelectorAll('[data-live]');
   var kopfLive = document.getElementById('kopf-heute');
   var markiert = null;
