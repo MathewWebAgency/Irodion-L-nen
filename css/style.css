@@ -324,6 +324,27 @@
   background: var(--eiche);
 }
 .js-eintritt .hero--faehrt .hero__film { visibility: visible; }
+/* Die Kennzeichnung "Mit KI animiert". Nur dort, wo die Fahrt laeuft.
+   Lage setzt js/eintritt.js per transform: unten links auf dem
+   sichtbaren Bild, nie unter der Scheibe. */
+.hero__ki { display: none; }
+.js-eintritt .hero__ki {
+  display: block;
+  grid-area: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(30, 52, 80, 0.85);
+  color: var(--auf-eiche);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  pointer-events: none;
+}
 .js-eintritt .hero--faehrt .hero__bild { visibility: hidden; }
 /* Groesse und Lage setzt js/eintritt.js: genau die des Filmbilds. */
 /* overflow: hidden, damit das Tuerfoto beim Hineinzoomen (Ersatzweg)

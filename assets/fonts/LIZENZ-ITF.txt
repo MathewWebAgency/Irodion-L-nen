@@ -1,4 +1,0 @@
-Zodiak: Indian Type Foundry (ITF), bezogen ueber Fontshare.
-Lizenz: ITF Free Font License, https://www.fontshare.com/licenses/itf-ffl
-Frei fuer private und kommerzielle Nutzung, Selbst-Hosting per @font-face erlaubt.
-Die Marken und Urheberrechte liegen bei der Indian Type Foundry.

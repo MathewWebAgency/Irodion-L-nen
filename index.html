@@ -36,7 +36,7 @@
       media="(max-width: 899px) and (orientation: portrait)" fetchpriority="high">
 <link rel="stylesheet" href="css/fonts.css?v=7d1404c1">
 <link rel="stylesheet" href="css/tokens.css?v=82212bbb">
-<link rel="stylesheet" href="css/style.css?v=f134bdf0">
+<link rel="stylesheet" href="css/style.css?v=63ac4cde">
 
 <script src="js/vor-anstrich.js?v=f3c533a9"></script>
 </head>
@@ -100,7 +100,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
       <source media="(max-width: 899px) and (orientation: portrait)" srcset="assets/film/eintritt-hoch-start-540.webp 540w, assets/film/eintritt-hoch-start-720.webp 720w, assets/film/eintritt-hoch-start-2.webp 900w" sizes="100vw" width="900" height="1600">
       <img class="klaert" src="assets/film/eintritt-quer-start-2.webp" srcset="assets/film/eintritt-quer-start-960.webp 960w, assets/film/eintritt-quer-start-1440.webp 1440w, assets/film/eintritt-quer-start-2.webp 1920w" sizes="100vw" width="1920" height="1080"
            fetchpriority="high" decoding="async"
-           alt="Der Eingang des Irodion am Roggenmarkt 19: eine zweiflügelige Holztür unter einem Rundbogen im Fachwerkhaus, davor Blumen.">
+           alt="Der Eingang des Irodion am Roggenmarkt 19: eine zweiflügelige Holztür unter einem Rundbogen im Fachwerkhaus, davor Blumen. Beim Scrollen folgt eine mit KI animierte Kamerafahrt durch die Tür.">
     </picture>
   </figure>
   <!-- Die Fahrt selbst. Sie liegt ueber dem ganzen Einstieg und beginnt
@@ -111,7 +111,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <source media="(max-width: 899px) and (orientation: portrait)" srcset="assets/film/eintritt-hoch-start-540.webp 540w, assets/film/eintritt-hoch-start-720.webp 720w, assets/film/eintritt-hoch-start-2.webp 900w" sizes="100vw" width="900" height="1600">
         <img src="assets/film/eintritt-quer-start-2.webp" srcset="assets/film/eintritt-quer-start-960.webp 960w, assets/film/eintritt-quer-start-1440.webp 1440w, assets/film/eintritt-quer-start-2.webp 1920w" sizes="100vw" width="1920" height="1080" alt="" decoding="async">
       </picture>
-      <video class="hero__video" muted playsinline preload="none" disablepictureinpicture tabindex="-1"></video>
+      <video class="hero__video" muted playsinline preload="none" disablepictureinpicture tabindex="-1" aria-label="Mit KI animierte Kamerafahrt durch die Eingangstür in den Gastraum"></video>
       <picture class="hero__ende">
         <source media="(max-width: 899px) and (orientation: portrait)" srcset="assets/film/eintritt-hoch-ende-3.webp" width="900" height="1600">
         <img src="assets/film/eintritt-quer-ende-3.webp" width="1920" height="1080" alt="" loading="lazy" decoding="async">
@@ -119,6 +119,10 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     </div>
     <span class="hero__schleier"></span>
   </div>
+  <!-- Kennzeichnung der KI-Animation. Steht, sobald die Fahrt moeglich ist,
+       unten links auf dem sichtbaren Bild und wandert mit, wenn das Bild
+       zur vollen Flaeche waechst (js/eintritt.js). -->
+  <span class="hero__ki" aria-hidden="true">Mit KI animiert</span>
   <p class="hero__gruss" aria-hidden="true"><i>Kalós ílthate.</i> <span>Schön, dass Sie da sind.</span></p>
   <div class="hero__scheibe glas">
     <svg class="logo hero__logo" viewBox="0 0 1029 237" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false"><use href="#logo" width="1029" height="237"/></svg>
@@ -536,7 +540,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <script src="js/vendor/gsap.min.js?v=96c01b81" defer></script>
 <script src="js/vendor/ScrollTrigger.min.js?v=30821939" defer></script>
-<script src="js/eintritt.js?v=6b77052c" defer></script>
+<script src="js/eintritt.js?v=d6df96d9" defer></script>
 <script src="js/rundgang.js?v=38690f4a" defer></script>
 <script src="js/karte-daten.js?v=29949d48" defer></script>
 <script src="js/main.js?v=e77eb16a" defer></script>

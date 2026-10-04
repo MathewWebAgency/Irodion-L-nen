@@ -40,7 +40,8 @@
   var scheibe  = hero && hero.querySelector('.hero__scheibe');
   var gruss    = hero && hero.querySelector('.hero__gruss');
   var kopf     = document.querySelector('.kopf');
-  if (!hero || !foto || !film || !bild || !video || !ende || !startBild || !scheibe || !gruss) return;
+  var ki       = hero && hero.querySelector('.hero__ki');
+  if (!hero || !foto || !film || !bild || !video || !ende || !startBild || !scheibe || !gruss || !ki) return;
 
   gsap.registerPlugin(ScrollTrigger);
   document.documentElement.classList.add('js-eintritt');
@@ -99,6 +100,22 @@
     };
   }
   var VOLL = 'inset(0px 0px 0px 0px)';
+
+  /* Die Kennzeichnung "Mit KI animiert": am Anfang unten links auf dem
+     sichtbaren Teil des Fotos (am Handy ueber der Scheibe), am Ende unten
+     links auf dem Schirm. */
+  var RAND = 12;
+  function kiLage() {
+    var lh = ki.offsetHeight, lw = ki.offsetWidth;
+    var H = Math.min(film.offsetHeight, window.innerHeight);
+    var bx = figur.offsetLeft, by = figur.offsetTop;
+    var unten = Math.min(by + figur.offsetHeight, H);
+    var x0 = bx + RAND, y0 = unten - lh - RAND;
+    var sx = scheibe.offsetLeft, sy = scheibe.offsetTop;
+    var sr = sx + scheibe.offsetWidth, su = sy + scheibe.offsetHeight;
+    if (x0 < sr && x0 + lw > sx && y0 < su && y0 + lh > sy) y0 = sy - lh - RAND;
+    return { x0: x0, y0: Math.max(RAND, y0), x1: RAND, y1: H - lh - RAND };
+  }
 
   /* ---------------------------------------------------------------------
      Der Film. Er wird als Ganzes geholt und als Objekt-URL abgespielt.
@@ -249,6 +266,11 @@
         { x: function () { return lage().x; }, y: function () { return lage().y; },
           scale: function () { return lage().k; } },
         { x: 0, y: 0, scale: 1, duration: 0.32, ease: 'power2.inOut' }, 0)
+      // Die Kennzeichnung wandert mit dem Bild in die Ecke des Schirms.
+      .fromTo(ki,
+        { x: function () { return kiLage().x0; }, y: function () { return kiLage().y0; } },
+        { x: function () { return kiLage().x1; }, y: function () { return kiLage().y1; },
+          duration: 0.32, ease: 'power2.inOut' }, 0)
       // Die Scheibe tritt zurueck und antwortet sofort.
       .fromTo(scheibe, { opacity: 1, y: 0 }, { opacity: 0, y: -28, duration: 0.2, ease: 'power1.out' }, 0)
       // Der Film. Linear zum Scroll: Die Kamera geht so schnell, wie man
